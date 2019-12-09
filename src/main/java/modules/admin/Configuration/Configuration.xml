@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document name="Configuration"
+			xmlns="http://www.skyve.org/xml/document"
+			xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<persistent name="ADM_Configuration" />
+	<singularAlias>Setup</singularAlias>
+	<pluralAlias>Setup</pluralAlias>
+	<iconStyleClass>fa fa-lock</iconStyleClass>
+	<bizKey expression="Admin Setup"/>
+	<attributes>
+		<enum name="passwordComplexityModel" required="true">
+			<displayName>Password Complexity</displayName>
+			<description>The security level/complexity model for user passwords</description>
+			<values>
+				<value code="MINIMUM" description="Minimum - min 6 chars"/>
+				<value code="MEDIUM" description="Medium - min 6 chars, upper, lower and numeric"/>
+				<value code="MAXIMUM" description="Good - min 8 chars, upper, lower, numeric and punctuation"/>
+				<value code="STRONG" description="Strong - min 10 chars, upper, lower, numeric and punctuation"/>
+			</values>
+		</enum>
+		<text name="fromEmail" required="true">
+			<displayName>Sender/From Email Address</displayName>
+			<description>Email Address that all email's that the system sends will be sent from.</description>
+			<length>254</length>
+			<validator type="email" />
+		</text>
+		<text name="passwordResetEmailSubject" required="true">
+			<displayName>Password Reset Email Subject</displayName>
+			<description>The subject of the password reset email to be sent to clients.  Bindings are allowed relative to the User.</description>
+			<length>250</length>
+		</text>
+		<markup name="passwordResetEmailBody" required="true">
+			<displayName>Password Reset Email Body</displayName>
+			<description>The body of the password reset email to be sent to clients.  Bindings are allowed relative to the User.</description>
+		</markup>
+		<association type="aggregation" name="userSelfRegistrationGroup">
+			<displayName>User Self Registration Group</displayName>
+			<description><![CDATA[
+			The user group which specifies role-access for self-registering users.
+			<br/>
+			To disable self-registration, leave this group unselected, or select a group with minimal access permissions.
+			]]></description>
+			<documentName>Group</documentName>
+		</association>
+		<boolean name="allowUserSelfRegistration">
+			<displayName>Allow User Self Registration</displayName>
+			<description>Master switch to allow or disallow self registration.</description>
+		</boolean>
+		
+		<association name="publicUser" type="aggregation">
+			<displayName>Anonymous Public User</displayName>
+			<description>The anonymous public user asserted on all public pages.</description>
+			<documentName>User</documentName>
+		</association>
+		
+		<!-- non-persistent configuration attributes -->
+		<text name="emailFrom" persistent="false">
+			<displayName>Email From</displayName>
+			<length>254</length>
+		</text>
+		<text name="emailTo" persistent="false">
+			<displayName>Email To</displayName>
+			<length>254</length>
+		</text>
+		<text name="emailSubject" persistent="false">
+			<displayName>Email Subject</displayName>
+			<length>128</length>
+		</text>
+		<markup name="emailContent" persistent="false">
+			<displayName>Email</displayName>
+		</markup>
+		<association name="emailToContact" type="aggregation" persistent="false">
+			<displayName>Email To Contact</displayName>
+			<documentName>Contact</documentName>
+		</association>
+		<association name="startup" type="aggregation" persistent="false">
+			<displayName>Startup</displayName>
+			<documentName>Startup</documentName>
+		</association>
+	</attributes>
+	<conditions>
+		<condition name="emailConfigured">
+			<expression>
+				<![CDATA[
+					modules.admin.Configuration.ConfigurationExtension.validSMTPHost()
+				]]>
+			</expression>
+		</condition>	
+		<condition name="backupsConfigured">
+			<expression>
+				<![CDATA[
+					modules.admin.Configuration.ConfigurationExtension.validBackupConfiguration()
+				]]>
+			</expression>
+		</condition>
+		<condition name="mapTypeGmap">
+			<description>True when the selected startup map type is Google Maps</description>
+			<expression>
+				<![CDATA[
+					getStartup() != null && Startup.MapType.gmap == getStartup().getMapType()
+				]]>
+			</expression>
+		</condition>
+	</conditions>
+</document>

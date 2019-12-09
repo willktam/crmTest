@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<view title="{bizKey}" name="edit" xmlns="http://www.skyve.org/xml/view" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<tabPane>
+		<tab title="Profile">
+			<form border="true" percentageWidth="70" responsiveWidth="12">
+				<column percentageWidth="20" responsiveWidth="4" />
+				<column />
+				<row>
+					<item>
+						<checkBox binding="inactive" triState="false"/>
+					</item>
+				</row>
+				<row>
+					<item>
+						<textField binding="userName" />
+					</item>
+				</row>
+				<row>
+					<item>
+						<lookupDescription binding="contact" descriptionBinding="name" />
+					</item>
+				</row>
+				<row>
+					<item label="Data Group">
+						<textField binding="dataGroup.name" disabled="true" invisible="notInDataGroup" />
+					</item>
+					<item>
+						<combo binding="dataGroup" invisible="inDataGroup" />
+					</item>
+				</row>
+				<row>
+					<item>
+						<combo binding="homeModule" />
+					</item>
+				</row>
+			</form>
+		</tab>
+
+		<tab title="Groups">
+			<vbox border="true" percentageHeight="50">
+				<listMembership binding="groups" candidatesHeading="Unassigned" membersHeading="Assigned" />
+			</vbox>
+			<vbox />
+		</tab>
+		<tab title="Roles">
+			<hbox>
+				<vbox border="true" borderTitle="User Roles" percentageHeight="50">
+					<dataGrid binding="roles">
+						<boundColumn binding="roleName" />
+					</dataGrid>
+				</vbox>
+				<vbox border="true" borderTitle="Assigned Roles" percentageHeight="50">
+					<dataRepeater binding="assignedRoles">
+						<boundColumn binding="roleName" editable="false" />
+					</dataRepeater>
+				</vbox>
+			</hbox>
+		</tab>
+		<tab title="Password">
+			<form border="true" percentageWidth="70" responsiveWidth="12">
+				<column percentageWidth="30" responsiveWidth="4" />
+				<column />
+				<row>
+					<item>
+						<password binding="newPassword" />
+					</item>
+				</row>
+				<row>
+					<item>
+						<password binding="confirmPassword" />
+					</item>
+				</row>
+				<row>
+					<item>
+						<checkBox binding="passwordExpired" triState="false" invisible="notSecurityAdministrator" />
+					</item>
+				</row>
+				<row>
+					<item>
+						<textField binding="generatedPassword"  disabled="true"/>
+					</item>
+				</row>
+			</form>
+		</tab>
+	</tabPane>
+	<actions>
+		<defaults />
+		<action className="GenerateUniqueUserName" displayName="Generate UserName" invisible="notSecurityAdministrator" 
+		relativeIconFileName="shared/icons/Job.gif"/>
+		<action className="GeneratePassword" displayName="Generate Password" invisible="notSecurityAdministrator" 
+		relativeIconFileName="shared/icons/Job.gif"/>
+	</actions>
+</view>
