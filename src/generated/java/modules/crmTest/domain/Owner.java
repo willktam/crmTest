@@ -9,13 +9,13 @@ import org.skyve.domain.messages.DomainException;
 import org.skyve.impl.domain.AbstractPersistentBean;
 
 /**
- * Customer
+ * Owner
  * 
  * @stereotype "persistent"
  */
 @XmlType
 @XmlRootElement
-public class Customer extends AbstractPersistentBean {
+public class Owner extends AbstractPersistentBean {
 	/**
 	 * For Serialization
 	 * @hidden
@@ -25,39 +25,31 @@ public class Customer extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String MODULE_NAME = "crmTest";
 	/** @hidden */
-	public static final String DOCUMENT_NAME = "Customer";
+	public static final String DOCUMENT_NAME = "Owner";
 
 	/** @hidden */
 	public static final String namePropertyName = "name";
-	/** @hidden */
-	public static final String agePropertyName = "age";
 
 	/**
 	 * Name
 	 * <br/>
-	 * Your name
+	 * Owner name
 	 **/
 	private String name;
-	/**
-	 * Age
-	 * <br/>
-	 * Your Age
-	 **/
-	private Integer age;
 
 	@Override
 	@XmlTransient
 	public String getBizModule() {
-		return Customer.MODULE_NAME;
+		return Owner.MODULE_NAME;
 	}
 
 	@Override
 	@XmlTransient
 	public String getBizDocument() {
-		return Customer.DOCUMENT_NAME;
+		return Owner.DOCUMENT_NAME;
 	}
 
-	public static Customer newInstance() {
+	public static Owner newInstance() {
 		try {
 			return CORE.getUser().getCustomer().getModule(MODULE_NAME).getDocument(CORE.getUser().getCustomer(), DOCUMENT_NAME).newInstance(CORE.getUser());
 		}
@@ -74,7 +66,7 @@ public class Customer extends AbstractPersistentBean {
 	public String getBizKey() {
 		try {
 			return org.skyve.util.Binder.formatMessage(org.skyve.CORE.getUser().getCustomer(),
-														"Customer - {name}",
+														"Owner - {name}",
 														this);
 		}
 		catch (Exception e) {
@@ -84,8 +76,8 @@ public class Customer extends AbstractPersistentBean {
 
 	@Override
 	public boolean equals(Object o) {
-		return ((o instanceof Customer) && 
-					this.getBizId().equals(((Customer) o).getBizId()));
+		return ((o instanceof Owner) && 
+					this.getBizId().equals(((Owner) o).getBizId()));
 	}
 
 	/**
@@ -104,23 +96,5 @@ public class Customer extends AbstractPersistentBean {
 	public void setName(String name) {
 		preset(namePropertyName, name);
 		this.name = name;
-	}
-
-	/**
-	 * {@link #age} accessor.
-	 * @return	The value.
-	 **/
-	public Integer getAge() {
-		return age;
-	}
-
-	/**
-	 * {@link #age} mutator.
-	 * @param age	The new value.
-	 **/
-	@XmlElement
-	public void setAge(Integer age) {
-		preset(agePropertyName, age);
-		this.age = age;
 	}
 }

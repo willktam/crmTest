@@ -11,5 +11,9 @@
             <description><![CDATA[Your name]]></description>
             <length>100</length>
         </text>
+        <integer required="true" name="age">
+            <displayName>Age</displayName>
+            <description><![CDATA[Your Age]]></description>
+        </integer>
     </attributes>
 </document>

@@ -4,23 +4,30 @@
     <homeDocument>Customer</homeDocument>
     <documents>
         <document ref="Customer"/>
+        <document ref="Owner"/>
     </documents>
     <roles>
         <role name="Viewer">
             <description><![CDATA[Enough privileges to view CrmTest documents.]]></description>
             <privileges>
                 <document name="Customer" permission="_R__C"/>
+                <document name="Owner" permission="_R__C"/>
             </privileges>
         </role>
         <role name="Maintainer">
             <description><![CDATA[Enough privileges to create and edit CrmTest documents.]]></description>
             <privileges>
                 <document name="Customer" permission="CRUDC"/>
+                <document name="Owner" permission="CRUDC"/>
             </privileges>
         </role>
     </roles>
     <menu>
         <list document="Customer" name="Customers">
+            <role name="Maintainer"/>
+            <role name="Viewer"/>
+        </list>
+        <list document="Owner" name="Owners">
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>

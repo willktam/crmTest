@@ -21,10 +21,27 @@
 		<property name="bizDataGroupId" length="36" />
 		<property name="bizUserId" length="36" not-null="true" />
 		<property name="name" length="100" />
+		<property name="age" />
 		<filter name="crmTestCustomerNoneFilter" condition="1=0"/>
 		<filter name="crmTestCustomerCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="crmTestCustomerDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
 		<filter name="crmTestCustomerUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.crmTest.domain.Owner" table="CRM_Owner" entity-name="crmTestOwner">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" not-null="true" />
+		<property name="bizCustomer" length="50" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" not-null="true" />
+		<property name="name" length="100" />
+		<filter name="crmTestOwnerNoneFilter" condition="1=0"/>
+		<filter name="crmTestOwnerCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="crmTestOwnerDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="crmTestOwnerUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
 	<filter-def name="crmTestCustomerNoneFilter" />
@@ -35,6 +52,16 @@
 		<filter-param name="dataGroupIdParam" type="string"/>
 	</filter-def>
 	<filter-def name="crmTestCustomerUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="crmTestOwnerNoneFilter" />
+	<filter-def name="crmTestOwnerCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="crmTestOwnerDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="crmTestOwnerUserIdFilter">
 		<filter-param name="userIdParam" type="string"/>
 	</filter-def>
 </hibernate-mapping>
