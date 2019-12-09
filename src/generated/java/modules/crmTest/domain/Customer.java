@@ -31,6 +31,8 @@ public class Customer extends AbstractPersistentBean {
 	public static final String namePropertyName = "name";
 	/** @hidden */
 	public static final String agePropertyName = "age";
+	/** @hidden */
+	public static final String addressPropertyName = "address";
 
 	/**
 	 * Name
@@ -44,6 +46,12 @@ public class Customer extends AbstractPersistentBean {
 	 * Your Age
 	 **/
 	private Integer age;
+	/**
+	 * Address
+	 * <br/>
+	 * Your physical address
+	 **/
+	private String address;
 
 	@Override
 	@XmlTransient
@@ -122,5 +130,23 @@ public class Customer extends AbstractPersistentBean {
 	public void setAge(Integer age) {
 		preset(agePropertyName, age);
 		this.age = age;
+	}
+
+	/**
+	 * {@link #address} accessor.
+	 * @return	The value.
+	 **/
+	public String getAddress() {
+		return address;
+	}
+
+	/**
+	 * {@link #address} mutator.
+	 * @param address	The new value.
+	 **/
+	@XmlElement
+	public void setAddress(String address) {
+		preset(addressPropertyName, address);
+		this.address = address;
 	}
 }

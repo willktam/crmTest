@@ -22,6 +22,7 @@
 		<property name="bizUserId" length="36" not-null="true" />
 		<property name="name" length="100" />
 		<property name="age" />
+		<property name="address" length="200" />
 		<filter name="crmTestCustomerNoneFilter" condition="1=0"/>
 		<filter name="crmTestCustomerCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="crmTestCustomerDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>

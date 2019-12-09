@@ -15,5 +15,10 @@
             <displayName>Age</displayName>
             <description><![CDATA[Your Age]]></description>
         </integer>
+        <text required="true" name="address">
+            <displayName>Address</displayName>
+            <description><![CDATA[Your physical address]]></description>
+            <length>200</length>
+        </text>
     </attributes>
 </document>
