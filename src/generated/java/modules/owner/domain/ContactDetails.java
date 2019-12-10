@@ -1,4 +1,4 @@
-package modules.staff.domain;
+package modules.owner.domain;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -9,13 +9,13 @@ import org.skyve.domain.messages.DomainException;
 import org.skyve.impl.domain.AbstractPersistentBean;
 
 /**
- * Staff List
+ * Contact Details
  * 
  * @stereotype "persistent"
  */
 @XmlType
 @XmlRootElement
-public class StaffList extends AbstractPersistentBean {
+public class ContactDetails extends AbstractPersistentBean {
 	/**
 	 * For Serialization
 	 * @hidden
@@ -23,41 +23,47 @@ public class StaffList extends AbstractPersistentBean {
 	private static final long serialVersionUID = 1L;
 
 	/** @hidden */
-	public static final String MODULE_NAME = "staff";
+	public static final String MODULE_NAME = "owner";
 	/** @hidden */
-	public static final String DOCUMENT_NAME = "StaffList";
+	public static final String DOCUMENT_NAME = "ContactDetails";
 
 	/** @hidden */
 	public static final String namePropertyName = "name";
 	/** @hidden */
-	public static final String staffIdPropertyName = "staffId";
+	public static final String emailPropertyName = "email";
+	/** @hidden */
+	public static final String bioPropertyName = "bio";
 
 	/**
 	 * Name
 	 * <br/>
-	 * Your name
+	 * The owners name
 	 **/
 	private String name;
 	/**
-	 * Staff Id
+	 * Email
 	 * <br/>
-	 * Staff id number
+	 * Owners email address
 	 **/
-	private String staffId;
+	private String email;
+	/**
+	 * Bio
+	 **/
+	private String bio;
 
 	@Override
 	@XmlTransient
 	public String getBizModule() {
-		return StaffList.MODULE_NAME;
+		return ContactDetails.MODULE_NAME;
 	}
 
 	@Override
 	@XmlTransient
 	public String getBizDocument() {
-		return StaffList.DOCUMENT_NAME;
+		return ContactDetails.DOCUMENT_NAME;
 	}
 
-	public static StaffList newInstance() {
+	public static ContactDetails newInstance() {
 		try {
 			return CORE.getUser().getCustomer().getModule(MODULE_NAME).getDocument(CORE.getUser().getCustomer(), DOCUMENT_NAME).newInstance(CORE.getUser());
 		}
@@ -74,7 +80,7 @@ public class StaffList extends AbstractPersistentBean {
 	public String getBizKey() {
 		try {
 			return org.skyve.util.Binder.formatMessage(org.skyve.CORE.getUser().getCustomer(),
-														"StaffList - {name}",
+														"Contact Details - {name}",
 														this);
 		}
 		catch (Exception e) {
@@ -84,8 +90,8 @@ public class StaffList extends AbstractPersistentBean {
 
 	@Override
 	public boolean equals(Object o) {
-		return ((o instanceof StaffList) && 
-					this.getBizId().equals(((StaffList) o).getBizId()));
+		return ((o instanceof ContactDetails) && 
+					this.getBizId().equals(((ContactDetails) o).getBizId()));
 	}
 
 	/**
@@ -107,20 +113,38 @@ public class StaffList extends AbstractPersistentBean {
 	}
 
 	/**
-	 * {@link #staffId} accessor.
+	 * {@link #email} accessor.
 	 * @return	The value.
 	 **/
-	public String getStaffId() {
-		return staffId;
+	public String getEmail() {
+		return email;
 	}
 
 	/**
-	 * {@link #staffId} mutator.
-	 * @param staffId	The new value.
+	 * {@link #email} mutator.
+	 * @param email	The new value.
 	 **/
 	@XmlElement
-	public void setStaffId(String staffId) {
-		preset(staffIdPropertyName, staffId);
-		this.staffId = staffId;
+	public void setEmail(String email) {
+		preset(emailPropertyName, email);
+		this.email = email;
+	}
+
+	/**
+	 * {@link #bio} accessor.
+	 * @return	The value.
+	 **/
+	public String getBio() {
+		return bio;
+	}
+
+	/**
+	 * {@link #bio} mutator.
+	 * @param bio	The new value.
+	 **/
+	@XmlElement
+	public void setBio(String bio) {
+		preset(bioPropertyName, bio);
+		this.bio = bio;
 	}
 }

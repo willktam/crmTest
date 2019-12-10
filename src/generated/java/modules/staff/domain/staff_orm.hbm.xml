@@ -11,7 +11,7 @@
 	<typedef name="TimeOnly" class="org.skyve.impl.domain.types.TimeOnlyUserType" />
 	<typedef name="Timestamp" class="org.skyve.impl.domain.types.TimestampUserType" />
 	<typedef name="Enum" class="org.skyve.impl.domain.types.EnumUserType" />
-	<class name="modules.staff.domain.Jobs" table="CRM_Jobs" entity-name="staffJobs">
+	<class name="modules.staff.domain.Jobs" table="STA_Jobs" entity-name="staffJobs">
 		<id name="bizId" length="36" />
 		<version name="bizVersion" unsaved-value="null" />
 		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />

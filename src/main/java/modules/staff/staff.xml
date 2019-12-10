@@ -30,10 +30,10 @@
         </role>
     </roles>
     <menu>
-        <edit document="StaffList" name="My Staff Information">
+        <edit document="StaffList" name="Staff List">
             <role name="Staff"/>
         </edit>
-        <list document="StaffList" name="Staff List">
+        <list document="StaffList" name="Staff Lists">
             <role name="Staff"/>
         </list>
         <list document="Jobs" name="Jobs">

@@ -8,8 +8,9 @@
     <modules homeModule="admin">
         <module name="admin"/>
         <module name="customers"/>
-        <module name="products" />
+        <module name="products"/>
         <module name="staff"/>
+        <module name="owner"/>
     </modules>
     <interceptors>
         <interceptor className="modules.admin.RDBMSAuditInterceptor"/>
