@@ -20,5 +20,10 @@
             <description><![CDATA[Your physical address]]></description>
             <length>200</length>
         </text>
+        <text required="true" name="email">
+            <displayName>Email</displayName>
+            <description><![CDATA[Your email address]]></description>
+            <length>300</length>
+        </text>
     </attributes>
 </document>

@@ -23,6 +23,7 @@
 		<property name="name" length="100" />
 		<property name="age" />
 		<property name="address" length="200" />
+		<property name="email" length="300" />
 		<filter name="crmTestCustomerNoneFilter" condition="1=0"/>
 		<filter name="crmTestCustomerCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="crmTestCustomerDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
