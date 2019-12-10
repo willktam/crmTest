@@ -23,11 +23,11 @@
         </role>
     </roles>
     <menu>
-        <list document="ProductInfo" name="Product Infoes">
+        <list document="ProductInfo" name="Product Info">
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>
-        <list document="ProductSales" name="Product Saleses">
+        <list document="ProductSales" name="Product Sales">
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>

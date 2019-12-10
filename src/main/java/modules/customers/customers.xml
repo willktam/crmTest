@@ -20,7 +20,7 @@
         </role>
     </roles>
     <menu>
-        <list document="ContactDetails" name="Contact Detailses">
+        <list document="ContactDetails" name="Contact Details">
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>
