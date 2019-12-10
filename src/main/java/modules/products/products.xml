@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://www.skyve.org/xml/module" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" title="Products" prototype="true" name="products" xsi:schemaLocation="http://www.skyve.org/xml/module ../../schemas/module.xsd">
+    <homeRef>list</homeRef>
+    <homeDocument>ProductInfo</homeDocument>
+    <documents>
+        <document ref="ProductInfo"/>
+        <document ref="ProductSales"/>
+    </documents>
+    <roles>
+        <role name="Viewer">
+            <description><![CDATA[Enough privileges to view Products documents.]]></description>
+            <privileges>
+                <document name="ProductInfo" permission="_R__C"/>
+                <document name="ProductSales" permission="_R__C"/>
+            </privileges>
+        </role>
+        <role name="Maintainer">
+            <description><![CDATA[Enough privileges to create and edit Products documents.]]></description>
+            <privileges>
+                <document name="ProductInfo" permission="CRUDC"/>
+                <document name="ProductSales" permission="CRUDC"/>
+            </privileges>
+        </role>
+    </roles>
+    <menu>
+        <list document="ProductInfo" name="Product Infoes">
+            <role name="Maintainer"/>
+            <role name="Viewer"/>
+        </list>
+        <list document="ProductSales" name="Product Saleses">
+            <role name="Maintainer"/>
+            <role name="Viewer"/>
+        </list>
+    </menu>
+</module>

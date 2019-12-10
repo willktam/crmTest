@@ -6,7 +6,7 @@
     <iconStyleClass>fa fa-tasks</iconStyleClass>
     <bizKey expression="Jobs - {name}"/>
     <attributes>
-    	<text required="true" name="name">
+        <text required="true" name="name">
             <displayName>Job Name</displayName>
             <description><![CDATA[Your job name]]></description>
             <length>100</length>

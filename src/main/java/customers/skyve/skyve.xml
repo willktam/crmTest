@@ -7,8 +7,8 @@
     <defaultTimestampConverter>DD_MMM_YYYY_HH24_MI_SS</defaultTimestampConverter>
     <modules homeModule="admin">
         <module name="admin"/>
-        <module name="crmTest"/>
         <module name="staff"/>
+        <module name="customers"/>
     </modules>
     <interceptors>
         <interceptor className="modules.admin.RDBMSAuditInterceptor"/>
