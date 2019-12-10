@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<module name="staff" title="Staff" xmlns="http://www.skyve.org/xml/module" xsi:schemaLocation="http://www.skyve.org/xml/module ../../schemas/module.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<homeRef>edit</homeRef>
+	<homeDocument>StaffList</homeDocument>
+	
+	<documents>
+		<document ref="StaffList"/>
+		<document ref="Jobs"/>
+	</documents>
+	
+	<roles>
+		<role name="Staff">
+			<description>Staff Member - A staff member who can work on jobs</description>
+			<privileges>
+				<document permission="_RU_C" name="StaffList" />
+				<document permission="_RU_C" name="Jobs" />
+			</privileges>
+		</role>
+		<role name="StaffManager">
+			<description>Staff Manager - Create and manage staff</description>
+			<privileges>
+				<document permission="CRUDC" name="StaffList" />
+				<document permission="_RU_C" name="Jobs" />
+			</privileges>
+		</role>
+		<role name="ProjectManager">
+			<description>Project Manager - Create and manage jobs</description>
+			<privileges>
+				<document permission="_RU_C" name="StaffList" />
+				<document permission="CRUDC" name="Jobs" />
+			</privileges>
+		</role>
+	</roles>
+	
+	<menu>
+		<edit document="StaffList" name="My Staff Information">
+			<role name="Staff"/>
+		</edit>
+		<list document="StaffList" name="Staff List">
+			<role name="Staff"/>
+		</list>
+		<list document="Jobs" name="Jobs">
+			<role name="Staff"/>
+		</list>
+	</menu>
+	
+	<queries>
+	
+	</queries>
+</module>
