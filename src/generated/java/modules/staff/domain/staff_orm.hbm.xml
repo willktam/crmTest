@@ -36,8 +36,22 @@
 		<property name="bizFlagComment" length="1024" />
 		<property name="bizDataGroupId" length="36" />
 		<property name="bizUserId" length="36" not-null="true" />
-		<property name="name" length="100" />
-		<property name="staffId" length="36" />
+		<many-to-one name="user" entity-name="adminUser" column="user_id" unique="true" cascade="persist,save-update,refresh,delete-orphan,merge" unique-key="UK_user" foreign-key="FK_STA_StaffList_user" />
+		<property name="socialTitle" length="3">
+			<type name="Enum">
+				<param name="enumClass">modules.staff.domain.StaffList$SocialTitle</param>
+			</type>
+		</property>
+		<property name="dateOfBirth" type="DateOnly" />
+		<property name="idCardNo" length="20" />
+		<property name="issuedDate" type="DateOnly" />
+		<property name="expiredDate" type="DateOnly" />
+		<property name="dept" length="50" />
+		<property name="bu" length="50" />
+		<property name="jobTitle" length="100" />
+		<property name="startDate" type="DateOnly" />
+		<property name="bio" type="text" />
+		<property name="staffLocation" />
 		<filter name="staffStaffListNoneFilter" condition="1=0"/>
 		<filter name="staffStaffListCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="staffStaffListDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>

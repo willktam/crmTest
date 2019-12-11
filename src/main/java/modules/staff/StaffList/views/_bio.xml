@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_bio" title="Staff Photo and Bio" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<form>
+        <column percentageWidth="70" responsiveWidth="10" />
+		
+		<row>
+			<item>
+				<spacer />
+			</item>
+			<item showLabel="false">
+				<contentImage binding="user.contact.image" pixelWidth="200" pixelHeight="200" />
+			</item>
+		</row>
+		
+		<row>
+			<item>
+				<spacer />
+			</item>
+            	<item showLabel="false">
+                	<textArea  binding="bio"></textArea>
+           	 </item>
+        </row>
+        
+        
+		<row>
+			<item>
+				<spacer />
+			</item>
+			<item showLabel="false">
+		    	<default binding="staffLocation"/>
+		    </item>
+		</row>
+	</form>
+</view>

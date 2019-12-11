@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_workInfo" title="Staff Work Info" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<form border="true" borderTitle="Work Info">
+        <column percentageWidth="30" responsiveWidth="4"/>
+        <column/>
+        <row>
+            <item>
+                <default binding="dept"/>
+            </item>
+        </row>
+        <row>
+            <item>
+                <default binding="bu"/>
+            </item>
+        </row>
+        <row>
+            <item>
+                <default binding="jobTitle"/>
+            </item>
+        </row>
+        <row>
+            <item>
+                <default binding="startDate"/>
+            </item>
+        </row>
+	</form>
+</view>

@@ -3,8 +3,11 @@
     <homeRef>list</homeRef>
     <homeDocument>StaffList</homeDocument>
     <documents>
-        <document ref="StaffList"/>
+        <document ref="StaffList" defaultQueryName="qStaff" />
         <document ref="Jobs"/>
+        
+        <document ref="User" moduleRef="admin" />
+		<document ref="Contact" moduleRef="admin" />
     </documents>
     <roles>
         <role name="Staff">
@@ -30,14 +33,31 @@
         </role>
     </roles>
     <menu>
-        <edit document="StaffList" name="Staff List">
+        <edit document="StaffList" name="My Staff Information">
             <role name="Staff"/>
         </edit>
-        <list document="StaffList" name="Staff Lists">
+        <list document="StaffList" name="Staff">
             <role name="Staff"/>
         </list>
         <list document="Jobs" name="Jobs">
             <role name="Staff"/>
         </list>
     </menu>
+    
+    <queries>
+    	<query documentName="StaffList" name="qStaff">
+			<description>All Staff</description>
+			<columns>
+				<content display="thumbnail" binding="user.contact.image" pixelHeight="45" pixelWidth="45" />
+				<column binding="user.contact.name" sortOrder="ascending" />
+				<column binding="user.contact.mobile" sortOrder="ascending" />
+				<column binding="dateOfBirth" sortOrder="ascending" />
+				<column binding="idCardNo" sortOrder="ascending" />
+				<column binding="dept" sortOrder="ascending" />
+				<column binding="bu" sortOrder="ascending" />
+				<column binding="jobTitle" sortOrder="ascending" />
+				<column binding="startDate" sortOrder="ascending" />
+			</columns>
+		</query>
+    </queries>
 </module>

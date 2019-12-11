@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="edit" title="Staff" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<hbox border="true">
+		<!-- Left Side -->
+		<vbox responsiveWidth="6" percentageWidth="50">
+			<component name="_contactInfo" />
+			<component name="_personalInfo" />
+			<component name="_workInfo" />
+		</vbox>
+		
+		<!-- Right Side -->
+		<vbox responsiveWidth="6" percentageWidth="50">
+			<component name="_bio" />
+			
+			<form>
+		        <column percentageWidth="20" responsiveWidth="1" />
+				<column />     
+		        
+		        <row>
+		            <item>
+		                <default binding="staffLocation"/>
+		            </item>
+		        </row>
+		    </form>
+			
+		</vbox>
+	</hbox>
+    
+    <actions>
+        <defaults/>
+    </actions>
+    <newParameters/>
+</view>
