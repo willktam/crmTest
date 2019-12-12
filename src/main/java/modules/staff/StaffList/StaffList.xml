@@ -67,7 +67,7 @@
         <!-- Other Attributes -->
         <memo name="bio">
 			<displayName>BIO</displayName>
-			<description>Brief bio</description>
+			<description>A brief bio</description>
 		</memo>
         <geometry name="staffLocation">
         	<displayName>Staff Location</displayName>

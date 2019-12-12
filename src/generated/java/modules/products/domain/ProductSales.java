@@ -46,7 +46,7 @@ public class ProductSales extends AbstractPersistentBean {
 	 **/
 	private Boolean active;
 	/**
-	 * Numer of Sales
+	 * Number of Sales
 	 * <br/>
 	 * Number of sales for the product
 	 **/

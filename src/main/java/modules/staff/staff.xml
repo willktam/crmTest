@@ -13,7 +13,7 @@
         <role name="Staff">
             <description><![CDATA[Staff Member - A staff member who can work on jobs]]></description>
             <privileges>
-                <document name="StaffList" permission="_RU_C"/>
+                <document name="StaffList" permission="CRU_C"/>
                 <document name="Jobs" permission="_RU_C"/>
             </privileges>
         </role>
@@ -37,7 +37,7 @@
             <role name="Staff"/>
         </edit>
         <list document="StaffList" name="Staff">
-            <role name="Staff"/>
+            <role name="StaffManager"/>
         </list>
         <list document="Jobs" name="Jobs">
             <role name="Staff"/>

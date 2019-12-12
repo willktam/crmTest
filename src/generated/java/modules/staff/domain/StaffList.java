@@ -188,7 +188,7 @@ public class StaffList extends AbstractPersistentBean {
 	/**
 	 * BIO
 	 * <br/>
-	 * Brief bio
+	 * A brief bio
 	 **/
 	private String bio;
 	/**

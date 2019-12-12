@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="edit" title="Account" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+    <hbox border="true">
+		<!-- Left Side -->
+		<vbox responsiveWidth="8" percentageWidth="60">
+			<component name="_generalDetails" />
+			<component name="_addressDetails" />
+		</vbox>
+		
+		<!-- Right Side -->
+		<vbox responsiveWidth="4" percentageWidth="40">
+			<component name="_accountContacts" />
+		</vbox>
+	</hbox>
+    <actions>
+        <defaults/>
+    </actions>
+    <newParameters/>
+</view>

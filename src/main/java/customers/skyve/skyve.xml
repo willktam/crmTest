@@ -9,6 +9,7 @@
         <module name="admin"/>
         <module name="customers"/>
         <module name="products"/>
+        <module name="sales"/>
         <module name="staff"/>
         <module name="owner"/>
     </modules>

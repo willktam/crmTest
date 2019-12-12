@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://www.skyve.org/xml/module" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" title="Sales" name="sales" xsi:schemaLocation="http://www.skyve.org/xml/module ../../schemas/module.xsd">
+    <homeRef>list</homeRef>
+    <homeDocument>Leads</homeDocument>
+    <documents>
+        <document ref="Leads" />
+        
+        <document ref="ContactDetails" moduleRef="customers"/>
+    </documents>
+    
+    <roles>
+        <role name="Staff">
+            <description><![CDATA[Staff Member - A staff member who can work on jobs]]></description>
+            <privileges>
+                <document name="Leads" permission="CRUDU"/>
+                
+            </privileges>
+        </role>    
+        <role name="leadManager">
+        	<description><![CDATA[Lead Manager - Who can manage all leads]]></description>
+        	<privileges>
+        		<document permission="CRUDC" name="Leads"></document>
+        	</privileges>
+        </role>
+    </roles>
+    
+    <menu>
+        <list document="Leads" name="Leads">
+            <role name="Staff"/>
+        </list>
+    </menu>
+    
+    <queries>
+
+    </queries>
+</module>

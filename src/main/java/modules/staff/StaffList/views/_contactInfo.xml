@@ -2,7 +2,7 @@
 <view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_contactInfo" title="Staff Contact Info" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
 	<form border="true" borderTitle="Contact Info">
         <column percentageWidth="30" responsiveWidth="4"/>
-        <column/>
+
         
         <row>
             <item>

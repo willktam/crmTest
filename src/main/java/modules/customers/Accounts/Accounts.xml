@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.skyve.org/xml/document" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Accounts" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd">
+    <persistent name="CUS_ContactDetails"/>
+    <singularAlias>Account</singularAlias>
+    <pluralAlias>Accounts</pluralAlias>
+    <iconStyleClass>fa fa-book</iconStyleClass>
+    <bizKey expression="Accounts - {accountName}"/>
+    <attributes>
+    	<!-- General Details -->
+        <text required="true" name="accountName">
+            <displayName>Account Name</displayName>
+            <description><![CDATA[The account name]]></description>
+            <length>200</length>
+        </text>
+        <text required="true" name="email">
+            <displayName>Email</displayName>
+            <description><![CDATA[The account email address]]></description>
+            <length>300</length>
+            <validator regularExpression="^[^@]+@[^@]+$" type="email"/>
+        </text>
+        <text name="website">
+        	<displayName>Website</displayName>
+        	<description><![CDATA[The account website]]></description>
+        	<length>300</length>
+        </text>
+        <text name="phone">
+            <displayName>Phone</displayName>
+            <description><![CDATA[The account phone number]]></description>
+            <length>20</length>
+        </text>
+        <text name="fax">
+        	<displayName>Fax</displayName>
+        	<description><![CDATA[The account fax number]]></description>
+        	<length>20</length>
+        </text>
+        <enum required="true" name="relationshipType">
+            <displayName>Relationship Type</displayName>
+            <description><![CDATA[The type of relationship for the account]]></description>
+            <values>
+                <value code="Customer"/>
+                <value code="Supplier"/>
+                <value code="Other"/>
+            </values>
+        </enum>
+        <date name="startDate">
+            <displayName>Start Date</displayName>
+            <description><![CDATA[The date the account began]]></description>
+        </date>
+        
+        
+        <!-- Address info -->
+        <text name="street">
+            <displayName>Street</displayName>
+            <description><![CDATA[The accounts street and number]]></description>
+            <length>200</length>
+        </text>
+        <text name="city">
+        	<displayName>City</displayName>
+        	<description><![CDATA[The accounts city]]></description>
+        	<length>100</length>
+        </text>
+        <text name="state">
+        	<displayName>State or Province</displayName>
+        	<description><![CDATA[The accounts state or province]]></description>
+        	<length>100</length>
+        </text>
+        <text name="postCode">
+        	<displayName>ZIP or Postal Code</displayName>
+        	<description><![CDATA[The accounts ZIP or postal code]]></description>
+        	<length>10</length>
+        </text>
+        <text name="country">
+        	<displayName>Country/Region</displayName>
+        	<description><![CDATA[The accounts country or region]]></description>
+        	<length>100</length>
+        </text>
+        
+        <!-- Account Contacts -->
+        <association type="aggregation" name="primaryContact">
+        	<displayName>Primary Contact</displayName>
+        	<description><![CDATA[The accounts primary contact]]></description>
+        	<documentName>ContactDetails</documentName>
+        </association>
+        
+        
+        
+        <!-- <association name="accountManager" type="aggregation" required="true">
+			<displayName>Account Manager</displayName>
+			<documentName>StaffList</documentName>
+		</association> -->
+		
+        <!-- Timeline/History/Notes -->
+        <!-- Time ordered collection of other document -->
+        
+    </attributes>
+    
+</document>

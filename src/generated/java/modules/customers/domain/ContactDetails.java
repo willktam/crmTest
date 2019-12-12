@@ -1,26 +1,16 @@
 package modules.customers.domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
-import org.skyve.domain.types.DateOnly;
-import org.skyve.domain.types.Enumeration;
 import org.skyve.impl.domain.AbstractPersistentBean;
-import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
-import org.skyve.metadata.model.document.Bizlet.DomainValue;
 
 /**
  * Contact Details
  * 
- * @depend - - - ContactType
  * @stereotype "persistent"
  */
 @XmlType
@@ -38,123 +28,48 @@ public class ContactDetails extends AbstractPersistentBean {
 	public static final String DOCUMENT_NAME = "ContactDetails";
 
 	/** @hidden */
-	public static final String namePropertyName = "name";
+	public static final String firstNamePropertyName = "firstName";
 	/** @hidden */
-	public static final String contactTypePropertyName = "contactType";
+	public static final String lastNamePropertyName = "lastName";
 	/** @hidden */
-	public static final String dateOfBirthPropertyName = "dateOfBirth";
-	/** @hidden */
-	public static final String addressPropertyName = "address";
+	public static final String jobTitlePropertyName = "jobTitle";
 	/** @hidden */
 	public static final String emailPropertyName = "email";
 	/** @hidden */
 	public static final String mobileNumberPropertyName = "mobileNumber";
 	/** @hidden */
-	public static final String workNumberPropertyName = "workNumber";
+	public static final String businessNumberPropertyName = "businessNumber";
+	/** @hidden */
+	public static final String faxPropertyName = "fax";
+	/** @hidden */
+	public static final String streetPropertyName = "street";
+	/** @hidden */
+	public static final String cityPropertyName = "city";
+	/** @hidden */
+	public static final String statePropertyName = "state";
+	/** @hidden */
+	public static final String postCodePropertyName = "postCode";
+	/** @hidden */
+	public static final String countryPropertyName = "country";
 
 	/**
-	 * Contact Type
+	 * First Name
 	 * <br/>
-	 * A customers contact type
+	 * A customers first name
 	 **/
-	@XmlEnum
-	public static enum ContactType implements Enumeration {
-		person("Person", "Person"),
-		organisation("Organisation", "Organisation");
-
-		private String code;
-		private String description;
-
-		/** @hidden */
-		private DomainValue domainValue;
-
-		/** @hidden */
-		private static List<DomainValue> domainValues;
-
-		private ContactType(String code, String description) {
-			this.code = code;
-			this.description = description;
-			this.domainValue = new DomainValue(code, description);
-		}
-
-		@Override
-		public String toCode() {
-			return code;
-		}
-
-		@Override
-		public String toDescription() {
-			return description;
-		}
-
-		@Override
-		public DomainValue toDomainValue() {
-			return domainValue;
-		}
-
-		public static ContactType fromCode(String code) {
-			ContactType result = null;
-
-			for (ContactType value : values()) {
-				if (value.code.equals(code)) {
-					result = value;
-					break;
-				}
-			}
-
-			return result;
-		}
-
-		public static ContactType fromDescription(String description) {
-			ContactType result = null;
-
-			for (ContactType value : values()) {
-				if (value.description.equals(description)) {
-					result = value;
-					break;
-				}
-			}
-
-			return result;
-		}
-
-		public static List<DomainValue> toDomainValues() {
-			if (domainValues == null) {
-				ContactType[] values = values();
-				domainValues = new ArrayList<>(values.length);
-				for (ContactType value : values) {
-					domainValues.add(value.domainValue);
-				}
-			}
-
-			return domainValues;
-		}
-	}
-
+	private String firstName;
 	/**
-	 * Name
+	 * Last Name
 	 * <br/>
-	 * A customers name
+	 * A customers last name
 	 **/
-	private String name;
+	private String lastName;
 	/**
-	 * Contact Type
+	 * Job Title
 	 * <br/>
-	 * A customers contact type
+	 * A customers job title
 	 **/
-	private ContactType contactType;
-	/**
-	 * Date of Birth
-	 * <br/>
-	 * A customers date of birth
-	 **/
-	private DateOnly dateOfBirth;
-	/**
-	 * Address
-	 * <br/>
-	 * A customers physical address
-	 **/
-	private String address;
+	private String jobTitle;
 	/**
 	 * Email
 	 * <br/>
@@ -168,11 +83,47 @@ public class ContactDetails extends AbstractPersistentBean {
 	 **/
 	private String mobileNumber;
 	/**
-	 * Work Number
+	 * Business Number
 	 * <br/>
-	 * A customers work number
+	 * A customers business number
 	 **/
-	private String workNumber;
+	private String businessNumber;
+	/**
+	 * Fax
+	 * <br/>
+	 * The account fax number
+	 **/
+	private String fax;
+	/**
+	 * Street
+	 * <br/>
+	 * The customers street and number
+	 **/
+	private String street;
+	/**
+	 * City
+	 * <br/>
+	 * The customers city
+	 **/
+	private String city;
+	/**
+	 * State or Province
+	 * <br/>
+	 * The customers state or province
+	 **/
+	private String state;
+	/**
+	 * ZIP or Postal Code
+	 * <br/>
+	 * The customers ZIP or postal code
+	 **/
+	private String postCode;
+	/**
+	 * Country/Region
+	 * <br/>
+	 * The customers country or region
+	 **/
+	private String country;
 
 	@Override
 	@XmlTransient
@@ -203,7 +154,7 @@ public class ContactDetails extends AbstractPersistentBean {
 	public String getBizKey() {
 		try {
 			return org.skyve.util.Binder.formatMessage(org.skyve.CORE.getUser().getCustomer(),
-														"Contact Details - {name}",
+														"Contact Details - {lastName}",
 														this);
 		}
 		catch (Exception e) {
@@ -218,77 +169,57 @@ public class ContactDetails extends AbstractPersistentBean {
 	}
 
 	/**
-	 * {@link #name} accessor.
+	 * {@link #firstName} accessor.
 	 * @return	The value.
 	 **/
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
 	/**
-	 * {@link #name} mutator.
-	 * @param name	The new value.
+	 * {@link #firstName} mutator.
+	 * @param firstName	The new value.
 	 **/
 	@XmlElement
-	public void setName(String name) {
-		preset(namePropertyName, name);
-		this.name = name;
+	public void setFirstName(String firstName) {
+		preset(firstNamePropertyName, firstName);
+		this.firstName = firstName;
 	}
 
 	/**
-	 * {@link #contactType} accessor.
+	 * {@link #lastName} accessor.
 	 * @return	The value.
 	 **/
-	public ContactType getContactType() {
-		return contactType;
+	public String getLastName() {
+		return lastName;
 	}
 
 	/**
-	 * {@link #contactType} mutator.
-	 * @param contactType	The new value.
+	 * {@link #lastName} mutator.
+	 * @param lastName	The new value.
 	 **/
 	@XmlElement
-	public void setContactType(ContactType contactType) {
-		preset(contactTypePropertyName, contactType);
-		this.contactType = contactType;
+	public void setLastName(String lastName) {
+		preset(lastNamePropertyName, lastName);
+		this.lastName = lastName;
 	}
 
 	/**
-	 * {@link #dateOfBirth} accessor.
+	 * {@link #jobTitle} accessor.
 	 * @return	The value.
 	 **/
-	public DateOnly getDateOfBirth() {
-		return dateOfBirth;
+	public String getJobTitle() {
+		return jobTitle;
 	}
 
 	/**
-	 * {@link #dateOfBirth} mutator.
-	 * @param dateOfBirth	The new value.
-	 **/
-	@XmlSchemaType(name = "date")
-	@XmlJavaTypeAdapter(DateOnlyMapper.class)
-	@XmlElement
-	public void setDateOfBirth(DateOnly dateOfBirth) {
-		preset(dateOfBirthPropertyName, dateOfBirth);
-		this.dateOfBirth = dateOfBirth;
-	}
-
-	/**
-	 * {@link #address} accessor.
-	 * @return	The value.
-	 **/
-	public String getAddress() {
-		return address;
-	}
-
-	/**
-	 * {@link #address} mutator.
-	 * @param address	The new value.
+	 * {@link #jobTitle} mutator.
+	 * @param jobTitle	The new value.
 	 **/
 	@XmlElement
-	public void setAddress(String address) {
-		preset(addressPropertyName, address);
-		this.address = address;
+	public void setJobTitle(String jobTitle) {
+		preset(jobTitlePropertyName, jobTitle);
+		this.jobTitle = jobTitle;
 	}
 
 	/**
@@ -328,20 +259,128 @@ public class ContactDetails extends AbstractPersistentBean {
 	}
 
 	/**
-	 * {@link #workNumber} accessor.
+	 * {@link #businessNumber} accessor.
 	 * @return	The value.
 	 **/
-	public String getWorkNumber() {
-		return workNumber;
+	public String getBusinessNumber() {
+		return businessNumber;
 	}
 
 	/**
-	 * {@link #workNumber} mutator.
-	 * @param workNumber	The new value.
+	 * {@link #businessNumber} mutator.
+	 * @param businessNumber	The new value.
 	 **/
 	@XmlElement
-	public void setWorkNumber(String workNumber) {
-		preset(workNumberPropertyName, workNumber);
-		this.workNumber = workNumber;
+	public void setBusinessNumber(String businessNumber) {
+		preset(businessNumberPropertyName, businessNumber);
+		this.businessNumber = businessNumber;
+	}
+
+	/**
+	 * {@link #fax} accessor.
+	 * @return	The value.
+	 **/
+	public String getFax() {
+		return fax;
+	}
+
+	/**
+	 * {@link #fax} mutator.
+	 * @param fax	The new value.
+	 **/
+	@XmlElement
+	public void setFax(String fax) {
+		preset(faxPropertyName, fax);
+		this.fax = fax;
+	}
+
+	/**
+	 * {@link #street} accessor.
+	 * @return	The value.
+	 **/
+	public String getStreet() {
+		return street;
+	}
+
+	/**
+	 * {@link #street} mutator.
+	 * @param street	The new value.
+	 **/
+	@XmlElement
+	public void setStreet(String street) {
+		preset(streetPropertyName, street);
+		this.street = street;
+	}
+
+	/**
+	 * {@link #city} accessor.
+	 * @return	The value.
+	 **/
+	public String getCity() {
+		return city;
+	}
+
+	/**
+	 * {@link #city} mutator.
+	 * @param city	The new value.
+	 **/
+	@XmlElement
+	public void setCity(String city) {
+		preset(cityPropertyName, city);
+		this.city = city;
+	}
+
+	/**
+	 * {@link #state} accessor.
+	 * @return	The value.
+	 **/
+	public String getState() {
+		return state;
+	}
+
+	/**
+	 * {@link #state} mutator.
+	 * @param state	The new value.
+	 **/
+	@XmlElement
+	public void setState(String state) {
+		preset(statePropertyName, state);
+		this.state = state;
+	}
+
+	/**
+	 * {@link #postCode} accessor.
+	 * @return	The value.
+	 **/
+	public String getPostCode() {
+		return postCode;
+	}
+
+	/**
+	 * {@link #postCode} mutator.
+	 * @param postCode	The new value.
+	 **/
+	@XmlElement
+	public void setPostCode(String postCode) {
+		preset(postCodePropertyName, postCode);
+		this.postCode = postCode;
+	}
+
+	/**
+	 * {@link #country} accessor.
+	 * @return	The value.
+	 **/
+	public String getCountry() {
+		return country;
+	}
+
+	/**
+	 * {@link #country} mutator.
+	 * @param country	The new value.
+	 **/
+	@XmlElement
+	public void setCountry(String country) {
+		preset(countryPropertyName, country);
+		this.country = country;
 	}
 }
