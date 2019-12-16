@@ -5,7 +5,8 @@
     <documents>
     	<document ref="Accounts" defaultQueryName="qAccounts"/>
         <document ref="ContactDetails" defaultQueryName="qContactDetails"/>
-           
+        
+        <document ref="StaffList" moduleRef="staff"/>
     </documents>
     
     <roles>

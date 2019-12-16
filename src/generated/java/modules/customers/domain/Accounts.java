@@ -502,4 +502,23 @@ public class Accounts extends AbstractPersistentBean {
 		preset(primaryContactPropertyName, primaryContact);
 		this.primaryContact = primaryContact;
 	}
+
+	/**
+	 * hasCurrent
+	 *
+	 * @return The condition
+	 */
+	@XmlTransient
+	public boolean isHasCurrent() {
+		return (primaryContact != null);
+	}
+
+	/**
+	 * {@link #isHasCurrent} negation.
+	 *
+	 * @return The negated condition
+	 */
+	public boolean isNotHasCurrent() {
+		return (! isHasCurrent());
+	}
 }

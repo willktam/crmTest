@@ -84,14 +84,20 @@
         
         
         
-        <!-- <association name="accountManager" type="aggregation" required="true">
+        <!-- <association name="accountManager" type="aggregation">
 			<displayName>Account Manager</displayName>
+			<description><![CDATA[The manager of this account]]></description>
 			<documentName>StaffList</documentName>
-		</association> -->
+		</association>-->
 		
         <!-- Timeline/History/Notes -->
         <!-- Time ordered collection of other document -->
         
     </attributes>
+    <conditions>
+		<condition name="hasCurrent">
+			<expression>primaryContact != null</expression>
+		</condition>
+	</conditions>
     
 </document>

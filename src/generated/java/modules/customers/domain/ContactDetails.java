@@ -154,7 +154,7 @@ public class ContactDetails extends AbstractPersistentBean {
 	public String getBizKey() {
 		try {
 			return org.skyve.util.Binder.formatMessage(org.skyve.CORE.getUser().getCustomer(),
-														"Contact Details - {lastName}",
+														"{firstName} {lastName}",
 														this);
 		}
 		catch (Exception e) {

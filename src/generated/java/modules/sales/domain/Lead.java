@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import modules.customers.domain.ContactDetails;
+import modules.sales.Lead.LeadExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.impl.domain.AbstractPersistentBean;
@@ -17,7 +18,7 @@ import org.skyve.impl.domain.AbstractPersistentBean;
  */
 @XmlType
 @XmlRootElement
-public class Leads extends AbstractPersistentBean {
+public class Lead extends AbstractPersistentBean {
 	/**
 	 * For Serialization
 	 * @hidden
@@ -27,10 +28,12 @@ public class Leads extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String MODULE_NAME = "sales";
 	/** @hidden */
-	public static final String DOCUMENT_NAME = "Leads";
+	public static final String DOCUMENT_NAME = "Lead";
 
 	/** @hidden */
 	public static final String contactDetailsPropertyName = "contactDetails";
+	/** @hidden */
+	public static final String progressPropertyName = "progress";
 
 	/**
 	 * Contact Details
@@ -38,20 +41,24 @@ public class Leads extends AbstractPersistentBean {
 	 * The contact details of the lead
 	 **/
 	private ContactDetails contactDetails = null;
+	/**
+	 * Progress
+	 **/
+	private String progress;
 
 	@Override
 	@XmlTransient
 	public String getBizModule() {
-		return Leads.MODULE_NAME;
+		return Lead.MODULE_NAME;
 	}
 
 	@Override
 	@XmlTransient
 	public String getBizDocument() {
-		return Leads.DOCUMENT_NAME;
+		return Lead.DOCUMENT_NAME;
 	}
 
-	public static Leads newInstance() {
+	public static LeadExtension newInstance() {
 		try {
 			return CORE.getUser().getCustomer().getModule(MODULE_NAME).getDocument(CORE.getUser().getCustomer(), DOCUMENT_NAME).newInstance(CORE.getUser());
 		}
@@ -78,8 +85,8 @@ public class Leads extends AbstractPersistentBean {
 
 	@Override
 	public boolean equals(Object o) {
-		return ((o instanceof Leads) && 
-					this.getBizId().equals(((Leads) o).getBizId()));
+		return ((o instanceof Lead) && 
+					this.getBizId().equals(((Lead) o).getBizId()));
 	}
 
 	/**
@@ -101,6 +108,23 @@ public class Leads extends AbstractPersistentBean {
 	}
 
 	/**
+	 * {@link #progress} accessor.
+	 * @return	The value.
+	 **/
+	public String getProgress() {
+		return progress;
+	}
+
+	/**
+	 * {@link #progress} mutator.
+	 * @param progress	The new value.
+	 **/
+	@XmlElement
+	public void setProgress(String progress) {
+		this.progress = progress;
+	}
+
+	/**
 	 * Staff
 	 *
 	 * @return The condition
@@ -117,5 +141,24 @@ public class Leads extends AbstractPersistentBean {
 	 */
 	public boolean isNotStaff() {
 		return (! isStaff());
+	}
+
+	/**
+	 * True when the progress markup is not blank
+	 *
+	 * @return The condition
+	 */
+	@XmlTransient
+	public boolean isHasProgress() {
+		return (getProgress() != null);
+	}
+
+	/**
+	 * {@link #isHasProgress} negation.
+	 *
+	 * @return The negated condition
+	 */
+	public boolean isNotHasProgress() {
+		return (! isHasProgress());
 	}
 }

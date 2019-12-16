@@ -4,7 +4,7 @@
     <singularAlias>Contact Details</singularAlias>
     <pluralAlias>Contact Details</pluralAlias>
     <iconStyleClass>fa fa-users</iconStyleClass>
-    <bizKey expression="Contact Details - {lastName}"/>
+    <bizKey expression="{firstName} {lastName}"/>
     <attributes>
     	<!-- Contact Attributes -->
         <text required="true" name="firstName">

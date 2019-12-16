@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="edit" title="Lead - {bizKey}" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+    <form responsiveWidth="12" percentageWidth="60" border="true">
+        <column percentageWidth="30" responsiveWidth="4"/>
+        <column/>
+        <row>
+    	    <item colspan="2">
+	        	<blurb visible="hasProgress">
+	        		<![CDATA[
+	        			<div>{progress}</div>
+	        		]]>
+	        	</blurb>
+	        </item>
+        </row>
+        <row>
+            <item>
+                <default binding="contactDetails"/>
+            </item>
+        </row>
+    </form>
+    
+    <!-- <dataRepeater binding="contactDetails.history">
+    	<boundColumn binding="date" />
+    	<boundColumn binding="title" />
+    	<boundColumn binding="description" />
+    </dataRepeater> -->
+    
+    <actions>
+        <defaults/>
+    </actions>
+    <newParameters/>
+</view>

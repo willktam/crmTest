@@ -6,27 +6,31 @@
         
         <row>
             <item>
-                <default binding="primaryContact"/>
+                <lookupDescription binding="primaryContact" descriptionBinding="bizKey">
+                	<onPickedHandlers>
+                		<rerender clientValidation="false" />
+                	</onPickedHandlers>
+                </lookupDescription>
             </item>
         </row>
         <row>
         	<item>
-        		<default binding="primaryContact.firstName" />
+        		<textField binding="primaryContact.firstName" visible="hasCurrent" editable="false"/>
         	</item>
         </row>
         <row>
         	<item>
-        		<default binding="primaryContact.lastName" />
+        		<textField binding="primaryContact.lastName" visible="hasCurrent" editable="false"/>
         	</item>
         </row>
         <row>
         	<item>
-        		<default binding="primaryContact.email" />
+        		<textField binding="primaryContact.email" visible="hasCurrent" editable="false"/>
         	</item>
         </row>
         <row>
         	<item>
-        		<default binding="primaryContact.businessNumber" />
+        		<textField binding="primaryContact.businessNumber" visible="hasCurrent" editable="false"/>
         	</item>
         </row>
     </form>

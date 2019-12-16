@@ -42,5 +42,6 @@
                 <default binding="startDate"/>
             </item>
         </row>
+
     </form>
 </view>
