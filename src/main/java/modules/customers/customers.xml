@@ -73,6 +73,7 @@
 	    		<column binding="mobileNumber" />
 	    		<column binding="businessNumber" />
 	    		<column binding="fax" />
+	    		<column binding="method" />
 	    		<column binding="street" />
 	    		<column binding="city" />
     		</columns>

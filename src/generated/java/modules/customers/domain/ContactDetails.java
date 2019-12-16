@@ -1,16 +1,22 @@
 package modules.customers.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
+import org.skyve.domain.types.Enumeration;
 import org.skyve.impl.domain.AbstractPersistentBean;
+import org.skyve.metadata.model.document.Bizlet.DomainValue;
 
 /**
  * Contact Details
  * 
+ * @depend - - - Method
  * @stereotype "persistent"
  */
 @XmlType
@@ -42,6 +48,8 @@ public class ContactDetails extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String faxPropertyName = "fax";
 	/** @hidden */
+	public static final String methodPropertyName = "method";
+	/** @hidden */
 	public static final String streetPropertyName = "street";
 	/** @hidden */
 	public static final String cityPropertyName = "city";
@@ -53,47 +61,135 @@ public class ContactDetails extends AbstractPersistentBean {
 	public static final String countryPropertyName = "country";
 
 	/**
+	 * Preferred Method of Contact
+	 * <br/>
+	 * The customer's preferred method of contact
+	 **/
+	@XmlEnum
+	public static enum Method implements Enumeration {
+		email("Email", "Email"),
+		mobileNumber("Mobile Number", "Mobile Number"),
+		businessNumber("Business Number", "Business Number"),
+		fax("Fax", "Fax"),
+		any("Any", "Any");
+
+		private String code;
+		private String description;
+
+		/** @hidden */
+		private DomainValue domainValue;
+
+		/** @hidden */
+		private static List<DomainValue> domainValues;
+
+		private Method(String code, String description) {
+			this.code = code;
+			this.description = description;
+			this.domainValue = new DomainValue(code, description);
+		}
+
+		@Override
+		public String toCode() {
+			return code;
+		}
+
+		@Override
+		public String toDescription() {
+			return description;
+		}
+
+		@Override
+		public DomainValue toDomainValue() {
+			return domainValue;
+		}
+
+		public static Method fromCode(String code) {
+			Method result = null;
+
+			for (Method value : values()) {
+				if (value.code.equals(code)) {
+					result = value;
+					break;
+				}
+			}
+
+			return result;
+		}
+
+		public static Method fromDescription(String description) {
+			Method result = null;
+
+			for (Method value : values()) {
+				if (value.description.equals(description)) {
+					result = value;
+					break;
+				}
+			}
+
+			return result;
+		}
+
+		public static List<DomainValue> toDomainValues() {
+			if (domainValues == null) {
+				Method[] values = values();
+				domainValues = new ArrayList<>(values.length);
+				for (Method value : values) {
+					domainValues.add(value.domainValue);
+				}
+			}
+
+			return domainValues;
+		}
+	}
+
+	/**
 	 * First Name
 	 * <br/>
-	 * A customers first name
+	 * The customer's first name
 	 **/
 	private String firstName;
 	/**
 	 * Last Name
 	 * <br/>
-	 * A customers last name
+	 * The customer's last name
 	 **/
 	private String lastName;
 	/**
 	 * Job Title
 	 * <br/>
-	 * A customers job title
+	 * The customer's job title
 	 **/
 	private String jobTitle;
 	/**
 	 * Email
 	 * <br/>
-	 * A customers email address
+	 * The customer's email address
 	 **/
 	private String email;
 	/**
 	 * Mobile Number
 	 * <br/>
-	 * A customers mobile number
+	 * The customer's mobile number
 	 **/
 	private String mobileNumber;
 	/**
 	 * Business Number
 	 * <br/>
-	 * A customers business number
+	 * The customer's business number
 	 **/
 	private String businessNumber;
 	/**
 	 * Fax
 	 * <br/>
-	 * The account fax number
+	 * The customer's fax number
 	 **/
 	private String fax;
+	/**
+	 * Preferred Method of Contact
+	 * <br/>
+	 * The customer's preferred method of contact
+	 **/
+	private Method method;
 	/**
 	 * Street
 	 * <br/>
@@ -292,6 +388,24 @@ public class ContactDetails extends AbstractPersistentBean {
 	public void setFax(String fax) {
 		preset(faxPropertyName, fax);
 		this.fax = fax;
+	}
+
+	/**
+	 * {@link #method} accessor.
+	 * @return	The value.
+	 **/
+	public Method getMethod() {
+		return method;
+	}
+
+	/**
+	 * {@link #method} mutator.
+	 * @param method	The new value.
+	 **/
+	@XmlElement
+	public void setMethod(Method method) {
+		preset(methodPropertyName, method);
+		this.method = method;
 	}
 
 	/**

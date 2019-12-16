@@ -59,6 +59,11 @@
 		<property name="mobileNumber" length="20" />
 		<property name="businessNumber" length="20" />
 		<property name="fax" length="20" />
+		<property name="method" length="15">
+			<type name="Enum">
+				<param name="enumClass">modules.customers.domain.ContactDetails$Method</param>
+			</type>
+		</property>
 		<property name="street" length="200" />
 		<property name="city" length="100" />
 		<property name="state" length="100" />

@@ -38,5 +38,10 @@
                 <default binding="fax"/>
             </item>
         </row>
+        <row>
+            <item>
+                <default binding="method"/>
+            </item>
+        </row>
 	</form>
 </view>

@@ -9,42 +9,53 @@
     	<!-- Contact Attributes -->
         <text required="true" name="firstName">
             <displayName>First Name</displayName>
-            <description><![CDATA[A customers first name]]></description>
+            <description><![CDATA[The customer's first name]]></description>
             <length>200</length>
         </text>
         <text required="true" name="lastName">
         	<displayName>Last Name</displayName>
-        	<description><![CDATA[A customers last name]]></description>
+        	<description><![CDATA[The customer's last name]]></description>
         	<length>200</length>
         </text>
         <text name="jobTitle">
 			<displayName>Job Title</displayName>
-			<description><![CDATA[A customers job title]]></description>
+			<description><![CDATA[The customer's job title]]></description>
 			<length>100</length>
 		</text>
         
        
         <text name="email">
             <displayName>Email</displayName>
-            <description><![CDATA[A customers email address]]></description>
+            <description><![CDATA[The customer's email address]]></description>
             <length>300</length>
             <validator regularExpression="^[^@]+@[^@]+$" type="email"/>
         </text>
         <text name="mobileNumber">
             <displayName>Mobile Number</displayName>
-            <description><![CDATA[A customers mobile number]]></description>
+            <description><![CDATA[The customer's mobile number]]></description>
             <length>20</length>
         </text>
         <text name="businessNumber">
             <displayName>Business Number</displayName>
-            <description><![CDATA[A customers business number]]></description>
+            <description><![CDATA[The customer's business number]]></description>
             <length>20</length>
         </text>
         <text name="fax">
         	<displayName>Fax</displayName>
-        	<description><![CDATA[The account fax number]]></description>
+        	<description><![CDATA[The customer's fax number]]></description>
         	<length>20</length>
         </text>
+        <enum name="method" required="true">
+        	<displayName>Preferred Method of Contact</displayName>
+        	<description><![CDATA[The customer's preferred method of contact]]></description>
+        	<values>
+                <value code="Email"/>
+                <value code="Mobile Number"/>
+                <value code="Business Number"/>
+                <value code="Fax"/>
+                <value code="Any"/>
+            </values>
+        </enum>
         
         <!-- Address info -->
         <text name="street">

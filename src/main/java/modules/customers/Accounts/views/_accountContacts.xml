@@ -33,5 +33,10 @@
         		<textField binding="primaryContact.businessNumber" visible="hasCurrent" editable="false"/>
         	</item>
         </row>
+        <row>
+        	<item>
+        		<textField binding="primaryContact.method" visible="hasCurrent" editable="false"/>
+        	</item>
+        </row>
     </form>
 </view>
