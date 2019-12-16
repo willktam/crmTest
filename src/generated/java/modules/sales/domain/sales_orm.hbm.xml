@@ -20,7 +20,7 @@
 		<property name="bizFlagComment" length="1024" />
 		<property name="bizDataGroupId" length="36" />
 		<property name="bizUserId" length="36" not-null="true" />
-		<many-to-one name="contactDetails" entity-name="customersContactDetails" column="contactDetails_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_STA_StaffList_contactDetails" />
+		<many-to-one name="contactDetails" entity-name="customersContactDetail" column="contactDetails_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_STA_StaffList_contactDetails" />
 		<filter name="salesLeadNoneFilter" condition="1=0"/>
 		<filter name="salesLeadCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="salesLeadDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>

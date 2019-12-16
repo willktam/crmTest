@@ -1,4 +1,4 @@
-package modules.staff.domain;
+package modules.customers.domain;
 
 import org.skyve.util.DataBuilder;
 import org.skyve.util.test.SkyveFixture.FixtureType;
@@ -8,12 +8,12 @@ import util.AbstractDomainTest;
  * Generated - local changes will be overwritten.
  * Extend {@link AbstractDomainTest} to create your own tests for this document.
  */
-public class JobsTest extends AbstractDomainTest<Jobs> {
+public class ContactDetailTest extends AbstractDomainTest<ContactDetail> {
 
 	@Override
-	protected Jobs getBean() throws Exception {
+	protected ContactDetail getBean() throws Exception {
 		return new DataBuilder()
 			.fixture(FixtureType.crud)
-			.build(Jobs.MODULE_NAME, Jobs.DOCUMENT_NAME);
+			.build(ContactDetail.MODULE_NAME, ContactDetail.DOCUMENT_NAME);
 	}
 }

@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import modules.customers.domain.ContactDetails;
+import modules.customers.domain.ContactDetail;
 import modules.sales.Lead.LeadExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
@@ -13,7 +13,7 @@ import org.skyve.impl.domain.AbstractPersistentBean;
 /**
  * Lead
  * 
- * @navhas n contactDetails 1 ContactDetails
+ * @navhas n contactDetails 1 ContactDetail
  * @stereotype "persistent"
  */
 @XmlType
@@ -40,7 +40,7 @@ public class Lead extends AbstractPersistentBean {
 	 * <br/>
 	 * The contact details of the lead
 	 **/
-	private ContactDetails contactDetails = null;
+	private ContactDetail contactDetails = null;
 	/**
 	 * Progress
 	 **/
@@ -93,7 +93,7 @@ public class Lead extends AbstractPersistentBean {
 	 * {@link #contactDetails} accessor.
 	 * @return	The value.
 	 **/
-	public ContactDetails getContactDetails() {
+	public ContactDetail getContactDetails() {
 		return contactDetails;
 	}
 
@@ -102,7 +102,7 @@ public class Lead extends AbstractPersistentBean {
 	 * @param contactDetails	The new value.
 	 **/
 	@XmlElement
-	public void setContactDetails(ContactDetails contactDetails) {
+	public void setContactDetails(ContactDetail contactDetails) {
 		preset(contactDetailsPropertyName, contactDetails);
 		this.contactDetails = contactDetails;
 	}

@@ -4,7 +4,7 @@
     <homeDocument>Lead</homeDocument>
     <documents>
         <document ref="Lead"/>
-        <document ref="ContactDetails" moduleRef="customers"/>
+        <document ref="ContactDetail" moduleRef="customers"/>
     </documents>
     <roles>
         <role name="Staff">

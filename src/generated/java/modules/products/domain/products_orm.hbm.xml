@@ -29,7 +29,7 @@
 		<filter name="productsProductInfoUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
-	<class name="modules.products.domain.ProductSales" table="PRO_ProductSales" entity-name="productsProductSales">
+	<class name="modules.products.domain.ProductSale" table="PRO_ProductSale" entity-name="productsProductSale">
 		<id name="bizId" length="36" />
 		<version name="bizVersion" unsaved-value="null" />
 		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
@@ -38,13 +38,13 @@
 		<property name="bizFlagComment" length="1024" />
 		<property name="bizDataGroupId" length="36" />
 		<property name="bizUserId" length="36" not-null="true" />
-		<many-to-one name="product" entity-name="productsProductInfo" column="product_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_PRO_ProductSales_product" />
+		<many-to-one name="product" entity-name="productsProductInfo" column="product_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_PRO_ProductSale_product" />
 		<property name="active" />
 		<property name="numerOfSales" />
-		<filter name="productsProductSalesNoneFilter" condition="1=0"/>
-		<filter name="productsProductSalesCustomerFilter" condition="bizCustomer=:customerParam"/>
-		<filter name="productsProductSalesDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
-		<filter name="productsProductSalesUserIdFilter" condition="bizUserId=:userIdParam"/>
+		<filter name="productsProductSaleNoneFilter" condition="1=0"/>
+		<filter name="productsProductSaleCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="productsProductSaleDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="productsProductSaleUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
 	<filter-def name="productsProductInfoNoneFilter" />
@@ -57,14 +57,14 @@
 	<filter-def name="productsProductInfoUserIdFilter">
 		<filter-param name="userIdParam" type="string"/>
 	</filter-def>
-	<filter-def name="productsProductSalesNoneFilter" />
-	<filter-def name="productsProductSalesCustomerFilter">
+	<filter-def name="productsProductSaleNoneFilter" />
+	<filter-def name="productsProductSaleCustomerFilter">
 		<filter-param name="customerParam" type="string"/>
 	</filter-def>
-	<filter-def name="productsProductSalesDataGroupIdFilter">
+	<filter-def name="productsProductSaleDataGroupIdFilter">
 		<filter-param name="dataGroupIdParam" type="string"/>
 	</filter-def>
-	<filter-def name="productsProductSalesUserIdFilter">
+	<filter-def name="productsProductSaleUserIdFilter">
 		<filter-param name="userIdParam" type="string"/>
 	</filter-def>
 </hibernate-mapping>

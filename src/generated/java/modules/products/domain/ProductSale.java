@@ -9,14 +9,14 @@ import org.skyve.domain.messages.DomainException;
 import org.skyve.impl.domain.AbstractPersistentBean;
 
 /**
- * Product Sales
+ * Product Sale
  * 
  * @navhas n product 1 ProductInfo
  * @stereotype "persistent"
  */
 @XmlType
 @XmlRootElement
-public class ProductSales extends AbstractPersistentBean {
+public class ProductSale extends AbstractPersistentBean {
 	/**
 	 * For Serialization
 	 * @hidden
@@ -26,7 +26,7 @@ public class ProductSales extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String MODULE_NAME = "products";
 	/** @hidden */
-	public static final String DOCUMENT_NAME = "ProductSales";
+	public static final String DOCUMENT_NAME = "ProductSale";
 
 	/** @hidden */
 	public static final String productPropertyName = "product";
@@ -55,16 +55,16 @@ public class ProductSales extends AbstractPersistentBean {
 	@Override
 	@XmlTransient
 	public String getBizModule() {
-		return ProductSales.MODULE_NAME;
+		return ProductSale.MODULE_NAME;
 	}
 
 	@Override
 	@XmlTransient
 	public String getBizDocument() {
-		return ProductSales.DOCUMENT_NAME;
+		return ProductSale.DOCUMENT_NAME;
 	}
 
-	public static ProductSales newInstance() {
+	public static ProductSale newInstance() {
 		try {
 			return CORE.getUser().getCustomer().getModule(MODULE_NAME).getDocument(CORE.getUser().getCustomer(), DOCUMENT_NAME).newInstance(CORE.getUser());
 		}
@@ -91,8 +91,8 @@ public class ProductSales extends AbstractPersistentBean {
 
 	@Override
 	public boolean equals(Object o) {
-		return ((o instanceof ProductSales) && 
-					this.getBizId().equals(((ProductSales) o).getBizId()));
+		return ((o instanceof ProductSale) && 
+					this.getBizId().equals(((ProductSale) o).getBizId()));
 	}
 
 	/**

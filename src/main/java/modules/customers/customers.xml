@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="http://www.skyve.org/xml/module" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" title="Customers" prototype="true" name="customers" xsi:schemaLocation="http://www.skyve.org/xml/module ../../schemas/module.xsd">
     <homeRef>list</homeRef>
-    <homeDocument>ContactDetails</homeDocument>
+    <homeDocument>ContactDetail</homeDocument>
     <documents>
-        <document ref="Accounts" defaultQueryName="qAccounts"/>
-        <document ref="ContactDetails" defaultQueryName="qContactDetails"/>
+        <document ref="Account" defaultQueryName="qAccounts"/>
+        <document ref="ContactDetail" defaultQueryName="qContactDetails"/>
         <document ref="StaffList" moduleRef="staff"/>
     </documents>
     <roles>
         <role name="Viewer">
             <description><![CDATA[Enough privileges to view Customers documents.]]></description>
             <privileges>
-                <document name="ContactDetails" permission="_R__C"/>
+                <document name="ContactDetail" permission="_R__C"/>
             </privileges>
         </role>
         <role name="Maintainer">
             <description><![CDATA[Enough privileges to create and edit Customers documents.]]></description>
             <privileges>
-                <document name="ContactDetails" permission="CRUDC"/>
+                <document name="ContactDetail" permission="CRUDC"/>
             </privileges>
         </role>
         <role name="AccountManager">
             <description><![CDATA[Account Manager - who can manage all accounts]]></description>
             <privileges>
-                <document name="Accounts" permission="CRUDC"/>
+                <document name="Account" permission="CRUDC"/>
             </privileges>
         </role>
         <role name="AccountWorker">
             <description><![CDATA[Account Worker - who can work on their own accounts]]></description>
             <privileges>
-                <document name="Accounts" permission="CRUDU"/>
+                <document name="Account" permission="CRUDU"/>
             </privileges>
         </role>
     </roles>
     <menu>
-        <list document="Accounts" name="Accounts">
+        <list document="Account" name="Accounts">
             <role name="AccountManager"/>
             <role name="AccountWorker"/>
         </list>
-        <list document="ContactDetails" name="Contact Details">
+        <list document="ContactDetail" name="Contact Details">
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>
     </menu>
     <queries>
-        <query documentName="Accounts" name="qAccounts">
+        <query documentName="Account" name="qAccounts">
             <description><![CDATA[All Accounts]]></description>
             <columns>
                 <column binding="accountName"/>
@@ -58,7 +58,7 @@
                 <column binding="primaryContact"/>
             </columns>
         </query>
-        <query documentName="ContactDetails" name="qContactDetails">
+        <query documentName="ContactDetail" name="qContactDetails">
             <description><![CDATA[All Contact Details]]></description>
             <columns>
                 <column binding="firstName"/>

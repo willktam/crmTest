@@ -11,7 +11,7 @@
 	<typedef name="TimeOnly" class="org.skyve.impl.domain.types.TimeOnlyUserType" />
 	<typedef name="Timestamp" class="org.skyve.impl.domain.types.TimestampUserType" />
 	<typedef name="Enum" class="org.skyve.impl.domain.types.EnumUserType" />
-	<class name="modules.customers.domain.Accounts" table="CUS_ContactDetails" entity-name="customersAccounts">
+	<class name="modules.customers.domain.Account" table="CUS_Account" entity-name="customersAccount">
 		<id name="bizId" length="36" />
 		<version name="bizVersion" unsaved-value="null" />
 		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
@@ -27,7 +27,7 @@
 		<property name="fax" length="20" />
 		<property name="relationshipType" length="8">
 			<type name="Enum">
-				<param name="enumClass">modules.customers.domain.Accounts$RelationshipType</param>
+				<param name="enumClass">modules.customers.domain.Account$RelationshipType</param>
 			</type>
 		</property>
 		<property name="startDate" type="DateOnly" />
@@ -36,14 +36,14 @@
 		<property name="state" length="100" />
 		<property name="postCode" length="10" />
 		<property name="country" length="100" />
-		<many-to-one name="primaryContact" entity-name="customersContactDetails" column="primaryContact_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_CUS_ContactDetails_primaryContact" />
-		<filter name="customersAccountsNoneFilter" condition="1=0"/>
-		<filter name="customersAccountsCustomerFilter" condition="bizCustomer=:customerParam"/>
-		<filter name="customersAccountsDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
-		<filter name="customersAccountsUserIdFilter" condition="bizUserId=:userIdParam"/>
+		<many-to-one name="primaryContact" entity-name="customersContactDetail" column="primaryContact_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_CUS_Account_primaryContact" />
+		<filter name="customersAccountNoneFilter" condition="1=0"/>
+		<filter name="customersAccountCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="customersAccountDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="customersAccountUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
-	<class name="modules.customers.domain.ContactDetails" table="CUS_ContactDetails" entity-name="customersContactDetails">
+	<class name="modules.customers.domain.ContactDetail" table="CUS_ContactDetail" entity-name="customersContactDetail">
 		<id name="bizId" length="36" />
 		<version name="bizVersion" unsaved-value="null" />
 		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
@@ -61,7 +61,7 @@
 		<property name="fax" length="20" />
 		<property name="method" length="15">
 			<type name="Enum">
-				<param name="enumClass">modules.customers.domain.ContactDetails$Method</param>
+				<param name="enumClass">modules.customers.domain.ContactDetail$Method</param>
 			</type>
 		</property>
 		<property name="street" length="200" />
@@ -69,30 +69,30 @@
 		<property name="state" length="100" />
 		<property name="postCode" length="10" />
 		<property name="country" length="100" />
-		<filter name="customersContactDetailsNoneFilter" condition="1=0"/>
-		<filter name="customersContactDetailsCustomerFilter" condition="bizCustomer=:customerParam"/>
-		<filter name="customersContactDetailsDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
-		<filter name="customersContactDetailsUserIdFilter" condition="bizUserId=:userIdParam"/>
+		<filter name="customersContactDetailNoneFilter" condition="1=0"/>
+		<filter name="customersContactDetailCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="customersContactDetailDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="customersContactDetailUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
-	<filter-def name="customersAccountsNoneFilter" />
-	<filter-def name="customersAccountsCustomerFilter">
+	<filter-def name="customersAccountNoneFilter" />
+	<filter-def name="customersAccountCustomerFilter">
 		<filter-param name="customerParam" type="string"/>
 	</filter-def>
-	<filter-def name="customersAccountsDataGroupIdFilter">
+	<filter-def name="customersAccountDataGroupIdFilter">
 		<filter-param name="dataGroupIdParam" type="string"/>
 	</filter-def>
-	<filter-def name="customersAccountsUserIdFilter">
+	<filter-def name="customersAccountUserIdFilter">
 		<filter-param name="userIdParam" type="string"/>
 	</filter-def>
-	<filter-def name="customersContactDetailsNoneFilter" />
-	<filter-def name="customersContactDetailsCustomerFilter">
+	<filter-def name="customersContactDetailNoneFilter" />
+	<filter-def name="customersContactDetailCustomerFilter">
 		<filter-param name="customerParam" type="string"/>
 	</filter-def>
-	<filter-def name="customersContactDetailsDataGroupIdFilter">
+	<filter-def name="customersContactDetailDataGroupIdFilter">
 		<filter-param name="dataGroupIdParam" type="string"/>
 	</filter-def>
-	<filter-def name="customersContactDetailsUserIdFilter">
+	<filter-def name="customersContactDetailUserIdFilter">
 		<filter-param name="userIdParam" type="string"/>
 	</filter-def>
 </hibernate-mapping>

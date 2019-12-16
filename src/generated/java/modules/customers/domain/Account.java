@@ -5,23 +5,28 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
+import org.skyve.domain.types.DateOnly;
 import org.skyve.domain.types.Enumeration;
 import org.skyve.impl.domain.AbstractPersistentBean;
+import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
 import org.skyve.metadata.model.document.Bizlet.DomainValue;
 
 /**
- * Contact Details
+ * Account
  * 
- * @depend - - - Method
+ * @depend - - - RelationshipType
+ * @navhas n primaryContact 0..1 ContactDetail
  * @stereotype "persistent"
  */
 @XmlType
 @XmlRootElement
-public class ContactDetails extends AbstractPersistentBean {
+public class Account extends AbstractPersistentBean {
 	/**
 	 * For Serialization
 	 * @hidden
@@ -31,24 +36,22 @@ public class ContactDetails extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String MODULE_NAME = "customers";
 	/** @hidden */
-	public static final String DOCUMENT_NAME = "ContactDetails";
+	public static final String DOCUMENT_NAME = "Account";
 
 	/** @hidden */
-	public static final String firstNamePropertyName = "firstName";
-	/** @hidden */
-	public static final String lastNamePropertyName = "lastName";
-	/** @hidden */
-	public static final String jobTitlePropertyName = "jobTitle";
+	public static final String accountNamePropertyName = "accountName";
 	/** @hidden */
 	public static final String emailPropertyName = "email";
 	/** @hidden */
-	public static final String mobileNumberPropertyName = "mobileNumber";
+	public static final String websitePropertyName = "website";
 	/** @hidden */
-	public static final String businessNumberPropertyName = "businessNumber";
+	public static final String phonePropertyName = "phone";
 	/** @hidden */
 	public static final String faxPropertyName = "fax";
 	/** @hidden */
-	public static final String methodPropertyName = "method";
+	public static final String relationshipTypePropertyName = "relationshipType";
+	/** @hidden */
+	public static final String startDatePropertyName = "startDate";
 	/** @hidden */
 	public static final String streetPropertyName = "street";
 	/** @hidden */
@@ -59,19 +62,19 @@ public class ContactDetails extends AbstractPersistentBean {
 	public static final String postCodePropertyName = "postCode";
 	/** @hidden */
 	public static final String countryPropertyName = "country";
+	/** @hidden */
+	public static final String primaryContactPropertyName = "primaryContact";
 
 	/**
-	 * Preferred Method of Contact
+	 * Relationship Type
 	 * <br/>
-	 * The customer's preferred method of contact
+	 * The type of relationship for the account
 	 **/
 	@XmlEnum
-	public static enum Method implements Enumeration {
-		email("Email", "Email"),
-		mobileNumber("Mobile Number", "Mobile Number"),
-		businessNumber("Business Number", "Business Number"),
-		fax("Fax", "Fax"),
-		any("Any", "Any");
+	public static enum RelationshipType implements Enumeration {
+		customer("Customer", "Customer"),
+		supplier("Supplier", "Supplier"),
+		other("Other", "Other");
 
 		private String code;
 		private String description;
@@ -82,7 +85,7 @@ public class ContactDetails extends AbstractPersistentBean {
 		/** @hidden */
 		private static List<DomainValue> domainValues;
 
-		private Method(String code, String description) {
+		private RelationshipType(String code, String description) {
 			this.code = code;
 			this.description = description;
 			this.domainValue = new DomainValue(code, description);
@@ -103,10 +106,10 @@ public class ContactDetails extends AbstractPersistentBean {
 			return domainValue;
 		}
 
-		public static Method fromCode(String code) {
-			Method result = null;
+		public static RelationshipType fromCode(String code) {
+			RelationshipType result = null;
 
-			for (Method value : values()) {
+			for (RelationshipType value : values()) {
 				if (value.code.equals(code)) {
 					result = value;
 					break;
@@ -116,10 +119,10 @@ public class ContactDetails extends AbstractPersistentBean {
 			return result;
 		}
 
-		public static Method fromDescription(String description) {
-			Method result = null;
+		public static RelationshipType fromDescription(String description) {
+			RelationshipType result = null;
 
-			for (Method value : values()) {
+			for (RelationshipType value : values()) {
 				if (value.description.equals(description)) {
 					result = value;
 					break;
@@ -131,9 +134,9 @@ public class ContactDetails extends AbstractPersistentBean {
 
 		public static List<DomainValue> toDomainValues() {
 			if (domainValues == null) {
-				Method[] values = values();
+				RelationshipType[] values = values();
 				domainValues = new ArrayList<>(values.length);
-				for (Method value : values) {
+				for (RelationshipType value : values) {
 					domainValues.add(value.domainValue);
 				}
 			}
@@ -143,97 +146,97 @@ public class ContactDetails extends AbstractPersistentBean {
 	}
 
 	/**
-	 * First Name
+	 * Account Name
 	 * <br/>
-	 * The customer's first name
+	 * The account name
 	 **/
-	private String firstName;
-	/**
-	 * Last Name
-	 * <br/>
-	 * The customer's last name
-	 **/
-	private String lastName;
-	/**
-	 * Job Title
-	 * <br/>
-	 * The customer's job title
-	 **/
-	private String jobTitle;
+	private String accountName;
 	/**
 	 * Email
 	 * <br/>
-	 * The customer's email address
+	 * The account email address
 	 **/
 	private String email;
 	/**
-	 * Mobile Number
+	 * Website
 	 * <br/>
-	 * The customer's mobile number
+	 * The account website
 	 **/
-	private String mobileNumber;
+	private String website;
 	/**
-	 * Business Number
+	 * Phone
 	 * <br/>
-	 * The customer's business number
+	 * The account phone number
 	 **/
-	private String businessNumber;
+	private String phone;
 	/**
 	 * Fax
 	 * <br/>
-	 * The customer's fax number
+	 * The account fax number
 	 **/
 	private String fax;
 	/**
-	 * Preferred Method of Contact
+	 * Relationship Type
 	 * <br/>
-	 * The customer's preferred method of contact
+	 * The type of relationship for the account
 	 **/
-	private Method method;
+	private RelationshipType relationshipType;
+	/**
+	 * Start Date
+	 * <br/>
+	 * The date the account began
+	 **/
+	private DateOnly startDate;
 	/**
 	 * Street
 	 * <br/>
-	 * The customers street and number
+	 * The accounts street and number
 	 **/
 	private String street;
 	/**
 	 * City
 	 * <br/>
-	 * The customers city
+	 * The accounts city
 	 **/
 	private String city;
 	/**
 	 * State or Province
 	 * <br/>
-	 * The customers state or province
+	 * The accounts state or province
 	 **/
 	private String state;
 	/**
 	 * ZIP or Postal Code
 	 * <br/>
-	 * The customers ZIP or postal code
+	 * The accounts ZIP or postal code
 	 **/
 	private String postCode;
 	/**
 	 * Country/Region
 	 * <br/>
-	 * The customers country or region
+	 * The accounts country or region
 	 **/
 	private String country;
+	/**
+	 * Primary Contact
+	 * <br/>
+	 * The accounts primary contact
+	 **/
+	private ContactDetail primaryContact = null;
 
 	@Override
 	@XmlTransient
 	public String getBizModule() {
-		return ContactDetails.MODULE_NAME;
+		return Account.MODULE_NAME;
 	}
 
 	@Override
 	@XmlTransient
 	public String getBizDocument() {
-		return ContactDetails.DOCUMENT_NAME;
+		return Account.DOCUMENT_NAME;
 	}
 
-	public static ContactDetails newInstance() {
+	public static Account newInstance() {
 		try {
 			return CORE.getUser().getCustomer().getModule(MODULE_NAME).getDocument(CORE.getUser().getCustomer(), DOCUMENT_NAME).newInstance(CORE.getUser());
 		}
@@ -250,7 +253,7 @@ public class ContactDetails extends AbstractPersistentBean {
 	public String getBizKey() {
 		try {
 			return org.skyve.util.Binder.formatMessage(org.skyve.CORE.getUser().getCustomer(),
-														"{firstName} {lastName}",
+														"Accounts - {accountName}",
 														this);
 		}
 		catch (Exception e) {
@@ -260,62 +263,26 @@ public class ContactDetails extends AbstractPersistentBean {
 
 	@Override
 	public boolean equals(Object o) {
-		return ((o instanceof ContactDetails) && 
-					this.getBizId().equals(((ContactDetails) o).getBizId()));
+		return ((o instanceof Account) && 
+					this.getBizId().equals(((Account) o).getBizId()));
 	}
 
 	/**
-	 * {@link #firstName} accessor.
+	 * {@link #accountName} accessor.
 	 * @return	The value.
 	 **/
-	public String getFirstName() {
-		return firstName;
+	public String getAccountName() {
+		return accountName;
 	}
 
 	/**
-	 * {@link #firstName} mutator.
-	 * @param firstName	The new value.
+	 * {@link #accountName} mutator.
+	 * @param accountName	The new value.
 	 **/
 	@XmlElement
-	public void setFirstName(String firstName) {
-		preset(firstNamePropertyName, firstName);
-		this.firstName = firstName;
-	}
-
-	/**
-	 * {@link #lastName} accessor.
-	 * @return	The value.
-	 **/
-	public String getLastName() {
-		return lastName;
-	}
-
-	/**
-	 * {@link #lastName} mutator.
-	 * @param lastName	The new value.
-	 **/
-	@XmlElement
-	public void setLastName(String lastName) {
-		preset(lastNamePropertyName, lastName);
-		this.lastName = lastName;
-	}
-
-	/**
-	 * {@link #jobTitle} accessor.
-	 * @return	The value.
-	 **/
-	public String getJobTitle() {
-		return jobTitle;
-	}
-
-	/**
-	 * {@link #jobTitle} mutator.
-	 * @param jobTitle	The new value.
-	 **/
-	@XmlElement
-	public void setJobTitle(String jobTitle) {
-		preset(jobTitlePropertyName, jobTitle);
-		this.jobTitle = jobTitle;
+	public void setAccountName(String accountName) {
+		preset(accountNamePropertyName, accountName);
+		this.accountName = accountName;
 	}
 
 	/**
@@ -337,39 +304,39 @@ public class ContactDetails extends AbstractPersistentBean {
 	}
 
 	/**
-	 * {@link #mobileNumber} accessor.
+	 * {@link #website} accessor.
 	 * @return	The value.
 	 **/
-	public String getMobileNumber() {
-		return mobileNumber;
+	public String getWebsite() {
+		return website;
 	}
 
 	/**
-	 * {@link #mobileNumber} mutator.
-	 * @param mobileNumber	The new value.
+	 * {@link #website} mutator.
+	 * @param website	The new value.
 	 **/
 	@XmlElement
-	public void setMobileNumber(String mobileNumber) {
-		preset(mobileNumberPropertyName, mobileNumber);
-		this.mobileNumber = mobileNumber;
+	public void setWebsite(String website) {
+		preset(websitePropertyName, website);
+		this.website = website;
 	}
 
 	/**
-	 * {@link #businessNumber} accessor.
+	 * {@link #phone} accessor.
 	 * @return	The value.
 	 **/
-	public String getBusinessNumber() {
-		return businessNumber;
+	public String getPhone() {
+		return phone;
 	}
 
 	/**
-	 * {@link #businessNumber} mutator.
-	 * @param businessNumber	The new value.
+	 * {@link #phone} mutator.
+	 * @param phone	The new value.
 	 **/
 	@XmlElement
-	public void setBusinessNumber(String businessNumber) {
-		preset(businessNumberPropertyName, businessNumber);
-		this.businessNumber = businessNumber;
+	public void setPhone(String phone) {
+		preset(phonePropertyName, phone);
+		this.phone = phone;
 	}
 
 	/**
@@ -391,21 +358,41 @@ public class ContactDetails extends AbstractPersistentBean {
 	}
 
 	/**
-	 * {@link #method} accessor.
+	 * {@link #relationshipType} accessor.
 	 * @return	The value.
 	 **/
-	public Method getMethod() {
-		return method;
+	public RelationshipType getRelationshipType() {
+		return relationshipType;
 	}
 
 	/**
-	 * {@link #method} mutator.
-	 * @param method	The new value.
+	 * {@link #relationshipType} mutator.
+	 * @param relationshipType	The new value.
 	 **/
 	@XmlElement
-	public void setMethod(Method method) {
-		preset(methodPropertyName, method);
-		this.method = method;
+	public void setRelationshipType(RelationshipType relationshipType) {
+		preset(relationshipTypePropertyName, relationshipType);
+		this.relationshipType = relationshipType;
+	}
+
+	/**
+	 * {@link #startDate} accessor.
+	 * @return	The value.
+	 **/
+	public DateOnly getStartDate() {
+		return startDate;
+	}
+
+	/**
+	 * {@link #startDate} mutator.
+	 * @param startDate	The new value.
+	 **/
+	@XmlSchemaType(name = "date")
+	@XmlJavaTypeAdapter(DateOnlyMapper.class)
+	@XmlElement
+	public void setStartDate(DateOnly startDate) {
+		preset(startDatePropertyName, startDate);
+		this.startDate = startDate;
 	}
 
 	/**
@@ -496,5 +483,42 @@ public class ContactDetails extends AbstractPersistentBean {
 	public void setCountry(String country) {
 		preset(countryPropertyName, country);
 		this.country = country;
+	}
+
+	/**
+	 * {@link #primaryContact} accessor.
+	 * @return	The value.
+	 **/
+	public ContactDetail getPrimaryContact() {
+		return primaryContact;
+	}
+
+	/**
+	 * {@link #primaryContact} mutator.
+	 * @param primaryContact	The new value.
+	 **/
+	@XmlElement
+	public void setPrimaryContact(ContactDetail primaryContact) {
+		preset(primaryContactPropertyName, primaryContact);
+		this.primaryContact = primaryContact;
+	}
+
+	/**
+	 * hasCurrent
+	 *
+	 * @return The condition
+	 */
+	@XmlTransient
+	public boolean isHasCurrent() {
+		return (primaryContact != null);
+	}
+
+	/**
+	 * {@link #isHasCurrent} negation.
+	 *
+	 * @return The negated condition
+	 */
+	public boolean isNotHasCurrent() {
+		return (! isHasCurrent());
 	}
 }

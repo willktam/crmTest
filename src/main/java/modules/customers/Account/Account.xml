@@ -73,7 +73,7 @@
         <association type="aggregation" name="primaryContact">
             <displayName>Primary Contact</displayName>
             <description><![CDATA[The accounts primary contact]]></description>
-            <documentName>ContactDetails</documentName>
+            <documentName>ContactDetail</documentName>
         </association>
     </attributes>
     <conditions>

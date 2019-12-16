@@ -9,7 +9,7 @@
         <association required="true" type="aggregation" name="contactDetails">
             <displayName>Contact Details</displayName>
             <description><![CDATA[The contact details of the lead]]></description>
-            <documentName>ContactDetails</documentName>
+            <documentName>ContactDetail</documentName>
         </association>
         <markup persistent="false" trackChanges="false" audited="false" usage="view" name="progress">
             <displayName>Progress</displayName>
