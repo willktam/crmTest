@@ -5,28 +5,23 @@
     <pluralAlias>Leads</pluralAlias>
     <iconStyleClass>fa fa-phone-square</iconStyleClass>
     <bizKey expression="{contactDetails.lastName}"/>
-    
     <attributes>
-    	
-    	<association required="true" type="aggregation" name="contactDetails">
-    		<displayName>Contact Details</displayName>
-    		<description>The contact details of the lead</description>
-    		<documentName>ContactDetails</documentName>
-    	</association>
-    	
-    	<markup name="progress" persistent="false" audited="false" trackChanges="false" usage="view">
-    		<displayName>Progress</displayName>
-    	</markup>
-        
+        <association required="true" type="aggregation" name="contactDetails">
+            <displayName>Contact Details</displayName>
+            <description><![CDATA[The contact details of the lead]]></description>
+            <documentName>ContactDetails</documentName>
+        </association>
+        <markup persistent="false" trackChanges="false" audited="false" usage="view" name="progress">
+            <displayName>Progress</displayName>
+        </markup>
     </attributes>
-    
     <conditions>
-    	<condition name="hasProgress">
-    		<description>True when the progress markup is not blank</description>
-    		<expression>getProgress() != null</expression>
-    	</condition>
-		<condition name="Staff">
-			<expression><![CDATA[isUserInRole("sales","Staff")]]></expression>
-		</condition>
-	</conditions>
+        <condition name="hasProgress">
+            <description><![CDATA[True when the progress markup is not blank]]></description>
+            <expression><![CDATA[getProgress() != null]]></expression>
+        </condition>
+        <condition name="Staff">
+            <expression><![CDATA[isUserInRole("sales","Staff")]]></expression>
+        </condition>
+    </conditions>
 </document>

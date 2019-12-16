@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_accountContacts" title="Account Contacts" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<form border="true" borderTitle="Account Contacts">
+        <column percentageWidth="30" responsiveWidth="4"/>
+        <column/>
+        
+        <row>
+            <item>
+                <lookupDescription binding="primaryContact" descriptionBinding="bizKey">
+                	<onPickedHandlers>
+                		<rerender clientValidation="false" />
+                	</onPickedHandlers>
+                </lookupDescription>
+            </item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="primaryContact.firstName" visible="hasCurrent" editable="false"/>
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="primaryContact.lastName" visible="hasCurrent" editable="false"/>
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="primaryContact.email" visible="hasCurrent" editable="false"/>
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="primaryContact.businessNumber" visible="hasCurrent" editable="false"/>
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="primaryContact.method" visible="hasCurrent" editable="false"/>
+        	</item>
+        </row>
+    </form>
+</view>

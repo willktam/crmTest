@@ -5,79 +5,60 @@
     <pluralAlias>Staff Lists</pluralAlias>
     <iconStyleClass>fa fa-users</iconStyleClass>
     <bizKey expression="{user.contact.name}"/>
-    
     <attributes>
-    
-    	<!-- Contact Attributes -->
-    	<association name="user" type="composition" required="true">
-			<displayName>User</displayName>
-			<documentName>User</documentName>
-		</association>
-		
-		<enum name="socialTitle">
-			<displayName>Social Title</displayName>
-			<defaultValue>mr</defaultValue>
-			<values>
-				<value code="mr" name="mr" description="Mr" />
-				<value code="ms" name="ms" description="Ms" />
-				<value code="mrs" name="mrs" description="Mrs" />
-				<value code="dr" name="dr" description ="Dr"/>
-			</values>
-		</enum>
-		
-		
-		<!-- Personal Attributes -->
-        <date name="dateOfBirth" required="true">
-			<displayName>Date Of Birth</displayName>
-		</date>
-		
-		<text name="idCardNo" required="true">
-			<displayName>ID Card Number</displayName>
-			<length>20</length>
-		</text>
-		
-		<date name="issuedDate">
-			<displayName>Issued Date</displayName>
-		</date>
-		
-		<date name="expiredDate">
-			<displayName>Expired Date</displayName>
-		</date>
-        
-        <!-- Work Attributes -->
+        <association required="true" type="composition" name="user">
+            <displayName>User</displayName>
+            <documentName>User</documentName>
+        </association>
+        <enum name="socialTitle">
+            <displayName>Social Title</displayName>
+            <defaultValue>mr</defaultValue>
+            <values>
+                <value name="mr" code="mr" description="Mr"/>
+                <value name="ms" code="ms" description="Ms"/>
+                <value name="mrs" code="mrs" description="Mrs"/>
+                <value name="dr" code="dr" description="Dr"/>
+            </values>
+        </enum>
+        <date required="true" name="dateOfBirth">
+            <displayName>Date Of Birth</displayName>
+        </date>
+        <text required="true" name="idCardNo">
+            <displayName>ID Card Number</displayName>
+            <length>20</length>
+        </text>
+        <date name="issuedDate">
+            <displayName>Issued Date</displayName>
+        </date>
+        <date name="expiredDate">
+            <displayName>Expired Date</displayName>
+        </date>
         <text name="dept">
-			<displayName>Department</displayName>
-			<length>50</length>
-		</text>
-		
-		<text name="bu">
-			<displayName>Business Unit</displayName>
-			<length>50</length>
-		</text>
-		
-		<text name="jobTitle">
-			<displayName>Job Title</displayName>
-			<length>100</length>
-		</text>
-		
-		<date name="startDate">
-			<displayName>Start Date</displayName>
-		</date>	
-        
-        <!-- Other Attributes -->
+            <displayName>Department</displayName>
+            <length>50</length>
+        </text>
+        <text name="bu">
+            <displayName>Business Unit</displayName>
+            <length>50</length>
+        </text>
+        <text name="jobTitle">
+            <displayName>Job Title</displayName>
+            <length>100</length>
+        </text>
+        <date name="startDate">
+            <displayName>Start Date</displayName>
+        </date>
         <memo name="bio">
-			<displayName>BIO</displayName>
-			<description>A brief bio</description>
-		</memo>
+            <displayName>BIO</displayName>
+            <description><![CDATA[A brief bio]]></description>
+        </memo>
         <geometry name="staffLocation">
-        	<displayName>Staff Location</displayName>
+            <displayName>Staff Location</displayName>
         </geometry>
-        
     </attributes>
-    
     <conditions>
-		<condition name="StaffManager">
-			<expression><![CDATA[isUserInRole("staff","StaffManager")]]></expression>
-		</condition>
-	</conditions>
+        <condition name="StaffManager">
+            <expression><![CDATA[isUserInRole("staff","StaffManager")]]></expression>
+        </condition>
+    </conditions>
 </document>
