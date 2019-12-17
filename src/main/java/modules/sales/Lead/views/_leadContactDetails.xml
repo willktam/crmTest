@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_leadContactDetails" title="Lead Contact Details" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<form border="true" borderTitle="Lead Contact Details">
+        <column percentageWidth="30" responsiveWidth="4"/>
+        <column/>
+        
+        <row>
+            <item>
+                <lookupDescription binding="contactDetails" descriptionBinding="bizKey">
+                	<onPickedHandlers>
+                		<rerender clientValidation="false" />
+                	</onPickedHandlers>
+                </lookupDescription>
+            </item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="contactDetails.firstName" visible="contactSelected" editable="false"/>
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="contactDetails.lastName" visible="contactSelected" editable="false"/>
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="contactDetails.jobTitle" visible="contactSelected" editable="false" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="contactDetails.email" visible="contactSelected" editable="false"/>
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="contactDetails.mobileNumber" visible="contactSelected" editable="false"/>
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="contactDetails.businessNumber" visible="contactSelected" editable="false"/>
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="contactDetails.method" visible="contactSelected" editable="false"/>
+        	</item>
+        </row>
+    </form>
+</view>

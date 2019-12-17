@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.skyve.org/xml/document" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="ProductUnitGroup" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd">
+    <persistent name="PRO_ProductUnitGroup"/>
+    <singularAlias>Product Unit Group</singularAlias>
+    <pluralAlias>Product Unit Groups</pluralAlias>
+    <iconStyleClass>fa fa-clipboard</iconStyleClass>
+    <bizKey expression="{name}"/>
+    <attributes>
+    	<!-- Unit Details -->
+        <text required="true" name="name">
+            <displayName>Unit Group Name</displayName>
+            <description><![CDATA[The unit group name]]></description>
+            <length>100</length>
+        </text>
+        <memo name="description">
+            <displayName>Description</displayName>
+            <description><![CDATA[A description of the unit group]]></description>
+        </memo>
+        <text required="true" name="primaryUnit">
+            <displayName>Primary Unit</displayName>
+            <description><![CDATA[The lowest unit of measure of the product, e.g. Piece]]></description>
+            <length>100</length>
+        </text>
+        <association type="aggregation" name="productPriceList">
+        	<displayName>Product Price List</displayName>
+        	<description><![CDATA[The price list of the unit group]]></description>
+        	<documentName>ProductPriceList</documentName>
+        </association>
+	
+    </attributes>
+</document>

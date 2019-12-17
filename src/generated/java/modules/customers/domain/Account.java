@@ -190,37 +190,37 @@ public class Account extends AbstractPersistentBean {
 	/**
 	 * Street
 	 * <br/>
-	 * The accounts street and number
+	 * The account's street and number
 	 **/
 	private String street;
 	/**
 	 * City
 	 * <br/>
-	 * The accounts city
+	 * The account's city
 	 **/
 	private String city;
 	/**
 	 * State or Province
 	 * <br/>
-	 * The accounts state or province
+	 * The account's state or province
 	 **/
 	private String state;
 	/**
 	 * ZIP or Postal Code
 	 * <br/>
-	 * The accounts ZIP or postal code
+	 * The account's ZIP or postal code
 	 **/
 	private String postCode;
 	/**
 	 * Country/Region
 	 * <br/>
-	 * The accounts country or region
+	 * The account's country or region
 	 **/
 	private String country;
 	/**
 	 * Primary Contact
 	 * <br/>
-	 * The accounts primary contact
+	 * The account's primary contact
 	 **/
 	private ContactDetail primaryContact = null;
 

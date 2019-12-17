@@ -4,21 +4,24 @@
     <homeDocument>ProductInfo</homeDocument>
     <documents>
         <document ref="ProductInfo"/>
-        <document ref="ProductSale"/>
+        <document ref="ProductUnitGroup"/>
+        <document ref="ProductPriceList"/>
     </documents>
     <roles>
         <role name="Viewer">
             <description><![CDATA[Enough privileges to view Products documents.]]></description>
             <privileges>
                 <document name="ProductInfo" permission="_R__C"/>
-                <document name="ProductSale" permission="_R__C"/>
+                <document name="ProductUnitGroup" permission="_R__C"/>
+                <document name="ProductPriceList" permission="_R__C"/>
             </privileges>
         </role>
         <role name="Maintainer">
             <description><![CDATA[Enough privileges to create and edit Products documents.]]></description>
             <privileges>
                 <document name="ProductInfo" permission="CRUDC"/>
-                <document name="ProductSale" permission="CRUDC"/>
+                <document name="ProductUnitGroup" permission="CRUDC"/>
+                <document name="ProductPriceList" permission="CRUDC"/>
             </privileges>
         </role>
     </roles>
@@ -27,7 +30,11 @@
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>
-        <list document="ProductSale" name="Product Sales">
+        <list document="ProductUnitGroup" name="Product Unit Groups">
+            <role name="Maintainer"/>
+            <role name="Viewer"/>
+        </list>
+        <list document="ProductPriceList" name="Product Price Lists">
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>

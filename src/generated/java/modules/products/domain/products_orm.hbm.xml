@@ -23,13 +23,16 @@
 		<property name="name" length="100" />
 		<property name="productId" length="36" />
 		<property name="description" type="text" />
+		<property name="validFrom" type="DateOnly" />
+		<property name="validTo" type="DateOnly" />
+		<many-to-one name="productUnitGroup" entity-name="productsProductUnitGroup" column="productUnitGroup_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_PRO_ProductInfo_productUnitGroup" />
 		<filter name="productsProductInfoNoneFilter" condition="1=0"/>
 		<filter name="productsProductInfoCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="productsProductInfoDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
 		<filter name="productsProductInfoUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
-	<class name="modules.products.domain.ProductSale" table="PRO_ProductSale" entity-name="productsProductSale">
+	<class name="modules.products.domain.ProductPriceList" table="PRO_ProductPriceList" entity-name="productsProductPriceList">
 		<id name="bizId" length="36" />
 		<version name="bizVersion" unsaved-value="null" />
 		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
@@ -38,13 +41,36 @@
 		<property name="bizFlagComment" length="1024" />
 		<property name="bizDataGroupId" length="36" />
 		<property name="bizUserId" length="36" not-null="true" />
-		<many-to-one name="product" entity-name="productsProductInfo" column="product_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_PRO_ProductSale_product" />
-		<property name="active" />
-		<property name="numerOfSales" />
-		<filter name="productsProductSaleNoneFilter" condition="1=0"/>
-		<filter name="productsProductSaleCustomerFilter" condition="bizCustomer=:customerParam"/>
-		<filter name="productsProductSaleDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
-		<filter name="productsProductSaleUserIdFilter" condition="bizUserId=:userIdParam"/>
+		<property name="name" length="100" />
+		<property name="description" type="text" />
+		<property name="retailPrice" />
+		<property name="bulkPrice" />
+		<property name="startDate" type="DateOnly" />
+		<property name="endDate" type="DateOnly" />
+		<property name="currency" length="100" />
+		<filter name="productsProductPriceListNoneFilter" condition="1=0"/>
+		<filter name="productsProductPriceListCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="productsProductPriceListDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="productsProductPriceListUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.products.domain.ProductUnitGroup" table="PRO_ProductUnitGroup" entity-name="productsProductUnitGroup">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" not-null="true" />
+		<property name="bizCustomer" length="50" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" not-null="true" />
+		<property name="name" length="100" />
+		<property name="description" type="text" />
+		<property name="primaryUnit" length="100" />
+		<many-to-one name="productPriceList" entity-name="productsProductPriceList" column="productPriceList_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_PRO_ProductUnitGroup_productPriceList" />
+		<filter name="productsProductUnitGroupNoneFilter" condition="1=0"/>
+		<filter name="productsProductUnitGroupCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="productsProductUnitGroupDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="productsProductUnitGroupUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
 	<filter-def name="productsProductInfoNoneFilter" />
@@ -57,14 +83,24 @@
 	<filter-def name="productsProductInfoUserIdFilter">
 		<filter-param name="userIdParam" type="string"/>
 	</filter-def>
-	<filter-def name="productsProductSaleNoneFilter" />
-	<filter-def name="productsProductSaleCustomerFilter">
+	<filter-def name="productsProductPriceListNoneFilter" />
+	<filter-def name="productsProductPriceListCustomerFilter">
 		<filter-param name="customerParam" type="string"/>
 	</filter-def>
-	<filter-def name="productsProductSaleDataGroupIdFilter">
+	<filter-def name="productsProductPriceListDataGroupIdFilter">
 		<filter-param name="dataGroupIdParam" type="string"/>
 	</filter-def>
-	<filter-def name="productsProductSaleUserIdFilter">
+	<filter-def name="productsProductPriceListUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="productsProductUnitGroupNoneFilter" />
+	<filter-def name="productsProductUnitGroupCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="productsProductUnitGroupDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="productsProductUnitGroupUserIdFilter">
 		<filter-param name="userIdParam" type="string"/>
 	</filter-def>
 </hibernate-mapping>

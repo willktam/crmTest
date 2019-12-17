@@ -47,32 +47,32 @@
         </date>
         <text name="street">
             <displayName>Street</displayName>
-            <description><![CDATA[The accounts street and number]]></description>
+            <description><![CDATA[The account's street and number]]></description>
             <length>200</length>
         </text>
         <text name="city">
             <displayName>City</displayName>
-            <description><![CDATA[The accounts city]]></description>
+            <description><![CDATA[The account's city]]></description>
             <length>100</length>
         </text>
         <text name="state">
             <displayName>State or Province</displayName>
-            <description><![CDATA[The accounts state or province]]></description>
+            <description><![CDATA[The account's state or province]]></description>
             <length>100</length>
         </text>
         <text name="postCode">
             <displayName>ZIP or Postal Code</displayName>
-            <description><![CDATA[The accounts ZIP or postal code]]></description>
+            <description><![CDATA[The account's ZIP or postal code]]></description>
             <length>10</length>
         </text>
         <text name="country">
             <displayName>Country/Region</displayName>
-            <description><![CDATA[The accounts country or region]]></description>
+            <description><![CDATA[The account's country or region]]></description>
             <length>100</length>
         </text>
         <association type="aggregation" name="primaryContact">
             <displayName>Primary Contact</displayName>
-            <description><![CDATA[The accounts primary contact]]></description>
+            <description><![CDATA[The account's primary contact]]></description>
             <documentName>ContactDetail</documentName>
         </association>
     </attributes>

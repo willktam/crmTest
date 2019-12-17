@@ -3,14 +3,20 @@
     <homeRef>list</homeRef>
     <homeDocument>Lead</homeDocument>
     <documents>
-        <document ref="Lead"/>
+        <document ref="Lead" defaultQueryName="qLead"/>
+        <document ref="Opportunity" defaultQueryName="qOpportunity"/>
         <document ref="ContactDetail" moduleRef="customers"/>
+        <document ref="Account" moduleRef="customers"/>
+        <document ref="ProductInfo" moduleRef="products"/>
+        <document ref="ProductPriceList" moduleRef="products"/>
+        <document ref="ProductUnitGroup" moduleRef="products"/>
     </documents>
     <roles>
         <role name="Staff">
             <description><![CDATA[Staff Member - A staff member who can work on jobs]]></description>
             <privileges>
                 <document name="Lead" permission="CRUDU"/>
+                <document permission="CRUDU" name="Opportunity" />
             </privileges>
         </role>
         <role name="leadManager">
@@ -19,10 +25,49 @@
                 <document name="Lead" permission="CRUDC"/>
             </privileges>
         </role>
+        <role name="opportunityManager">
+        	<description><![CDATA[Opportunity Manager - Who can manage all opportunities]]></description>
+        	<privileges>
+        		<document permission="CRUDC" name="Opportunity" />
+        	</privileges>
+        </role>
     </roles>
     <menu>
         <list document="Lead" name="Leads">
             <role name="Staff"/>
+            <role name="leadManager" />
+        </list>
+        <map name="Leads Map" document="Lead" geometryBinding="companyLocation">
+        	<role name="Staff"/>
+        	<role name="leadManager"/>
+        </map>
+        <list document="Opportunity" name="Opportunities">
+        	<role name="opportunityManager"/>
+        	<role name="Staff"/>
         </list>
     </menu>
+    <queries>
+    	<query documentName="Lead" name="qLead">
+    		<description><![CDATA[All Leads]]></description>
+    		<columns>
+    			<column binding="contactDetails.firstName" displayName="Contact First Name"/>
+    			<column binding="contactDetails.lastName" displayName="Contact Last Name"/>
+    			<column binding="name" />
+    			<column binding="website" />
+    			<column binding="street" />
+    			<column binding="city" />
+    		</columns>
+    	</query>
+    	<query documentName="Opportunity" name="qOpportunity">
+    		<description><![CDATA[All Opportunities]]></description>
+    		<columns>
+    			<column binding="topic" />
+    			<column binding="contact.firstName" displayName="Contact First Name"/>
+    			<column binding="contact.lastName" displayName="Contact Last Name"/>
+    			<column binding="account.accountName" displayName="Account Name" />
+    			<column binding="product.name" displayName="Product Name"/>
+    			<column binding="description" />
+    		</columns>
+    	</query>
+    </queries>
 </module>

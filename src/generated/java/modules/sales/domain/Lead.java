@@ -4,11 +4,14 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import modules.customers.domain.ContactDetail;
 import modules.sales.Lead.LeadExtension;
+import org.locationtech.jts.geom.Geometry;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.impl.domain.AbstractPersistentBean;
+import org.skyve.impl.domain.types.jaxb.GeometryMapper;
 
 /**
  * Lead
@@ -33,6 +36,22 @@ public class Lead extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String contactDetailsPropertyName = "contactDetails";
 	/** @hidden */
+	public static final String namePropertyName = "name";
+	/** @hidden */
+	public static final String websitePropertyName = "website";
+	/** @hidden */
+	public static final String streetPropertyName = "street";
+	/** @hidden */
+	public static final String cityPropertyName = "city";
+	/** @hidden */
+	public static final String statePropertyName = "state";
+	/** @hidden */
+	public static final String postCodePropertyName = "postCode";
+	/** @hidden */
+	public static final String countryPropertyName = "country";
+	/** @hidden */
+	public static final String companyLocationPropertyName = "companyLocation";
+	/** @hidden */
 	public static final String progressPropertyName = "progress";
 
 	/**
@@ -41,6 +60,52 @@ public class Lead extends AbstractPersistentBean {
 	 * The contact details of the lead
 	 **/
 	private ContactDetail contactDetails = null;
+	/**
+	 * Company Name
+	 * <br/>
+	 * The company name
+	 **/
+	private String name;
+	/**
+	 * Website
+	 * <br/>
+	 * The company website
+	 **/
+	private String website;
+	/**
+	 * Street
+	 * <br/>
+	 * The company's street and number
+	 **/
+	private String street;
+	/**
+	 * City
+	 * <br/>
+	 * The company's city
+	 **/
+	private String city;
+	/**
+	 * State or Province
+	 * <br/>
+	 * The company's state or province
+	 **/
+	private String state;
+	/**
+	 * ZIP or Postal Code
+	 * <br/>
+	 * The company's ZIP or postal code
+	 **/
+	private String postCode;
+	/**
+	 * Country/Region
+	 * <br/>
+	 * The company's country or region
+	 **/
+	private String country;
+	/**
+	 * Company Location
+	 **/
+	private Geometry companyLocation;
 	/**
 	 * Progress
 	 **/
@@ -108,6 +173,151 @@ public class Lead extends AbstractPersistentBean {
 	}
 
 	/**
+	 * {@link #name} accessor.
+	 * @return	The value.
+	 **/
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * {@link #name} mutator.
+	 * @param name	The new value.
+	 **/
+	@XmlElement
+	public void setName(String name) {
+		preset(namePropertyName, name);
+		this.name = name;
+	}
+
+	/**
+	 * {@link #website} accessor.
+	 * @return	The value.
+	 **/
+	public String getWebsite() {
+		return website;
+	}
+
+	/**
+	 * {@link #website} mutator.
+	 * @param website	The new value.
+	 **/
+	@XmlElement
+	public void setWebsite(String website) {
+		preset(websitePropertyName, website);
+		this.website = website;
+	}
+
+	/**
+	 * {@link #street} accessor.
+	 * @return	The value.
+	 **/
+	public String getStreet() {
+		return street;
+	}
+
+	/**
+	 * {@link #street} mutator.
+	 * @param street	The new value.
+	 **/
+	@XmlElement
+	public void setStreet(String street) {
+		preset(streetPropertyName, street);
+		this.street = street;
+	}
+
+	/**
+	 * {@link #city} accessor.
+	 * @return	The value.
+	 **/
+	public String getCity() {
+		return city;
+	}
+
+	/**
+	 * {@link #city} mutator.
+	 * @param city	The new value.
+	 **/
+	@XmlElement
+	public void setCity(String city) {
+		preset(cityPropertyName, city);
+		this.city = city;
+	}
+
+	/**
+	 * {@link #state} accessor.
+	 * @return	The value.
+	 **/
+	public String getState() {
+		return state;
+	}
+
+	/**
+	 * {@link #state} mutator.
+	 * @param state	The new value.
+	 **/
+	@XmlElement
+	public void setState(String state) {
+		preset(statePropertyName, state);
+		this.state = state;
+	}
+
+	/**
+	 * {@link #postCode} accessor.
+	 * @return	The value.
+	 **/
+	public String getPostCode() {
+		return postCode;
+	}
+
+	/**
+	 * {@link #postCode} mutator.
+	 * @param postCode	The new value.
+	 **/
+	@XmlElement
+	public void setPostCode(String postCode) {
+		preset(postCodePropertyName, postCode);
+		this.postCode = postCode;
+	}
+
+	/**
+	 * {@link #country} accessor.
+	 * @return	The value.
+	 **/
+	public String getCountry() {
+		return country;
+	}
+
+	/**
+	 * {@link #country} mutator.
+	 * @param country	The new value.
+	 **/
+	@XmlElement
+	public void setCountry(String country) {
+		preset(countryPropertyName, country);
+		this.country = country;
+	}
+
+	/**
+	 * {@link #companyLocation} accessor.
+	 * @return	The value.
+	 **/
+	public Geometry getCompanyLocation() {
+		return companyLocation;
+	}
+
+	/**
+	 * {@link #companyLocation} mutator.
+	 * @param companyLocation	The new value.
+	 **/
+	@XmlJavaTypeAdapter(GeometryMapper.class)
+	@XmlElement
+	public void setCompanyLocation(Geometry companyLocation) {
+		preset(companyLocationPropertyName, companyLocation);
+		this.companyLocation = companyLocation;
+	}
+
+	/**
 	 * {@link #progress} accessor.
 	 * @return	The value.
 	 **/
@@ -141,6 +351,25 @@ public class Lead extends AbstractPersistentBean {
 	 */
 	public boolean isNotStaff() {
 		return (! isStaff());
+	}
+
+	/**
+	 * contactSelected
+	 *
+	 * @return The condition
+	 */
+	@XmlTransient
+	public boolean isContactSelected() {
+		return (contactDetails != null);
+	}
+
+	/**
+	 * {@link #isContactSelected} negation.
+	 *
+	 * @return The negated condition
+	 */
+	public boolean isNotContactSelected() {
+		return (! isContactSelected());
 	}
 
 	/**

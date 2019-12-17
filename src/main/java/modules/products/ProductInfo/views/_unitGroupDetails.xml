@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_unitGroupDetails" title="Unit Group Details" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+    <form border="true" borderTitle="Unit Group Details">
+        <column percentageWidth="30" responsiveWidth="4"/>
+        <column/>
+        <row>
+            <item>
+                <lookupDescription binding="productUnitGroup" descriptionBinding="bizKey">
+                	<onPickedHandlers>
+                		<rerender clientValidation="false" />
+                	</onPickedHandlers>
+                </lookupDescription>
+            </item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="productUnitGroup.name" visible="hasCurrentGroup" editable="false" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="productUnitGroup.primaryUnit" visible="hasCurrentGroup" editable="false" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="productUnitGroup.productPriceList.name" visible="hasCurrentGroup" editable="false" />
+        	</item>
+        </row>
+    </form>
+    <actions>
+        <defaults/>
+    </actions>
+    <newParameters/>
+</view>

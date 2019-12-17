@@ -4,8 +4,9 @@
     <singularAlias>Product Info</singularAlias>
     <pluralAlias>Product Info</pluralAlias>
     <iconStyleClass>fa fa-info-circle</iconStyleClass>
-    <bizKey expression="Product Info - {name}"/>
+    <bizKey expression="{name}"/>
     <attributes>
+    	<!-- Product Details -->
         <text required="true" name="name">
             <displayName>Name</displayName>
             <description><![CDATA[Product name]]></description>
@@ -19,5 +20,24 @@
             <displayName>Description</displayName>
             <description><![CDATA[A description of the product]]></description>
         </memo>
+        <date name="validFrom">
+        	<displayName>Valid From</displayName>
+        	<description><![CDATA[The date the product is valid]]></description>
+        </date>
+        <date name="validTo">
+        	<displayName>Valid To</displayName>
+        	<description><![CDATA[The expiration date of the product]]></description>
+        </date>
+        <!-- Unit Details -->
+        <association type="aggregation" name="productUnitGroup">
+        	<displayName>Product Unit Group</displayName>
+        	<description><![CDATA[The unit group of the product]]></description>
+        	<documentName>ProductUnitGroup</documentName>
+        </association>
     </attributes>
+    <conditions>
+        <condition name="hasCurrentGroup">
+            <expression><![CDATA[productUnitGroup != null]]></expression>
+        </condition>
+    </conditions>
 </document>

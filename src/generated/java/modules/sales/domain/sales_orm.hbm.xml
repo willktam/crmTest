@@ -11,7 +11,7 @@
 	<typedef name="TimeOnly" class="org.skyve.impl.domain.types.TimeOnlyUserType" />
 	<typedef name="Timestamp" class="org.skyve.impl.domain.types.TimestampUserType" />
 	<typedef name="Enum" class="org.skyve.impl.domain.types.EnumUserType" />
-	<class name="modules.sales.Lead.LeadExtension" table="STA_StaffList" entity-name="salesLead">
+	<class name="modules.sales.Lead.LeadExtension" table="SAL_Lead" entity-name="salesLead">
 		<id name="bizId" length="36" />
 		<version name="bizVersion" unsaved-value="null" />
 		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
@@ -20,11 +20,39 @@
 		<property name="bizFlagComment" length="1024" />
 		<property name="bizDataGroupId" length="36" />
 		<property name="bizUserId" length="36" not-null="true" />
-		<many-to-one name="contactDetails" entity-name="customersContactDetail" column="contactDetails_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_STA_StaffList_contactDetails" />
+		<many-to-one name="contactDetails" entity-name="customersContactDetail" column="contactDetails_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Lead_contactDetails" />
+		<property name="name" length="100" />
+		<property name="website" length="300" />
+		<property name="street" length="200" />
+		<property name="city" length="100" />
+		<property name="state" length="100" />
+		<property name="postCode" length="10" />
+		<property name="country" length="100" />
+		<property name="companyLocation" />
 		<filter name="salesLeadNoneFilter" condition="1=0"/>
 		<filter name="salesLeadCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="salesLeadDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
 		<filter name="salesLeadUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.sales.domain.Opportunity" table="SAL_Opportunity" entity-name="salesOpportunity">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" not-null="true" />
+		<property name="bizCustomer" length="50" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" not-null="true" />
+		<property name="topic" length="200" />
+		<many-to-one name="contact" entity-name="customersContactDetail" column="contact_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Opportunity_contact" />
+		<many-to-one name="account" entity-name="customersAccount" column="account_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Opportunity_account" />
+		<property name="description" type="text" />
+		<many-to-one name="product" entity-name="productsProductInfo" column="product_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Opportunity_product" />
+		<filter name="salesOpportunityNoneFilter" condition="1=0"/>
+		<filter name="salesOpportunityCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="salesOpportunityDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="salesOpportunityUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
 	<filter-def name="salesLeadNoneFilter" />
@@ -35,6 +63,16 @@
 		<filter-param name="dataGroupIdParam" type="string"/>
 	</filter-def>
 	<filter-def name="salesLeadUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="salesOpportunityNoneFilter" />
+	<filter-def name="salesOpportunityCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="salesOpportunityDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="salesOpportunityUserIdFilter">
 		<filter-param name="userIdParam" type="string"/>
 	</filter-def>
 </hibernate-mapping>
