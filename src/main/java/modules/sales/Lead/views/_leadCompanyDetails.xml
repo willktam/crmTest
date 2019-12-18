@@ -39,8 +39,8 @@
         	</item>
         </row>
         <row>
-        	<item showLabel="false" rowspan="100" colspan="100">
-        		<geometryMap binding="companyLocation" />
+        	<item showLabel="false" colspan="2">
+        		<geometryMap binding="companyLocation" pixelHeight="300" pixelWidth="300"/>
         	</item>
         </row>
     </form>

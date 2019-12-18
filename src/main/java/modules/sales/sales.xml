@@ -37,7 +37,7 @@
             <role name="Staff"/>
             <role name="leadManager" />
         </list>
-        <map name="Leads Map" document="Lead" geometryBinding="companyLocation">
+        <map name="Leads Map" document="Lead" geometryBinding="companyLocation" >
         	<role name="Staff"/>
         	<role name="leadManager"/>
         </map>
@@ -56,6 +56,7 @@
     			<column binding="website" />
     			<column binding="street" />
     			<column binding="city" />
+    			<column binding="companyLocation" hidden="true"/>
     		</columns>
     	</query>
     	<query documentName="Opportunity" name="qOpportunity">
@@ -67,6 +68,7 @@
     			<column binding="account.accountName" displayName="Account Name" />
     			<column binding="product.name" displayName="Product Name"/>
     			<column binding="description" />
+    			
     		</columns>
     	</query>
     </queries>

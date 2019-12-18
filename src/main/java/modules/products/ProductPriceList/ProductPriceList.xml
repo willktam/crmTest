@@ -6,7 +6,7 @@
     <iconStyleClass>fa fa-dollar</iconStyleClass>
     <bizKey expression="{name}"/>
     <attributes>
-    	<!-- Unit Details -->
+    	<!-- Price List Details -->
         <text required="true" name="name">
             <displayName>Price List Name</displayName>
             <description><![CDATA[The price list name]]></description>

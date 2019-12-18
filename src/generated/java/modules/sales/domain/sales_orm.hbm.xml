@@ -49,6 +49,12 @@
 		<many-to-one name="account" entity-name="customersAccount" column="account_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Opportunity_account" />
 		<property name="description" type="text" />
 		<many-to-one name="product" entity-name="productsProductInfo" column="product_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Opportunity_product" />
+		<many-to-one name="priceList" entity-name="productsProductPriceList" column="priceList_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Opportunity_priceList" />
+		<property name="amount" />
+		<property name="bulkDiscount" />
+		<property name="manualDiscount" />
+		<property name="tax" />
+		<property name="total" />
 		<filter name="salesOpportunityNoneFilter" condition="1=0"/>
 		<filter name="salesOpportunityCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="salesOpportunityDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>

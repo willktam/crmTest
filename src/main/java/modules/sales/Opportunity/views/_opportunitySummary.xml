@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_opportunitySummary" title="Opportunity Summary" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<form border="true">
+		<column percentageWidth="30" responsiveWidth="4"/>
+		<column/>
+	        <row>
+	            <item>
+	                <default binding="topic"/>
+	            </item>
+	        </row>
+	        <row>
+	            <item>
+	                <default binding="contact"/>
+	            </item>
+	        </row>
+	        <row>
+	            <item>
+	                <default binding="account"/>
+	            </item>
+	        </row>
+	        <row>
+	            <item>
+	                <default binding="description"/>
+	            </item>
+	        </row>
+	</form>
+</view>

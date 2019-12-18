@@ -35,7 +35,44 @@
         	<description><![CDATA[The product of the opportunity]]></description>
             <documentName>ProductInfo</documentName>
         </association>
+        
+        
+        <!-- Product Pricing -->
+        <association required="true" type="aggregation" name="priceList">
+        	<displayName>Product Price List</displayName>
+        	<description><![CDATA[The price list to use for the selected product]]></description>
+        	<documentName>ProductPriceList</documentName>
+        </association>
+        
+        <longInteger name="amount">
+        	<displayName>Amount</displayName>
+        	<description><![CDATA[The amount of product for this opportunity]]></description>
+        </longInteger>
+        <integer name="bulkDiscount">
+        	<displayName>Bulk Discount</displayName>
+        	<description><![CDATA[The bulk discount for the inputted amount]]></description>
+        </integer>
+        <integer name="manualDiscount">
+        	<displayName>Manual Discount</displayName>
+        	<description><![CDATA[The amount of manual discount to be applied]]></description>
+        </integer>
+        <integer name="tax">
+        	<displayName>Tax</displayName>
+        	<description><![CDATA[The amount of tax for this amount]]></description>
+        </integer>
+        <longInteger name="total">
+        	<displayName>Provisional Total</displayName>
+        	<description><![CDATA[The provisional total for this opportunity]]></description>
+        </longInteger>
+        
     </attributes>
-    
+    <conditions>
+    	<condition name="productSelected">
+    		<expression><![CDATA[product != null]]></expression>
+    	</condition>
+    	<condition name="priceListSelected">
+    		<expression><![CDATA[priceList != null]]></expression>
+    	</condition>
+    </conditions>
     
 </document>
