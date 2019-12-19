@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.skyve.org/xml/document" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Quote" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd">
+    <persistent name="SAL_Quote"/>
+    <singularAlias>Quote</singularAlias>
+    <pluralAlias>Quotes</pluralAlias>
+    <iconStyleClass>fa fa-files-o</iconStyleClass>
+    <bizKey expression="Quote - {name}"/>
+    <attributes>
+    	<!-- Summary -->
+        <text required="true" name="name">
+        	<displayName>Name</displayName>
+        	<description><![CDATA[The name of the quote]]></description>
+        	<length>200</length>
+        </text>
+        <id required="true" name="quoteId">
+        	<displayName>Quote ID</displayName>
+        	<description><![CDATA[The id number of the quote]]></description>
+        </id>
+        
+        <association required="true" type="aggregation" name="opportunity">
+        	<displayName>Opportunity</displayName>
+        	<description><![CDATA[The opportunity of this quote]]></description>
+            <documentName>Opportunity</documentName>
+        </association>
+        
+        <date name="expireDate">
+        	<displayName>Quote Expire Date</displayName>
+        	<description><![CDATA[The date the quote expires]]></description>
+        </date>
+        
+        <text name="status">
+        	<displayName>Quote Status</displayName>
+        	<description><![CDATA[The status of the quote]]></description>
+        	<length>100</length>
+        </text>
+        <text name="statusReason">
+        	<displayName>Status Reason</displayName>
+        	<description><![CDATA[The reason for the current status of the quote]]></description>
+        	<length>200</length>
+        </text>
+        
+        <memo name="description">
+        	<displayName>Description</displayName>
+        	<description><![CDATA[A description of the quote]]></description>
+        </memo>
+        
+        
+        
+        <!-- Shipping Details -->
+        <text name="paymentTerms">
+        	<displayName>Payment Terms</displayName>
+        	<description><![CDATA[The payment terms of the quote]]></description>
+        	<length>200</length>
+        </text>
+        
+    </attributes>
+    
+    <conditions>
+    	<condition name="opportunitySelected">
+    		<expression><![CDATA[opportunity != null]]></expression>
+    	</condition>
+    </conditions>
+    
+</document>

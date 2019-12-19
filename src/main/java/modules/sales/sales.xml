@@ -10,13 +10,15 @@
         <document ref="ProductInfo" moduleRef="products"/>
         <document ref="ProductPriceList" moduleRef="products"/>
         <document ref="ProductUnitGroup" moduleRef="products"/>
+        <document ref="Quote"/>
     </documents>
     <roles>
-        <role name="Staff">
+        <role name="staff">
             <description><![CDATA[Staff Member - A staff member who can work on jobs]]></description>
             <privileges>
                 <document name="Lead" permission="CRUDU"/>
                 <document permission="CRUDU" name="Opportunity" />
+                <document permission="CRUDU" name="Quote"></document>
             </privileges>
         </role>
         <role name="leadManager">
@@ -31,19 +33,29 @@
         		<document permission="CRUDC" name="Opportunity" />
         	</privileges>
         </role>
+        <role name="quoteManager">
+        	<description><![CDATA[Quote Manager - Who can manage all quotes]]></description>
+        	<privileges>
+        		<document permission="CRUDC" name="Quote" />
+        	</privileges>
+        </role>
     </roles>
     <menu>
         <list document="Lead" name="Leads">
-            <role name="Staff"/>
+            <role name="staff"/>
             <role name="leadManager" />
         </list>
         <map name="Leads Map" document="Lead" geometryBinding="companyLocation" >
-        	<role name="Staff"/>
+        	<role name="staff"/>
         	<role name="leadManager"/>
         </map>
         <list document="Opportunity" name="Opportunities">
         	<role name="opportunityManager"/>
-        	<role name="Staff"/>
+        	<role name="staff"/>
+        </list>
+        <list document="Quote" name="Quotes">
+        	<role name="staff"/>
+			
         </list>
     </menu>
     <queries>
@@ -68,7 +80,6 @@
     			<column binding="account.accountName" displayName="Account Name" />
     			<column binding="product.name" displayName="Product Name"/>
     			<column binding="description" />
-    			
     		</columns>
     	</query>
     </queries>

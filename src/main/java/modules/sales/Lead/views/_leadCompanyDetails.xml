@@ -39,6 +39,9 @@
         	</item>
         </row>
         <row>
+        	<item>
+        		<spacer />
+        	</item>
         	<item showLabel="false" colspan="2">
         		<geometryMap binding="companyLocation" pixelHeight="300" pixelWidth="300"/>
         	</item>

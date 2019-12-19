@@ -66,6 +66,7 @@
         </longInteger>
         
     </attributes>
+    
     <conditions>
     	<condition name="productSelected">
     		<expression><![CDATA[product != null]]></expression>
