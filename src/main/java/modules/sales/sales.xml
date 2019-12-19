@@ -5,15 +5,15 @@
     <documents>
         <document ref="Lead" defaultQueryName="qLead"/>
         <document ref="Opportunity" defaultQueryName="qOpportunity"/>
+        <document ref="Quote" defaultQueryName="qQuote"/>
         <document ref="ContactDetail" moduleRef="customers"/>
         <document ref="Account" moduleRef="customers"/>
         <document ref="ProductInfo" moduleRef="products"/>
         <document ref="ProductPriceList" moduleRef="products"/>
         <document ref="ProductUnitGroup" moduleRef="products"/>
-        <document ref="Quote"/>
-    </documents>
+	</documents>
     <roles>
-        <role name="staff">
+        <role name="Staff">
             <description><![CDATA[Staff Member - A staff member who can work on jobs]]></description>
             <privileges>
                 <document name="Lead" permission="CRUDU"/>
@@ -21,19 +21,19 @@
                 <document permission="CRUDU" name="Quote"></document>
             </privileges>
         </role>
-        <role name="leadManager">
+        <role name="LeadManager">
             <description><![CDATA[Lead Manager - Who can manage all leads]]></description>
             <privileges>
                 <document name="Lead" permission="CRUDC"/>
             </privileges>
         </role>
-        <role name="opportunityManager">
+        <role name="OpportunityManager">
         	<description><![CDATA[Opportunity Manager - Who can manage all opportunities]]></description>
         	<privileges>
         		<document permission="CRUDC" name="Opportunity" />
         	</privileges>
         </role>
-        <role name="quoteManager">
+        <role name="QuoteManager">
         	<description><![CDATA[Quote Manager - Who can manage all quotes]]></description>
         	<privileges>
         		<document permission="CRUDC" name="Quote" />
@@ -42,20 +42,20 @@
     </roles>
     <menu>
         <list document="Lead" name="Leads">
-            <role name="staff"/>
-            <role name="leadManager" />
+            <role name="Staff"/>
+            <role name="LeadManager" />
         </list>
         <map name="Leads Map" document="Lead" geometryBinding="companyLocation" >
-        	<role name="staff"/>
-        	<role name="leadManager"/>
+        	<role name="Staff"/>
+        	<role name="LeadManager"/>
         </map>
         <list document="Opportunity" name="Opportunities">
-        	<role name="opportunityManager"/>
-        	<role name="staff"/>
+        	<role name="OpportunityManager"/>
+        	<role name="Staff"/>
         </list>
         <list document="Quote" name="Quotes">
-        	<role name="staff"/>
-			
+        	<role name="Staff"/>
+			<role name="QuoteManager"/>
         </list>
     </menu>
     <queries>
@@ -80,6 +80,16 @@
     			<column binding="account.accountName" displayName="Account Name" />
     			<column binding="product.name" displayName="Product Name"/>
     			<column binding="description" />
+    		</columns>
+    	</query>
+    	<query documentName="Quote" name="qQuote" >
+    		<description><![CDATA[All Quotes]]></description>
+    		<columns>
+    			<column binding="name" />
+    			<column binding="quoteId" />
+    			<column binding="opportunity" />
+    			<column binding="expireDate" />
+    			<column binding="status" />
     		</columns>
     	</query>
     </queries>

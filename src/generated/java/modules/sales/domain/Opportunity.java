@@ -1,6 +1,9 @@
 package modules.sales.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
@@ -10,11 +13,14 @@ import modules.products.domain.ProductInfo;
 import modules.products.domain.ProductPriceList;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
+import org.skyve.domain.types.Enumeration;
 import org.skyve.impl.domain.AbstractPersistentBean;
+import org.skyve.metadata.model.document.Bizlet.DomainValue;
 
 /**
  * Opportunity
  * 
+ * @depend - - - PricingType
  * @navhas n product 1 ProductInfo
  * @navhas n contact 1 ContactDetail
  * @navhas n account 1 Account
@@ -48,7 +54,9 @@ public class Opportunity extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String priceListPropertyName = "priceList";
 	/** @hidden */
-	public static final String amountPropertyName = "amount";
+	public static final String pricingTypePropertyName = "pricingType";
+	/** @hidden */
+	public static final String quantityPropertyName = "quantity";
 	/** @hidden */
 	public static final String bulkDiscountPropertyName = "bulkDiscount";
 	/** @hidden */
@@ -57,6 +65,85 @@ public class Opportunity extends AbstractPersistentBean {
 	public static final String taxPropertyName = "tax";
 	/** @hidden */
 	public static final String totalPropertyName = "total";
+
+	/**
+	 * Pricing Type
+	 * <br/>
+	 * The pricing type to use for the selected product
+	 **/
+	@XmlEnum
+	public static enum PricingType implements Enumeration {
+		retail("Retail", "Retail"),
+		bulk("Bulk", "Bulk");
+
+		private String code;
+		private String description;
+
+		/** @hidden */
+		private DomainValue domainValue;
+
+		/** @hidden */
+		private static List<DomainValue> domainValues;
+
+		private PricingType(String code, String description) {
+			this.code = code;
+			this.description = description;
+			this.domainValue = new DomainValue(code, description);
+		}
+
+		@Override
+		public String toCode() {
+			return code;
+		}
+
+		@Override
+		public String toDescription() {
+			return description;
+		}
+
+		@Override
+		public DomainValue toDomainValue() {
+			return domainValue;
+		}
+
+		public static PricingType fromCode(String code) {
+			PricingType result = null;
+
+			for (PricingType value : values()) {
+				if (value.code.equals(code)) {
+					result = value;
+					break;
+				}
+			}
+
+			return result;
+		}
+
+		public static PricingType fromDescription(String description) {
+			PricingType result = null;
+
+			for (PricingType value : values()) {
+				if (value.description.equals(description)) {
+					result = value;
+					break;
+				}
+			}
+
+			return result;
+		}
+
+		public static List<DomainValue> toDomainValues() {
+			if (domainValues == null) {
+				PricingType[] values = values();
+				domainValues = new ArrayList<>(values.length);
+				for (PricingType value : values) {
+					domainValues.add(value.domainValue);
+				}
+			}
+
+			return domainValues;
+		}
+	}
 
 	/**
 	 * Topic
@@ -93,11 +180,17 @@ public class Opportunity extends AbstractPersistentBean {
 	 **/
 	private ProductPriceList priceList = null;
 	/**
-	 * Amount
+	 * Pricing Type
 	 * <br/>
-	 * The amount of product for this opportunity
+	 * The pricing type to use for the selected product
 	 **/
-	private Long amount;
+	private PricingType pricingType;
+	/**
+	 * Quantity
+	 * <br/>
+	 * The quantity of product for this opportunity
+	 **/
+	private Long quantity;
 	/**
 	 * Bulk Discount
 	 * <br/>
@@ -275,21 +368,39 @@ public class Opportunity extends AbstractPersistentBean {
 	}
 
 	/**
-	 * {@link #amount} accessor.
+	 * {@link #pricingType} accessor.
 	 * @return	The value.
 	 **/
-	public Long getAmount() {
-		return amount;
+	public PricingType getPricingType() {
+		return pricingType;
 	}
 
 	/**
-	 * {@link #amount} mutator.
-	 * @param amount	The new value.
+	 * {@link #pricingType} mutator.
+	 * @param pricingType	The new value.
 	 **/
 	@XmlElement
-	public void setAmount(Long amount) {
-		preset(amountPropertyName, amount);
-		this.amount = amount;
+	public void setPricingType(PricingType pricingType) {
+		preset(pricingTypePropertyName, pricingType);
+		this.pricingType = pricingType;
+	}
+
+	/**
+	 * {@link #quantity} accessor.
+	 * @return	The value.
+	 **/
+	public Long getQuantity() {
+		return quantity;
+	}
+
+	/**
+	 * {@link #quantity} mutator.
+	 * @param quantity	The new value.
+	 **/
+	@XmlElement
+	public void setQuantity(Long quantity) {
+		preset(quantityPropertyName, quantity);
+		this.quantity = quantity;
 	}
 
 	/**

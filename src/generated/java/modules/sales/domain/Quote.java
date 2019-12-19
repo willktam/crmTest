@@ -48,9 +48,33 @@ public class Quote extends AbstractPersistentBean {
 	public static final String descriptionPropertyName = "description";
 	/** @hidden */
 	public static final String paymentTermsPropertyName = "paymentTerms";
+	/** @hidden */
+	public static final String freightTermsPropertyName = "freightTerms";
+	/** @hidden */
+	public static final String streetBillPropertyName = "streetBill";
+	/** @hidden */
+	public static final String cityBillPropertyName = "cityBill";
+	/** @hidden */
+	public static final String stateBillPropertyName = "stateBill";
+	/** @hidden */
+	public static final String postCodeBillPropertyName = "postCodeBill";
+	/** @hidden */
+	public static final String countryBillPropertyName = "countryBill";
+	/** @hidden */
+	public static final String shippingMethodPropertyName = "shippingMethod";
+	/** @hidden */
+	public static final String streetShipPropertyName = "streetShip";
+	/** @hidden */
+	public static final String cityShipPropertyName = "cityShip";
+	/** @hidden */
+	public static final String stateShipPropertyName = "stateShip";
+	/** @hidden */
+	public static final String postCodeShipPropertyName = "postCodeShip";
+	/** @hidden */
+	public static final String countryShipPropertyName = "countryShip";
 
 	/**
-	 * Name
+	 * Quote Name
 	 * <br/>
 	 * The name of the quote
 	 **/
@@ -97,6 +121,78 @@ public class Quote extends AbstractPersistentBean {
 	 * The payment terms of the quote
 	 **/
 	private String paymentTerms;
+	/**
+	 * Freight Terms
+	 * <br/>
+	 * The freight terms of the quote
+	 **/
+	private String freightTerms;
+	/**
+	 * Bill To Street
+	 * <br/>
+	 * The quote's billing street and number
+	 **/
+	private String streetBill;
+	/**
+	 * Bill To City
+	 * <br/>
+	 * The quote's billing city
+	 **/
+	private String cityBill;
+	/**
+	 * Bill To State or Province
+	 * <br/>
+	 * The quote's billing state or province
+	 **/
+	private String stateBill;
+	/**
+	 * Bill To ZIP or Postal Code
+	 * <br/>
+	 * The quote's billing ZIP or postal code
+	 **/
+	private String postCodeBill;
+	/**
+	 * Bill To Country or Region
+	 * <br/>
+	 * The quote's billing country or region
+	 **/
+	private String countryBill;
+	/**
+	 * Shipping Method
+	 * <br/>
+	 * The shipping method for this quote
+	 **/
+	private String shippingMethod;
+	/**
+	 * Ship To Street
+	 * <br/>
+	 * The quote's shipping street and number
+	 **/
+	private String streetShip;
+	/**
+	 * Ship To City
+	 * <br/>
+	 * The quote's shipping city
+	 **/
+	private String cityShip;
+	/**
+	 * Ship To State or Province
+	 * <br/>
+	 * The quote's shipping state or province
+	 **/
+	private String stateShip;
+	/**
+	 * Ship To ZIP or Postal Code
+	 * <br/>
+	 * The quote's shipping ZIP or postal code
+	 **/
+	private String postCodeShip;
+	/**
+	 * Ship To Country or Region
+	 * <br/>
+	 * The quote's shipping country or region
+	 **/
+	private String countryShip;
 
 	@Override
 	@XmlTransient
@@ -285,6 +381,222 @@ public class Quote extends AbstractPersistentBean {
 	public void setPaymentTerms(String paymentTerms) {
 		preset(paymentTermsPropertyName, paymentTerms);
 		this.paymentTerms = paymentTerms;
+	}
+
+	/**
+	 * {@link #freightTerms} accessor.
+	 * @return	The value.
+	 **/
+	public String getFreightTerms() {
+		return freightTerms;
+	}
+
+	/**
+	 * {@link #freightTerms} mutator.
+	 * @param freightTerms	The new value.
+	 **/
+	@XmlElement
+	public void setFreightTerms(String freightTerms) {
+		preset(freightTermsPropertyName, freightTerms);
+		this.freightTerms = freightTerms;
+	}
+
+	/**
+	 * {@link #streetBill} accessor.
+	 * @return	The value.
+	 **/
+	public String getStreetBill() {
+		return streetBill;
+	}
+
+	/**
+	 * {@link #streetBill} mutator.
+	 * @param streetBill	The new value.
+	 **/
+	@XmlElement
+	public void setStreetBill(String streetBill) {
+		preset(streetBillPropertyName, streetBill);
+		this.streetBill = streetBill;
+	}
+
+	/**
+	 * {@link #cityBill} accessor.
+	 * @return	The value.
+	 **/
+	public String getCityBill() {
+		return cityBill;
+	}
+
+	/**
+	 * {@link #cityBill} mutator.
+	 * @param cityBill	The new value.
+	 **/
+	@XmlElement
+	public void setCityBill(String cityBill) {
+		preset(cityBillPropertyName, cityBill);
+		this.cityBill = cityBill;
+	}
+
+	/**
+	 * {@link #stateBill} accessor.
+	 * @return	The value.
+	 **/
+	public String getStateBill() {
+		return stateBill;
+	}
+
+	/**
+	 * {@link #stateBill} mutator.
+	 * @param stateBill	The new value.
+	 **/
+	@XmlElement
+	public void setStateBill(String stateBill) {
+		preset(stateBillPropertyName, stateBill);
+		this.stateBill = stateBill;
+	}
+
+	/**
+	 * {@link #postCodeBill} accessor.
+	 * @return	The value.
+	 **/
+	public String getPostCodeBill() {
+		return postCodeBill;
+	}
+
+	/**
+	 * {@link #postCodeBill} mutator.
+	 * @param postCodeBill	The new value.
+	 **/
+	@XmlElement
+	public void setPostCodeBill(String postCodeBill) {
+		preset(postCodeBillPropertyName, postCodeBill);
+		this.postCodeBill = postCodeBill;
+	}
+
+	/**
+	 * {@link #countryBill} accessor.
+	 * @return	The value.
+	 **/
+	public String getCountryBill() {
+		return countryBill;
+	}
+
+	/**
+	 * {@link #countryBill} mutator.
+	 * @param countryBill	The new value.
+	 **/
+	@XmlElement
+	public void setCountryBill(String countryBill) {
+		preset(countryBillPropertyName, countryBill);
+		this.countryBill = countryBill;
+	}
+
+	/**
+	 * {@link #shippingMethod} accessor.
+	 * @return	The value.
+	 **/
+	public String getShippingMethod() {
+		return shippingMethod;
+	}
+
+	/**
+	 * {@link #shippingMethod} mutator.
+	 * @param shippingMethod	The new value.
+	 **/
+	@XmlElement
+	public void setShippingMethod(String shippingMethod) {
+		preset(shippingMethodPropertyName, shippingMethod);
+		this.shippingMethod = shippingMethod;
+	}
+
+	/**
+	 * {@link #streetShip} accessor.
+	 * @return	The value.
+	 **/
+	public String getStreetShip() {
+		return streetShip;
+	}
+
+	/**
+	 * {@link #streetShip} mutator.
+	 * @param streetShip	The new value.
+	 **/
+	@XmlElement
+	public void setStreetShip(String streetShip) {
+		preset(streetShipPropertyName, streetShip);
+		this.streetShip = streetShip;
+	}
+
+	/**
+	 * {@link #cityShip} accessor.
+	 * @return	The value.
+	 **/
+	public String getCityShip() {
+		return cityShip;
+	}
+
+	/**
+	 * {@link #cityShip} mutator.
+	 * @param cityShip	The new value.
+	 **/
+	@XmlElement
+	public void setCityShip(String cityShip) {
+		preset(cityShipPropertyName, cityShip);
+		this.cityShip = cityShip;
+	}
+
+	/**
+	 * {@link #stateShip} accessor.
+	 * @return	The value.
+	 **/
+	public String getStateShip() {
+		return stateShip;
+	}
+
+	/**
+	 * {@link #stateShip} mutator.
+	 * @param stateShip	The new value.
+	 **/
+	@XmlElement
+	public void setStateShip(String stateShip) {
+		preset(stateShipPropertyName, stateShip);
+		this.stateShip = stateShip;
+	}
+
+	/**
+	 * {@link #postCodeShip} accessor.
+	 * @return	The value.
+	 **/
+	public String getPostCodeShip() {
+		return postCodeShip;
+	}
+
+	/**
+	 * {@link #postCodeShip} mutator.
+	 * @param postCodeShip	The new value.
+	 **/
+	@XmlElement
+	public void setPostCodeShip(String postCodeShip) {
+		preset(postCodeShipPropertyName, postCodeShip);
+		this.postCodeShip = postCodeShip;
+	}
+
+	/**
+	 * {@link #countryShip} accessor.
+	 * @return	The value.
+	 **/
+	public String getCountryShip() {
+		return countryShip;
+	}
+
+	/**
+	 * {@link #countryShip} mutator.
+	 * @param countryShip	The new value.
+	 **/
+	@XmlElement
+	public void setCountryShip(String countryShip) {
+		preset(countryShipPropertyName, countryShip);
+		this.countryShip = countryShip;
 	}
 
 	/**

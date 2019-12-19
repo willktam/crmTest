@@ -8,7 +8,7 @@
     <attributes>
     	<!-- Product Details -->
         <text required="true" name="name">
-            <displayName>Name</displayName>
+            <displayName>Product Name</displayName>
             <description><![CDATA[Product name]]></description>
             <length>100</length>
         </text>

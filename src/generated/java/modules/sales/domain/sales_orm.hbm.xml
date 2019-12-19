@@ -50,7 +50,12 @@
 		<property name="description" type="text" />
 		<many-to-one name="product" entity-name="productsProductInfo" column="product_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Opportunity_product" />
 		<many-to-one name="priceList" entity-name="productsProductPriceList" column="priceList_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Opportunity_priceList" />
-		<property name="amount" />
+		<property name="pricingType" length="6">
+			<type name="Enum">
+				<param name="enumClass">modules.sales.domain.Opportunity$PricingType</param>
+			</type>
+		</property>
+		<property name="quantity" />
 		<property name="bulkDiscount" />
 		<property name="manualDiscount" />
 		<property name="tax" />
@@ -78,6 +83,18 @@
 		<property name="statusReason" length="200" />
 		<property name="description" type="text" />
 		<property name="paymentTerms" length="200" />
+		<property name="freightTerms" length="200" />
+		<property name="streetBill" length="200" />
+		<property name="cityBill" length="100" />
+		<property name="stateBill" length="100" />
+		<property name="postCodeBill" length="10" />
+		<property name="countryBill" length="100" />
+		<property name="shippingMethod" length="200" />
+		<property name="streetShip" length="200" />
+		<property name="cityShip" length="100" />
+		<property name="stateShip" length="100" />
+		<property name="postCodeShip" length="10" />
+		<property name="countryShip" length="100" />
 		<filter name="salesQuoteNoneFilter" condition="1=0"/>
 		<filter name="salesQuoteCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="salesQuoteDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>

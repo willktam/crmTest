@@ -23,6 +23,21 @@
         	</item>
         </row>
         <row>
+        	<item>
+        		<textField binding="opportunity.account.accountName" visible="opportunitySelected" editable="false" />
+        	</item>
+        </row>
+        <row>
+        	<item >
+        		<textField binding="opportunity.product.name" visible="opportunitySelected" editable="false" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="opportunity.priceList.name" visible="opportunitySelected" editable="false" />
+        	</item>
+        </row>
+        <row>
             <item>
                 <default binding="expireDate"/>
             </item>

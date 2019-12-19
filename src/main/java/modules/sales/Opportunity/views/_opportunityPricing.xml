@@ -12,11 +12,6 @@
 	        		</lookupDescription>
 	        	</item>
 	        </row>
-	        <!--<row>
-	        	<item>
-	        		<textField binding="product.productUnitGroup.productPriceList.name" visible="priceListSelected" editable="false"/>
-	        	</item>
-	        </row> -->
 	        <row>
 	        	<item>
 	        		<textField binding="priceList.name" visible="priceListSelected" editable="false" />
@@ -34,12 +29,18 @@
 	        </row>
 	        <row>
 	        	<item>
-	        		<textField binding="priceList.currency" visible="priceListSelected" editable="false" />
+	        		<radio binding="pricingType" vertical="false" visible="priceListSelected" />
 	        	</item>
 	        </row>
 	        <row>
+	        	<item>
+	        		<textField binding="priceList.currency" visible="priceListSelected" editable="false" />
+	        	</item>
+	        </row>
+	        
+	        <row>
 	            <item>
-	                <default binding="amount" />
+	                <default binding="quantity" />
 	            </item>
 	        </row>
 	        <row>

@@ -8,5 +8,65 @@
         		<default binding="paymentTerms" />
         	</item>
         </row>
+        <row>
+        	<item>
+        		<default binding="freightTerms" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<default binding="streetBill" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<default binding="cityBill" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<default binding="stateBill" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<default binding="postCodeBill" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<default binding="countryBill" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<default binding="shippingMethod" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<default binding="streetShip" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<default binding="cityShip" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<default binding="stateShip" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<default binding="postCodeShip" />
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<default binding="countryShip" />
+        	</item>
+        </row>
     </form>
 </view>

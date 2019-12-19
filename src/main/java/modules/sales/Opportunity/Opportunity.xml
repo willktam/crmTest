@@ -11,19 +11,16 @@
         	<displayName>Topic</displayName>
         	<length>200</length>
         </text>
-        
         <association required="true" type="aggregation" name="contact">
         	<displayName>Contact</displayName>
         	<description><![CDATA[The primary contact of the opportunity]]></description>
             <documentName>ContactDetail</documentName>
-        </association>
-        
+        </association>        
         <association required="true" type="aggregation" name="account">
         	<displayName>Account</displayName>
         	<description><![CDATA[The account of the opportunity]]></description>
             <documentName>Account</documentName>
-        </association>
-        
+        </association>        
         <memo name="description">
         	<displayName>Description</displayName>
         	<description><![CDATA[A description of the opportunity]]></description>
@@ -43,10 +40,17 @@
         	<description><![CDATA[The price list to use for the selected product]]></description>
         	<documentName>ProductPriceList</documentName>
         </association>
-        
-        <longInteger name="amount">
-        	<displayName>Amount</displayName>
-        	<description><![CDATA[The amount of product for this opportunity]]></description>
+        <enum required="true" name="pricingType">
+        	<displayName>Pricing Type</displayName>
+        	<description><![CDATA[The pricing type to use for the selected product]]></description>
+        	<values>
+        		<value code="Retail"/>
+        		<value code="Bulk"/>
+        	</values>
+        </enum>
+        <longInteger name="quantity">
+        	<displayName>Quantity</displayName>
+        	<description><![CDATA[The quantity of product for this opportunity]]></description>
         </longInteger>
         <integer name="bulkDiscount">
         	<displayName>Bulk Discount</displayName>
@@ -63,8 +67,7 @@
         <longInteger name="total">
         	<displayName>Provisional Total</displayName>
         	<description><![CDATA[The provisional total for this opportunity]]></description>
-        </longInteger>
-        
+        </longInteger>        
     </attributes>
     
     <conditions>

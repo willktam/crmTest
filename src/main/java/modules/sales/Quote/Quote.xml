@@ -8,7 +8,7 @@
     <attributes>
     	<!-- Summary -->
         <text required="true" name="name">
-        	<displayName>Name</displayName>
+        	<displayName>Quote Name</displayName>
         	<description><![CDATA[The name of the quote]]></description>
         	<length>200</length>
         </text>
@@ -51,6 +51,66 @@
         	<displayName>Payment Terms</displayName>
         	<description><![CDATA[The payment terms of the quote]]></description>
         	<length>200</length>
+        </text>
+        <text name="freightTerms">
+        	<displayName>Freight Terms</displayName>
+        	<description><![CDATA[The freight terms of the quote]]></description>
+        	<length>200</length>
+        </text>
+        <text name="streetBill">
+            <displayName>Bill To Street</displayName>
+            <description><![CDATA[The quote's billing street and number]]></description>
+            <length>200</length>
+        </text>
+        <text name="cityBill">
+            <displayName>Bill To City</displayName>
+            <description><![CDATA[The quote's billing city]]></description>
+            <length>100</length>
+        </text>
+        <text name="stateBill">
+            <displayName>Bill To State or Province</displayName>
+            <description><![CDATA[The quote's billing state or province]]></description>
+            <length>100</length>
+        </text>
+        <text name="postCodeBill">
+            <displayName>Bill To ZIP or Postal Code</displayName>
+            <description><![CDATA[The quote's billing ZIP or postal code]]></description>
+            <length>10</length>
+        </text>
+        <text name="countryBill">
+            <displayName>Bill To Country or Region</displayName>
+            <description><![CDATA[The quote's billing country or region]]></description>
+            <length>100</length>
+        </text>
+        <text name="shippingMethod">
+        	<displayName>Shipping Method</displayName>
+        	<description><![CDATA[The shipping method for this quote]]></description>
+        	<length>200</length>
+        </text>
+        <text name="streetShip">
+            <displayName>Ship To Street</displayName>
+            <description><![CDATA[The quote's shipping street and number]]></description>
+            <length>200</length>
+        </text>
+        <text name="cityShip">
+            <displayName>Ship To City</displayName>
+            <description><![CDATA[The quote's shipping city]]></description>
+            <length>100</length>
+        </text>
+        <text name="stateShip">
+            <displayName>Ship To State or Province</displayName>
+            <description><![CDATA[The quote's shipping state or province]]></description>
+            <length>100</length>
+        </text>
+        <text name="postCodeShip">
+            <displayName>Ship To ZIP or Postal Code</displayName>
+            <description><![CDATA[The quote's shipping ZIP or postal code]]></description>
+            <length>10</length>
+        </text>
+        <text name="countryShip">
+            <displayName>Ship To Country or Region</displayName>
+            <description><![CDATA[The quote's shipping country or region]]></description>
+            <length>100</length>
         </text>
         
     </attributes>

@@ -46,7 +46,7 @@ public class ProductInfo extends AbstractPersistentBean {
 	public static final String productUnitGroupPropertyName = "productUnitGroup";
 
 	/**
-	 * Name
+	 * Product Name
 	 * <br/>
 	 * Product name
 	 **/
