@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.skyve.org/xml/document" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Order" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd">
+    <persistent name="SAL_Order"/>
+    <singularAlias>Order</singularAlias>
+    <pluralAlias>Orders</pluralAlias>
+    <iconStyleClass>fa fa-file-text</iconStyleClass>
+    <bizKey expression="{orderId}"/>
+    <attributes>
+    	<!-- Summary -->
+        <id name="orderId">
+        	<displayName>Order ID</displayName>
+        	<description><![CDATA[The ID for this order]]></description>
+        </id> 
+        <text name="name">
+        	<displayName>Order Name</displayName>
+        	<description><![CDATA[The name of the order]]></description>
+        	<length>200</length>
+        </text>
+        <memo name="description">
+        	<displayName>Description</displayName>
+        	<description><![CDATA[A description of the order]]></description>
+        </memo>
+        
+        <!-- Shipping/Address Details -->
+        <date name="requested">
+        	<displayName>Requested Delivery Date</displayName>
+        	<description><![CDATA[The requested date of delivery for the order]]></description>
+        </date>
+        <date name="fulfilled">
+        	<displayName>Fulfillment Date</displayName>
+        	<description><![CDATA[The date the order is fulfilled]]></description>
+        </date>
+        
+                
+        
+        
+        <!-- Product Details -->
+        <association required="true" type="composition" name="product">
+        	<displayName>Product</displayName>
+        	<description><![CDATA[The product of the order]]></description>
+            <documentName>ProductInfo</documentName>
+        </association>
+        
+
+        
+        <!-- Product Pricing -->
+        <!-- Defined in opportunity/quote -->
+        
+
+        <!-- Sales Details -->
+        <association required="true" type="composition" name="account">
+        	<displayName>Account</displayName>
+        	<description><![CDATA[The account for the order]]></description>
+        	<documentName>Account</documentName>
+        </association>
+        <association required="true" type="composition" name="opportunity">
+        	<displayName>Opportunity</displayName>
+        	<description><![CDATA[The opportunity for the order]]></description>
+            <documentName>Opportunity</documentName>
+        </association>
+        <association required="true" type="composition" name="quote">
+        	<displayName>Quote</displayName>
+        	<description><![CDATA[The quote for the order]]></description>
+            <documentName>Quote</documentName>
+        </association>       
+        
+            
+    </attributes>
+    
+    <conditions>
+    	<condition name="opportunitySelected">
+    		<expression><![CDATA[opportunity != null]]></expression>
+    	</condition>
+		<condition name="quoteSelected">
+    		<expression><![CDATA[quote != null]]></expression>
+    	</condition>
+    </conditions>
+    
+</document>

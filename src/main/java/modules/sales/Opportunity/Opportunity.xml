@@ -11,12 +11,12 @@
         	<displayName>Topic</displayName>
         	<length>200</length>
         </text>
-        <association required="true" type="aggregation" name="contact">
+        <association required="true" type="composition" name="contact">
         	<displayName>Contact</displayName>
         	<description><![CDATA[The primary contact of the opportunity]]></description>
             <documentName>ContactDetail</documentName>
         </association>        
-        <association required="true" type="aggregation" name="account">
+        <association required="true" type="composition" name="account">
         	<displayName>Account</displayName>
         	<description><![CDATA[The account of the opportunity]]></description>
             <documentName>Account</documentName>
@@ -27,7 +27,7 @@
         </memo>
         
         <!-- Product Details -->
-        <association required="true" type="aggregation" name="product">
+        <association required="true" type="composition" name="product">
         	<displayName>Product</displayName>
         	<description><![CDATA[The product of the opportunity]]></description>
             <documentName>ProductInfo</documentName>
@@ -35,7 +35,7 @@
         
         
         <!-- Product Pricing -->
-        <association required="true" type="aggregation" name="priceList">
+        <association required="true" type="composition" name="priceList">
         	<displayName>Product Price List</displayName>
         	<description><![CDATA[The price list to use for the selected product]]></description>
         	<documentName>ProductPriceList</documentName>

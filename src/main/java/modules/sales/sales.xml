@@ -6,6 +6,7 @@
         <document ref="Lead" defaultQueryName="qLead"/>
         <document ref="Opportunity" defaultQueryName="qOpportunity"/>
         <document ref="Quote" defaultQueryName="qQuote"/>
+        <document ref="Order" defaultQueryName="qOrder"/>
         <document ref="ContactDetail" moduleRef="customers"/>
         <document ref="Account" moduleRef="customers"/>
         <document ref="ProductInfo" moduleRef="products"/>
@@ -39,6 +40,12 @@
         		<document permission="CRUDC" name="Quote" />
         	</privileges>
         </role>
+        <role name="OrderManager">
+        	<description><![CDATA[Order Manager - Who can manage all orders]]></description>
+        	<privileges>
+        		<document permission="CRUDC" name="Order" />
+        	</privileges>
+        </role>
     </roles>
     <menu>
         <list document="Lead" name="Leads">
@@ -56,6 +63,10 @@
         <list document="Quote" name="Quotes">
         	<role name="Staff"/>
 			<role name="QuoteManager"/>
+        </list>
+        <list document="Order" name="Orders">
+        	<role name="Staff"/>
+			<role name="OrderManager"/>
         </list>
     </menu>
     <queries>
@@ -90,6 +101,16 @@
     			<column binding="opportunity" />
     			<column binding="expireDate" />
     			<column binding="status" />
+    		</columns>
+    	</query>
+    	<query documentName="Order" name="qOrder">
+    		<description><![CDATA[All Orders]]></description>
+    		<columns>
+    			<column binding="orderId" />
+    			<column binding="name" />
+    			<column binding="product.name" />
+    			<column binding="opportunity.topic" displayName="Opportunity Topic" />
+    			<column binding="quote.name" />
     		</columns>
     	</query>
     </queries>

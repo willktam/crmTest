@@ -15,7 +15,7 @@ import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
 /**
  * Quote
  * 
- * @navhas n opportunity 1 Opportunity
+ * @navcomposed n opportunity 1 Opportunity
  * @stereotype "persistent"
  */
 @XmlType

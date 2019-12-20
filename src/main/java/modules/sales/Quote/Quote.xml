@@ -17,7 +17,7 @@
         	<description><![CDATA[The id number of the quote]]></description>
         </id>
         
-        <association required="true" type="aggregation" name="opportunity">
+        <association required="true" type="composition" name="opportunity">
         	<displayName>Opportunity</displayName>
         	<description><![CDATA[The opportunity of this quote]]></description>
             <documentName>Opportunity</documentName>

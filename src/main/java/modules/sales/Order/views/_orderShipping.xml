@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_orderShipping" title="Order Shipping" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<hbox border="true">
+		<vbox responsiveWidth="7" percentageWidth="70">
+			
+		    <form border="true" borderTitle="Shipping Details">
+		    	<column percentageWidth="30" responsiveWidth="4"/>
+		        <column/>
+		        <row>
+		        	<item>
+		        		<textField binding="requested" visible="quoteSelected"/>
+		        	</item>
+		        </row>
+		        <row>
+		        	<item>
+		        		<textField binding="fulfilled" visible="quoteSelected"/>
+		        	</item>
+		        </row>
+		    </form>
+		    <form border="true" borderTitle="Shipping Dates">
+		        <column percentageWidth="30" responsiveWidth="4"/>
+		        <column/>
+		        <row>
+		        	<item>
+		        		<textField binding="requested" visible="quoteSelected"/>
+		        	</item>
+		        </row>
+		        
+		    </form>
+		    <form border="true" borderTitle="Address Details">
+		    	<column percentageWidth="30" responsiveWidth="4"/>
+		        <column/>
+		        <row>
+		        	<item>
+		        		<textField binding="requested" visible="quoteSelected"/>
+		        	</item>
+		        </row>
+		    </form>
+		</vbox>	
+	</hbox>
+</view>
