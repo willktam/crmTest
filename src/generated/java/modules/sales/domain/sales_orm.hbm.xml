@@ -45,11 +45,11 @@
 		<property name="bizDataGroupId" length="36" />
 		<property name="bizUserId" length="36" not-null="true" />
 		<property name="topic" length="200" />
-		<many-to-one name="contact" entity-name="customersContactDetail" column="contact_id" unique="true" cascade="persist,save-update,refresh,delete-orphan,merge" unique-key="UK_contact" foreign-key="FK_SAL_Opportunity_contact" />
-		<many-to-one name="account" entity-name="customersAccount" column="account_id" unique="true" cascade="persist,save-update,refresh,delete-orphan,merge" unique-key="UK_account" foreign-key="FK_SAL_Opportunity_account" />
+		<many-to-one name="contact" entity-name="customersContactDetail" column="contact_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Opportunity_contact" />
+		<many-to-one name="account" entity-name="customersAccount" column="account_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Opportunity_account" />
 		<property name="description" type="text" />
-		<many-to-one name="product" entity-name="productsProductInfo" column="product_id" unique="true" cascade="persist,save-update,refresh,delete-orphan,merge" unique-key="UK_product" foreign-key="FK_SAL_Opportunity_product" />
-		<many-to-one name="priceList" entity-name="productsProductPriceList" column="priceList_id" unique="true" cascade="persist,save-update,refresh,delete-orphan,merge" unique-key="UK_priceList" foreign-key="FK_SAL_Opportunity_priceList" />
+		<many-to-one name="product" entity-name="productsProductInfo" column="product_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Opportunity_product" />
+		<many-to-one name="priceList" entity-name="productsProductPriceList" column="priceList_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Opportunity_priceList" />
 		<property name="pricingType" length="6">
 			<type name="Enum">
 				<param name="enumClass">modules.sales.domain.Opportunity$PricingType</param>
@@ -101,7 +101,7 @@
 		<property name="bizUserId" length="36" not-null="true" />
 		<property name="name" length="200" />
 		<property name="quoteId" length="36" />
-		<many-to-one name="opportunity" entity-name="salesOpportunity" column="opportunity_id" unique="true" cascade="persist,save-update,refresh,delete-orphan,merge" unique-key="UK_opportunity" foreign-key="FK_SAL_Quote_opportunity" />
+		<many-to-one name="opportunity" entity-name="salesOpportunity" column="opportunity_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Quote_opportunity" />
 		<property name="expireDate" type="DateOnly" />
 		<property name="status" length="100" />
 		<property name="statusReason" length="200" />

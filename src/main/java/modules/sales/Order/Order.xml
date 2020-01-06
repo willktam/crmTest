@@ -7,7 +7,7 @@
     <bizKey expression="{orderId}"/>
     <attributes>
     	<!-- Summary -->
-        <id name="orderId">
+        <id required="true" name="orderId">
         	<displayName>Order ID</displayName>
         	<description><![CDATA[The ID for this order]]></description>
         </id> 
@@ -35,7 +35,7 @@
         
         
         <!-- Product Details -->
-        <association required="true" type="composition" name="product">
+        <association required="false" type="composition" name="product">
         	<displayName>Product</displayName>
         	<description><![CDATA[The product of the order]]></description>
             <documentName>ProductInfo</documentName>

@@ -8,12 +8,17 @@
 		        <column/>
 		        <row>
 		        	<item>
-		        		<textField binding="requested" visible="quoteSelected"/>
+		        		<textField binding="quote.paymentTerms" visible="quoteSelected" />
 		        	</item>
 		        </row>
 		        <row>
 		        	<item>
-		        		<textField binding="fulfilled" visible="quoteSelected"/>
+		        		<textField binding="quote.shippingMethod" visible="quoteSelected" />
+		        	</item>
+		        </row>
+		        <row>
+		        	<item>
+		        		<textField binding="quote.freightTerms" visible="quoteSelected" />
 		        	</item>
 		        </row>
 		    </form>
@@ -25,16 +30,41 @@
 		        		<textField binding="requested" visible="quoteSelected"/>
 		        	</item>
 		        </row>
+		        <row>
+		        	<item>
+		        		<textField binding="fulfilled" visible="quoteSelected"/>
+		        	</item>
+		        </row>
 		        
 		    </form>
 		    <form border="true" borderTitle="Address Details">
 		    	<column percentageWidth="30" responsiveWidth="4"/>
 		        <column/>
-		        <row>
-		        	<item>
-		        		<textField binding="requested" visible="quoteSelected"/>
-		        	</item>
-		        </row>
+		        	<row>
+		        		<item>
+		        			<textField binding="quote.streetShip" visible="quoteSelected" />
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="quote.cityShip" visible="quoteSelected" />
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="quote.stateShip" visible="quoteSelected" />
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="quote.postCodeShip" visible="quoteSelected" />
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="quote.countryShip" visible="quoteSelected" />
+		        		</item>
+		        	</row>
 		    </form>
 		</vbox>	
 	</hbox>

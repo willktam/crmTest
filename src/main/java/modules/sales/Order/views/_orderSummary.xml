@@ -25,21 +25,35 @@
 		    <form border="true" borderTitle="Sales Details">
 		    	<column percentageWidth="30" responsiveWidth="4"/>
 		        <column/>
+		        
 		        <row>
 		            <item>
-		                <default binding="account"/>
-		            </item>
+	                	<lookupDescription binding="account" descriptionBinding="bizKey">
+	                		<onPickedHandlers>
+	                			<rerender clientValidation="false" />
+	                		</onPickedHandlers>
+	                	</lookupDescription>
+	            	</item>
 		        </row>
 		        <row>
 		            <item>
-		                <default binding="opportunity"/>
-		            </item>
+	                	<lookupDescription binding="opportunity" descriptionBinding="bizKey">
+	                		<onPickedHandlers>
+	                			<rerender clientValidation="false" />
+	                		</onPickedHandlers>
+	                	</lookupDescription>
+	            	</item>
 		        </row>
 		        <row>
 		            <item>
-		                <default binding="quote"/>
-		            </item>
+	                	<lookupDescription binding="quote" descriptionBinding="bizKey">
+	                		<onPickedHandlers>
+	                			<rerender clientValidation="false" />
+	                		</onPickedHandlers>
+	                	</lookupDescription>
+	            	</item>
 		        </row>
+		        
 		    </form>
 		</vbox>	
 	</hbox>

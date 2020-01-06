@@ -21,10 +21,10 @@ import org.skyve.metadata.model.document.Bizlet.DomainValue;
  * Opportunity
  * 
  * @depend - - - PricingType
- * @navcomposed n product 1 ProductInfo
- * @navcomposed n contact 1 ContactDetail
- * @navcomposed n account 1 Account
- * @navcomposed n priceList 1 ProductPriceList
+ * @navhas n product 1 ProductInfo
+ * @navhas n contact 1 ContactDetail
+ * @navhas n account 1 Account
+ * @navhas n priceList 1 ProductPriceList
  * @stereotype "persistent"
  */
 @XmlType

@@ -17,7 +17,7 @@ import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
 /**
  * Order
  * 
- * @navcomposed n product 1 ProductInfo
+ * @navcomposed n product 0..1 ProductInfo
  * @navcomposed n quote 1 Quote
  * @navcomposed n opportunity 1 Opportunity
  * @navcomposed n account 1 Account

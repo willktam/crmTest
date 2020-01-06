@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_orderPricing" title="Order Pricing" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<form border="true" borderTitle="Pricing Details">
+        <column percentageWidth="30" responsiveWidth="4"/>
+        <column/>
+	        <row>
+	        	<item>
+	        		<textField binding="opportunity.priceList.name" visible="opportunitySelected" editable="false" />
+	        	</item>
+	        </row>
+	        <row>
+	        	<item>
+	        		<textField binding="opportunity.priceList.retailPrice" visible="opportunitySelected" editable="false" />
+	        	</item>
+	        </row>
+	        <row>
+	        	<item>
+	        		<textField binding="opportunity.priceList.bulkPrice" visible="opportunitySelected" editable="false" />
+	        	</item>
+	        </row>
+	        <row>
+	        	<item>
+	        		<textField binding="opportunity.priceList.currency" visible="opportunitySelected" editable="false" />
+	        	</item>
+	        </row>
+	        
+	        <row>
+	            <item>
+	                <textField binding="opportunity.quantity" visible="opportunitySelected" editable="false" />
+	            </item>
+	        </row>
+	        <row>
+	        	<item>
+	        		 <textField binding="opportunity.total" visible="opportunitySelected" editable="false" />	
+	        	</item>
+	        </row>
+    </form>
+</view>
