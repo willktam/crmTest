@@ -6,6 +6,7 @@
     <iconStyleClass>fa fa-file-text</iconStyleClass>
     <bizKey expression="{orderId}"/>
     <attributes>
+    
     	<!-- Summary -->
         <id required="true" name="orderId">
         	<displayName>Order ID</displayName>
@@ -30,8 +31,6 @@
         	<displayName>Fulfillment Date</displayName>
         	<description><![CDATA[The date the order is fulfilled]]></description>
         </date>
-        
-                
         
         
         <!-- Product Details -->

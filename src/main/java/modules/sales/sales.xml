@@ -7,6 +7,7 @@
         <document ref="Opportunity" defaultQueryName="qOpportunity"/>
         <document ref="Quote" defaultQueryName="qQuote"/>
         <document ref="Order" defaultQueryName="qOrder"/>
+        <document ref="Invoice" defaultQueryName="qInvoice"/>
         <document ref="ContactDetail" moduleRef="customers"/>
         <document ref="Account" moduleRef="customers"/>
         <document ref="ProductInfo" moduleRef="products"/>
@@ -46,6 +47,12 @@
         		<document permission="CRUDC" name="Order" />
         	</privileges>
         </role>
+        <role name="InvoiceManager">
+        	<description><![CDATA[Invoice Manager - Who can manage all invoices]]></description>
+        	<privileges>
+        		<document permission="CRUDC" name="Invoice" />
+        	</privileges>
+        </role>
     </roles>
     <menu>
         <list document="Lead" name="Leads">
@@ -67,6 +74,10 @@
         <list document="Order" name="Orders">
         	<role name="Staff"/>
 			<role name="OrderManager"/>
+        </list>
+        <list document="Invoice" name="Invoices">
+        	<role name="Staff"/>
+			<role name="InvoiceManager"/>
         </list>
     </menu>
     <queries>
@@ -111,6 +122,15 @@
     			<column binding="product.name" />
     			<column binding="opportunity.topic" displayName="Opportunity Topic" />
     			<column binding="quote.name" />
+    		</columns>
+    	</query>
+    	<query documentName="Invoice" name="qInvoice">
+    		<description><![CDATA[All Invoices]]></description>
+    		<columns>
+    			<column binding="invoiceId" />
+    			<column binding="name" />
+    			<column binding="order.name" />
+    			<column binding="order.orderId" />
     		</columns>
     	</query>
     </queries>

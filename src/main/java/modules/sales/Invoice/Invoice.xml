@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.skyve.org/xml/document" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Invoice" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd">
+    <persistent name="SAL_Invoice"/>
+    <singularAlias>Invoice</singularAlias>
+    <pluralAlias>Invoices</pluralAlias>
+    <iconStyleClass>fa fa-envelope</iconStyleClass>
+    <bizKey expression="{invoiceId}"/>
+    <attributes>
+    	<!-- Summary -->
+        <id required="true" name="invoiceId">
+        	<displayName>Invoice ID</displayName>
+        	<description><![CDATA[The ID for this invoice]]></description>
+        </id> 
+        <text name="name">
+        	<displayName>Invoice Name</displayName>
+        	<description><![CDATA[The name of the invoice]]></description>
+        	<length>200</length>
+        </text>
+        <association required="true" type="aggregation" name="order">
+        	<displayName>Order ID</displayName>
+        	<description><![CDATA[The order associated with this invoice]]></description>
+        	<documentName>Order</documentName>
+        </association>
+        <enum required="true" name="invoiceStatus">
+        	<displayName>Invoice Status</displayName>
+        	<description><![CDATA[The current status of this invoice]]></description>
+        	<values>
+        		<value code="Paid"/>
+        		<value code="Unpaid"/>
+        		<value code="Pending"/>
+        	</values>
+        </enum>
+        <memo name="description">
+        	<displayName>Description</displayName>
+        	<description><![CDATA[A description of the invoice]]></description>
+        </memo>
+        
+        <!-- Shipping/Address Details -->
+        <!-- Defined in order -->
+        
+                                
+        <!-- Product Details -->
+        <!-- Defined in order -->
+        
+        
+        <!-- Product Pricing -->
+        <!-- Defined in order -->
+        
+
+        <!-- Sales Details -->
+        <!-- Defined in Order -->
+                    
+    </attributes>
+    
+    <conditions>
+    	<condition name="orderSelected">
+    		<expression><![CDATA[order != null]]></expression>
+    	</condition>
+    </conditions>
+    
+</document>
