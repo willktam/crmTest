@@ -130,6 +130,7 @@
     			<column binding="name" />
     			<column binding="order.name" />
     			<column binding="order.orderId" />
+    			<column binding="dueDate" />
     		</columns>
     	</query>
     </queries>

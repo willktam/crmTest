@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_invoiceShipping" title="Invoice Shipping" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<hbox border="true">
+		<vbox responsiveWidth="7" percentageWidth="70">
+			
+		    <form border="true" borderTitle="Shipping Details">
+		    	<column percentageWidth="30" responsiveWidth="4"/>
+		        <column/>
+		        <row>
+		        	<item>
+		        		<textField binding="order.quote.paymentTerms" visible="orderSelected" editable="false"/>
+		        	</item>
+		        </row>
+		        <row>
+		        	<item>
+		        		<textField binding="order.quote.shippingMethod" visible="orderSelected" editable="false"/>
+		        	</item>
+		        </row>
+		        <row>
+		        	<item>
+		        		<textField binding="order.quote.freightTerms" visible="orderSelected" editable="false"/>
+		        	</item>
+		        </row>
+		    </form>
+		    <form border="true" borderTitle="Shipping Dates">
+		        <column percentageWidth="30" responsiveWidth="4"/>
+		        <column/>
+		        <row>
+		        	<item>
+		        		<textField binding="deliveryDate" visible="orderSelected" editable="false"/>
+		        	</item>
+		        </row>
+		        <row>
+		        	<item>
+		        		<textField binding="dueDate" visible="orderSelected" editable="false"/>
+		        	</item>
+		        </row>
+		        
+		    </form>
+		    <form border="true" borderTitle="Address Details">
+		    	<column percentageWidth="30" responsiveWidth="4"/>
+		        <column/>
+		        	<row>
+		        		<item>
+		        			<textField binding="order.quote.streetShip" visible="orderSelected" editable="false" />
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="order.quote.cityShip" visible="orderSelected" editable="false"/>
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="order.quote.stateShip" visible="orderSelected" editable="false"/>
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="order.quote.postCodeShip" visible="orderSelected" editable="false"/>
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="order.quote.countryShip" visible="orderSelected" editable="false"/>
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="order.quote.streetBill" visible="orderSelected" editable="false"/>
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="order.quote.cityBill" visible="orderSelected" editable="false"/>
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="order.quote.stateBill" visible="orderSelected" editable="false"/>
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="order.quote.postCodeShip" visible="orderSelected" editable="false"/>
+		        		</item>
+		        	</row>
+		        	<row>
+		        		<item>
+		        			<textField binding="order.quote.countryShip" visible="orderSelected" editable="false"/>
+		        		</item>
+		        	</row>
+		    </form>
+		</vbox>	
+	</hbox>
+</view>

@@ -29,6 +29,8 @@
 			</type>
 		</property>
 		<property name="description" type="text" />
+		<property name="deliveryDate" type="DateOnly" />
+		<property name="dueDate" type="DateOnly" />
 		<filter name="salesInvoiceNoneFilter" condition="1=0"/>
 		<filter name="salesInvoiceCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="salesInvoiceDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>

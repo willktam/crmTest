@@ -5,12 +5,16 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
+import org.skyve.domain.types.DateOnly;
 import org.skyve.domain.types.Enumeration;
 import org.skyve.impl.domain.AbstractPersistentBean;
+import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
 import org.skyve.metadata.model.document.Bizlet.DomainValue;
 
 /**
@@ -44,6 +48,10 @@ public class Invoice extends AbstractPersistentBean {
 	public static final String invoiceStatusPropertyName = "invoiceStatus";
 	/** @hidden */
 	public static final String descriptionPropertyName = "description";
+	/** @hidden */
+	public static final String deliveryDatePropertyName = "deliveryDate";
+	/** @hidden */
+	public static final String dueDatePropertyName = "dueDate";
 
 	/**
 	 * Invoice Status
@@ -155,6 +163,18 @@ public class Invoice extends AbstractPersistentBean {
 	 * A description of the invoice
 	 **/
 	private String description;
+	/**
+	 * Delivery Date
+	 * <br/>
+	 * The date the order is delivered
+	 **/
+	private DateOnly deliveryDate;
+	/**
+	 * Due Date
+	 * <br/>
+	 * The date the order is due
+	 **/
+	private DateOnly dueDate;
 
 	@Override
 	@XmlTransient
@@ -287,6 +307,46 @@ public class Invoice extends AbstractPersistentBean {
 	public void setDescription(String description) {
 		preset(descriptionPropertyName, description);
 		this.description = description;
+	}
+
+	/**
+	 * {@link #deliveryDate} accessor.
+	 * @return	The value.
+	 **/
+	public DateOnly getDeliveryDate() {
+		return deliveryDate;
+	}
+
+	/**
+	 * {@link #deliveryDate} mutator.
+	 * @param deliveryDate	The new value.
+	 **/
+	@XmlSchemaType(name = "date")
+	@XmlJavaTypeAdapter(DateOnlyMapper.class)
+	@XmlElement
+	public void setDeliveryDate(DateOnly deliveryDate) {
+		preset(deliveryDatePropertyName, deliveryDate);
+		this.deliveryDate = deliveryDate;
+	}
+
+	/**
+	 * {@link #dueDate} accessor.
+	 * @return	The value.
+	 **/
+	public DateOnly getDueDate() {
+		return dueDate;
+	}
+
+	/**
+	 * {@link #dueDate} mutator.
+	 * @param dueDate	The new value.
+	 **/
+	@XmlSchemaType(name = "date")
+	@XmlJavaTypeAdapter(DateOnlyMapper.class)
+	@XmlElement
+	public void setDueDate(DateOnly dueDate) {
+		preset(dueDatePropertyName, dueDate);
+		this.dueDate = dueDate;
 	}
 
 	/**

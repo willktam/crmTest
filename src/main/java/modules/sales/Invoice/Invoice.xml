@@ -37,7 +37,14 @@
         </memo>
         
         <!-- Shipping/Address Details -->
-        <!-- Defined in order -->
+        <date name="deliveryDate">
+        	<displayName>Delivery Date</displayName>
+        	<description><![CDATA[The date the order is delivered]]></description>
+        </date>
+        <date name="dueDate">
+        	<displayName>Due Date</displayName>
+        	<description><![CDATA[The date the order is due]]></description>
+        </date>
         
                                 
         <!-- Product Details -->

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_invoiceSummary" title="Invoice Summary" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<hbox border="true">
+		<vbox responsiveWidth="7" percentageWidth="70">
+			<form border="true" borderTitle="Invoice Details">
+		        <column percentageWidth="30" responsiveWidth="4"/>
+		        <column/>
+		        <row>
+		            <item>
+		                <default binding="invoiceId"/>
+		            </item>
+		        </row>
+		        <row>
+		            <item>
+		                <default binding="name"/>
+		            </item>
+		        </row>
+		        <row>
+		        	<item>
+		        		<lookupDescription binding="order" descriptionBinding="bizKey">
+		        			<onPickedHandlers>
+	                			<rerender clientValidation="false" />
+	                		</onPickedHandlers>
+		        		</lookupDescription>
+		        	</item>
+		        </row>
+		        <row>
+		        	<item>
+		        		<textField binding="order.name" visible="orderSelected" editable="false"></textField>
+		        	</item>
+		        </row>
+		        <row>
+		        	<item>
+		        		<default binding="invoiceStatus" />
+		        	</item>
+		        </row>
+		        <row>
+		            <item>
+		                <default binding="description"/>
+		            </item>
+		        </row>
+		        
+		    </form>
+		    <form border="true" borderTitle="Sales Details">
+		    	<column percentageWidth="30" responsiveWidth="4"/>
+		        <column/>
+		        
+		        <row>
+		            <item>
+	                	<default binding="order.account" />
+	            	</item>
+		        </row>
+		        <row>
+		            <item>
+	                	 <default binding="order.opportunity" />
+	            	</item>
+		        </row>
+		        
+		        
+		    </form>
+		</vbox>	
+	</hbox>
+
+</view>

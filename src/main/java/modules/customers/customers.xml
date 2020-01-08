@@ -5,31 +5,37 @@
     <documents>
         <document ref="Account" defaultQueryName="qAccounts"/>
         <document ref="ContactDetail" defaultQueryName="qContactDetails"/>
+        <document ref="Interaction"/>
         <document ref="StaffList" moduleRef="staff"/>
+        <document ref="User" moduleRef="admin"/>
     </documents>
     <roles>
         <role name="Viewer">
             <description><![CDATA[Enough privileges to view Customers documents.]]></description>
             <privileges>
                 <document name="ContactDetail" permission="_R__C"/>
+                <document name="Interaction" permission="_R__C"/>
             </privileges>
         </role>
         <role name="Maintainer">
             <description><![CDATA[Enough privileges to create and edit Customers documents.]]></description>
             <privileges>
                 <document name="ContactDetail" permission="CRUDC"/>
+                <document name="Interaction" permission="CRUDC"/>
             </privileges>
         </role>
         <role name="AccountManager">
             <description><![CDATA[Account Manager - who can manage all accounts]]></description>
             <privileges>
                 <document name="Account" permission="CRUDC"/>
+                <document name="Interaction" permission="CRUDC"/>
             </privileges>
         </role>
         <role name="AccountWorker">
             <description><![CDATA[Account Worker - who can work on their own accounts]]></description>
             <privileges>
                 <document name="Account" permission="CRUDU"/>
+                <document name="Interaction" permission="CRUDU"/>
             </privileges>
         </role>
     </roles>
@@ -41,6 +47,12 @@
         <list document="ContactDetail" name="Contact Details">
             <role name="Maintainer"/>
             <role name="Viewer"/>
+        </list>
+        <list document="Interaction" name="Interactions">
+            <role name="Maintainer"/>
+            <role name="Viewer"/>
+            <role name="AccountManager"/>
+            <role name="AccountWorker"/>
         </list>
     </menu>
     <queries>
@@ -72,6 +84,14 @@
                 <column binding="street"/>
                 <column binding="city"/>
             </columns>
+        </query>
+        <query documentName="Interaction" name="qInteractions">
+        	<description><![CDATA[All Interactions]]></description>
+        	<columns>
+        		<column binding="title" />
+        		<column binding="user" />
+        		<column binding="description" />
+        	</columns>
         </query>
     </queries>
 </module>

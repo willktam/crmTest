@@ -11,12 +11,14 @@ import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.Enumeration;
 import org.skyve.impl.domain.AbstractPersistentBean;
+import org.skyve.impl.domain.ChangeTrackingArrayList;
 import org.skyve.metadata.model.document.Bizlet.DomainValue;
 
 /**
  * Contact Detail
  * 
  * @depend - - - Method
+ * @navcomposed n interactions 0..n Interaction
  * @stereotype "persistent"
  */
 @XmlType
@@ -59,6 +61,8 @@ public class ContactDetail extends AbstractPersistentBean {
 	public static final String postCodePropertyName = "postCode";
 	/** @hidden */
 	public static final String countryPropertyName = "country";
+	/** @hidden */
+	public static final String interactionsPropertyName = "interactions";
 
 	/**
 	 * Preferred Method of Contact
@@ -220,6 +224,10 @@ public class ContactDetail extends AbstractPersistentBean {
 	 * The customers country or region
 	 **/
 	private String country;
+	/**
+	 * Interactions
+	 **/
+	private List<Interaction> interactions = new ChangeTrackingArrayList<>("interactions", this);
 
 	@Override
 	@XmlTransient
@@ -496,5 +504,32 @@ public class ContactDetail extends AbstractPersistentBean {
 	public void setCountry(String country) {
 		preset(countryPropertyName, country);
 		this.country = country;
+	}
+
+	/**
+	 * {@link #interactions} accessor.
+	 * @return	The value.
+	 **/
+	@XmlElement
+	public List<Interaction> getInteractions() {
+		return interactions;
+	}
+
+	/**
+	 * {@link #interactions} accessor.
+	 * @param bizId	The bizId of the element in the list.
+	 * @return	The value of the element in the list.
+	 **/
+	public Interaction getInteractionsElementById(String bizId) {
+		return getElementById(interactions, bizId);
+	}
+
+	/**
+	 * {@link #interactions} mutator.
+	 * @param bizId	The bizId of the element in the list.
+	 * @param element	The new value of the element in the list.
+	 **/
+	public void setInteractionsElementById(String bizId, Interaction element) {
+		 setElementById(interactions, element);
 	}
 }

@@ -6,7 +6,7 @@
     <iconStyleClass>fa fa-users</iconStyleClass>
     <bizKey expression="{user.contact.name}"/>
     <attributes>
-        <association required="true" type="composition" name="user">
+        <association required="true" type="aggregation" name="user">
             <displayName>User</displayName>
             <documentName>User</documentName>
         </association>

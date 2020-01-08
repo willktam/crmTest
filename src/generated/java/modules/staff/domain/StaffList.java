@@ -24,7 +24,7 @@ import org.skyve.metadata.model.document.Bizlet.DomainValue;
  * Staff List
  * 
  * @depend - - - SocialTitle
- * @navcomposed n user 1 User
+ * @navhas n user 1 User
  * @stereotype "persistent"
  */
 @XmlType

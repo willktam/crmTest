@@ -52,8 +52,8 @@
 		<property name="bizFlagComment" length="1024" />
 		<property name="bizDataGroupId" length="36" />
 		<property name="bizUserId" length="36" not-null="true" />
-		<property name="firstName" length="200" />
-		<property name="lastName" length="200" />
+		<property name="firstName" length="20" />
+		<property name="lastName" length="20" />
 		<property name="jobTitle" length="100" />
 		<property name="email" length="300" />
 		<property name="mobileNumber" length="20" />
@@ -69,10 +69,38 @@
 		<property name="state" length="100" />
 		<property name="postCode" length="10" />
 		<property name="country" length="100" />
+		<bag name="interactions" table="CUS_ContactDetail_interactions" cascade="all-delete-orphan">
+			<key column="owner_id" foreign-key="FK_CUS_ContactDetail_interactions_owner_id" />
+			<many-to-many entity-name="customersInteraction" foreign-key="FK_CUS_ContactDetail_interactions_element_id" column="element_id" />
+		</bag>
 		<filter name="customersContactDetailNoneFilter" condition="1=0"/>
 		<filter name="customersContactDetailCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="customersContactDetailDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
 		<filter name="customersContactDetailUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.customers.domain.Interaction" table="CUS_Interaction" entity-name="customersInteraction">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" not-null="true" />
+		<property name="bizCustomer" length="50" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" not-null="true" />
+		<property name="title" length="50" />
+		<many-to-one name="user" entity-name="adminUser" column="user_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_CUS_Interaction_user" />
+		<property name="description" type="text" />
+		<property name="type" length="7">
+			<type name="Enum">
+				<param name="enumClass">modules.customers.domain.Interaction$Type</param>
+			</type>
+		</property>
+		<property name="interactionTime" type="DateTime" />
+		<filter name="customersInteractionNoneFilter" condition="1=0"/>
+		<filter name="customersInteractionCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="customersInteractionDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="customersInteractionUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
 	<filter-def name="customersAccountNoneFilter" />
@@ -93,6 +121,16 @@
 		<filter-param name="dataGroupIdParam" type="string"/>
 	</filter-def>
 	<filter-def name="customersContactDetailUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="customersInteractionNoneFilter" />
+	<filter-def name="customersInteractionCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="customersInteractionDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="customersInteractionUserIdFilter">
 		<filter-param name="userIdParam" type="string"/>
 	</filter-def>
 </hibernate-mapping>

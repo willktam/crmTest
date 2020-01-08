@@ -9,12 +9,12 @@
         <text required="true" name="firstName">
             <displayName>First Name</displayName>
             <description><![CDATA[The customer's first name]]></description>
-            <length>200</length>
+            <length>20</length>
         </text>
         <text required="true" name="lastName">
             <displayName>Last Name</displayName>
             <description><![CDATA[The customer's last name]]></description>
-            <length>200</length>
+            <length>20</length>
         </text>
         <text name="jobTitle">
             <displayName>Job Title</displayName>
@@ -78,5 +78,13 @@
             <description><![CDATA[The customers country or region]]></description>
             <length>100</length>
         </text>
+        
+        
+        <collection name="interactions" type="composition">
+        	<displayName>Interactions</displayName>
+        	<documentName>Interaction</documentName>
+        	<minCardinality>0</minCardinality>
+        </collection>
+        
     </attributes>
 </document>
