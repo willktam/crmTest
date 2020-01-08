@@ -12,12 +12,13 @@
         	<description><![CDATA[The name of the quote]]></description>
         	<length>200</length>
         </text>
-        <id required="true" name="quoteId">
+        <text required="true" name="quoteId">
         	<displayName>Quote ID</displayName>
         	<description><![CDATA[The id number of the quote]]></description>
-        </id>
+        	<length>8</length>
+        </text>
         
-        <association required="false" type="aggregation" name="opportunity">
+        <association required="true" type="aggregation" name="opportunity">
         	<displayName>Opportunity</displayName>
         	<description><![CDATA[The opportunity of this quote]]></description>
             <documentName>Opportunity</documentName>

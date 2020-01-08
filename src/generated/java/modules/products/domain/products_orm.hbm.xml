@@ -21,7 +21,7 @@
 		<property name="bizDataGroupId" length="36" />
 		<property name="bizUserId" length="36" not-null="true" />
 		<property name="name" length="100" />
-		<property name="productId" length="36" />
+		<property name="productId" length="8" />
 		<property name="description" type="text" />
 		<property name="validFrom" type="DateOnly" />
 		<property name="validTo" type="DateOnly" />

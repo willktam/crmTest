@@ -10,7 +10,7 @@
 		</row>
 		<row>
 		    <item>
-		        <default binding="idCardNo"/>
+		        <default binding="staffId"/>
 		    </item>
 		</row>
 		<row>

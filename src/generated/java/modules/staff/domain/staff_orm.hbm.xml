@@ -43,7 +43,7 @@
 			</type>
 		</property>
 		<property name="dateOfBirth" type="DateOnly" />
-		<property name="idCardNo" length="20" />
+		<property name="staffId" length="8" />
 		<property name="issuedDate" type="DateOnly" />
 		<property name="expiredDate" type="DateOnly" />
 		<property name="dept" length="50" />

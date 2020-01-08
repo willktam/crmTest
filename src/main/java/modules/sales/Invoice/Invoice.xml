@@ -7,10 +7,11 @@
     <bizKey expression="{invoiceId}"/>
     <attributes>
     	<!-- Summary -->
-        <id required="true" name="invoiceId">
+        <text required="true" name="invoiceId">
         	<displayName>Invoice ID</displayName>
         	<description><![CDATA[The ID for this invoice]]></description>
-        </id> 
+        	<length>8</length>
+        </text> 
         <text name="name">
         	<displayName>Invoice Name</displayName>
         	<description><![CDATA[The name of the invoice]]></description>

@@ -17,10 +17,10 @@ import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
 /**
  * Order
  * 
- * @navcomposed n product 0..1 ProductInfo
- * @navcomposed n quote 1 Quote
- * @navcomposed n opportunity 1 Opportunity
- * @navcomposed n account 1 Account
+ * @navhas n product 0..1 ProductInfo
+ * @navhas n quote 1 Quote
+ * @navhas n opportunity 1 Opportunity
+ * @navhas n account 1 Account
  * @stereotype "persistent"
  */
 @XmlType

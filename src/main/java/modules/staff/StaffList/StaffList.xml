@@ -23,9 +23,9 @@
         <date required="true" name="dateOfBirth">
             <displayName>Date Of Birth</displayName>
         </date>
-        <text required="true" name="idCardNo">
-            <displayName>ID Card Number</displayName>
-            <length>20</length>
+        <text required="true" name="staffId">
+            <displayName>Staff Id</displayName>
+            <length>8</length>
         </text>
         <date name="issuedDate">
             <displayName>Issued Date</displayName>

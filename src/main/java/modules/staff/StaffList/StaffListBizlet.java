@@ -12,6 +12,9 @@ public class StaffListBizlet extends Bizlet<StaffList> {
 
 	@Override
 	public StaffList newInstance(StaffList bean) throws Exception {
+		
+		bean.setStaffId(ModulesUtil.getNextDocumentNumber("STA", StaffList.MODULE_NAME, StaffList.DOCUMENT_NAME, StaffList.staffIdPropertyName, 8));
+		
 		// Create Document Query for Staff Document
 		DocumentQuery dq = CORE.getPersistence().newDocumentQuery(StaffList.MODULE_NAME, StaffList.DOCUMENT_NAME);
 				

@@ -12,10 +12,11 @@
             <description><![CDATA[Product name]]></description>
             <length>100</length>
         </text>
-        <id required="true" name="productId">
+        <text required="true" name="productId">
             <displayName>Product Id</displayName>
             <description><![CDATA[The products id number]]></description>
-        </id>
+            <length>8</length>
+        </text>
         <memo name="description">
             <displayName>Description</displayName>
             <description><![CDATA[A description of the product]]></description>

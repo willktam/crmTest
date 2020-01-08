@@ -107,9 +107,9 @@
     	<query documentName="Quote" name="qQuote" >
     		<description><![CDATA[All Quotes]]></description>
     		<columns>
-    			<column binding="name" />
     			<column binding="quoteId" />
-    			<column binding="opportunity" />
+    			<column binding="name" />
+    			<column binding="opportunity.topic" displayName="Opportunity Topic" />
     			<column binding="expireDate" />
     			<column binding="status" />
     		</columns>
@@ -119,7 +119,6 @@
     		<columns>
     			<column binding="orderId" />
     			<column binding="name" />
-    			<column binding="product.name" />
     			<column binding="opportunity.topic" displayName="Opportunity Topic" />
     			<column binding="quote.name" />
     		</columns>

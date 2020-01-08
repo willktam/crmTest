@@ -48,7 +48,7 @@ public class StaffList extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String dateOfBirthPropertyName = "dateOfBirth";
 	/** @hidden */
-	public static final String idCardNoPropertyName = "idCardNo";
+	public static final String staffIdPropertyName = "staffId";
 	/** @hidden */
 	public static final String issuedDatePropertyName = "issuedDate";
 	/** @hidden */
@@ -158,9 +158,9 @@ public class StaffList extends AbstractPersistentBean {
 	 **/
 	private DateOnly dateOfBirth;
 	/**
-	 * ID Card Number
+	 * Staff Id
 	 **/
-	private String idCardNo;
+	private String staffId;
 	/**
 	 * Issued Date
 	 **/
@@ -296,21 +296,21 @@ public class StaffList extends AbstractPersistentBean {
 	}
 
 	/**
-	 * {@link #idCardNo} accessor.
+	 * {@link #staffId} accessor.
 	 * @return	The value.
 	 **/
-	public String getIdCardNo() {
-		return idCardNo;
+	public String getStaffId() {
+		return staffId;
 	}
 
 	/**
-	 * {@link #idCardNo} mutator.
-	 * @param idCardNo	The new value.
+	 * {@link #staffId} mutator.
+	 * @param staffId	The new value.
 	 **/
 	@XmlElement
-	public void setIdCardNo(String idCardNo) {
-		preset(idCardNoPropertyName, idCardNo);
-		this.idCardNo = idCardNo;
+	public void setStaffId(String staffId) {
+		preset(staffIdPropertyName, staffId);
+		this.staffId = staffId;
 	}
 
 	/**

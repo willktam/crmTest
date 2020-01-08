@@ -8,10 +8,11 @@
     <attributes>
     
     	<!-- Summary -->
-        <id required="true" name="orderId">
+        <text required="true" name="orderId">
         	<displayName>Order ID</displayName>
         	<description><![CDATA[The ID for this order]]></description>
-        </id> 
+        	<length>8</length>
+        </text> 
         <text name="name">
         	<displayName>Order Name</displayName>
         	<description><![CDATA[The name of the order]]></description>
@@ -34,7 +35,7 @@
         
         
         <!-- Product Details -->
-        <association required="false" type="composition" name="product">
+        <association required="false" type="aggregation" name="product">
         	<displayName>Product</displayName>
         	<description><![CDATA[The product of the order]]></description>
             <documentName>ProductInfo</documentName>
@@ -47,17 +48,17 @@
         
 
         <!-- Sales Details -->
-        <association required="true" type="composition" name="account">
+        <association required="true" type="aggregation" name="account">
         	<displayName>Account</displayName>
         	<description><![CDATA[The account for the order]]></description>
         	<documentName>Account</documentName>
         </association>
-        <association required="true" type="composition" name="opportunity">
+        <association required="true" type="aggregation" name="opportunity">
         	<displayName>Opportunity</displayName>
         	<description><![CDATA[The opportunity for the order]]></description>
             <documentName>Opportunity</documentName>
         </association>
-        <association required="true" type="composition" name="quote">
+        <association required="true" type="aggregation" name="quote">
         	<displayName>Quote</displayName>
         	<description><![CDATA[The quote for the order]]></description>
             <documentName>Quote</documentName>
