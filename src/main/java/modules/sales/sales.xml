@@ -59,7 +59,7 @@
             <role name="Staff"/>
             <role name="LeadManager" />
         </list>
-        <map name="Leads Map" document="Lead" geometryBinding="companyLocation" >
+        <map name="Leads Map" document="Lead" geometryBinding="companyLocation" model="LeadMap">
         	<role name="Staff"/>
         	<role name="LeadManager"/>
         </map>

@@ -10,7 +10,7 @@
    			<description><![CDATA[The title of the interaction]]></description>
    			<length>50</length>
    		</text>
-   		<association type="aggregation" name="user" >
+   		<association type="aggregation" name="user" required="true">
 			<displayName>User</displayName>
 			<description><![CDATA[The user who performed the interaction]]></description>
 			<documentName>User</documentName>
@@ -29,9 +29,14 @@
     			<value code="Other"/>
     		</values>
     	</enum>
-        <dateTime name="interactionTime">
+        <dateTime name="interactionTime" required="true">
         	<displayName>Time of Interaction</displayName>
         	<description><![CDATA[The time the interaction took place]]></description>
         </dateTime>
+        <association type="aggregation" name="contact" required="false">
+        	<displayName>Contact</displayName>
+        	<description><![CDATA[The contact associated with this interaction]]></description>
+        	<documentName>ContactDetail</documentName>
+        </association>
     </attributes>
 </document>

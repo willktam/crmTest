@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import modules.admin.User.UserExtension;
+import modules.customers.ContactDetail.ContactDetailExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateTime;
@@ -22,7 +23,8 @@ import org.skyve.metadata.model.document.Bizlet.DomainValue;
  * Interaction
  * 
  * @depend - - - Type
- * @navhas n user 0..1 User
+ * @navhas n contact 0..1 ContactDetail
+ * @navhas n user 1 User
  * @stereotype "persistent"
  */
 @XmlType
@@ -49,6 +51,8 @@ public class Interaction extends AbstractPersistentBean {
 	public static final String typePropertyName = "type";
 	/** @hidden */
 	public static final String interactionTimePropertyName = "interactionTime";
+	/** @hidden */
+	public static final String contactPropertyName = "contact";
 
 	/**
 	 * Type
@@ -161,6 +165,12 @@ public class Interaction extends AbstractPersistentBean {
 	 * The time the interaction took place
 	 **/
 	private DateTime interactionTime;
+	/**
+	 * Contact
+	 * <br/>
+	 * The contact associated with this interaction
+	 **/
+	private ContactDetailExtension contact = null;
 
 	@Override
 	@XmlTransient
@@ -295,5 +305,23 @@ public class Interaction extends AbstractPersistentBean {
 	public void setInteractionTime(DateTime interactionTime) {
 		preset(interactionTimePropertyName, interactionTime);
 		this.interactionTime = interactionTime;
+	}
+
+	/**
+	 * {@link #contact} accessor.
+	 * @return	The value.
+	 **/
+	public ContactDetailExtension getContact() {
+		return contact;
+	}
+
+	/**
+	 * {@link #contact} mutator.
+	 * @param contact	The new value.
+	 **/
+	@XmlElement
+	public void setContact(ContactDetailExtension contact) {
+		preset(contactPropertyName, contact);
+		this.contact = contact;
 	}
 }

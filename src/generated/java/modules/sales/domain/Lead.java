@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import modules.customers.domain.ContactDetail;
+import modules.customers.ContactDetail.ContactDetailExtension;
 import modules.sales.Lead.LeadExtension;
 import org.locationtech.jts.geom.Geometry;
 import org.skyve.CORE;
@@ -59,7 +59,7 @@ public class Lead extends AbstractPersistentBean {
 	 * <br/>
 	 * The contact details of the lead
 	 **/
-	private ContactDetail contactDetails = null;
+	private ContactDetailExtension contactDetails = null;
 	/**
 	 * Company Name
 	 * <br/>
@@ -158,7 +158,7 @@ public class Lead extends AbstractPersistentBean {
 	 * {@link #contactDetails} accessor.
 	 * @return	The value.
 	 **/
-	public ContactDetail getContactDetails() {
+	public ContactDetailExtension getContactDetails() {
 		return contactDetails;
 	}
 
@@ -167,7 +167,7 @@ public class Lead extends AbstractPersistentBean {
 	 * @param contactDetails	The new value.
 	 **/
 	@XmlElement
-	public void setContactDetails(ContactDetail contactDetails) {
+	public void setContactDetails(ContactDetailExtension contactDetails) {
 		preset(contactDetailsPropertyName, contactDetails);
 		this.contactDetails = contactDetails;
 	}

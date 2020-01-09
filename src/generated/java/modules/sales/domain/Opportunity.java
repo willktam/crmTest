@@ -7,8 +7,8 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import modules.customers.ContactDetail.ContactDetailExtension;
 import modules.customers.domain.Account;
-import modules.customers.domain.ContactDetail;
 import modules.products.domain.ProductInfo;
 import modules.products.domain.ProductPriceList;
 import org.skyve.CORE;
@@ -154,7 +154,7 @@ public class Opportunity extends AbstractPersistentBean {
 	 * <br/>
 	 * The primary contact of the opportunity
 	 **/
-	private ContactDetail contact = null;
+	private ContactDetailExtension contact = null;
 	/**
 	 * Account
 	 * <br/>
@@ -281,7 +281,7 @@ public class Opportunity extends AbstractPersistentBean {
 	 * {@link #contact} accessor.
 	 * @return	The value.
 	 **/
-	public ContactDetail getContact() {
+	public ContactDetailExtension getContact() {
 		return contact;
 	}
 
@@ -290,7 +290,7 @@ public class Opportunity extends AbstractPersistentBean {
 	 * @param contact	The new value.
 	 **/
 	@XmlElement
-	public void setContact(ContactDetail contact) {
+	public void setContact(ContactDetailExtension contact) {
 		preset(contactPropertyName, contact);
 		this.contact = contact;
 	}

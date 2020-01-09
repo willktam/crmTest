@@ -5,7 +5,7 @@
     <documents>
         <document ref="Account" defaultQueryName="qAccounts"/>
         <document ref="ContactDetail" defaultQueryName="qContactDetails"/>
-        <document ref="Interaction"/>
+        <document ref="Interaction" defaultQueryName="qInteractions"/>
         <document ref="StaffList" moduleRef="staff"/>
         <document ref="User" moduleRef="admin"/>
     </documents>
@@ -48,12 +48,12 @@
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>
-        <list document="Interaction" name="Interactions">
+        <!-- <list document="Interaction" name="Interactions">
             <role name="Maintainer"/>
             <role name="Viewer"/>
             <role name="AccountManager"/>
             <role name="AccountWorker"/>
-        </list>
+        </list>-->
     </menu>
     <queries>
         <query documentName="Account" name="qAccounts">

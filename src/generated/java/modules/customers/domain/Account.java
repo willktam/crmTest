@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import modules.customers.ContactDetail.ContactDetailExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateOnly;
@@ -222,7 +223,7 @@ public class Account extends AbstractPersistentBean {
 	 * <br/>
 	 * The account's primary contact
 	 **/
-	private ContactDetail primaryContact = null;
+	private ContactDetailExtension primaryContact = null;
 
 	@Override
 	@XmlTransient
@@ -489,7 +490,7 @@ public class Account extends AbstractPersistentBean {
 	 * {@link #primaryContact} accessor.
 	 * @return	The value.
 	 **/
-	public ContactDetail getPrimaryContact() {
+	public ContactDetailExtension getPrimaryContact() {
 		return primaryContact;
 	}
 
@@ -498,7 +499,7 @@ public class Account extends AbstractPersistentBean {
 	 * @param primaryContact	The new value.
 	 **/
 	@XmlElement
-	public void setPrimaryContact(ContactDetail primaryContact) {
+	public void setPrimaryContact(ContactDetailExtension primaryContact) {
 		preset(primaryContactPropertyName, primaryContact);
 		this.primaryContact = primaryContact;
 	}
