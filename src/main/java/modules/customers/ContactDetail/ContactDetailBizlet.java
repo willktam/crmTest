@@ -6,7 +6,6 @@ import org.skyve.metadata.model.document.Bizlet;
 import org.skyve.web.WebContext;
 
 import modules.customers.ContactDetail.ContactDetailExtension;
-import modules.customers.domain.Interaction;
 
 public class ContactDetailBizlet extends Bizlet<ContactDetailExtension> {
 
@@ -18,10 +17,16 @@ public class ContactDetailBizlet extends Bizlet<ContactDetailExtension> {
 		//
 		if (ImplicitActionName.Save.equals(actionName) || ImplicitActionName.OK.equals(actionName)) {
 			if (bean.isChanged()) {
-				bean.createInteraction();
+				bean.updateInteraction();
 				}
 		}
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	
+	@Override
+	public ContactDetailExtension newInstance(ContactDetailExtension bean) throws Exception {
+		// TODO Auto-generated method stub
+		bean.createInteraction();
+		return super.newInstance(bean);
+	}
 }

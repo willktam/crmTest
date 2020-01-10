@@ -48,12 +48,6 @@
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>
-        <!-- <list document="Interaction" name="Interactions">
-            <role name="Maintainer"/>
-            <role name="Viewer"/>
-            <role name="AccountManager"/>
-            <role name="AccountWorker"/>
-        </list>-->
     </menu>
     <queries>
         <query documentName="Account" name="qAccounts">

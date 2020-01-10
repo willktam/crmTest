@@ -29,15 +29,7 @@
 			<component name="_leadCompanyDetails" />
 		</vbox>
 	</hbox>
-    
-    
-    
-    <!-- <dataRepeater binding="contactDetails.history">
-    	<boundColumn binding="date" />
-    	<boundColumn binding="title" />
-    	<boundColumn binding="description" />
-    </dataRepeater> -->
-    
+
     <actions>
         <defaults/>
     </actions>

@@ -28,11 +28,6 @@
                 <textField binding="interactionTime" editable="false" />
             </item>
         </row>
-        <row>
-            <item>
-                <default binding="contact"/>
-            </item>
-        </row>
     </form>
     <actions>
         <defaults/>

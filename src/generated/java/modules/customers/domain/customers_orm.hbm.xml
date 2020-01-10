@@ -97,7 +97,6 @@
 			</type>
 		</property>
 		<property name="interactionTime" type="DateTime" />
-		<many-to-one name="contact" entity-name="customersContactDetail" column="contact_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_CUS_Interaction_contact" />
 		<filter name="customersInteractionNoneFilter" condition="1=0"/>
 		<filter name="customersInteractionCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="customersInteractionDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
