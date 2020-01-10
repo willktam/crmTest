@@ -19,7 +19,7 @@ import org.skyve.metadata.model.document.Bizlet.DomainValue;
  * Contact Detail
  * 
  * @depend - - - Method
- * @navcomposed n interactions 0..n Interaction
+ * @navcomposed 1 interactions 0..n Interaction
  * @stereotype "persistent"
  */
 @XmlType

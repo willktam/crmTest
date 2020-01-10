@@ -80,7 +80,7 @@
         </text>
         
         
-        <collection name="interactions" type="composition">
+        <collection name="interactions" type="child">
         	<displayName>Interactions</displayName>
         	<documentName>Interaction</documentName>
         	<minCardinality>0</minCardinality>

@@ -18,10 +18,8 @@ public class ContactDetailBizlet extends Bizlet<ContactDetailExtension> {
 		//
 		if (ImplicitActionName.Save.equals(actionName) || ImplicitActionName.OK.equals(actionName)) {
 			if (bean.isChanged()) {
-				Interaction interaction = bean.createInteraction();
-				bean.setInteractionsElementById(bean.getBizId(), interaction);
-				
-			}
+				bean.createInteraction();
+				}
 		}
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}

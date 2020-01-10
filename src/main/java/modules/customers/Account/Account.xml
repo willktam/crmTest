@@ -74,7 +74,7 @@
             <displayName>Primary Contact</displayName>
             <description><![CDATA[The account's primary contact]]></description>
             <documentName>ContactDetail</documentName>
-        </association>
+        </association>        
     </attributes>
     <conditions>
         <condition name="hasCurrent">

@@ -9,15 +9,8 @@
     	</tab>
     	<tab title="Interactions">
     		
-    		<vbox border="true" borderTitle="Interactions">
-				<!-- <listRepeater query="qInteractions" />-->
-				<dataGrid binding="interactions" >
-					<boundColumn binding="title" />
-					<boundColumn binding="user.contact.name" />
-					<boundColumn binding="description" />
-					<boundColumn binding="type" />
-					<boundColumn binding="interactionTime" />
-				</dataGrid>
+    		<vbox border="true" borderTitle="Interactions" >
+				<component name="_interactions" />
 			</vbox>
 			
     	</tab>
