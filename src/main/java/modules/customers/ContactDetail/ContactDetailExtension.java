@@ -1,6 +1,5 @@
 package modules.customers.ContactDetail;
 
-import modules.admin.ModulesUtil;
 import modules.customers.domain.ContactDetail;
 import modules.customers.domain.Interaction;
 import modules.customers.domain.Interaction.Type;
@@ -9,9 +8,7 @@ public class ContactDetailExtension extends ContactDetail {
 	
 	private static final long serialVersionUID = -1879786610392669581L;
 	
-	
 	public void updateInteraction() {
-		//
 		Interaction interaction = Interaction.newInstance();
 		interaction.setTitle("Updated A Contact");
 		interaction.setType(Type.other);
@@ -19,13 +16,11 @@ public class ContactDetailExtension extends ContactDetail {
 		getInteractions().add(interaction);
 	}
 
-
 	public void createInteraction() {
-		//
 		Interaction interaction = Interaction.newInstance();
 		interaction.setTitle("Created A New Contact");
 		interaction.setType(Type.other);
+		interaction.setDescription(interaction.getUser().getContact().getName() + " created a new contact.");
 		getInteractions().add(interaction);
 	}
-
 }

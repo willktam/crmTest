@@ -9,12 +9,14 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import modules.customers.Account.AccountExtension;
 import modules.customers.ContactDetail.ContactDetailExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateOnly;
 import org.skyve.domain.types.Enumeration;
 import org.skyve.impl.domain.AbstractPersistentBean;
+import org.skyve.impl.domain.ChangeTrackingArrayList;
 import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
 import org.skyve.metadata.model.document.Bizlet.DomainValue;
 
@@ -23,6 +25,7 @@ import org.skyve.metadata.model.document.Bizlet.DomainValue;
  * 
  * @depend - - - RelationshipType
  * @navhas n primaryContact 0..1 ContactDetail
+ * @navcomposed 1 interactions 0..n Interaction
  * @stereotype "persistent"
  */
 @XmlType
@@ -65,6 +68,8 @@ public class Account extends AbstractPersistentBean {
 	public static final String countryPropertyName = "country";
 	/** @hidden */
 	public static final String primaryContactPropertyName = "primaryContact";
+	/** @hidden */
+	public static final String interactionsPropertyName = "interactions";
 
 	/**
 	 * Relationship Type
@@ -224,6 +229,10 @@ public class Account extends AbstractPersistentBean {
 	 * The account's primary contact
 	 **/
 	private ContactDetailExtension primaryContact = null;
+	/**
+	 * Interactions
+	 **/
+	private List<Interaction> interactions = new ChangeTrackingArrayList<>("interactions", this);
 
 	@Override
 	@XmlTransient
@@ -237,7 +246,7 @@ public class Account extends AbstractPersistentBean {
 		return Account.DOCUMENT_NAME;
 	}
 
-	public static Account newInstance() {
+	public static AccountExtension newInstance() {
 		try {
 			return CORE.getUser().getCustomer().getModule(MODULE_NAME).getDocument(CORE.getUser().getCustomer(), DOCUMENT_NAME).newInstance(CORE.getUser());
 		}
@@ -502,6 +511,33 @@ public class Account extends AbstractPersistentBean {
 	public void setPrimaryContact(ContactDetailExtension primaryContact) {
 		preset(primaryContactPropertyName, primaryContact);
 		this.primaryContact = primaryContact;
+	}
+
+	/**
+	 * {@link #interactions} accessor.
+	 * @return	The value.
+	 **/
+	@XmlElement
+	public List<Interaction> getInteractions() {
+		return interactions;
+	}
+
+	/**
+	 * {@link #interactions} accessor.
+	 * @param bizId	The bizId of the element in the list.
+	 * @return	The value of the element in the list.
+	 **/
+	public Interaction getInteractionsElementById(String bizId) {
+		return getElementById(interactions, bizId);
+	}
+
+	/**
+	 * {@link #interactions} mutator.
+	 * @param bizId	The bizId of the element in the list.
+	 * @param element	The new value of the element in the list.
+	 **/
+	public void setInteractionsElementById(String bizId, Interaction element) {
+		 setElementById(interactions, element);
 	}
 
 	/**

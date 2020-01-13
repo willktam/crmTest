@@ -7,6 +7,9 @@
     	<tab title="Shipping Details">
     		<component name="_quoteShippingDetails" />
     	</tab>
+    	<tab title="Interactions">
+    		<component name="_interactions" />
+    	</tab>
     </tabPane>
     
     <actions>

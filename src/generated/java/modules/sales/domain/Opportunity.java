@@ -7,10 +7,11 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import modules.customers.Account.AccountExtension;
 import modules.customers.ContactDetail.ContactDetailExtension;
-import modules.customers.domain.Account;
 import modules.products.domain.ProductInfo;
 import modules.products.domain.ProductPriceList;
+import modules.sales.Opportunity.OpportunityExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.Enumeration;
@@ -160,7 +161,7 @@ public class Opportunity extends AbstractPersistentBean {
 	 * <br/>
 	 * The account of the opportunity
 	 **/
-	private Account account = null;
+	private AccountExtension account = null;
 	/**
 	 * Description
 	 * <br/>
@@ -228,7 +229,7 @@ public class Opportunity extends AbstractPersistentBean {
 		return Opportunity.DOCUMENT_NAME;
 	}
 
-	public static Opportunity newInstance() {
+	public static OpportunityExtension newInstance() {
 		try {
 			return CORE.getUser().getCustomer().getModule(MODULE_NAME).getDocument(CORE.getUser().getCustomer(), DOCUMENT_NAME).newInstance(CORE.getUser());
 		}
@@ -299,7 +300,7 @@ public class Opportunity extends AbstractPersistentBean {
 	 * {@link #account} accessor.
 	 * @return	The value.
 	 **/
-	public Account getAccount() {
+	public AccountExtension getAccount() {
 		return account;
 	}
 
@@ -308,7 +309,7 @@ public class Opportunity extends AbstractPersistentBean {
 	 * @param account	The new value.
 	 **/
 	@XmlElement
-	public void setAccount(Account account) {
+	public void setAccount(AccountExtension account) {
 		preset(accountPropertyName, account);
 		this.account = account;
 	}

@@ -6,6 +6,8 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import modules.sales.Opportunity.OpportunityExtension;
+import modules.sales.Quote.QuoteExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateOnly;
@@ -90,7 +92,7 @@ public class Quote extends AbstractPersistentBean {
 	 * <br/>
 	 * The opportunity of this quote
 	 **/
-	private Opportunity opportunity = null;
+	private OpportunityExtension opportunity = null;
 	/**
 	 * Quote Expire Date
 	 * <br/>
@@ -206,7 +208,7 @@ public class Quote extends AbstractPersistentBean {
 		return Quote.DOCUMENT_NAME;
 	}
 
-	public static Quote newInstance() {
+	public static QuoteExtension newInstance() {
 		try {
 			return CORE.getUser().getCustomer().getModule(MODULE_NAME).getDocument(CORE.getUser().getCustomer(), DOCUMENT_NAME).newInstance(CORE.getUser());
 		}
@@ -277,7 +279,7 @@ public class Quote extends AbstractPersistentBean {
 	 * {@link #opportunity} accessor.
 	 * @return	The value.
 	 **/
-	public Opportunity getOpportunity() {
+	public OpportunityExtension getOpportunity() {
 		return opportunity;
 	}
 
@@ -286,7 +288,7 @@ public class Quote extends AbstractPersistentBean {
 	 * @param opportunity	The new value.
 	 **/
 	@XmlElement
-	public void setOpportunity(Opportunity opportunity) {
+	public void setOpportunity(OpportunityExtension opportunity) {
 		preset(opportunityPropertyName, opportunity);
 		this.opportunity = opportunity;
 	}

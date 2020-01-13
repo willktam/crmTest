@@ -1,29 +1,27 @@
-package modules.customers.ContactDetail;
+package modules.customers.Account;
 
 import org.skyve.domain.Bean;
 import org.skyve.metadata.controller.ImplicitActionName;
 import org.skyve.metadata.model.document.Bizlet;
 import org.skyve.web.WebContext;
 
-import modules.customers.ContactDetail.ContactDetailExtension;
-
-public class ContactDetailBizlet extends Bizlet<ContactDetailExtension> {
-
-	private static final long serialVersionUID = -840436736363283863L;
+public class AccountBizlet extends Bizlet<AccountExtension> {
 	
+	private static final long serialVersionUID = 3587510445958351755L;
+
 	@Override
-	public ContactDetailExtension preExecute(ImplicitActionName actionName, ContactDetailExtension bean, Bean parentBean,
+	public AccountExtension preExecute(ImplicitActionName actionName, AccountExtension bean, Bean parentBean,
 			WebContext webContext) throws Exception {
 		if (ImplicitActionName.Save.equals(actionName) || ImplicitActionName.OK.equals(actionName)) {
 			if (bean.isChanged()) {
 				bean.updateInteraction();
-			}
+			}	
 		}
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	
 	@Override
-	public ContactDetailExtension newInstance(ContactDetailExtension bean) throws Exception {
+	public AccountExtension newInstance(AccountExtension bean) throws Exception {
 		bean.createInteraction();
 		return super.newInstance(bean);
 	}

@@ -13,6 +13,7 @@
         <document ref="ProductInfo" moduleRef="products"/>
         <document ref="ProductPriceList" moduleRef="products"/>
         <document ref="ProductUnitGroup" moduleRef="products"/>
+        <document ref="Interaction" moduleRef="customers"/>
 	</documents>
     <roles>
         <role name="Staff">

@@ -6,8 +6,10 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import modules.customers.domain.Account;
+import modules.customers.Account.AccountExtension;
 import modules.products.domain.ProductInfo;
+import modules.sales.Opportunity.OpportunityExtension;
+import modules.sales.Quote.QuoteExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateOnly;
@@ -97,19 +99,19 @@ public class Order extends AbstractPersistentBean {
 	 * <br/>
 	 * The account for the order
 	 **/
-	private Account account = null;
+	private AccountExtension account = null;
 	/**
 	 * Opportunity
 	 * <br/>
 	 * The opportunity for the order
 	 **/
-	private Opportunity opportunity = null;
+	private OpportunityExtension opportunity = null;
 	/**
 	 * Quote
 	 * <br/>
 	 * The quote for the order
 	 **/
-	private Quote quote = null;
+	private QuoteExtension quote = null;
 
 	@Override
 	@XmlTransient
@@ -270,7 +272,7 @@ public class Order extends AbstractPersistentBean {
 	 * {@link #account} accessor.
 	 * @return	The value.
 	 **/
-	public Account getAccount() {
+	public AccountExtension getAccount() {
 		return account;
 	}
 
@@ -279,7 +281,7 @@ public class Order extends AbstractPersistentBean {
 	 * @param account	The new value.
 	 **/
 	@XmlElement
-	public void setAccount(Account account) {
+	public void setAccount(AccountExtension account) {
 		preset(accountPropertyName, account);
 		this.account = account;
 	}
@@ -288,7 +290,7 @@ public class Order extends AbstractPersistentBean {
 	 * {@link #opportunity} accessor.
 	 * @return	The value.
 	 **/
-	public Opportunity getOpportunity() {
+	public OpportunityExtension getOpportunity() {
 		return opportunity;
 	}
 
@@ -297,7 +299,7 @@ public class Order extends AbstractPersistentBean {
 	 * @param opportunity	The new value.
 	 **/
 	@XmlElement
-	public void setOpportunity(Opportunity opportunity) {
+	public void setOpportunity(OpportunityExtension opportunity) {
 		preset(opportunityPropertyName, opportunity);
 		this.opportunity = opportunity;
 	}
@@ -306,7 +308,7 @@ public class Order extends AbstractPersistentBean {
 	 * {@link #quote} accessor.
 	 * @return	The value.
 	 **/
-	public Quote getQuote() {
+	public QuoteExtension getQuote() {
 		return quote;
 	}
 
@@ -315,7 +317,7 @@ public class Order extends AbstractPersistentBean {
 	 * @param quote	The new value.
 	 **/
 	@XmlElement
-	public void setQuote(Quote quote) {
+	public void setQuote(QuoteExtension quote) {
 		preset(quotePropertyName, quote);
 		this.quote = quote;
 	}

@@ -79,7 +79,6 @@
             <length>100</length>
         </text>
         
-        
         <collection name="interactions" type="child">
         	<displayName>Interactions</displayName>
         	<documentName>Interaction</documentName>

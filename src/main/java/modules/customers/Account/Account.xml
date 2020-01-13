@@ -74,7 +74,14 @@
             <displayName>Primary Contact</displayName>
             <description><![CDATA[The account's primary contact]]></description>
             <documentName>ContactDetail</documentName>
-        </association>        
+        </association>  
+        
+        <collection name="interactions" type="child">
+        	<displayName>Interactions</displayName>
+        	<documentName>Interaction</documentName>
+        	<minCardinality>0</minCardinality>
+        </collection>
+              
     </attributes>
     <conditions>
         <condition name="hasCurrent">
