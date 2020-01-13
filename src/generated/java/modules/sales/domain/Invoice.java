@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import modules.sales.Order.OrderExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateOnly;
@@ -150,7 +151,7 @@ public class Invoice extends AbstractPersistentBean {
 	 * <br/>
 	 * The order associated with this invoice
 	 **/
-	private Order order = null;
+	private OrderExtension order = null;
 	/**
 	 * Invoice Status
 	 * <br/>
@@ -259,7 +260,7 @@ public class Invoice extends AbstractPersistentBean {
 	 * {@link #order} accessor.
 	 * @return	The value.
 	 **/
-	public Order getOrder() {
+	public OrderExtension getOrder() {
 		return order;
 	}
 
@@ -268,7 +269,7 @@ public class Invoice extends AbstractPersistentBean {
 	 * @param order	The new value.
 	 **/
 	@XmlElement
-	public void setOrder(Order order) {
+	public void setOrder(OrderExtension order) {
 		preset(orderPropertyName, order);
 		this.order = order;
 	}

@@ -10,7 +10,7 @@ public class QuoteExtension extends Quote {
 
 	public void updateInteraction() {
 		Interaction interaction = Interaction.newInstance();
-		interaction.setTitle("Updated An Opportunity");
+		interaction.setTitle("Updated A Quote");
 		interaction.setType(Type.other);
 		interaction.setDescription(interaction.getUser().getContact().getName() + " updated the quote details for " + getQuoteId() + " with account: " + getOpportunity().getAccount().getAccountName() + ".");
 		getOpportunity().getAccount().getInteractions().add(interaction);

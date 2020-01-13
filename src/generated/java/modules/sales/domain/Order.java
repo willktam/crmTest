@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import modules.customers.Account.AccountExtension;
 import modules.products.domain.ProductInfo;
 import modules.sales.Opportunity.OpportunityExtension;
+import modules.sales.Order.OrderExtension;
 import modules.sales.Quote.QuoteExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
@@ -125,7 +126,7 @@ public class Order extends AbstractPersistentBean {
 		return Order.DOCUMENT_NAME;
 	}
 
-	public static Order newInstance() {
+	public static OrderExtension newInstance() {
 		try {
 			return CORE.getUser().getCustomer().getModule(MODULE_NAME).getDocument(CORE.getUser().getCustomer(), DOCUMENT_NAME).newInstance(CORE.getUser());
 		}

@@ -17,6 +17,9 @@
     			</vbox>
     		</hbox>
     	</tab>
+    	<tab title="Interactions">
+    		<component name="_interactions" />
+    	</tab>
     </tabPane>
     
     <actions>
