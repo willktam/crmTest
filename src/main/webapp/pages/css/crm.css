@@ -4,3 +4,40 @@
 	color: red;
 	font-size:120%;
 }
+
+.infoTemp {
+  float: left;
+  text-align: left;
+  margin-bottom: 5px;
+  width: 75%;
+}
+
+.dateAuth {
+  float: left;
+  margin-top:5px;
+  line-height: 30px;
+}
+.iconTemp {
+  float: left;
+  margin-top: 35px;
+  text-align: center;
+  width: 10%;
+  font-size: 30px;
+}
+
+.titleTemp {
+  font-weight: bold;
+}
+
+.descriptionTemp {
+  font-style: italic;
+  color: grey;
+}
+
+.dateTemp {
+  color: grey;
+}
+
+.authorTemp {
+  color: grey;
+}

@@ -1,5 +1,6 @@
 package modules.sales.Lead;
 
+import modules.customers.Interaction.InteractionExtension;
 import modules.customers.domain.Interaction;
 import modules.customers.domain.Interaction.Type;
 import modules.sales.domain.Lead;
@@ -17,7 +18,7 @@ public class LeadExtension extends Lead {
 	}
 	
 	public void updateInteraction() {
-		Interaction interaction = Interaction.newInstance();
+		InteractionExtension interaction = Interaction.newInstance();
 		interaction.setTitle("Updated A Lead");
 		interaction.setType(Type.other);
 		interaction.setDescription(interaction.getUser().getContact().getName() + " updated the lead details for " + getName() + " with contact: " + getContactDetails().getFirstName() + " " + getContactDetails().getLastName());
@@ -25,7 +26,7 @@ public class LeadExtension extends Lead {
 	}
 	
 	public void deletedInteraction() {
-		Interaction interaction = Interaction.newInstance();
+		InteractionExtension interaction = Interaction.newInstance();
 		interaction.setBizLock(getContactDetails().getBizLock());
 		interaction.setBizKey(getContactDetails().getBizKey());
 		interaction.setTitle("Deleted A Lead");

@@ -76,7 +76,7 @@
             <documentName>ContactDetail</documentName>
         </association>  
         
-        <collection name="interactions" type="child">
+        <collection name="interactions" type="aggregation">
         	<displayName>Interactions</displayName>
         	<documentName>Interaction</documentName>
         	<minCardinality>0</minCardinality>

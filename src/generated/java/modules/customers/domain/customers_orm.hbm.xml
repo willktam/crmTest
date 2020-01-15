@@ -37,9 +37,9 @@
 		<property name="postCode" length="10" />
 		<property name="country" length="100" />
 		<many-to-one name="primaryContact" entity-name="customersContactDetail" column="primaryContact_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_CUS_Account_primaryContact" />
-		<bag name="interactions" cascade="all-delete-orphan">
-			<key column="parent_id" />
-			<one-to-many entity-name="customersInteraction" />
+		<bag name="interactions" table="CUS_Account_interactions" cascade="persist,save-update,refresh,merge">
+			<key column="owner_id" foreign-key="FK_CUS_Account_interactions_owner_id" />
+			<many-to-many entity-name="customersInteraction" foreign-key="FK_CUS_Account_interactions_element_id" column="element_id" />
 		</bag>
 		<filter name="customersAccountNoneFilter" condition="1=0"/>
 		<filter name="customersAccountCustomerFilter" condition="bizCustomer=:customerParam"/>
@@ -73,9 +73,9 @@
 		<property name="state" length="100" />
 		<property name="postCode" length="10" />
 		<property name="country" length="100" />
-		<bag name="interactions" cascade="all-delete-orphan">
-			<key column="parent_id" />
-			<one-to-many entity-name="customersInteraction" />
+		<bag name="interactions" table="CUS_ContactDetail_interactions" cascade="persist,save-update,refresh,merge">
+			<key column="owner_id" foreign-key="FK_CUS_ContactDetail_interactions_owner_id" />
+			<many-to-many entity-name="customersInteraction" foreign-key="FK_CUS_ContactDetail_interactions_element_id" column="element_id" />
 		</bag>
 		<filter name="customersContactDetailNoneFilter" condition="1=0"/>
 		<filter name="customersContactDetailCustomerFilter" condition="bizCustomer=:customerParam"/>
@@ -83,7 +83,7 @@
 		<filter name="customersContactDetailUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
-	<class name="modules.customers.domain.Interaction" table="CUS_Interaction" entity-name="customersInteraction">
+	<class name="modules.customers.Interaction.InteractionExtension" table="CUS_Interaction" entity-name="customersInteraction">
 		<id name="bizId" length="36" />
 		<version name="bizVersion" unsaved-value="null" />
 		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />

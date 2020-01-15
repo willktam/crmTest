@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import modules.admin.User.UserExtension;
+import modules.customers.Interaction.InteractionExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateTime;
@@ -49,6 +50,8 @@ public class Interaction extends AbstractPersistentBean {
 	public static final String typePropertyName = "type";
 	/** @hidden */
 	public static final String interactionTimePropertyName = "interactionTime";
+	/** @hidden */
+	public static final String interactionTemplatePropertyName = "interactionTemplate";
 
 	/**
 	 * Type
@@ -161,6 +164,10 @@ public class Interaction extends AbstractPersistentBean {
 	 * The time the interaction took place
 	 **/
 	private DateTime interactionTime;
+	/**
+	 * Interactions
+	 **/
+	private String interactionTemplate;
 
 	@Override
 	@XmlTransient
@@ -174,7 +181,7 @@ public class Interaction extends AbstractPersistentBean {
 		return Interaction.DOCUMENT_NAME;
 	}
 
-	public static Interaction newInstance() {
+	public static InteractionExtension newInstance() {
 		try {
 			return CORE.getUser().getCustomer().getModule(MODULE_NAME).getDocument(CORE.getUser().getCustomer(), DOCUMENT_NAME).newInstance(CORE.getUser());
 		}
@@ -295,5 +302,22 @@ public class Interaction extends AbstractPersistentBean {
 	public void setInteractionTime(DateTime interactionTime) {
 		preset(interactionTimePropertyName, interactionTime);
 		this.interactionTime = interactionTime;
+	}
+
+	/**
+	 * {@link #interactionTemplate} accessor.
+	 * @return	The value.
+	 **/
+	public String getInteractionTemplate() {
+		return interactionTemplate;
+	}
+
+	/**
+	 * {@link #interactionTemplate} mutator.
+	 * @param interactionTemplate	The new value.
+	 **/
+	@XmlElement
+	public void setInteractionTemplate(String interactionTemplate) {
+		this.interactionTemplate = interactionTemplate;
 	}
 }
