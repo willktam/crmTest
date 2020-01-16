@@ -33,7 +33,9 @@
 			</hbox>
     	</tab>
     	<tab title="Interactions">
-    		<component name="_interactions" />
+    		<vbox border="true" borderTitle="Interactions" percentageWidth="60" responsiveWidth="8">
+				<component name="_interactions" />
+			</vbox>
     	</tab>
     </tabPane>
 

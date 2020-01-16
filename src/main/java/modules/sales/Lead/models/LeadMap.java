@@ -27,12 +27,12 @@ public class LeadMap extends MapModel<Lead> {
 		StringBuilder markup = new StringBuilder();
 		markup.append("<div><h2>").append(lead.getName()).append("</h2>");
 		markup.append("<a href=").append(lead.getWebsite()).append(">").append(lead.getWebsite()).append("</a>");
-		markup.append("<p>Contact: ").append(contact.getFirstName()).append(" ").append(contact.getLastName());
-	    markup.append("<br/>").append(contact.getEmail());
-	    markup.append("<br/>").append(contact.getMobileNumber());
-	    markup.append("<br/>").append(contact.getBusinessNumber());
-	    markup.append("<br/>Preferred Method of Contact: ").append(contact.getMethod());
-		markup.append("</p></div>");  
+		markup.append("</br><span>Contact: ").append(contact.getFirstName()).append(" ").append(contact.getLastName());
+	    markup.append("</br></span><span>").append(contact.getEmail());
+	    markup.append("</br></span><span>").append(contact.getMobileNumber());
+	    markup.append("</br></span><span>").append(contact.getBusinessNumber());
+	    markup.append("</br></span><span>Preferred Method of Contact: ").append(contact.getMethod());
+		markup.append("</span></div>");  
 		item.setInfoMarkup(markup.toString());
 		items.add(item);
 		

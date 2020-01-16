@@ -5,24 +5,34 @@
 	font-size:120%;
 }
 
+.container {
+	overflow: hidden;
+	border-left: 4px solid #007ad9;	
+}
+.container:hover {
+	border-left: 4px solid #007ad9;
+	background-color: rgba(0, 122, 217, 0.2);
+	cursor: pointer;
+}
+
 .infoTemp {
   float: left;
   text-align: left;
-  margin-bottom: 5px;
-  width: 75%;
+  width: 70%;
+  margin-left: 10px;
+  line-height: 30px;
 }
 
 .dateAuth {
   float: left;
-  margin-top:5px;
   line-height: 30px;
 }
 .iconTemp {
   float: left;
-  margin-top: 35px;
+  margin-top: 15px;
   text-align: center;
   width: 10%;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .titleTemp {

@@ -83,6 +83,9 @@
         	<displayName>Interactions</displayName>
         	<documentName>Interaction</documentName>
         	<minCardinality>0</minCardinality>
+        	<ordering>
+        		<order sort="ascending" by="interactionTime"/>
+        	</ordering>
         </collection>
         
         
