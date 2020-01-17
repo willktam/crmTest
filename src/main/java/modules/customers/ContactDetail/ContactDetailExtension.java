@@ -27,4 +27,12 @@ public class ContactDetailExtension extends ContactDetail {
 		getInteractions().add(interaction);
 	}
 	
+	public void createInteraction(final Type type, final String description) {
+		InteractionExtension interaction = Interaction.newInstance();
+		interaction.setTitle(String.format("New %s", type.toDescription()));
+		interaction.setType(type);
+		interaction.setDescription(description);
+		getInteractions().add(interaction);
+	}
+	
 }

@@ -26,10 +26,11 @@
 .dateAuth {
   float: left;
   line-height: 30px;
+  text-align: end;
 }
 .iconTemp {
   float: left;
-  margin-top: 15px;
+  margin-top: 20px;
   text-align: center;
   width: 10%;
   font-size: 25px;

@@ -20,7 +20,9 @@
         <role name="Maintainer">
             <description><![CDATA[Enough privileges to create and edit Customers documents.]]></description>
             <privileges>
-                <document name="ContactDetail" permission="CRUDC"/>
+                <document name="ContactDetail" permission="CRUDC">
+                	<action name="AddInteraction"/>
+                </document>
                 <document name="Interaction" permission="CRUDC"/>
             </privileges>
         </role>

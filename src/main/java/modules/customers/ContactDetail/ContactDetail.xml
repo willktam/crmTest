@@ -79,16 +79,21 @@
             <length>100</length>
         </text>
         
-        <collection name="interactions" type="aggregation">
+        <collection name="interactions" type="composition">
         	<displayName>Interactions</displayName>
         	<documentName>Interaction</documentName>
         	<minCardinality>0</minCardinality>
         	<ordering>
-        		<order sort="ascending" by="interactionTime"/>
+        		<order sort="descending" by="interactionTime"/>
         	</ordering>
         </collection>
         
-        
-        
+        <!-- quick add interaction attributes -->
+		<memo name="interactionDescription" persistent="false">
+			<displayName>Description</displayName>
+		</memo>
+		<enum name="interactionType" documentRef="Interaction" attributeRef="type" persistent="false">
+			<displayName>Type</displayName>
+		</enum>
     </attributes>
 </document>

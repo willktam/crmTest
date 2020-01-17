@@ -73,9 +73,9 @@
 		<property name="state" length="100" />
 		<property name="postCode" length="10" />
 		<property name="country" length="100" />
-		<bag name="interactions" table="CUS_ContactDetail_interactions" cascade="persist,save-update,refresh,merge">
+		<bag name="interactions" table="CUS_ContactDetail_interactions" cascade="all-delete-orphan">
 			<key column="owner_id" foreign-key="FK_CUS_ContactDetail_interactions_owner_id" />
-			<many-to-many entity-name="customersInteraction" order-by="interactionTime asc" foreign-key="FK_CUS_ContactDetail_interactions_element_id" column="element_id" />
+			<many-to-many entity-name="customersInteraction" order-by="interactionTime desc" foreign-key="FK_CUS_ContactDetail_interactions_element_id" column="element_id" />
 		</bag>
 		<filter name="customersContactDetailNoneFilter" condition="1=0"/>
 		<filter name="customersContactDetailCustomerFilter" condition="bizCustomer=:customerParam"/>

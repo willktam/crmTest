@@ -9,17 +9,17 @@ public class LeadExtension extends Lead {
 
 	private static final long serialVersionUID = -2679423500867553655L;
 
-	public Interaction createInteraction() {
-		Interaction interaction = Interaction.newInstance();
-		interaction.setTitle("Created A New Lead");
+	public void createInteraction() {
+		InteractionExtension interaction = Interaction.newInstance();
+		interaction.setTitle("Created New Lead");
 		interaction.setType(Type.other);
-		//getContactDetails().getInteractions().add(interaction);
-		return interaction;
+		interaction.setDescription(interaction.getUser().getContact().getName() + " created a new lead for contact: " + getContactDetails().getFirstName() + " " + getContactDetails().getLastName());
+		getContactDetails().getInteractions().add(interaction);
 	}
 	
 	public void updateInteraction() {
 		InteractionExtension interaction = Interaction.newInstance();
-		interaction.setTitle("Updated A Lead");
+		interaction.setTitle("Updated Lead");
 		interaction.setType(Type.other);
 		interaction.setDescription(interaction.getUser().getContact().getName() + " updated the lead details for " + getName() + " with contact: " + getContactDetails().getFirstName() + " " + getContactDetails().getLastName());
 		getContactDetails().getInteractions().add(interaction);
@@ -29,7 +29,7 @@ public class LeadExtension extends Lead {
 		InteractionExtension interaction = Interaction.newInstance();
 		interaction.setBizLock(getContactDetails().getBizLock());
 		interaction.setBizKey(getContactDetails().getBizKey());
-		interaction.setTitle("Deleted A Lead");
+		interaction.setTitle("Deleted Lead");
 		interaction.setType(Type.other);
 		interaction.setDescription(interaction.getUser().getContact().getName() + " deleted the lead for " + getName());
 		getContactDetails().getInteractions().add(interaction);

@@ -8,19 +8,14 @@
 			</vbox>	
     	</tab>
     	<tab title="Interactions">
-    		
-    		<vbox border="true" borderTitle="Interactions" percentageWidth="60" responsiveWidth="8">
-				<component name="_interactions" />
-			</vbox>
-			<!--<vbox border="true" borderTitle="Add A New Interaction" percentageWidth="40" responsiveWidth="4">
-				<component name="_manualInteraction" />
-			</vbox> -->
+			<component name="_interactions" />
     	</tab>
     </tabPane>
     
     <actions>
-   		<!-- <save name="save"/> -->
         <defaults/>
+        
+        <action className="AddInteraction" displayName="Add" inActionPanel="false" iconStyleClass="fa fa-plus"></action>
     </actions>
     <newParameters/>
 </view>

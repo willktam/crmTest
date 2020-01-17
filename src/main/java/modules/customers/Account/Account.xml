@@ -76,10 +76,13 @@
             <documentName>ContactDetail</documentName>
         </association>  
         
-        <collection name="interactions" type="aggregation">
+        <collection name="interactions" type="composition">
         	<displayName>Interactions</displayName>
         	<documentName>Interaction</documentName>
         	<minCardinality>0</minCardinality>
+        	<ordering>
+        		<order sort="descending" by="interactionTime"/>
+        	</ordering>
         </collection>
               
     </attributes>

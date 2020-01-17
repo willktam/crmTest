@@ -2,11 +2,14 @@ package modules.customers.Interaction;
 
 import org.skyve.util.Util;
 
+import com.ibm.icu.text.SimpleDateFormat;
+
 import modules.customers.domain.Interaction;
 
 public class InteractionExtension extends Interaction {
 
 	private static final long serialVersionUID = 7036377442570071671L;
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a, dd/MM/yy");
 
 	@Override
 	public String getInteractionTemplate() {
@@ -30,21 +33,13 @@ public class InteractionExtension extends Interaction {
 		default:
 			break;
 		}
-		
-		
-
-		StringBuilder link = new StringBuilder();
-		link.append(Util.getHomeUrl());
-		link.append("?a=e&m=").append("customers").append("&d=").append("Interaction");
-		link.append("&i=").append(getBizId());
-		
 
 		StringBuilder markup = new StringBuilder();
-		markup.append("<div class='container' onclick=\"location.href='"+ link +"';\">"
+		markup.append("<div class='container' onclick=\"location.href='"+ Util.getDocumentUrl(this) +"';\">"
 				+ "<div class='iconTemp'><span class='"+ type +"'></span></div>");
 		markup.append("<div class='infoTemp'><span class='titleTemp'> ").append(getTitle());
 		markup.append("</span></br><p class='descriptionTemp'> ").append(getDescription());
-		markup.append("</p></div><div class='dateAuth'><span class='dateTemp'>").append("12:00 15/01/20");
+		markup.append("</p></div><div class='dateAuth'><span class='dateTemp'>").append(sdf.format(getInteractionTime()));
 		markup.append("</span></br><span class='authorTemp'> ").append(getUser().getContact().getName());
 		markup.append("</span></div></div>");
 			
