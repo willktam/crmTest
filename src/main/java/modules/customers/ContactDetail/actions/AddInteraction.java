@@ -5,7 +5,11 @@ import org.skyve.domain.messages.Message;
 import org.skyve.domain.messages.ValidationException;
 import org.skyve.metadata.controller.ServerSideAction;
 import org.skyve.metadata.controller.ServerSideActionResult;
-import org.skyve.util.BeanValidator;
+import org.skyve.metadata.customer.Customer;
+import org.skyve.metadata.model.document.Document;
+import org.skyve.metadata.module.Module;
+import org.skyve.metadata.user.User;
+import org.skyve.util.Binder;
 import org.skyve.web.WebContext;
 
 import modules.customers.ContactDetail.ContactDetailExtension;
@@ -34,6 +38,15 @@ public class AddInteraction implements ServerSideAction<ContactDetailExtension> 
 		bean.setInteractionType(null);
 		
 		bean = CORE.getPersistence().save(bean);
+		//if collectionsize < 50
+		User user = CORE.getUser();
+		Customer customer = user.getCustomer();
+		Module module = customer.getModule(ContactDetail.MODULE_NAME);
+		Document document = module.getDocument(customer, ContactDetail.DOCUMENT_NAME);
+		
+		String collectionBinding = ContactDetail.interactionsPropertyName;
+		Binder.sortCollectionByMetaData(bean, customer, module, document, collectionBinding);
+		
 		
 		return new ServerSideActionResult<>(bean);
 	}
