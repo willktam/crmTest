@@ -16,6 +16,13 @@ public class LeadExtension extends Lead {
 		interaction.setDescription(interaction.getUser().getContact().getName() + " created a new lead for contact: " + getContactDetails().getFirstName() + " " + getContactDetails().getLastName());
 		getContactDetails().getInteractions().add(interaction);
 	}
+	public void createInteraction(final Type type, final String description) {
+		InteractionExtension interaction = Interaction.newInstance();
+		interaction.setTitle(String.format("New %s", type.toDescription()));
+		interaction.setType(type);
+		interaction.setDescription(description);
+		getContactDetails().getInteractions().add(interaction);
+	}
 	
 	public void updateInteraction() {
 		InteractionExtension interaction = Interaction.newInstance();
@@ -43,4 +50,6 @@ public class LeadExtension extends Lead {
 		}
 		return null;
 	}
+
+	
 }

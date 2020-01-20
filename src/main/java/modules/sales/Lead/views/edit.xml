@@ -33,14 +33,13 @@
 			</hbox>
     	</tab>
     	<tab title="Interactions">
-    		<vbox border="true" borderTitle="Interactions" percentageWidth="60" responsiveWidth="8">
-				<component name="_interactions" />
-			</vbox>
+			<component name="_interactions" />
     	</tab>
     </tabPane>
 
     <actions>
         <defaults/>
+        <action className="AddInteraction" displayName="Add" inActionPanel="false" iconStyleClass="fa fa-plus" ></action>
     </actions>
     <newParameters/>
 </view>

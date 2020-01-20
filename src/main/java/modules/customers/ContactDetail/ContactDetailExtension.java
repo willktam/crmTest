@@ -9,8 +9,6 @@ public class ContactDetailExtension extends ContactDetail {
 	
 	private static final long serialVersionUID = -1879786610392669581L;
 	
-	
-	
 	public void updateInteraction() {
 		InteractionExtension interaction = Interaction.newInstance();
 		interaction.setTitle("Updated A Contact");

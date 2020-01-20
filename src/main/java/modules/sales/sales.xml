@@ -19,7 +19,9 @@
         <role name="Staff">
             <description><![CDATA[Staff Member - A staff member who can work on jobs]]></description>
             <privileges>
-                <document name="Lead" permission="CRUDU"/>
+                <document name="Lead" permission="CRUDU">
+                	<action name="AddInteraction"/>
+                </document>
                 <document permission="CRUDU" name="Opportunity" />
                 <document permission="CRUDU" name="Quote"></document>
             </privileges>
@@ -27,7 +29,9 @@
         <role name="LeadManager">
             <description><![CDATA[Lead Manager - Who can manage all leads]]></description>
             <privileges>
-                <document name="Lead" permission="CRUDC"/>
+                <document name="Lead" permission="CRUDC">
+                	<action name="AddInteraction"/>
+                </document>
             </privileges>
         </role>
         <role name="OpportunityManager">

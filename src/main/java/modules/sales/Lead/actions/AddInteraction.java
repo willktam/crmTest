@@ -1,4 +1,4 @@
-package modules.customers.ContactDetail.actions;
+package modules.sales.Lead.actions;
 
 import org.skyve.CORE;
 import org.skyve.domain.messages.Message;
@@ -12,51 +12,50 @@ import org.skyve.metadata.user.User;
 import org.skyve.util.Binder;
 import org.skyve.web.WebContext;
 
-import modules.customers.ContactDetail.ContactDetailExtension;
 import modules.customers.domain.ContactDetail;
+import modules.sales.Lead.LeadExtension;
 
-public class AddInteraction implements ServerSideAction<ContactDetailExtension> {
-
-	private static final long serialVersionUID = 3164811346643625845L;
+public class AddInteraction implements ServerSideAction<LeadExtension> {
+	
+	private static final long serialVersionUID = -1325718922332249285L;
 
 	@Override
-	public ServerSideActionResult<ContactDetailExtension> execute(ContactDetailExtension bean, WebContext webContext)
+	public ServerSideActionResult<LeadExtension> execute(LeadExtension bean, WebContext webContext) 
 			throws Exception {
-
+		
 		// check for required fields
-		if(bean.getInteractionType() == null) {
+		if (bean.getContactDetails().getInteractionType() == null) {
 			throw new ValidationException(new Message(ContactDetail.interactionTypePropertyName, "Type is required"));
 		}
-		if(bean.getInteractionDescription() == null) {
+		if (bean.getContactDetails().getInteractionDescription() == null) {
 			throw new ValidationException(new Message(ContactDetail.interactionDescriptionPropertyName, "Description is required"));
 		}
 		
-		bean.createInteraction(bean.getInteractionType(), bean.getInteractionDescription());
-		
+		bean.createInteraction(bean.getContactDetails().getInteractionType(), bean.getContactDetails().getInteractionDescription());
+			
 		// clear the quick add form
-		bean.setInteractionDescription(null);
-		bean.setInteractionType(null);
+		bean.getContactDetails().setInteractionDescription(null);
+		bean.getContactDetails().setInteractionType(null);
 		
 		bean = CORE.getPersistence().save(bean);
-		
+				
 		User user = CORE.getUser();
 		Customer customer = user.getCustomer();
-		Module module = customer.getModule(ContactDetail.MODULE_NAME);
-		Document document = module.getDocument(customer, ContactDetail.DOCUMENT_NAME);
-		String collectionBinding = ContactDetail.interactionsPropertyName;
-		
-		int size = bean.getInteractions().size();
+		Module module = customer.getModule(LeadExtension.MODULE_NAME);
+		Document document = module.getDocument(customer, LeadExtension.DOCUMENT_NAME);
+		String collectionBinding = LeadExtension.contactDetailsPropertyName + "." +  ContactDetail.interactionDescriptionPropertyName;
+				
+		int size = bean.getContactDetails().getInteractions().size();
 		if (size < 50) {
-			Binder.sortCollectionByMetaData(bean, customer, module, document, collectionBinding);
+			Binder.sortCollectionByMetaData(bean, customer, module, document,collectionBinding);
 		}
 		else {
 			for (int i = 0; i < size-50; i++) {
-				bean.getInteractions().remove(i);
+				bean.getContactDetails().getInteractions().remove(i);
 			}
 			Binder.sortCollectionByMetaData(bean, customer, module, document, collectionBinding);
 		}
 
 		return new ServerSideActionResult<>(bean);
 	}
-
 }
