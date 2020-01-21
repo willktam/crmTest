@@ -23,9 +23,14 @@ public class QuoteBizlet extends Bizlet<QuoteExtension> {
 	public QuoteExtension preExecute(ImplicitActionName actionName, QuoteExtension bean, Bean parentBean,
 			WebContext webContext) throws Exception {
 		if (ImplicitActionName.Save.equals(actionName) || ImplicitActionName.OK.equals(actionName)) {
+			// make an update interaction if the record is changed
 			if (bean.isChanged()) {
 				bean.updateInteraction();
 			}	
+			// make a created interaction if the record has not been saved
+			if (bean.isNotPersisted()) {
+				bean.createInteraction();
+			}
 		}
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}

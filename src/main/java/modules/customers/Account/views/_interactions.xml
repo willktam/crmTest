@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_interactions" title="Interactions" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
-	<dataGrid binding="interactions" >
-		<boundColumn binding="title" />
-		<boundColumn binding="user.contact.name" />
-		<boundColumn binding="description" />
-		<boundColumn binding="type" />
-		<boundColumn binding="interactionTime" />
-	</dataGrid>		
+	<form border="true" borderTitle="Add Interaction">
+		<column responsiveWidth="1" />
+		<column responsiveWidth="2" />
+		<column responsiveWidth="2" />
+		<column />
+		<column responsiveWidth="2" />
+		<row>
+			<item>
+				<default binding="interactionType" />
+			</item>
+			<item>
+				<textField binding="interactionDescription" />
+			</item>
+			<item>
+				<button actionName="AddInteraction" />
+			</item>
+		</row>
+	</form>
+	
+	<vbox border="true" borderTitle="Interactions">
+		<dataRepeater binding="interactions">
+			<containerColumn>
+				<blurb><![CDATA[{interactionTemplate}]]></blurb>
+			</containerColumn>
+		</dataRepeater>
+	</vbox>
 </view>

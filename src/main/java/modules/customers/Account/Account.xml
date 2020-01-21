@@ -84,6 +84,14 @@
         		<order sort="descending" by="interactionTime"/>
         	</ordering>
         </collection>
+        
+        <!-- quick add interaction attributes -->
+		<memo name="interactionDescription" persistent="false">
+			<displayName>Description</displayName>
+		</memo>
+		<enum name="interactionType" documentRef="Interaction" attributeRef="type" persistent="false">
+			<displayName>Type</displayName>
+		</enum>
               
     </attributes>
     <conditions>

@@ -11,7 +11,7 @@ public class ContactDetailExtension extends ContactDetail {
 	
 	public void updateInteraction() {
 		InteractionExtension interaction = Interaction.newInstance();
-		interaction.setTitle("Updated A Contact");
+		interaction.setTitle("Updated Contact");
 		interaction.setType(Type.other);
 		interaction.setDescription(interaction.getUser().getContact().getName() + " updated the contact details for " + getFirstName() + " " + getLastName());
 		getInteractions().add(interaction);
@@ -19,7 +19,7 @@ public class ContactDetailExtension extends ContactDetail {
 
 	public void createInteraction() {
 		InteractionExtension interaction = Interaction.newInstance();
-		interaction.setTitle("Created A New Contact");
+		interaction.setTitle("Created New Contact");
 		interaction.setType(Type.other);
 		interaction.setDescription(interaction.getUser().getContact().getName() + " created a new contact.");
 		getInteractions().add(interaction);

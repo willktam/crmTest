@@ -16,14 +16,13 @@
 			</hbox>
     	</tab>
     	<tab title="Interactions">
-    		<vbox border="true" borderTitle="Interactions" >
-				<component name="_interactions" />
-			</vbox>
+			<component name="_interactions" />	
     	</tab>
     </tabPane>
     
     <actions>
         <defaults/>
+        <action className="AddInteraction" displayName="Add" inActionPanel="false" iconStyleClass="fa fa-plus" />
     </actions>
     <newParameters/>
 </view>

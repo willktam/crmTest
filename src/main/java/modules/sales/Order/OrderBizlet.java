@@ -23,8 +23,13 @@ public class OrderBizlet extends Bizlet<OrderExtension> {
 	public OrderExtension preExecute(ImplicitActionName actionName, OrderExtension bean, Bean parentBean,
 			WebContext webContext) throws Exception {
 		if (ImplicitActionName.Save.equals(actionName) || ImplicitActionName.OK.equals(actionName)) {
+			//
 			if (bean.isChanged()) {
 				bean.updateInteraction();
+			}
+			//
+			if (bean.isNotPersisted()) {
+				bean.createInteraction();
 			}
 		}
 		return super.preExecute(actionName, bean, parentBean, webContext);

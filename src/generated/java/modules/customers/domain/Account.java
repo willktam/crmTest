@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import modules.customers.Account.AccountExtension;
 import modules.customers.ContactDetail.ContactDetailExtension;
 import modules.customers.Interaction.InteractionExtension;
+import modules.customers.domain.Interaction.Type;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateOnly;
@@ -25,6 +26,7 @@ import org.skyve.metadata.model.document.Bizlet.DomainValue;
  * Account
  * 
  * @depend - - - RelationshipType
+ * @depend - - - Type
  * @navhas n primaryContact 0..1 ContactDetail
  * @navcomposed n interactions 0..n Interaction
  * @stereotype "persistent"
@@ -71,6 +73,10 @@ public class Account extends AbstractPersistentBean {
 	public static final String primaryContactPropertyName = "primaryContact";
 	/** @hidden */
 	public static final String interactionsPropertyName = "interactions";
+	/** @hidden */
+	public static final String interactionDescriptionPropertyName = "interactionDescription";
+	/** @hidden */
+	public static final String interactionTypePropertyName = "interactionType";
 
 	/**
 	 * Relationship Type
@@ -234,6 +240,14 @@ public class Account extends AbstractPersistentBean {
 	 * Interactions
 	 **/
 	private List<InteractionExtension> interactions = new ChangeTrackingArrayList<>("interactions", this);
+	/**
+	 * Description
+	 **/
+	private String interactionDescription;
+	/**
+	 * Type
+	 **/
+	private Type interactionType;
 
 	@Override
 	@XmlTransient
@@ -539,6 +553,42 @@ public class Account extends AbstractPersistentBean {
 	 **/
 	public void setInteractionsElementById(String bizId, InteractionExtension element) {
 		 setElementById(interactions, element);
+	}
+
+	/**
+	 * {@link #interactionDescription} accessor.
+	 * @return	The value.
+	 **/
+	public String getInteractionDescription() {
+		return interactionDescription;
+	}
+
+	/**
+	 * {@link #interactionDescription} mutator.
+	 * @param interactionDescription	The new value.
+	 **/
+	@XmlElement
+	public void setInteractionDescription(String interactionDescription) {
+		preset(interactionDescriptionPropertyName, interactionDescription);
+		this.interactionDescription = interactionDescription;
+	}
+
+	/**
+	 * {@link #interactionType} accessor.
+	 * @return	The value.
+	 **/
+	public Type getInteractionType() {
+		return interactionType;
+	}
+
+	/**
+	 * {@link #interactionType} mutator.
+	 * @param interactionType	The new value.
+	 **/
+	@XmlElement
+	public void setInteractionType(Type interactionType) {
+		preset(interactionTypePropertyName, interactionType);
+		this.interactionType = interactionType;
 	}
 
 	/**

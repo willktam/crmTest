@@ -37,19 +37,25 @@
         <role name="OpportunityManager">
         	<description><![CDATA[Opportunity Manager - Who can manage all opportunities]]></description>
         	<privileges>
-        		<document permission="CRUDC" name="Opportunity" />
+        		<document permission="CRUDC" name="Opportunity" >
+        			<action name="AddInteraction"/>
+        		</document>
         	</privileges>
         </role>
         <role name="QuoteManager">
         	<description><![CDATA[Quote Manager - Who can manage all quotes]]></description>
         	<privileges>
-        		<document permission="CRUDC" name="Quote" />
+        		<document permission="CRUDC" name="Quote" >
+        			<action name="AddInteraction"/>
+        		</document>
         	</privileges>
         </role>
         <role name="OrderManager">
         	<description><![CDATA[Order Manager - Who can manage all orders]]></description>
         	<privileges>
-        		<document permission="CRUDC" name="Order" />
+        		<document permission="CRUDC" name="Order" >
+        			<action name="AddInteraction"/>
+       			</document>
         	</privileges>
         </role>
         <role name="InvoiceManager">

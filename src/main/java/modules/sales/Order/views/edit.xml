@@ -24,6 +24,7 @@
     
     <actions>
         <defaults/>
+        <action className="AddInteraction" displayName="Add" inActionPanel="false" iconStyleClass="fa fa-plus" ></action>
     </actions>
     <newParameters/>
 </view>
