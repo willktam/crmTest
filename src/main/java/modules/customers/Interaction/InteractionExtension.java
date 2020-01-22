@@ -24,6 +24,9 @@ public class InteractionExtension extends Interaction {
 		case "meeting":
 			type = "fa fa-users";
 			break;
+		case "socialMedia":
+			type = "fa fa-share-alt-square";
+			break;
 		case "comment":
 			type = "fa fa-comment";
 			break;

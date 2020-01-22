@@ -11,7 +11,7 @@
 				<default binding="opportunity.account.interactionType" />
 			</item>
 			<item>
-				<textField binding="opportunity.account.interactionDescription" />
+				<textArea binding="opportunity.account.interactionDescription" />
 			</item>
 			<item>
 				<button actionName="AddInteraction" />

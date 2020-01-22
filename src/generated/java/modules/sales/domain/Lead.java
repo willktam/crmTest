@@ -50,9 +50,13 @@ public class Lead extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String countryPropertyName = "country";
 	/** @hidden */
+	public static final String leadTypePropertyName = "leadType";
+	/** @hidden */
 	public static final String companyLocationPropertyName = "companyLocation";
 	/** @hidden */
 	public static final String progressPropertyName = "progress";
+	/** @hidden */
+	public static final String selectedTabPropertyName = "selectedTab";
 
 	/**
 	 * Contact Details
@@ -103,6 +107,12 @@ public class Lead extends AbstractPersistentBean {
 	 **/
 	private String country;
 	/**
+	 * Lead Type
+	 * <br/>
+	 * The type of this lead
+	 **/
+	private String leadType;
+	/**
 	 * Company Location
 	 **/
 	private Geometry companyLocation;
@@ -110,6 +120,10 @@ public class Lead extends AbstractPersistentBean {
 	 * Progress
 	 **/
 	private String progress;
+	/**
+	 * selectedTab
+	 **/
+	private transient Integer selectedTab = new Integer(0);
 
 	@Override
 	@XmlTransient
@@ -299,6 +313,24 @@ public class Lead extends AbstractPersistentBean {
 	}
 
 	/**
+	 * {@link #leadType} accessor.
+	 * @return	The value.
+	 **/
+	public String getLeadType() {
+		return leadType;
+	}
+
+	/**
+	 * {@link #leadType} mutator.
+	 * @param leadType	The new value.
+	 **/
+	@XmlElement
+	public void setLeadType(String leadType) {
+		preset(leadTypePropertyName, leadType);
+		this.leadType = leadType;
+	}
+
+	/**
 	 * {@link #companyLocation} accessor.
 	 * @return	The value.
 	 **/
@@ -332,6 +364,24 @@ public class Lead extends AbstractPersistentBean {
 	@XmlElement
 	public void setProgress(String progress) {
 		this.progress = progress;
+	}
+
+	/**
+	 * {@link #selectedTab} accessor.
+	 * @return	The value.
+	 **/
+	public Integer getSelectedTab() {
+		return selectedTab;
+	}
+
+	/**
+	 * {@link #selectedTab} mutator.
+	 * @param selectedTab	The new value.
+	 **/
+	@XmlElement
+	public void setSelectedTab(Integer selectedTab) {
+		preset(selectedTabPropertyName, selectedTab);
+		this.selectedTab = selectedTab;
 	}
 
 	/**

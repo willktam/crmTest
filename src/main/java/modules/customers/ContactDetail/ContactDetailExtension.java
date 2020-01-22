@@ -32,5 +32,4 @@ public class ContactDetailExtension extends ContactDetail {
 		interaction.setDescription(description);
 		getInteractions().add(interaction);
 	}
-	
 }

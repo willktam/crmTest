@@ -54,7 +54,9 @@
 		<property name="state" length="100" />
 		<property name="postCode" length="10" />
 		<property name="country" length="100" />
+		<property name="leadType" length="300" />
 		<property name="companyLocation" />
+		<property name="selectedTab" />
 		<filter name="salesLeadNoneFilter" condition="1=0"/>
 		<filter name="salesLeadCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="salesLeadDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>

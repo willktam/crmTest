@@ -11,7 +11,7 @@
 				<default binding="account.interactionType" />
 			</item>
 			<item>
-				<textField binding="account.interactionDescription" />
+				<textArea binding="account.interactionDescription" />
 			</item>
 			<item>
 				<button actionName="AddInteraction" />

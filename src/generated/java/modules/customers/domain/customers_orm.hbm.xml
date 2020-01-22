@@ -95,7 +95,7 @@
 		<property name="title" length="50" />
 		<many-to-one name="user" entity-name="adminUser" column="user_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_CUS_Interaction_user" />
 		<property name="description" type="text" />
-		<property name="type" length="7">
+		<property name="type" length="12">
 			<type name="Enum">
 				<param name="enumClass">modules.customers.domain.Interaction$Type</param>
 			</type>

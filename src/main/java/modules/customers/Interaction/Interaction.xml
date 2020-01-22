@@ -26,6 +26,7 @@
     			<value code="Email"/>
     			<value code="Phone"/>
     			<value code="Meeting"/>
+    			<value code="Social Media"/>
     			<value code="Comment"/>
     			<value code="Other"/>
     		</values>

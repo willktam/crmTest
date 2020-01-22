@@ -44,7 +44,7 @@ public class AddInteraction implements ServerSideAction<LeadExtension> {
 		Module module = customer.getModule(LeadExtension.MODULE_NAME);
 		Document document = module.getDocument(customer, LeadExtension.DOCUMENT_NAME);
 		String collectionBinding = LeadExtension.contactDetailsPropertyName + "." +  ContactDetail.interactionDescriptionPropertyName;
-				
+		
 		int size = bean.getContactDetails().getInteractions().size();
 		if (size < 50) {
 			Binder.sortCollectionByMetaData(bean, customer, module, document,collectionBinding);
@@ -55,6 +55,7 @@ public class AddInteraction implements ServerSideAction<LeadExtension> {
 			}
 			Binder.sortCollectionByMetaData(bean, customer, module, document, collectionBinding);
 		}
+		
 
 		return new ServerSideActionResult<>(bean);
 	}

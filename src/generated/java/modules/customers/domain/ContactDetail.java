@@ -71,6 +71,8 @@ public class ContactDetail extends AbstractPersistentBean {
 	public static final String interactionDescriptionPropertyName = "interactionDescription";
 	/** @hidden */
 	public static final String interactionTypePropertyName = "interactionType";
+	/** @hidden */
+	public static final String selectedTabPropertyName = "selectedTab";
 
 	/**
 	 * Preferred Method of Contact
@@ -244,6 +246,10 @@ public class ContactDetail extends AbstractPersistentBean {
 	 * Type
 	 **/
 	private Type interactionType;
+	/**
+	 * Selected Tab
+	 **/
+	private transient Integer selectedTab;
 
 	@Override
 	@XmlTransient
@@ -583,5 +589,22 @@ public class ContactDetail extends AbstractPersistentBean {
 	public void setInteractionType(Type interactionType) {
 		preset(interactionTypePropertyName, interactionType);
 		this.interactionType = interactionType;
+	}
+
+	/**
+	 * {@link #selectedTab} accessor.
+	 * @return	The value.
+	 **/
+	public Integer getSelectedTab() {
+		return selectedTab;
+	}
+
+	/**
+	 * {@link #selectedTab} mutator.
+	 * @param selectedTab	The new value.
+	 **/
+	@XmlElement
+	public void setSelectedTab(Integer selectedTab) {
+		this.selectedTab = selectedTab;
 	}
 }

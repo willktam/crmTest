@@ -50,6 +50,12 @@
             <length>100</length>
         </text>
         
+        <text name="leadType">
+        	<displayName>Lead Type</displayName>
+        	<description><![CDATA[The type of this lead]]></description>
+        	<length>300</length>        	
+        </text>
+        
         <geometry name="companyLocation">
         	<displayName>Company Location</displayName>
         </geometry>
@@ -57,6 +63,12 @@
         <markup persistent="false" trackChanges="false" audited="false" usage="view" name="progress">
             <displayName>Progress</displayName>
         </markup>
+        
+        <integer name="selectedTab" >
+        	<displayName>selectedTab</displayName>
+        	<transient>true</transient>
+        	<defaultValue>0</defaultValue>
+        </integer>
         
     </attributes>
     

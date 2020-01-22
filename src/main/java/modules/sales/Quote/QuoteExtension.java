@@ -18,6 +18,7 @@ public class QuoteExtension extends Quote {
 				+ " " + getOpportunity().getAccount().getPrimaryContact().getLastName());
 		getOpportunity().getAccount().getInteractions().add(interaction);
 	}
+	
 	public void createInteraction(final Type type, final String description) {
 		InteractionExtension interaction = Interaction.newInstance();
 		interaction.setTitle(String.format("New %s", type.toDescription()));

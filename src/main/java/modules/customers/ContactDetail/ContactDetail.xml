@@ -95,5 +95,10 @@
 		<enum name="interactionType" documentRef="Interaction" attributeRef="type" persistent="false">
 			<displayName>Type</displayName>
 		</enum>
+		
+		<integer name="selectedTab" persistent="false" usage="view" trackChanges="false">
+			<displayName>Selected Tab</displayName>
+			<transient>true</transient>
+		</integer>
     </attributes>
 </document>

@@ -15,7 +15,7 @@
         </row>
         <row>
         	<item>
-        		<textField binding="contactDetails.firstName" visible="contactSelected" editable="false"/>
+        		<textField binding="contactDetails.firstName" visible="contactSelected" editable="false" />
         	</item>
         </row>
         <row>
@@ -47,6 +47,11 @@
         	<item>
         		<textField binding="contactDetails.method" visible="contactSelected" editable="false"/>
         	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="leadType" previousValues="true" />
+          	</item>
         </row>
     </form>
 </view>

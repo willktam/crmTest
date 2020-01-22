@@ -24,7 +24,9 @@ public class ContactDetailBizlet extends Bizlet<ContactDetailExtension> {
 	
 	@Override
 	public ContactDetailExtension newInstance(ContactDetailExtension bean) throws Exception {
+		bean.setSelectedTab(0);
 		bean.createInteraction();
 		return super.newInstance(bean);
 	}
+	
 }
