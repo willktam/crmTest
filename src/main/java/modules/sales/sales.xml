@@ -4,6 +4,7 @@
     <homeDocument>Lead</homeDocument>
     <documents>
         <document ref="Lead" defaultQueryName="qLead"/>
+        <document ref="LeadMap"/>
         <document ref="Opportunity" defaultQueryName="qOpportunity"/>
         <document ref="Quote" defaultQueryName="qQuote"/>
         <document ref="Order" defaultQueryName="qOrder"/>
@@ -23,7 +24,8 @@
                 	<action name="AddInteraction"/>
                 </document>
                 <document permission="CRUDU" name="Opportunity" />
-                <document permission="CRUDU" name="Quote"></document>
+                <document permission="CRUDU" name="Quote" />
+                <document permission="_____" name="LeadMap" />
             </privileges>
         </role>
         <role name="LeadManager">
@@ -70,10 +72,9 @@
             <role name="Staff"/>
             <role name="LeadManager" />
         </list>
-        <map name="Leads Map" document="Lead" geometryBinding="companyLocation" model="LeadMap">
-        	<role name="Staff"/>
-        	<role name="LeadManager"/>
-        </map>
+        <edit name="Map of Leads" document="LeadMap">
+        	<role name="Staff" />
+        </edit>      
         <list document="Opportunity" name="Opportunities">
         	<role name="OpportunityManager"/>
         	<role name="Staff"/>

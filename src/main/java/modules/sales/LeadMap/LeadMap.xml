@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.skyve.org/xml/document" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="LeadMap" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd">
+    <singularAlias>Lead Map</singularAlias>
+    <pluralAlias>Lead Maps</pluralAlias>
+	<iconStyleClass>fa fa-map-marker</iconStyleClass>
+</document>

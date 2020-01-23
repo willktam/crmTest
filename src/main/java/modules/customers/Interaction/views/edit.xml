@@ -28,6 +28,11 @@
                 <textField binding="interactionTime" editable="false" />
             </item>
         </row>
+        <!-- <row>
+        	<item>
+        		<button actionName="goTo" />
+        	</item>
+        </row> -->
     </form>
     <actions>
         <defaults/>

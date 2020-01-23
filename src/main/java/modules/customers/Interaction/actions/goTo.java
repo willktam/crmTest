@@ -14,7 +14,7 @@ public class goTo implements ServerSideAction<InteractionExtension> {
 	public ServerSideActionResult<InteractionExtension> execute(InteractionExtension bean, WebContext webContext)
 			throws Exception {
 		
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
