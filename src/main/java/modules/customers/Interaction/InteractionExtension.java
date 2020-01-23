@@ -49,4 +49,5 @@ public class InteractionExtension extends Interaction {
 		
 		return markup.toString();		
 	}
+	
 }

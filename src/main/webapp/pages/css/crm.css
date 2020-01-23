@@ -16,39 +16,105 @@
 }
 
 .infoTemp {
-  float: left;
-  text-align: left;
-  width: 70%;
-  margin-left: 10px;
-  line-height: 30px;
+  	float: left;
+  	text-align: left;
+  	width: 70%;
+  	margin-left: 10px;
+  	line-height: 30px;
 }
 
 .dateAuth {
-  float: left;
-  line-height: 30px;
-  text-align: end;
+  	float: left;
+  	line-height: 30px;
+  	text-align: end;
 }
 .iconTemp {
-  float: left;
-  margin-top: 20px;
-  text-align: center;
-  width: 10%;
-  font-size: 25px;
+ 	float: left;
+  	margin-top: 20px;
+  	text-align: center;
+  	width: 10%;
+  	font-size: 25px;
 }
 
 .titleTemp {
-  font-weight: bold;
+  	font-weight: bold;
 }
 
 .descriptionTemp {
-  font-style: italic;
-  color: grey;
+  	font-style: italic;
+  	color: grey;
 }
 
 .dateTemp {
-  color: grey;
+  	color: grey;
 }
 
 .authorTemp {
-  color: grey;
+  	color: grey;
+}
+
+
+/* Flowbar css */
+
+.flowbar-wrapper {
+  	width: 100%;
+  	padding-top: 10px;
+  	padding-bottom: 5px;
+}
+
+.flowbar li {
+  	list-style-type: none;
+  	width: 20%;
+  	float: left;
+  	font-size: 12px;
+  	position: relative;
+  	text-align: center;
+  	text-transform: uppercase;
+}
+
+.flowbar li:before {
+	width: 50px;
+  	height: 50px;
+  	content: "";
+  	line-height: 50px;
+  	border: 2px solid #7d7d7d;
+  	display: block;
+  	text-align: center;
+  	margin: 0 auto 3px auto;
+  	border-radius: 50%;
+  	position: relative;
+  	z-index: 2;
+  	background: #fff;
+  	background-size: 60%;
+}
+
+.flowbar li:after {
+    width: 100%;
+    height: 5px;
+    content: '';
+    position: absolute;
+    background-color: #7d7d7d;
+    top: 24px;
+    left: -50%;
+    z-index: 0;
+}
+.flowbar li:first-child:after {
+    content: none;
+}
+
+.flowbar li.current {
+    color: #007ad9;
+    font-weight: bold;  
+}
+.flowbar li.current:before {
+    border-color: #007ad9;
+    background: #007ad9;
+    background-size: 60%;
+ }
+.flowbar li.current + li:after {
+    background-color: #007ad9;
+}
+
+.flowbar li:hover {
+	color: red;
 }

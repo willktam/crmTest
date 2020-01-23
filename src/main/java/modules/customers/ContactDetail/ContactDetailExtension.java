@@ -32,4 +32,17 @@ public class ContactDetailExtension extends ContactDetail {
 		interaction.setDescription(description);
 		getInteractions().add(interaction);
 	}
+	
+	@Override
+	public String getFlowbar() {
+		StringBuilder markup = new StringBuilder();
+		markup.append("<div class=\"flowbar-wrapper\">");
+		markup.append("<ul class=\"flowbar\">");
+		markup.append("<li class=\"current\"> Contact Details </li>");
+		markup.append("<li> Lead </li><li> Account </li><li> Opportunity </li><li > Quote </li></ul></div>");
+		    
+		
+		return markup.toString();
+	}
+	
 }

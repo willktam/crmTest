@@ -73,6 +73,8 @@ public class ContactDetail extends AbstractPersistentBean {
 	public static final String interactionTypePropertyName = "interactionType";
 	/** @hidden */
 	public static final String selectedTabPropertyName = "selectedTab";
+	/** @hidden */
+	public static final String flowbarPropertyName = "flowbar";
 
 	/**
 	 * Preferred Method of Contact
@@ -250,6 +252,10 @@ public class ContactDetail extends AbstractPersistentBean {
 	 * Selected Tab
 	 **/
 	private transient Integer selectedTab;
+	/**
+	 * Flowbar
+	 **/
+	private String flowbar;
 
 	@Override
 	@XmlTransient
@@ -606,5 +612,22 @@ public class ContactDetail extends AbstractPersistentBean {
 	@XmlElement
 	public void setSelectedTab(Integer selectedTab) {
 		this.selectedTab = selectedTab;
+	}
+
+	/**
+	 * {@link #flowbar} accessor.
+	 * @return	The value.
+	 **/
+	public String getFlowbar() {
+		return flowbar;
+	}
+
+	/**
+	 * {@link #flowbar} mutator.
+	 * @param flowbar	The new value.
+	 **/
+	@XmlElement
+	public void setFlowbar(String flowbar) {
+		this.flowbar = flowbar;
 	}
 }

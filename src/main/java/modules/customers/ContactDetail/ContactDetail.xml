@@ -100,5 +100,10 @@
 			<displayName>Selected Tab</displayName>
 			<transient>true</transient>
 		</integer>
+		
+		<markup name="flowbar" persistent="false" usage="view" trackChanges="false" audited="false">
+			<displayName>Flowbar</displayName>
+		</markup>
+		
     </attributes>
 </document>
