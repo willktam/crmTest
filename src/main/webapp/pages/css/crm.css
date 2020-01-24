@@ -64,12 +64,11 @@
 
 .flowbar li {
   	list-style-type: none;
-  	width: 20%;
+  	width: 14%;
   	float: left;
   	font-size: 12px;
   	position: relative;
   	text-align: center;
-  	text-transform: uppercase;
 }
 
 .flowbar li:before {
@@ -117,4 +116,5 @@
 
 .flowbar li:hover {
 	color: red;
+	
 }

@@ -118,6 +118,29 @@
 		<filter name="salesOrderUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
+	<class name="modules.sales.ProcessLifeCycle.ProcessLifeCycleExtension" table="SAL_ProcessLifeCycle" entity-name="salesProcessLifeCycle">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" not-null="true" />
+		<property name="bizCustomer" length="50" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" not-null="true" />
+		<property name="processId" length="8" />
+		<many-to-one name="contact" entity-name="customersContactDetail" column="contact_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_ProcessLifeCycle_contact" />
+		<many-to-one name="lead" entity-name="salesLead" column="lead_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_ProcessLifeCycle_lead" />
+		<many-to-one name="account" entity-name="customersAccount" column="account_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_ProcessLifeCycle_account" />
+		<many-to-one name="opportunity" entity-name="salesOpportunity" column="opportunity_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_ProcessLifeCycle_opportunity" />
+		<many-to-one name="quote" entity-name="salesQuote" column="quote_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_ProcessLifeCycle_quote" />
+		<many-to-one name="order" entity-name="salesOrder" column="order_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_ProcessLifeCycle_order" />
+		<many-to-one name="invoice" entity-name="salesInvoice" column="invoice_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_ProcessLifeCycle_invoice" />
+		<filter name="salesProcessLifeCycleNoneFilter" condition="1=0"/>
+		<filter name="salesProcessLifeCycleCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="salesProcessLifeCycleDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="salesProcessLifeCycleUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
 	<class name="modules.sales.Quote.QuoteExtension" table="SAL_Quote" entity-name="salesQuote">
 		<id name="bizId" length="36" />
 		<version name="bizVersion" unsaved-value="null" />
@@ -191,6 +214,16 @@
 		<filter-param name="dataGroupIdParam" type="string"/>
 	</filter-def>
 	<filter-def name="salesOrderUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="salesProcessLifeCycleNoneFilter" />
+	<filter-def name="salesProcessLifeCycleCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="salesProcessLifeCycleDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="salesProcessLifeCycleUserIdFilter">
 		<filter-param name="userIdParam" type="string"/>
 	</filter-def>
 	<filter-def name="salesQuoteNoneFilter" />

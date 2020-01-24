@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="edit" title="Process Life Cycle" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+    <component name="_flowbar" />
+    <form responsiveWidth="12" percentageWidth="60" border="true">
+        <column percentageWidth="30" responsiveWidth="4"/>
+        <column/>
+        <row>
+        	<item>
+        		<default binding="processId" />
+        	</item>
+        </row>
+        <row>
+            <item>
+                <default binding="contact"/>
+            </item>
+        </row>
+        <row>
+            <item>
+                <default binding="lead"/>
+            </item>
+        </row>
+        <row>
+            <item>
+                <default binding="account"/>
+            </item>
+        </row>
+        <row>
+            <item>
+                <default binding="opportunity"/>
+            </item>
+        </row>
+        <row>
+            <item>
+                <default binding="quote"/>
+            </item>
+        </row>
+        <row>
+            <item>
+                <default binding="order"/>
+            </item>
+        </row>
+        <row>
+            <item>
+                <default binding="invoice"/>
+            </item>
+        </row>
+    </form>
+    <actions>
+        <defaults/>
+    </actions>
+    <newParameters/>
+</view>

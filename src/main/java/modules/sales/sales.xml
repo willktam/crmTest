@@ -3,6 +3,7 @@
     <homeRef>list</homeRef>
     <homeDocument>Lead</homeDocument>
     <documents>
+    	<document ref="ProcessLifeCycle" defaultQueryName="qProcessLifeCycle"/>
         <document ref="Lead" defaultQueryName="qLead"/>
         <document ref="LeadMap"/>
         <document ref="Opportunity" defaultQueryName="qOpportunity"/>
@@ -26,6 +27,7 @@
                 <document permission="CRUDU" name="Opportunity" />
                 <document permission="CRUDU" name="Quote" />
                 <document permission="_____" name="LeadMap" />
+                <document permission="CRUDU" name="ProcessLifeCycle" />
             </privileges>
         </role>
         <role name="LeadManager">
@@ -68,31 +70,50 @@
         </role>
     </roles>
     <menu>
-        <list document="Lead" name="Leads">
-            <role name="Staff"/>
-            <role name="LeadManager" />
-        </list>
-        <edit name="Map of Leads" document="LeadMap">
-        	<role name="Staff" />
-        </edit>      
-        <list document="Opportunity" name="Opportunities">
-        	<role name="OpportunityManager"/>
-        	<role name="Staff"/>
-        </list>
-        <list document="Quote" name="Quotes">
-        	<role name="Staff"/>
-			<role name="QuoteManager"/>
-        </list>
-        <list document="Order" name="Orders">
-        	<role name="Staff"/>
-			<role name="OrderManager"/>
-        </list>
-        <list document="Invoice" name="Invoices">
-        	<role name="Staff"/>
-			<role name="InvoiceManager"/>
-        </list>
+    	<list document="ProcessLifeCycle" name="Process Life Cycles">
+    		<role name="Staff"/>
+    	</list>
+    	<group name="Process Details">
+    		<list document="Lead" name="Leads">
+	            <role name="Staff"/>
+	            <role name="LeadManager" />
+	        </list>
+	        <edit name="Map of Leads" document="LeadMap">
+	        	<role name="Staff" />
+	        </edit>      
+	        <list document="Opportunity" name="Opportunities">
+	        	<role name="OpportunityManager"/>
+	        	<role name="Staff"/>
+	        </list>
+	        <list document="Quote" name="Quotes">
+	        	<role name="Staff"/>
+				<role name="QuoteManager"/>
+	        </list>
+	        <list document="Order" name="Orders">
+	        	<role name="Staff"/>
+				<role name="OrderManager"/>
+	        </list>
+	        <list document="Invoice" name="Invoices">
+	        	<role name="Staff"/>
+				<role name="InvoiceManager"/>
+	        </list>
+    	</group>
+      
     </menu>
     <queries>
+    	<query documentName="ProcessLifeCycle" name="qProcessLifeCycle">
+    		<description><![CDATA[All Process Life Cycles]]></description>
+    		<columns>
+    			<column binding="processId" />
+    			<column binding="contact" />
+    			<column binding="lead" />
+    			<column binding="account" />
+    			<column binding="opportunity" />
+    			<column binding="quote" />
+    			<column binding="order" />
+    			<column binding="invoice" />
+    		</columns>
+    	</query>
     	<query documentName="Lead" name="qLead">
     		<description><![CDATA[All Leads]]></description>
     		<columns>
