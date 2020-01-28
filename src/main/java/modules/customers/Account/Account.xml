@@ -4,7 +4,7 @@
     <singularAlias>Account</singularAlias>
     <pluralAlias>Accounts</pluralAlias>
     <iconStyleClass>fa fa-book</iconStyleClass>
-    <bizKey expression="Accounts - {accountName}"/>
+    <bizKey expression="{accountName}"/>
     <attributes>
         <text required="true" name="accountName">
             <displayName>Account Name</displayName>

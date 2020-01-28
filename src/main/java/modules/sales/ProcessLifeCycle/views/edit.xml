@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="edit" title="Process Life Cycle" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
     <component name="_flowbar" />
+    
+	<hbox>
+		<vbox responsiveWidth="8" percentageWidth="60">
+			<component name="_processOverview" />
+		</vbox>
+		<vbox responsiveWidth="4" percentageWidth="30">
+			<component name="_contactSummary" />
+		</vbox>
+		
+	</hbox>
+	<hbox>
+		<vbox responsiveWidth="4" percentageWidth="30">
+			<component name="_leadSummary" />
+		</vbox>
+		<vbox responsiveWidth="4" percentageWidth="30">
+			<component name="_accountSummary" />
+		</vbox>
+		<vbox responsiveWidth="4" percentageWidth="30">
+			<component name="_opportunitySummary" />
+		</vbox>
+	</hbox>
+	<hbox>
+		<vbox responsiveWidth="4" percentageWidth="30">
+			<component name="_quoteSummary" />
+		</vbox>
+		<vbox responsiveWidth="4" percentageWidth="30">
+			<component name="_orderSummary" />
+		</vbox>
+		<vbox responsiveWidth="4" percentageWidth="30">
+			<component name="_invoiceSummary" />
+		</vbox>
+	</hbox>
+
     <form responsiveWidth="12" percentageWidth="60" border="true">
         <column percentageWidth="30" responsiveWidth="4"/>
         <column/>
-        <row>
-        	<item>
-        		<default binding="processId" />
-        	</item>
-        </row>
         <row>
             <item>
                 <default binding="contact"/>

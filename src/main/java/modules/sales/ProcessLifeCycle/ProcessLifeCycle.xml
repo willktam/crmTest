@@ -10,7 +10,24 @@
         	<displayName>Process Life Cycle ID</displayName>
         	<description><![CDATA[The ID for this process life cycle]]></description>
         	<length>8</length>
-        </text> 
+        </text>
+        <enum required="true" name="status">
+        	<displayName>Process Status</displayName>
+        	<description><![CDATA[The current status of the process life cycle]]></description>
+        	<values>
+        		<value code="Ongoing"/>
+        		<value code="Completed"/>
+        	</values>
+        </enum>
+        <date name="startDate">
+        	<displayName>Start Date</displayName>
+        	<description><![CDATA[The date this life cycle began]]></description>
+        </date>
+        <date name="endDate">
+        	<displayName>End Date</displayName>
+        	<description><![CDATA[The end date for this life cycle]]></description>
+        </date>
+        
         <association type="aggregation" name="contact">
         	<displayName>Contact</displayName>
         	<documentName>ContactDetail</documentName>
@@ -45,4 +62,27 @@
 		</markup>
 		
     </attributes>
+    <conditions>
+    	<condition name="contactSelected">
+            <expression><![CDATA[contact != null]]></expression>
+        </condition>
+        <condition name="leadSelected">
+            <expression><![CDATA[lead != null]]></expression>
+        </condition>
+        <condition name="accountSelected">
+            <expression><![CDATA[account != null]]></expression>
+        </condition>
+        <condition name="opportunitySelected">
+            <expression><![CDATA[opportunity != null]]></expression>
+        </condition>
+        <condition name="quoteSelected">
+            <expression><![CDATA[quote != null]]></expression>
+        </condition>
+        <condition name="orderSelected">
+            <expression><![CDATA[order != null]]></expression>
+        </condition>
+        <condition name="invoiceSelected">
+            <expression><![CDATA[invoice != null]]></expression>
+        </condition>
+    </conditions>
 </document>

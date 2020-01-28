@@ -114,7 +114,6 @@
     background-color: #007ad9;
 }
 
-.flowbar li:hover {
+.flowbar li:hover{
 	color: red;
-	
 }

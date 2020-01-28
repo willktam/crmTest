@@ -4,7 +4,7 @@
     <singularAlias>Quote</singularAlias>
     <pluralAlias>Quotes</pluralAlias>
     <iconStyleClass>fa fa-files-o</iconStyleClass>
-    <bizKey expression="Quote - {name}"/>
+    <bizKey expression="{quoteId}"/>
     <attributes>
     	<!-- Summary -->
         <text required="true" name="name">

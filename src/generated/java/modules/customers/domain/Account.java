@@ -278,7 +278,7 @@ public class Account extends AbstractPersistentBean {
 	public String getBizKey() {
 		try {
 			return org.skyve.util.Binder.formatMessage(org.skyve.CORE.getUser().getCustomer(),
-														"Accounts - {accountName}",
+														"{accountName}",
 														this);
 		}
 		catch (Exception e) {

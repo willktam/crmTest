@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_opportunitySummary" title="Opportunity Summary" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+    <form border="true" borderTitle="Opportunity Summary">
+        <column percentageWidth="30" responsiveWidth="4"/>
+        <column/>
+        <row>
+        	<item>
+        		<textField binding="opportunity.bizKey" visible="opportunitySelected"/>
+        	</item>
+        </row>
+       	<row>
+       		<item>
+       			<textField binding="opportunity.topic" visible="opportunitySelected"/>
+       		</item>
+       	</row>
+         <row>
+         	<item>
+         		<textField binding="opportunity.product.bizKey" visible="opportunitySelected"/>
+         	</item>
+         </row>
+         <row>
+         	<item>
+         		<textField binding="opportunity.priceList.bizKey" visible="opportunitySelected"/>
+         	</item>
+         </row>
+         <row>
+         	<item>
+         		<textField binding="opportunity.account.bizKey" visible="opportunitySelected"/>
+         	</item>
+         </row>
+    </form>
+    <actions>
+        <defaults/>
+    </actions>
+    <newParameters/>
+</view>

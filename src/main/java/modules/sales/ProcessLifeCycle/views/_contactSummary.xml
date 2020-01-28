@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_contactSummary" title="Contact Summary" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+    <form border="true" borderTitle="Contact Summary">
+        <column percentageWidth="30" responsiveWidth="4"/>
+        <column/>
+        <row>
+        	<item>
+        		<textField binding="contact.bizKey" visible="contactSelected"/>
+        	</item>
+        </row>
+       	<row>
+       		<item>
+       			<textField binding="contact.jobTitle" visible="contactSelected"/>
+       		</item>
+       	</row>
+         <row>
+         	<item>
+         		<textField binding="contact.email" visible="contactSelected"/>
+         	</item>
+         </row>
+         <row>
+         	<item>
+         		<textField binding="contact.mobileNumber" visible="contactSelected"/>
+         	</item>
+         </row>
+    </form>
+    <actions>
+        <defaults/>
+    </actions>
+    <newParameters/>
+</view>

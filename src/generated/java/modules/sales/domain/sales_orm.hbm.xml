@@ -128,6 +128,13 @@
 		<property name="bizDataGroupId" length="36" />
 		<property name="bizUserId" length="36" not-null="true" />
 		<property name="processId" length="8" />
+		<property name="status" length="9">
+			<type name="Enum">
+				<param name="enumClass">modules.sales.domain.ProcessLifeCycle$Status</param>
+			</type>
+		</property>
+		<property name="startDate" type="DateOnly" />
+		<property name="endDate" type="DateOnly" />
 		<many-to-one name="contact" entity-name="customersContactDetail" column="contact_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_ProcessLifeCycle_contact" />
 		<many-to-one name="lead" entity-name="salesLead" column="lead_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_ProcessLifeCycle_lead" />
 		<many-to-one name="account" entity-name="customersAccount" column="account_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_ProcessLifeCycle_account" />
