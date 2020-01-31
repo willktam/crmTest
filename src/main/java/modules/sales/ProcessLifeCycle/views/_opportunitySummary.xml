@@ -4,28 +4,28 @@
         <column percentageWidth="30" responsiveWidth="4"/>
         <column/>
         <row>
-        	<item>
-        		<textField binding="opportunity.bizKey" visible="opportunitySelected"/>
+        	<item showLabel="true" label="Opportunity">
+        		<blurb visible="opportunitySelected">{opportunity.bizKey}</blurb>
         	</item>
         </row>
        	<row>
-       		<item>
-       			<textField binding="opportunity.topic" visible="opportunitySelected"/>
+       		<item showLabel="true" label="Topic">
+       			<blurb visible="opportunitySelected">{opportunity.topic}</blurb>
        		</item>
        	</row>
          <row>
-         	<item>
-         		<textField binding="opportunity.product.bizKey" visible="opportunitySelected"/>
+         	<item showLabel="true" label="Product Info">
+         		<blurb visible="opportunitySelected">{opportunity.product.bizKey}</blurb>
          	</item>
          </row>
          <row>
-         	<item>
-         		<textField binding="opportunity.priceList.bizKey" visible="opportunitySelected"/>
+         	<item showLabel="true" label="Product Price List">
+         		<blurb visible="opportunitySelected">{opportunity.priceList.bizKey}</blurb>
          	</item>
          </row>
          <row>
-         	<item>
-         		<textField binding="opportunity.account.bizKey" visible="opportunitySelected"/>
+         	<item showLabel="true" label="Account">
+         		<blurb visible="opportunitySelected">{opportunity.account.bizKey}</blurb>
          	</item>
          </row>
     </form>

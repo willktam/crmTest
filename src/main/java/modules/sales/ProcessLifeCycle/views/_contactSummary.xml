@@ -4,23 +4,32 @@
         <column percentageWidth="30" responsiveWidth="4"/>
         <column/>
         <row>
-        	<item>
-        		<textField binding="contact.bizKey" visible="contactSelected"/>
+            <item>
+                <lookupDescription binding="contact" descriptionBinding="bizKey" invisible="contactSelected">
+                	<onPickedHandlers>
+                		<rerender />
+                	</onPickedHandlers>
+                </lookupDescription>
+            </item>
+        </row>
+        <row>
+        	<item showLabel="true" label="Contact">
+        		<blurb visible="contactSelected">{contact.bizKey}</blurb>
         	</item>
         </row>
        	<row>
-       		<item>
-       			<textField binding="contact.jobTitle" visible="contactSelected"/>
+       		<item showLabel="true" label="Job Title">
+       			<blurb visible="contactSelected">{contact.jobTitle}</blurb>
        		</item>
        	</row>
          <row>
-         	<item>
-         		<textField binding="contact.email" visible="contactSelected"/>
+         	<item showLabel="true" label="Email">
+         		<blurb visible="contactSelected">{contact.email}</blurb>
          	</item>
          </row>
          <row>
-         	<item>
-         		<textField binding="contact.mobileNumber" visible="contactSelected"/>
+         	<item showLabel="true" label="Mobile Number">
+         		<blurb visible="contactSelected">{contact.mobileNumber}</blurb>
          	</item>
          </row>
     </form>

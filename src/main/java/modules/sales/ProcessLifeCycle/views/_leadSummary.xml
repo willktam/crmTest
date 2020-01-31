@@ -5,27 +5,36 @@
         <column/>
         <row>
         	<item>
-        		<textField binding="lead.bizKey" visible="leadSelected"/>
+                <lookupDescription binding="lead" descriptionBinding="bizKey" invisible="leadSelected">
+                	<onPickedHandlers>
+                		<rerender />
+                	</onPickedHandlers>
+                </lookupDescription>
+            </item>
+        </row>
+        <row>
+        	<item showLabel="true" label="Lead">
+        		<blurb visible="leadSelected">{lead.bizKey}</blurb>
         	</item>
         </row>
        	<row>
-       		<item>
-       			<textField binding="lead.name" visible="leadSelected"/>
+       		<item showLabel="true" label="Company Name">
+       			<blurb visible="leadSelected">{lead.name}</blurb>
        		</item>
        	</row>
          <row>
-         	<item>
-         		<textField binding="lead.website" visible="leadSelected"/>
+         	<item showLabel="true" label="Website">
+         		<blurb visible="leadSelected">{lead.website}</blurb>
          	</item>
          </row>
          <row>
-         	<item>
-         		<textField binding="lead.contactDetails.bizKey" visible="leadSelected"/>
+         	<item showLabel="true" label="Contact">
+				<blurb visible="leadSelected">{lead.contactDetails.bizKey}</blurb>
          	</item>
          </row>
          <row>
-         	<item>
-         		<textField binding="lead.leadType" visible="leadSelected"/>
+         	<item showLabel="true" label="Lead Type">
+         		<blurb visible="leadSelected">{leadSelected}</blurb>
          	</item>
          </row>
     </form>

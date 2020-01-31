@@ -4,30 +4,30 @@
         <column percentageWidth="30" responsiveWidth="4"/>
         <column/>
         <row>
-        	<item>
-        		<textField binding="invoice.bizKey" visible="invoiceSelected"/>
+        	<item showLabel="true" label="Invoice">
+        		<blurb visible="invoiceSelected">{invoice.bizKey}</blurb>
         	</item>
         </row>
        	<row>
-       		<item>
-       			<textField binding="invoice.name" visible="invoiceSelected"/>
-       		</item>
+       		<item showLabel="true" label="Invoice Name">
+        		<blurb visible="invoiceSelected">{invoice.name}</blurb>
+        	</item>
        	</row>
-         <row>
-         	<item>
-         		<textField binding="invoice.order.bizKey" visible="invoiceSelected"/>
-         	</item>
-         </row>
-         <row>
-         	<item>
-         		<textField binding="invoice.invoiceStatus" visible="invoiceSelected"/>
-         	</item>
-         </row>
-         <row>
-         	<item>
-         		<textField binding="invoice.order.opportunity.total" visible="invoiceSelected"/>
-         	</item>
-         </row>
+        <row>
+        	<item showLabel="true" label="Order">
+        		<blurb visible="invoiceSelected">{invoice.order.bizKey}</blurb>
+        	</item>
+        </row>
+        <row>
+        	<item showLabel="true" label="Invoice Status">
+        		<blurb visible="invoiceSelected">{invoice.invoiceStatus}</blurb>
+        	</item>
+        </row>
+        <row>
+	        <item showLabel="true" label="Provisional Total">
+        		<blurb visible="invoiceSelected">{invoice.order.opportunity.total}</blurb>
+        	</item>
+        </row>
     </form>
     <actions>
         <defaults/>

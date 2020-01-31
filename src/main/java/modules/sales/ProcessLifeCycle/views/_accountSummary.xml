@@ -5,27 +5,36 @@
         <column/>
         <row>
         	<item>
-        		<textField binding="account.bizKey" visible="accountSelected"/>
+                <lookupDescription binding="account" descriptionBinding="bizKey" invisible="accountSelected">
+                	<onPickedHandlers>
+                		<rerender />
+                	</onPickedHandlers>
+                </lookupDescription>
+            </item>
+        </row>
+        <row>
+        	<item showLabel="true" label="Account">
+        		<blurb visible="accountSelected">{account.bizKey}</blurb>
         	</item>
         </row>
        	<row>
-       		<item>
-       			<textField binding="account.accountName" visible="accountSelected"/>
+       		<item showLabel="true" label="Account Name">
+       			<blurb visible="accountSelected">{account.accountName}</blurb>
        		</item>
        	</row>
          <row>
-         	<item>
-         		<textField binding="account.email" visible="accountSelected"/>
+         	<item showLabel="true" label="Email">
+         		<blurb visible="accountSelected">{account.email}</blurb>
          	</item>
          </row>
          <row>
-         	<item>
-         		<textField binding="account.relationshipType" visible="accountSelected"/>
+         	<item showLabel="true" label="Relationship Type">
+         		<blurb visible="accountSelected">{account.relationshipType}</blurb>
          	</item>
          </row>
          <row>
-         	<item>
-         		<textField binding="account.primaryContact.bizKey" visible="accountSelected"/>
+         	<item showLabel="true" label="Primary Contact">
+         		<blurb visible="accountSelected">{account.primaryContact.bizKey}</blurb>
          	</item>
          </row>
     </form>

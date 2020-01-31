@@ -1,9 +1,17 @@
 package modules.sales.ProcessLifeCycle;
 
+import org.skyve.CORE;
+import org.skyve.domain.Bean;
+import org.skyve.metadata.SortDirection;
+import org.skyve.persistence.DocumentQuery;
+import org.skyve.persistence.Persistence;
+import org.skyve.util.Binder;
 import org.skyve.util.Util;
 
 import modules.customers.domain.Account;
 import modules.customers.domain.ContactDetail;
+import modules.sales.Opportunity.OpportunityExtension;
+import modules.sales.Quote.QuoteExtension;
 import modules.sales.domain.Invoice;
 import modules.sales.domain.Lead;
 import modules.sales.domain.Opportunity;
@@ -14,6 +22,31 @@ import modules.sales.domain.Quote;
 public class ProcessLifeCycleExtension extends ProcessLifeCycle {
 
 	private static final long serialVersionUID = -5362551133619242186L;
+	
+	@Override
+	public OpportunityExtension getOpportunity() {
+		// 
+		Persistence persistence = CORE.getPersistence();
+		DocumentQuery query = persistence.newDocumentQuery(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME);
+		query.getFilter().addEquals(Binder.createCompoundBinding(Opportunity.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
+		
+		query.addBoundOrdering(Opportunity.LOCK_NAME, SortDirection.descending);
+
+		return query.beanResult();
+	}
+	
+//	@Override
+//	public QuoteExtension getQuote() {
+//		// 
+//		Persistence persistence = CORE.getPersistence();
+//		DocumentQuery query = persistence.newDocumentQuery(Quote.MODULE_NAME, Quote.DOCUMENT_NAME);
+//		query.getFilter().addEquals(Binder.createCompoundBinding(Quote.Oppo, Bean.DOCUMENT_ID), this.getAccount().getBizId());
+//				
+//		query.addBoundOrdering(LOCK_NAME, SortDirection.descending);
+//
+//		return query.beanResult();
+//		
+//	}
 	
 	@Override
 	public String getFlowbar() {
@@ -45,23 +78,26 @@ public class ProcessLifeCycleExtension extends ProcessLifeCycle {
 		if (getAccount() != null) {
 			accountUrl = Util.getDocumentUrl(Account.MODULE_NAME, Account.DOCUMENT_NAME, getAccount().getBizId());
 			accountClass = "current";
+			
+			if (getOpportunity() != null) {
+				opportunityUrl = Util.getDocumentUrl(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME, getOpportunity().getBizId());
+				opportunityClass = "current";
+			}
+			if (getQuote() != null) {
+				quoteUrl = Util.getDocumentUrl(Quote.MODULE_NAME, Quote.DOCUMENT_NAME, getQuote().getBizId());
+				quoteClass = "current";
+			}
+			if (getOrder() != null) {
+				orderUrl = Util.getDocumentUrl(Order.MODULE_NAME, Order.DOCUMENT_NAME, getOrder().getBizId());
+				orderClass = "current";
+			}
+			if (getInvoice() != null) {
+				invoiceUrl = Util.getDocumentUrl(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME, getInvoice().getBizId());
+				invoiceClass = "current";
+			}
 		}
-		if (getOpportunity() != null) {
-			opportunityUrl = Util.getDocumentUrl(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME, getOpportunity().getBizId());
-			opportunityClass = "current";
-		}
-		if (getQuote() != null) {
-			quoteUrl = Util.getDocumentUrl(Quote.MODULE_NAME, Quote.DOCUMENT_NAME, getQuote().getBizId());
-			quoteClass = "current";
-		}
-		if (getOrder() != null) {
-			orderUrl = Util.getDocumentUrl(Order.MODULE_NAME, Order.DOCUMENT_NAME, getOrder().getBizId());
-			orderClass = "current";
-		}
-		if (getInvoice() != null) {
-			invoiceUrl = Util.getDocumentUrl(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME, getInvoice().getBizId());
-			invoiceClass = "current";
-		}
+
+		
 		
 		StringBuilder markup = new StringBuilder();
 		markup.append("<div class=\"flowbar-wrapper\">");

@@ -4,30 +4,30 @@
         <column percentageWidth="30" responsiveWidth="4"/>
         <column/>
         <row>
-        	<item>
-        		<textField binding="order.bizKey" visible="orderSelected"/>
+        	<item showLabel="true" label="Order">
+        		<blurb visible="orderSelected">{order.bizKey}</blurb>
         	</item>
         </row>
        	<row>
-       		<item>
-       			<textField binding="order.name" visible="orderSelected"/>
-       		</item>
+       		<item showLabel="true" label="Order Name">
+        		<blurb visible="orderSelected">{order.name}</blurb>
+        	</item>
        	</row>
-         <row>
-         	<item>
-         		<textField binding="order.requested" visible="orderSelected"/>
-         	</item>
-         </row>
-         <row>
-         	<item>
-         		<textField binding="order.fulfilled" visible="orderSelected"/>
-         	</item>
-         </row>
-         <row>
-         	<item>
-         		<textField binding="order.opportunity.total" visible="orderSelected"/>
-         	</item>
-         </row>
+        <row>
+        	<item showLabel="true" label="Requested Delivery Date">
+        		<blurb visible="orderSelected">{order.requested}</blurb>
+        	</item>
+		</row>
+		<row>
+			<item showLabel="true" label="Fulfillment Date">
+        		<blurb visible="orderSelected">{order.fulfilled}</blurb>
+        	</item>
+        </row>
+        <row>
+        	<item showLabel="true" label="Provisional Total">
+        		<blurb visible="orderSelected">{order.opportunity.total}</blurb>
+        	</item>
+        </row>
     </form>
     <actions>
         <defaults/>

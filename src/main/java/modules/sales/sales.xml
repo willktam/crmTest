@@ -105,13 +105,10 @@
     		<description><![CDATA[All Process Life Cycles]]></description>
     		<columns>
     			<column binding="processId" />
+    			<column binding="status" />
     			<column binding="contact" />
     			<column binding="lead" />
     			<column binding="account" />
-    			<column binding="opportunity" />
-    			<column binding="quote" />
-    			<column binding="order" />
-    			<column binding="invoice" />
     		</columns>
     	</query>
     	<query documentName="Lead" name="qLead">

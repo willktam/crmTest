@@ -4,28 +4,28 @@
         <column percentageWidth="30" responsiveWidth="4"/>
         <column/>
         <row>
-        	<item>
-        		<textField binding="quote.bizKey" visible="quoteSelected"/>
+        	<item showLabel="true" label="Quote">
+        		<blurb visible="quoteSelected">{quote.bizKey}</blurb>
         	</item>
         </row>
        	<row>
-       		<item>
-       			<textField binding="quote.name" visible="quoteSelected"/>
+       		<item showLabel="true" label="Quote Name">
+       			<blurb visible="quoteSelected">{quote.name}</blurb>
        		</item>
        	</row>
          <row>
-         	<item>
-         		<textField binding="quote.expireDate" visible="quoteSelected"/>
+         	<item showLabel="true" label="Quote Expire Date">
+         		<blurb visible="quoteSelected">{quote.expireDate}</blurb>
          	</item>
          </row>
          <row>
-         	<item>
-         		<textField binding="quote.status" visible="quoteSelected"/>
+         	<item showLabel="true" label="Quote Status">
+         		<blurb visible="quoteSelected">{quote.status}</blurb>
          	</item>
          </row>
          <row>
-         	<item>
-         		<textField binding="quote.statusReason" visible="quoteSelected"/>
+         	<item showLabel="true" label="Status Reason">
+         		<blurb visible="quoteSelected">{quote.statusReason}</blurb>
          	</item>
          </row>
     </form>

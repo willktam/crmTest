@@ -85,6 +85,7 @@
   	z-index: 2;
   	background: #fff;
   	background-size: 60%;
+  	cursor: pointer;
 }
 
 .flowbar li:after {
@@ -109,7 +110,18 @@
     border-color: #007ad9;
     background: #007ad9;
     background-size: 60%;
- }
+    font-family: "FontAwesome";
+    content: "\f078";
+	color: white;
+	font-size: 20px;    
+}
+.flowbar li.notCurrent:before {
+    font-family: "FontAwesome";
+    content: "\f067";
+	color: #7d7d7d;
+	font-size: 20px;    
+}
+
 .flowbar li.current + li:after {
     background-color: #007ad9;
 }
