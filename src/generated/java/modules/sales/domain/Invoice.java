@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import modules.customers.Account.AccountExtension;
 import modules.sales.Order.OrderExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
@@ -22,6 +23,7 @@ import org.skyve.metadata.model.document.Bizlet.DomainValue;
  * Invoice
  * 
  * @depend - - - InvoiceStatus
+ * @navhas n account 1 Account
  * @navhas n order 1 Order
  * @stereotype "persistent"
  */
@@ -53,6 +55,8 @@ public class Invoice extends AbstractPersistentBean {
 	public static final String deliveryDatePropertyName = "deliveryDate";
 	/** @hidden */
 	public static final String dueDatePropertyName = "dueDate";
+	/** @hidden */
+	public static final String accountPropertyName = "account";
 
 	/**
 	 * Invoice Status
@@ -176,6 +180,12 @@ public class Invoice extends AbstractPersistentBean {
 	 * The date the order is due
 	 **/
 	private DateOnly dueDate;
+	/**
+	 * Account
+	 * <br/>
+	 * The account for the invoice
+	 **/
+	private AccountExtension account = null;
 
 	@Override
 	@XmlTransient
@@ -348,6 +358,24 @@ public class Invoice extends AbstractPersistentBean {
 	public void setDueDate(DateOnly dueDate) {
 		preset(dueDatePropertyName, dueDate);
 		this.dueDate = dueDate;
+	}
+
+	/**
+	 * {@link #account} accessor.
+	 * @return	The value.
+	 **/
+	public AccountExtension getAccount() {
+		return account;
+	}
+
+	/**
+	 * {@link #account} mutator.
+	 * @param account	The new value.
+	 **/
+	@XmlElement
+	public void setAccount(AccountExtension account) {
+		preset(accountPropertyName, account);
+		this.account = account;
 	}
 
 	/**

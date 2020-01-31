@@ -34,27 +34,6 @@
 		</vbox>
 	</hbox>
 
-    <form responsiveWidth="12" percentageWidth="60" border="true">
-        <column percentageWidth="30" responsiveWidth="4"/>
-        <column/>
-        
-        
-        <row>
-            <item>
-                <default binding="quote"/>
-            </item>
-        </row>
-        <row>
-            <item>
-                <default binding="order"/>
-            </item>
-        </row>
-        <row>
-            <item>
-                <default binding="invoice"/>
-            </item>
-        </row>
-    </form>
     <actions>
         <defaults/>
     </actions>

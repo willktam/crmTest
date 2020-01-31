@@ -46,18 +46,11 @@
         	<description><![CDATA[The date the order is due]]></description>
         </date>
         
-                                
-        <!-- Product Details -->
-        <!-- Defined in order -->
-        
-        
-        <!-- Product Pricing -->
-        <!-- Defined in order -->
-        
-
-        <!-- Sales Details -->
-        <!-- Defined in Order -->
-                    
+        <association required="true" type="aggregation" name="account">
+        	<displayName>Account</displayName>
+        	<description><![CDATA[The account for the invoice]]></description>
+        	<documentName>Account</documentName>
+        </association>                 
     </attributes>
     
     <conditions>

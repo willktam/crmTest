@@ -24,6 +24,12 @@
             <documentName>Opportunity</documentName>
         </association>
         
+        <association required="true" type="aggregation" name="account">
+        	<displayName>Account</displayName>
+        	<description><![CDATA[The account for this quote]]></description>
+        	<documentName>Account</documentName>
+        </association>
+        
         <date name="expireDate">
         	<displayName>Quote Expire Date</displayName>
         	<description><![CDATA[The date the quote expires]]></description>

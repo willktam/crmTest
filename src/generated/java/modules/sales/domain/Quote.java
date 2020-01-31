@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import modules.customers.Account.AccountExtension;
 import modules.sales.Opportunity.OpportunityExtension;
 import modules.sales.Quote.QuoteExtension;
 import org.skyve.CORE;
@@ -18,6 +19,7 @@ import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
  * Quote
  * 
  * @navhas n opportunity 1 Opportunity
+ * @navhas n account 1 Account
  * @stereotype "persistent"
  */
 @XmlType
@@ -40,6 +42,8 @@ public class Quote extends AbstractPersistentBean {
 	public static final String quoteIdPropertyName = "quoteId";
 	/** @hidden */
 	public static final String opportunityPropertyName = "opportunity";
+	/** @hidden */
+	public static final String accountPropertyName = "account";
 	/** @hidden */
 	public static final String expireDatePropertyName = "expireDate";
 	/** @hidden */
@@ -93,6 +97,12 @@ public class Quote extends AbstractPersistentBean {
 	 * The opportunity of this quote
 	 **/
 	private OpportunityExtension opportunity = null;
+	/**
+	 * Account
+	 * <br/>
+	 * The account for this quote
+	 **/
+	private AccountExtension account = null;
 	/**
 	 * Quote Expire Date
 	 * <br/>
@@ -291,6 +301,24 @@ public class Quote extends AbstractPersistentBean {
 	public void setOpportunity(OpportunityExtension opportunity) {
 		preset(opportunityPropertyName, opportunity);
 		this.opportunity = opportunity;
+	}
+
+	/**
+	 * {@link #account} accessor.
+	 * @return	The value.
+	 **/
+	public AccountExtension getAccount() {
+		return account;
+	}
+
+	/**
+	 * {@link #account} mutator.
+	 * @param account	The new value.
+	 **/
+	@XmlElement
+	public void setAccount(AccountExtension account) {
+		preset(accountPropertyName, account);
+		this.account = account;
 	}
 
 	/**

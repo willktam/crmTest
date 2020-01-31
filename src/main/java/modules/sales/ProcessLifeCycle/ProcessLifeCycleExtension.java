@@ -11,6 +11,7 @@ import org.skyve.util.Util;
 import modules.customers.domain.Account;
 import modules.customers.domain.ContactDetail;
 import modules.sales.Opportunity.OpportunityExtension;
+import modules.sales.Order.OrderExtension;
 import modules.sales.Quote.QuoteExtension;
 import modules.sales.domain.Invoice;
 import modules.sales.domain.Lead;
@@ -25,7 +26,6 @@ public class ProcessLifeCycleExtension extends ProcessLifeCycle {
 	
 	@Override
 	public OpportunityExtension getOpportunity() {
-		// 
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME);
 		query.getFilter().addEquals(Binder.createCompoundBinding(Opportunity.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
@@ -35,18 +35,39 @@ public class ProcessLifeCycleExtension extends ProcessLifeCycle {
 		return query.beanResult();
 	}
 	
-//	@Override
-//	public QuoteExtension getQuote() {
-//		// 
-//		Persistence persistence = CORE.getPersistence();
-//		DocumentQuery query = persistence.newDocumentQuery(Quote.MODULE_NAME, Quote.DOCUMENT_NAME);
-//		query.getFilter().addEquals(Binder.createCompoundBinding(Quote.Oppo, Bean.DOCUMENT_ID), this.getAccount().getBizId());
-//				
-//		query.addBoundOrdering(LOCK_NAME, SortDirection.descending);
-//
-//		return query.beanResult();
-//		
-//	}
+	@Override
+	public QuoteExtension getQuote() {
+		Persistence persistence = CORE.getPersistence();
+		DocumentQuery query = persistence.newDocumentQuery(Quote.MODULE_NAME, Quote.DOCUMENT_NAME);
+		query.getFilter().addEquals(Binder.createCompoundBinding(Quote.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
+				
+		query.addBoundOrdering(Quote.LOCK_NAME, SortDirection.descending);
+		
+		return query.beanResult();		
+	}
+	
+	@Override
+	public OrderExtension getOrder() {
+		Persistence persistence = CORE.getPersistence();
+		DocumentQuery query = persistence.newDocumentQuery(Order.MODULE_NAME, Order.DOCUMENT_NAME);
+		query.getFilter().addEquals(Binder.createCompoundBinding(Order.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
+				
+		query.addBoundOrdering(Order.LOCK_NAME, SortDirection.descending);
+		
+		return query.beanResult();	
+	}
+	
+	@Override
+	public Invoice getInvoice() {
+		Persistence persistence = CORE.getPersistence();
+		DocumentQuery query = persistence.newDocumentQuery(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);
+		query.getFilter().addEquals(Binder.createCompoundBinding(Invoice.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
+				
+		query.addBoundOrdering(Invoice.LOCK_NAME, SortDirection.descending);
+		
+		return query.beanResult();
+	}
+	
 	
 	@Override
 	public String getFlowbar() {

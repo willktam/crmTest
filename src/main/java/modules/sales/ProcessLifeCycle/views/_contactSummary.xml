@@ -5,7 +5,7 @@
         <column/>
         <row>
             <item>
-                <lookupDescription binding="contact" descriptionBinding="bizKey" invisible="contactSelected">
+                <lookupDescription binding="contact" descriptionBinding="bizKey">
                 	<onPickedHandlers>
                 		<rerender />
                 	</onPickedHandlers>

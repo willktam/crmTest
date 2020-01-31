@@ -47,7 +47,7 @@
 		        
 		        <row>
 		            <item>
-	                	<default binding="order.account" />
+	                	<default binding="account" />
 	            	</item>
 		        </row>
 		        <row>

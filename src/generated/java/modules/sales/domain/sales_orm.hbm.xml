@@ -31,6 +31,7 @@
 		<property name="description" type="text" />
 		<property name="deliveryDate" type="DateOnly" />
 		<property name="dueDate" type="DateOnly" />
+		<many-to-one name="account" entity-name="customersAccount" column="account_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Invoice_account" />
 		<filter name="salesInvoiceNoneFilter" condition="1=0"/>
 		<filter name="salesInvoiceCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="salesInvoiceDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
@@ -160,6 +161,7 @@
 		<property name="name" length="200" />
 		<property name="quoteId" length="8" />
 		<many-to-one name="opportunity" entity-name="salesOpportunity" column="opportunity_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Quote_opportunity" />
+		<many-to-one name="account" entity-name="customersAccount" column="account_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Quote_account" />
 		<property name="expireDate" type="DateOnly" />
 		<property name="status" length="100" />
 		<property name="statusReason" length="200" />

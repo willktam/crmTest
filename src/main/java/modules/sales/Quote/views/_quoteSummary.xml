@@ -24,7 +24,16 @@
         </row>
         <row>
         	<item>
-        		<textField binding="opportunity.account.accountName" visible="opportunitySelected" editable="false" />
+        		<lookupDescription binding="account" descriptionBinding="bizKey">
+        			<onPickedHandlers>
+        				<rerender clientValidation="false" />
+        			</onPickedHandlers>
+        		</lookupDescription>
+        	</item>
+        </row>
+        <row>
+        	<item>
+        		<textField binding="account.accountName" visible="opportunitySelected" editable="false" />
         	</item>
         </row>
         <row>

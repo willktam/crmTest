@@ -22,21 +22,16 @@ public class ProcessLifeCycleBizlet extends Bizlet<ProcessLifeCycleExtension> {
 		return super.newInstance(bean);
 	}
 	
-//	@Override
-//	public ProcessLifeCycleExtension preExecute(ImplicitActionName actionName, ProcessLifeCycleExtension bean,
-//			Bean parentBean, WebContext webContext) throws Exception {
-//		if (ImplicitActionName.Edit.equals(actionName)) {
-//			bean.setOpportunity(bean.getOpportunity());
-//		}
-//		return super.preExecute(actionName, bean, parentBean, webContext);
-//	}
-	
+
 	@Override
 	public void preRerender(String source, ProcessLifeCycleExtension bean, WebContext webContext) throws Exception {
 		// 
 	
 		if (bean.getAccount() != null) {
 			bean.setOpportunity(bean.getOpportunity());
+			bean.setQuote(bean.getQuote());
+			bean.setOrder(bean.getOrder());
+			bean.setInvoice(bean.getInvoice());
 		}
 		
 		super.preRerender(source, bean, webContext);
