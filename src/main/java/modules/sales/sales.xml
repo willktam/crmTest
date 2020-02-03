@@ -10,12 +10,14 @@
         <document ref="Quote" defaultQueryName="qQuote"/>
         <document ref="Order" defaultQueryName="qOrder"/>
         <document ref="Invoice" defaultQueryName="qInvoice"/>
+        <document ref="Configuration" defaultQueryName="qConfiguration"/>
         <document ref="ContactDetail" moduleRef="customers"/>
         <document ref="Account" moduleRef="customers"/>
         <document ref="ProductInfo" moduleRef="products"/>
         <document ref="ProductPriceList" moduleRef="products"/>
         <document ref="ProductUnitGroup" moduleRef="products"/>
         <document ref="Interaction" moduleRef="customers"/>
+        
 	</documents>
     <roles>
         <role name="Staff">
@@ -28,6 +30,7 @@
                 <document permission="CRUDU" name="Quote" />
                 <document permission="_____" name="LeadMap" />
                 <document permission="CRUDU" name="ProcessLifeCycle" />
+                <document permission="CRUDU" name="Configuration" />
             </privileges>
         </role>
         <role name="LeadManager">
@@ -36,6 +39,7 @@
                 <document name="Lead" permission="CRUDC">
                 	<action name="AddInteraction"/>
                 </document>
+                <document permission="CRUDC" name="Configuration" />
             </privileges>
         </role>
         <role name="OpportunityManager">
@@ -44,6 +48,7 @@
         		<document permission="CRUDC" name="Opportunity" >
         			<action name="AddInteraction"/>
         		</document>
+        		<document permission="CRUDC" name="Configuration" />
         	</privileges>
         </role>
         <role name="QuoteManager">
@@ -52,6 +57,7 @@
         		<document permission="CRUDC" name="Quote" >
         			<action name="AddInteraction"/>
         		</document>
+        		<document permission="CRUDC" name="Configuration" />
         	</privileges>
         </role>
         <role name="OrderManager">
@@ -60,12 +66,14 @@
         		<document permission="CRUDC" name="Order" >
         			<action name="AddInteraction"/>
        			</document>
+       			<document permission="CRUDC" name="Configuration" />
         	</privileges>
         </role>
         <role name="InvoiceManager">
         	<description><![CDATA[Invoice Manager - Who can manage all invoices]]></description>
         	<privileges>
         		<document permission="CRUDC" name="Invoice" />
+        		<document permission="CRUDC" name="Configuration" />
         	</privileges>
         </role>
     </roles>
@@ -98,7 +106,13 @@
 				<role name="InvoiceManager"/>
 	        </list>
     	</group>
-      
+      	<list document="Configuration" name="Configuration">
+      		<role name="Staff"/>
+      		<role name="LeadManager"/>
+      		<role name="OpportunityManager"/>
+      		<role name="OrderManager"/>
+      		<role name="InvoiceManager"/>
+      	</list>
     </menu>
     <queries>
     	<query documentName="ProcessLifeCycle" name="qProcessLifeCycle">
@@ -162,6 +176,53 @@
     			<column binding="order.name" />
     			<column binding="order.orderId" />
     			<column binding="dueDate" />
+    		</columns>
+    	</query>
+    	<query documentName="Configuration" name="qConfiguration">
+    		<description><![CDATA[All Configuration Settings]]></description>
+    		<columns>
+    			<column binding="statusOption" displayName="Status"/>
+    			<column binding="field" />
+    		</columns>
+    	</query>
+    	<query documentName="Configuration" name="qLeadType">
+    		<description><![CDATA[All Lead Types]]></description>
+    		<columns>
+    			<column binding="statusOption" displayName="Status">
+    				<filterOperator>equal</filterOperator>
+    				<filterExpression>Lead Type</filterExpression>
+    			</column>
+    			<column binding="field" />
+    		</columns>
+    	</query>
+    	<query documentName="Configuration" name="qQuoteStatus">
+    		<description><![CDATA[All Quote Statuses]]></description>
+    		<columns>
+    			<column binding="statusOption" displayName="Quote Status">
+    				<filterOperator>equal</filterOperator>
+    				<filterExpression>Quote Status</filterExpression>
+    			</column>
+    			<column binding="field" />
+    		</columns>
+    	</query>
+    	<query documentName="Configuration" name="qOrderStatus">
+    		<description><![CDATA[All Order Statuses]]></description>
+    		<columns>
+    			<column binding="statusOption" displayName="Order Status">
+    				<filterOperator>equal</filterOperator>
+    				<filterExpression>Order Status</filterExpression>
+    			</column>
+    			<column binding="field" />
+    		</columns>
+    	</query>
+    	<query documentName="Configuration" name="qInvoiceStatus">
+    		<description><![CDATA[All Invoice Statuses]]></description>
+    		<columns>
+    			<column binding="statusOption" displayName="Invoice Status" >
+    				<filterOperator>equal</filterOperator>
+    				<filterExpression>Invoice Status</filterExpression>
+    			</column>
+    			<column binding="field" />
     		</columns>
     	</query>
     </queries>

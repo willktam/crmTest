@@ -48,10 +48,15 @@
         		<textField binding="contactDetails.method" visible="contactSelected" editable="false"/>
         	</item>
         </row>
-        <row>
+        <!-- <row>
         	<item>
         		<textField binding="leadType" previousValues="true" />
           	</item>
+        </row> -->
+        <row>
+        	<item>
+        		<lookupDescription descriptionBinding="field" binding="leadType" />
+        	</item>
         </row>
     </form>
 </view>

@@ -1,9 +1,6 @@
 package modules.sales.domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
@@ -14,15 +11,13 @@ import modules.sales.Order.OrderExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateOnly;
-import org.skyve.domain.types.Enumeration;
 import org.skyve.impl.domain.AbstractPersistentBean;
 import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
-import org.skyve.metadata.model.document.Bizlet.DomainValue;
 
 /**
  * Invoice
  * 
- * @depend - - - InvoiceStatus
+ * @navhas n invoiceStatus 1 Configuration
  * @navhas n account 1 Account
  * @navhas n order 1 Order
  * @stereotype "persistent"
@@ -59,86 +54,6 @@ public class Invoice extends AbstractPersistentBean {
 	public static final String accountPropertyName = "account";
 
 	/**
-	 * Invoice Status
-	 * <br/>
-	 * The current status of this invoice
-	 **/
-	@XmlEnum
-	public static enum InvoiceStatus implements Enumeration {
-		paid("Paid", "Paid"),
-		unpaid("Unpaid", "Unpaid"),
-		pending("Pending", "Pending");
-
-		private String code;
-		private String description;
-
-		/** @hidden */
-		private DomainValue domainValue;
-
-		/** @hidden */
-		private static List<DomainValue> domainValues;
-
-		private InvoiceStatus(String code, String description) {
-			this.code = code;
-			this.description = description;
-			this.domainValue = new DomainValue(code, description);
-		}
-
-		@Override
-		public String toCode() {
-			return code;
-		}
-
-		@Override
-		public String toDescription() {
-			return description;
-		}
-
-		@Override
-		public DomainValue toDomainValue() {
-			return domainValue;
-		}
-
-		public static InvoiceStatus fromCode(String code) {
-			InvoiceStatus result = null;
-
-			for (InvoiceStatus value : values()) {
-				if (value.code.equals(code)) {
-					result = value;
-					break;
-				}
-			}
-
-			return result;
-		}
-
-		public static InvoiceStatus fromDescription(String description) {
-			InvoiceStatus result = null;
-
-			for (InvoiceStatus value : values()) {
-				if (value.description.equals(description)) {
-					result = value;
-					break;
-				}
-			}
-
-			return result;
-		}
-
-		public static List<DomainValue> toDomainValues() {
-			if (domainValues == null) {
-				InvoiceStatus[] values = values();
-				domainValues = new ArrayList<>(values.length);
-				for (InvoiceStatus value : values) {
-					domainValues.add(value.domainValue);
-				}
-			}
-
-			return domainValues;
-		}
-	}
-
-	/**
 	 * Invoice ID
 	 * <br/>
 	 * The ID for this invoice
@@ -159,9 +74,9 @@ public class Invoice extends AbstractPersistentBean {
 	/**
 	 * Invoice Status
 	 * <br/>
-	 * The current status of this invoice
+	 * THe current status of this invoice
 	 **/
-	private InvoiceStatus invoiceStatus;
+	private Configuration invoiceStatus = null;
 	/**
 	 * Description
 	 * <br/>
@@ -288,7 +203,7 @@ public class Invoice extends AbstractPersistentBean {
 	 * {@link #invoiceStatus} accessor.
 	 * @return	The value.
 	 **/
-	public InvoiceStatus getInvoiceStatus() {
+	public Configuration getInvoiceStatus() {
 		return invoiceStatus;
 	}
 
@@ -297,7 +212,7 @@ public class Invoice extends AbstractPersistentBean {
 	 * @param invoiceStatus	The new value.
 	 **/
 	@XmlElement
-	public void setInvoiceStatus(InvoiceStatus invoiceStatus) {
+	public void setInvoiceStatus(Configuration invoiceStatus) {
 		preset(invoiceStatusPropertyName, invoiceStatus);
 		this.invoiceStatus = invoiceStatus;
 	}

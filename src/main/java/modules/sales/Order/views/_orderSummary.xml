@@ -20,7 +20,11 @@
 		                <default binding="description"/>
 		            </item>
 		        </row>
-		        
+		        <row>
+		        	<item>
+		        		<lookupDescription descriptionBinding="field" binding="status" />
+		        	</item>
+		        </row>
 		    </form>
 		    <form border="true" borderTitle="Sales Details">
 		    	<column percentageWidth="30" responsiveWidth="4"/>

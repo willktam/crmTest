@@ -50,11 +50,12 @@
             <length>100</length>
         </text>
         
-        <text name="leadType">
+        <association type="aggregation" name="leadType" required="true" >
         	<displayName>Lead Type</displayName>
         	<description><![CDATA[The type of this lead]]></description>
-        	<length>300</length>        	
-        </text>
+        	<documentName>Configuration</documentName>
+        	<queryName>qLeadType</queryName>
+        </association>
         
         <geometry name="companyLocation">
         	<displayName>Company Location</displayName>

@@ -22,6 +22,12 @@
         	<displayName>Description</displayName>
         	<description><![CDATA[A description of the order]]></description>
         </memo>
+        <association type="aggregation" name="status" required="true">
+        	<displayName>Order Status</displayName>
+        	<description><![CDATA[The current status of this order]]></description>
+        	<documentName>Configuration</documentName>
+        	<queryName>qOrderStatus</queryName>
+        </association>
         
         <!-- Shipping/Address Details -->
         <date name="requested">

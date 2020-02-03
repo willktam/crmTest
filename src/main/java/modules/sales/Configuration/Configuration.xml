@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.skyve.org/xml/document" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Configuration" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd">
+    <persistent name="SAL_Configuration"/>
+    <singularAlias>Configuration</singularAlias>
+    <pluralAlias>Configuration</pluralAlias>
+    <iconStyleClass>fa fa-gears</iconStyleClass>
+    <bizKey expression="{statusOption}"/>
+    <attributes>
+    	<enum required="true" name="statusOption">
+        	<displayName>Choose Status</displayName>
+        	<description><![CDATA[The status to add a new field for]]></description>
+        	<values>
+        		<value code="Lead Type" />
+        		<value code="Quote Status" />
+        		<value code="Order Status"/>
+        		<value code="Invoice Status"/>
+        	</values>
+        </enum>
+    	<memo required="true" name="field" >
+    		<displayName>Field</displayName>
+    		<description><![CDATA[The new field for the chosen option]]></description>
+    	</memo>
+       
+    </attributes>
+	
+</document>

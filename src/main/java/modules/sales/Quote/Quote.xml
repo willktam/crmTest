@@ -35,11 +35,13 @@
         	<description><![CDATA[The date the quote expires]]></description>
         </date>
         
-        <text name="status">
+        <association type="aggregation" name="status" required="true">
         	<displayName>Quote Status</displayName>
         	<description><![CDATA[The status of the quote]]></description>
-        	<length>100</length>
-        </text>
+        	<documentName>Configuration</documentName>
+        	<queryName>qQuoteStatus</queryName>
+        </association>
+        
         <text name="statusReason">
         	<displayName>Status Reason</displayName>
         	<description><![CDATA[The reason for the current status of the quote]]></description>

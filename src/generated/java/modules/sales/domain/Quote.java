@@ -20,6 +20,7 @@ import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
  * 
  * @navhas n opportunity 1 Opportunity
  * @navhas n account 1 Account
+ * @navhas n status 1 Configuration
  * @stereotype "persistent"
  */
 @XmlType
@@ -114,7 +115,7 @@ public class Quote extends AbstractPersistentBean {
 	 * <br/>
 	 * The status of the quote
 	 **/
-	private String status;
+	private Configuration status = null;
 	/**
 	 * Status Reason
 	 * <br/>
@@ -345,7 +346,7 @@ public class Quote extends AbstractPersistentBean {
 	 * {@link #status} accessor.
 	 * @return	The value.
 	 **/
-	public String getStatus() {
+	public Configuration getStatus() {
 		return status;
 	}
 
@@ -354,7 +355,7 @@ public class Quote extends AbstractPersistentBean {
 	 * @param status	The new value.
 	 **/
 	@XmlElement
-	public void setStatus(String status) {
+	public void setStatus(Configuration status) {
 		preset(statusPropertyName, status);
 		this.status = status;
 	}

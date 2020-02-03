@@ -24,6 +24,7 @@ import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
  * @navhas n quote 1 Quote
  * @navhas n opportunity 1 Opportunity
  * @navhas n account 1 Account
+ * @navhas n status 1 Configuration
  * @stereotype "persistent"
  */
 @XmlType
@@ -46,6 +47,8 @@ public class Order extends AbstractPersistentBean {
 	public static final String namePropertyName = "name";
 	/** @hidden */
 	public static final String descriptionPropertyName = "description";
+	/** @hidden */
+	public static final String statusPropertyName = "status";
 	/** @hidden */
 	public static final String requestedPropertyName = "requested";
 	/** @hidden */
@@ -77,6 +80,12 @@ public class Order extends AbstractPersistentBean {
 	 * A description of the order
 	 **/
 	private String description;
+	/**
+	 * Order Status
+	 * <br/>
+	 * The current status of this order
+	 **/
+	private Configuration status = null;
 	/**
 	 * Requested Delivery Date
 	 * <br/>
@@ -209,6 +218,24 @@ public class Order extends AbstractPersistentBean {
 	public void setDescription(String description) {
 		preset(descriptionPropertyName, description);
 		this.description = description;
+	}
+
+	/**
+	 * {@link #status} accessor.
+	 * @return	The value.
+	 **/
+	public Configuration getStatus() {
+		return status;
+	}
+
+	/**
+	 * {@link #status} mutator.
+	 * @param status	The new value.
+	 **/
+	@XmlElement
+	public void setStatus(Configuration status) {
+		preset(statusPropertyName, status);
+		this.status = status;
 	}
 
 	/**

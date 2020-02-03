@@ -16,6 +16,7 @@ import org.skyve.impl.domain.types.jaxb.GeometryMapper;
 /**
  * Lead
  * 
+ * @navhas n leadType 1 Configuration
  * @navhas n contactDetails 1 ContactDetail
  * @stereotype "persistent"
  */
@@ -111,7 +112,7 @@ public class Lead extends AbstractPersistentBean {
 	 * <br/>
 	 * The type of this lead
 	 **/
-	private String leadType;
+	private Configuration leadType = null;
 	/**
 	 * Company Location
 	 **/
@@ -316,7 +317,7 @@ public class Lead extends AbstractPersistentBean {
 	 * {@link #leadType} accessor.
 	 * @return	The value.
 	 **/
-	public String getLeadType() {
+	public Configuration getLeadType() {
 		return leadType;
 	}
 
@@ -325,7 +326,7 @@ public class Lead extends AbstractPersistentBean {
 	 * @param leadType	The new value.
 	 **/
 	@XmlElement
-	public void setLeadType(String leadType) {
+	public void setLeadType(Configuration leadType) {
 		preset(leadTypePropertyName, leadType);
 		this.leadType = leadType;
 	}

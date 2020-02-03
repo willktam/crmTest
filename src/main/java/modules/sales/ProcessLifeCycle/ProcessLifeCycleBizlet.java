@@ -1,6 +1,8 @@
 package modules.sales.ProcessLifeCycle;
 
+import org.skyve.domain.Bean;
 import org.skyve.domain.types.DateOnly;
+import org.skyve.metadata.controller.ImplicitActionName;
 import org.skyve.metadata.model.document.Bizlet;
 import org.skyve.web.WebContext;
 
@@ -21,20 +23,31 @@ public class ProcessLifeCycleBizlet extends Bizlet<ProcessLifeCycleExtension> {
 		
 		return super.newInstance(bean);
 	}
-	
+	@Override
+	public ProcessLifeCycleExtension preExecute(ImplicitActionName actionName, ProcessLifeCycleExtension bean,
+			Bean parentBean, WebContext webContext) throws Exception {
+		// reset associations on page edit
+		if (ImplicitActionName.Edit.equals(actionName)) {
+			setAssociations(bean);
+		}
+		return super.preExecute(actionName, bean, parentBean, webContext);
+	}
 
 	@Override
 	public void preRerender(String source, ProcessLifeCycleExtension bean, WebContext webContext) throws Exception {
-		// 
+		// set new associations on page rerender
+		setAssociations(bean);
+		super.preRerender(source, bean, webContext);
+	}
 	
+	// helper function to set associations to latest updated
+	private void setAssociations(ProcessLifeCycleExtension bean) throws Exception {
 		if (bean.getAccount() != null) {
 			bean.setOpportunity(bean.getOpportunity());
 			bean.setQuote(bean.getQuote());
 			bean.setOrder(bean.getOrder());
 			bean.setInvoice(bean.getInvoice());
 		}
-		
-		super.preRerender(source, bean, webContext);
 	}
 	
 }

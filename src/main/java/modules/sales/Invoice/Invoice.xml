@@ -22,15 +22,13 @@
         	<description><![CDATA[The order associated with this invoice]]></description>
         	<documentName>Order</documentName>
         </association>
-        <enum required="true" name="invoiceStatus">
+     
+        <association type="aggregation" name="invoiceStatus" required="true" >
         	<displayName>Invoice Status</displayName>
-        	<description><![CDATA[The current status of this invoice]]></description>
-        	<values>
-        		<value code="Paid"/>
-        		<value code="Unpaid"/>
-        		<value code="Pending"/>
-        	</values>
-        </enum>
+        	<description><![CDATA[THe current status of this invoice]]></description>
+        	<documentName>Configuration</documentName>
+        	<queryName>qInvoiceStatus</queryName>
+        </association>
         <memo name="description">
         	<displayName>Description</displayName>
         	<description><![CDATA[A description of the invoice]]></description>

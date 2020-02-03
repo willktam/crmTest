@@ -11,6 +11,27 @@
 	<typedef name="TimeOnly" class="org.skyve.impl.domain.types.TimeOnlyUserType" />
 	<typedef name="Timestamp" class="org.skyve.impl.domain.types.TimestampUserType" />
 	<typedef name="Enum" class="org.skyve.impl.domain.types.EnumUserType" />
+	<class name="modules.sales.domain.Configuration" table="SAL_Configuration" entity-name="salesConfiguration">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" not-null="true" />
+		<property name="bizCustomer" length="50" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" not-null="true" />
+		<property name="statusOption" length="14">
+			<type name="Enum">
+				<param name="enumClass">modules.sales.domain.Configuration$StatusOption</param>
+			</type>
+		</property>
+		<property name="field" type="text" />
+		<filter name="salesConfigurationNoneFilter" condition="1=0"/>
+		<filter name="salesConfigurationCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="salesConfigurationDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="salesConfigurationUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
 	<class name="modules.sales.domain.Invoice" table="SAL_Invoice" entity-name="salesInvoice">
 		<id name="bizId" length="36" />
 		<version name="bizVersion" unsaved-value="null" />
@@ -23,11 +44,7 @@
 		<property name="invoiceId" length="8" />
 		<property name="name" length="200" />
 		<many-to-one name="order" entity-name="salesOrder" column="order_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Invoice_order" />
-		<property name="invoiceStatus" length="7">
-			<type name="Enum">
-				<param name="enumClass">modules.sales.domain.Invoice$InvoiceStatus</param>
-			</type>
-		</property>
+		<many-to-one name="invoiceStatus" entity-name="salesConfiguration" column="invoiceStatus_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Invoice_invoiceStatus" />
 		<property name="description" type="text" />
 		<property name="deliveryDate" type="DateOnly" />
 		<property name="dueDate" type="DateOnly" />
@@ -55,7 +72,7 @@
 		<property name="state" length="100" />
 		<property name="postCode" length="10" />
 		<property name="country" length="100" />
-		<property name="leadType" length="300" />
+		<many-to-one name="leadType" entity-name="salesConfiguration" column="leadType_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Lead_leadType" />
 		<property name="companyLocation" />
 		<property name="selectedTab" />
 		<filter name="salesLeadNoneFilter" condition="1=0"/>
@@ -107,6 +124,7 @@
 		<property name="orderId" length="8" />
 		<property name="name" length="200" />
 		<property name="description" type="text" />
+		<many-to-one name="status" entity-name="salesConfiguration" column="status_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Order_status" />
 		<property name="requested" type="DateOnly" />
 		<property name="fulfilled" type="DateOnly" />
 		<many-to-one name="product" entity-name="productsProductInfo" column="product_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Order_product" />
@@ -163,7 +181,7 @@
 		<many-to-one name="opportunity" entity-name="salesOpportunity" column="opportunity_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Quote_opportunity" />
 		<many-to-one name="account" entity-name="customersAccount" column="account_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Quote_account" />
 		<property name="expireDate" type="DateOnly" />
-		<property name="status" length="100" />
+		<many-to-one name="status" entity-name="salesConfiguration" column="status_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Quote_status" />
 		<property name="statusReason" length="200" />
 		<property name="description" type="text" />
 		<property name="paymentTerms" length="200" />
@@ -185,6 +203,16 @@
 		<filter name="salesQuoteUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
+	<filter-def name="salesConfigurationNoneFilter" />
+	<filter-def name="salesConfigurationCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="salesConfigurationDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="salesConfigurationUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
 	<filter-def name="salesInvoiceNoneFilter" />
 	<filter-def name="salesInvoiceCustomerFilter">
 		<filter-param name="customerParam" type="string"/>
