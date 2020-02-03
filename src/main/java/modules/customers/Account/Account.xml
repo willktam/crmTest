@@ -6,6 +6,15 @@
     <iconStyleClass>fa fa-book</iconStyleClass>
     <bizKey expression="{accountName}"/>
     <attributes>
+    	<association type="aggregation" name="currentUser" >
+			<displayName>Current User</displayName>
+			<documentName>User</documentName>
+		</association>
+		<text required="true" name="accountManager">
+			<displayName>Account Manager</displayName>
+			<description><![CDATA[The manager of this account]]></description>
+			<length>200</length>
+		</text>
         <text required="true" name="accountName">
             <displayName>Account Name</displayName>
             <description><![CDATA[The account name]]></description>

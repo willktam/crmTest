@@ -4,6 +4,11 @@
         <column percentageWidth="30" responsiveWidth="4"/>
         <column/>
         <row>
+        	<item showLabel="true" label="Account Manager">
+        		<blurb><![CDATA[{accountManager}]]></blurb>
+        	</item>
+        </row>
+        <row>
             <item>
                 <default binding="accountName"/>
             </item>

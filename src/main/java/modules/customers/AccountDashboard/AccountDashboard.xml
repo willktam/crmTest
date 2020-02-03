@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document name="AccountDashboard"
+				xmlns="http://www.skyve.org/xml/document"
+	xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<singularAlias>Account Dashboard</singularAlias>
+	<pluralAlias>Account Dashboards</pluralAlias>
+	<iconStyleClass>fa fa-area-chart</iconStyleClass>
+	<bizKey expression="Account Dashboard"/>
+	<attributes>
+		<association type="aggregation" name="account" >
+			<displayName>Account</displayName>
+			<documentName>Account</documentName>
+			<queryName>qCurrentAccounts</queryName>
+		</association>
+		
+	</attributes>
+</document>

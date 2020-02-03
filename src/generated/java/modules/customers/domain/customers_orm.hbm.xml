@@ -20,6 +20,8 @@
 		<property name="bizFlagComment" length="1024" />
 		<property name="bizDataGroupId" length="36" />
 		<property name="bizUserId" length="36" not-null="true" />
+		<many-to-one name="currentUser" entity-name="adminUser" column="currentUser_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_CUS_Account_currentUser" />
+		<property name="accountManager" length="200" />
 		<property name="accountName" length="200" />
 		<property name="email" length="300" />
 		<property name="website" length="300" />

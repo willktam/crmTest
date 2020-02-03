@@ -13,8 +13,8 @@
             </item>
         </row>
         <row>
-        	<item showLabel="true" label="Account">
-        		<blurb visible="accountSelected">{account.bizKey}</blurb>
+        	<item showLabel="true" label="Account Manager">
+        		<blurb visible="accountSelected">{account.accountManager}</blurb>
         	</item>
         </row>
        	<row>

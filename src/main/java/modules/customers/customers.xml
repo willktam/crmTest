@@ -4,6 +4,7 @@
     <homeDocument>ContactDetail</homeDocument>
     <documents>
         <document ref="Account" defaultQueryName="qAccounts"/>
+        <document ref="AccountDashboard"/>
         <document ref="ContactDetail" defaultQueryName="qContactDetails"/>
         <document ref="Interaction" defaultQueryName="qInteractions"/>
         <document ref="StaffList" moduleRef="staff"/>
@@ -33,6 +34,7 @@
                 	<action name="AddInteraction"/>
                 </document>
                 <document name="Interaction" permission="CRUDC"/>
+                <document permission="CRUDC" name="AccountDashboard" />
             </privileges>
         </role>
         <role name="AccountWorker">
@@ -42,6 +44,7 @@
                 	<action name="AddInteraction"/>
                 </document>
                 <document name="Interaction" permission="CRUDU"/>
+                <document permission="CRUDU" name="AccountDashboard" />
             </privileges>
         </role>
     </roles>
@@ -50,6 +53,10 @@
             <role name="AccountManager"/>
             <role name="AccountWorker"/>
         </list>
+        <edit document="AccountDashboard" name="Account Dashboard">
+        	<role name="AccountManager"/>
+        	<role name="AccountWorker"/>
+        </edit>
         <list document="ContactDetail" name="Contact Details">
             <role name="Maintainer"/>
             <role name="Viewer"/>
@@ -59,6 +66,7 @@
         <query documentName="Account" name="qAccounts">
             <description><![CDATA[All Accounts]]></description>
             <columns>
+            	<column binding="accountManager" />
                 <column binding="accountName"/>
                 <column binding="email"/>
                 <column binding="website"/>
@@ -91,6 +99,16 @@
         		<column binding="title" />
         		<column binding="user" />
         		<column binding="description" />
+        	</columns>
+        </query>
+        <query documentName="Account" name="qCurrentAccounts">
+        	<description><![CDATA[Current User Accounts]]></description>
+        	<columns>
+        		<column binding="accountManager">
+        			<filterOperator>equal</filterOperator>
+        			<filterExpression>{USERNAME}</filterExpression>
+        		</column>
+        		<column binding="accountName" />
         	</columns>
         </query>
     </queries>

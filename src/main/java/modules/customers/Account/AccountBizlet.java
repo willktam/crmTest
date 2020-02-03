@@ -5,6 +5,8 @@ import org.skyve.metadata.controller.ImplicitActionName;
 import org.skyve.metadata.model.document.Bizlet;
 import org.skyve.web.WebContext;
 
+import modules.admin.ModulesUtil;
+
 public class AccountBizlet extends Bizlet<AccountExtension> {
 	
 	private static final long serialVersionUID = 3587510445958351755L;
@@ -23,6 +25,8 @@ public class AccountBizlet extends Bizlet<AccountExtension> {
 	@Override
 	public AccountExtension newInstance(AccountExtension bean) throws Exception {
 		bean.createInteraction();
+		bean.setCurrentUser(ModulesUtil.currentAdminUser());
+		bean.setAccountManager(bean.getCurrentUser().getContact().getName());
 		return super.newInstance(bean);
 	}
 }

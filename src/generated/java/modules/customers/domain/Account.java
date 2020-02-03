@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import modules.admin.User.UserExtension;
 import modules.customers.Account.AccountExtension;
 import modules.customers.ContactDetail.ContactDetailExtension;
 import modules.customers.Interaction.InteractionExtension;
@@ -27,6 +28,7 @@ import org.skyve.metadata.model.document.Bizlet.DomainValue;
  * 
  * @depend - - - RelationshipType
  * @depend - - - Type
+ * @navhas n currentUser 0..1 User
  * @navhas n primaryContact 0..1 ContactDetail
  * @navcomposed n interactions 0..n Interaction
  * @stereotype "persistent"
@@ -45,6 +47,10 @@ public class Account extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String DOCUMENT_NAME = "Account";
 
+	/** @hidden */
+	public static final String currentUserPropertyName = "currentUser";
+	/** @hidden */
+	public static final String accountManagerPropertyName = "accountManager";
 	/** @hidden */
 	public static final String accountNamePropertyName = "accountName";
 	/** @hidden */
@@ -158,6 +164,16 @@ public class Account extends AbstractPersistentBean {
 		}
 	}
 
+	/**
+	 * Current User
+	 **/
+	private UserExtension currentUser = null;
+	/**
+	 * Account Manager
+	 * <br/>
+	 * The manager of this account
+	 **/
+	private String accountManager;
 	/**
 	 * Account Name
 	 * <br/>
@@ -290,6 +306,42 @@ public class Account extends AbstractPersistentBean {
 	public boolean equals(Object o) {
 		return ((o instanceof Account) && 
 					this.getBizId().equals(((Account) o).getBizId()));
+	}
+
+	/**
+	 * {@link #currentUser} accessor.
+	 * @return	The value.
+	 **/
+	public UserExtension getCurrentUser() {
+		return currentUser;
+	}
+
+	/**
+	 * {@link #currentUser} mutator.
+	 * @param currentUser	The new value.
+	 **/
+	@XmlElement
+	public void setCurrentUser(UserExtension currentUser) {
+		preset(currentUserPropertyName, currentUser);
+		this.currentUser = currentUser;
+	}
+
+	/**
+	 * {@link #accountManager} accessor.
+	 * @return	The value.
+	 **/
+	public String getAccountManager() {
+		return accountManager;
+	}
+
+	/**
+	 * {@link #accountManager} mutator.
+	 * @param accountManager	The new value.
+	 **/
+	@XmlElement
+	public void setAccountManager(String accountManager) {
+		preset(accountManagerPropertyName, accountManager);
+		this.accountManager = accountManager;
 	}
 
 	/**
