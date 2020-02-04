@@ -34,7 +34,9 @@
                 	<action name="AddInteraction"/>
                 </document>
                 <document name="Interaction" permission="CRUDC"/>
-                <document permission="CRUDC" name="AccountDashboard" />
+                <document permission="CRUDC" name="AccountDashboard" >
+                	<action name="AddInteraction"/>
+                </document>
             </privileges>
         </role>
         <role name="AccountWorker">
@@ -44,7 +46,9 @@
                 	<action name="AddInteraction"/>
                 </document>
                 <document name="Interaction" permission="CRUDU"/>
-                <document permission="CRUDU" name="AccountDashboard" />
+                <document permission="CRUDU" name="AccountDashboard" >
+                	<action name="AddInteraction"/>
+                </document>
             </privileges>
         </role>
     </roles>

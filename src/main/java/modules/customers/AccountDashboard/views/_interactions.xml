@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_interactions" title="Interactions" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<form border="true" borderTitle="Add Interaction">
+		<column responsiveWidth="1" />
+		<column responsiveWidth="2" />
+		<column responsiveWidth="2" />
+		<column />
+		<column responsiveWidth="2" />
+		<row>
+			<item>
+				<default binding="account.interactionType" />
+			</item>
+			<item>
+				<textArea binding="account.interactionDescription" />
+			</item>
+			<item>
+				<button actionName="AddInteraction" />
+			</item>
+		</row>
+	</form>
+	<vbox border="true" borderTitle="Interactions">
+		<dataRepeater binding="account.interactions">
+			<containerColumn>
+				<blurb><![CDATA[{interactionTemplate}]]></blurb>
+			</containerColumn>
+		</dataRepeater>	
+	</vbox>
+</view>

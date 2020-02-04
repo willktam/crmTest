@@ -14,5 +14,14 @@
 			<queryName>qCurrentAccounts</queryName>
 		</association>
 		
+		<markup name="flowbar" persistent="false" usage="view" trackChanges="false" audited="false">
+			<displayName>Flowbar</displayName>
+		</markup>
+		
 	</attributes>
+	<conditions>
+		<condition name="accountSelected">
+            <expression><![CDATA[account != null]]></expression>
+        </condition>
+	</conditions>
 </document>

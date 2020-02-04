@@ -5,10 +5,24 @@
         <column/>
         <row>
             <item>
-                <lookupDescription descriptionBinding="accountName" binding="account" />
+                <lookupDescription descriptionBinding="accountName" binding="account" >
+                	<onPickedHandlers>
+                		<rerender />
+                	</onPickedHandlers>
+                </lookupDescription>
             </item>
         </row>
     </form>
-    <actions/>
+    <component name="_flowbar" />
+    <hbox visible="accountSelected">
+    	<vbox>
+    		<component name="_interactions" />		
+    	</vbox>
+    	
+    </hbox>
+    
+    <actions>
+        <action className="AddInteraction" displayName="Add" inActionPanel="false" iconStyleClass="fa fa-plus" ></action>
+    </actions>
     <newParameters/>
 </view>
