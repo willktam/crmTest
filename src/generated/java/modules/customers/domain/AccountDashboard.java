@@ -1,19 +1,23 @@
 package modules.customers.domain;
 
+import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import modules.customers.Account.AccountExtension;
 import modules.customers.AccountDashboard.AccountDashboardExtension;
+import modules.customers.Interaction.InteractionExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.impl.domain.AbstractTransientBean;
+import org.skyve.impl.domain.ChangeTrackingArrayList;
 
 /**
  * Account Dashboard
  * 
  * @navhas n account 0..1 Account
+ * @navhas n interactions 0..n Interaction
  * @stereotype "transient"
  */
 @XmlType
@@ -33,12 +37,18 @@ public class AccountDashboard extends AbstractTransientBean {
 	/** @hidden */
 	public static final String accountPropertyName = "account";
 	/** @hidden */
+	public static final String interactionsPropertyName = "interactions";
+	/** @hidden */
 	public static final String flowbarPropertyName = "flowbar";
 
 	/**
 	 * Account
 	 **/
 	private AccountExtension account = null;
+	/**
+	 * Interactions
+	 **/
+	private List<InteractionExtension> interactions = new ChangeTrackingArrayList<>("interactions", this);
 	/**
 	 * Flowbar
 	 **/
@@ -103,6 +113,33 @@ public class AccountDashboard extends AbstractTransientBean {
 	public void setAccount(AccountExtension account) {
 		preset(accountPropertyName, account);
 		this.account = account;
+	}
+
+	/**
+	 * {@link #interactions} accessor.
+	 * @return	The value.
+	 **/
+	@XmlElement
+	public List<InteractionExtension> getInteractions() {
+		return interactions;
+	}
+
+	/**
+	 * {@link #interactions} accessor.
+	 * @param bizId	The bizId of the element in the list.
+	 * @return	The value of the element in the list.
+	 **/
+	public InteractionExtension getInteractionsElementById(String bizId) {
+		return getElementById(interactions, bizId);
+	}
+
+	/**
+	 * {@link #interactions} mutator.
+	 * @param bizId	The bizId of the element in the list.
+	 * @param element	The new value of the element in the list.
+	 **/
+	public void setInteractionsElementById(String bizId, InteractionExtension element) {
+		 setElementById(interactions, element);
 	}
 
 	/**

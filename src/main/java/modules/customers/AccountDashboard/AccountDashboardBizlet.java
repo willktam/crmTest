@@ -12,7 +12,7 @@ public class AccountDashboardBizlet extends Bizlet<AccountDashboardExtension> {
 	@Override
 	public AccountDashboardExtension preExecute(ImplicitActionName actionName, AccountDashboardExtension bean,
 			Bean parentBean, WebContext webContext) throws Exception {
-		
+	
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	
@@ -20,6 +20,9 @@ public class AccountDashboardBizlet extends Bizlet<AccountDashboardExtension> {
 	public AccountDashboardExtension newInstance(AccountDashboardExtension bean) throws Exception {
 		 // set the account to the most recently edited
 		 bean.setAccount(bean.getRecentAccount());
+
+		
+		 bean.getInteractions().addAll(bean.getAccount().getInteractions().subList(0, 5));
 		 return super.newInstance(bean);
 	}
 	

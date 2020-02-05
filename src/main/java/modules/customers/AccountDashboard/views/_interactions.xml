@@ -19,7 +19,7 @@
 		</row>
 	</form>
 	<vbox border="true" borderTitle="Interactions">
-		<dataRepeater binding="account.interactions">
+		<dataRepeater binding="interactions" >
 			<containerColumn>
 				<blurb><![CDATA[{interactionTemplate}]]></blurb>
 			</containerColumn>

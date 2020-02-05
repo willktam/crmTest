@@ -14,6 +14,15 @@
 			<queryName>qCurrentAccounts</queryName>
 		</association>
 		
+		<collection type="aggregation" persistent="false" name="interactions">
+			<displayName>Interactions</displayName>
+			<documentName>Interaction</documentName>
+			<minCardinality>0</minCardinality>
+			<ordering>
+        		<order sort="descending" by="interactionTime"/>
+        	</ordering>
+		</collection>
+		
 		<markup name="flowbar" persistent="false" usage="view" trackChanges="false" audited="false">
 			<displayName>Flowbar</displayName>
 		</markup>

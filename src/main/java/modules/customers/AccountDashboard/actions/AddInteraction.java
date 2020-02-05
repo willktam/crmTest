@@ -42,22 +42,19 @@ public class AddInteraction implements ServerSideAction<AccountDashboardExtensio
 		account = CORE.getPersistence().save(account);
 		bean.setAccount(account);		
 		
+		// resort account interactions after adding
 		User user = CORE.getUser();
 		Customer customer = user.getCustomer();
 		Module module = customer.getModule(Account.MODULE_NAME);
 		Document document = module.getDocument(customer, Account.DOCUMENT_NAME);
 		String collectionBinding = Account.interactionsPropertyName;
+		Binder.sortCollectionByMetaData(bean.getAccount(), customer, module, document, collectionBinding);
 		
-		int size = bean.getAccount().getInteractions().size();
-		if (size < 50) {
-			Binder.sortCollectionByMetaData(bean.getAccount(), customer, module, document, collectionBinding);
-		}
-		else {
-			for (int i = 0; i < size-50; i++) {
-				bean.getAccount().getInteractions().remove(i);
-			}
-			Binder.sortCollectionByMetaData(bean.getAccount(), customer, module, document, collectionBinding);
-		}
+		// clear current shown interactions then add resorted list
+		bean.getInteractions().clear();
+		bean.getInteractions().addAll(bean.getAccount().getInteractions().subList(0, 5));
+		
+
 		return new ServerSideActionResult<>(bean);
 	}	
 
