@@ -21,8 +21,10 @@ public class AccountDashboardBizlet extends Bizlet<AccountDashboardExtension> {
 		 // set the account to the most recently edited
 		 bean.setAccount(bean.getRecentAccount());
 
-		
+		 // add 5 interactions to the view
 		 bean.getInteractions().addAll(bean.getAccount().getInteractions().subList(0, 5));
+		
+		 
 		 return super.newInstance(bean);
 	}
 	

@@ -38,7 +38,6 @@
         
         <markup name="interactionTemplate" persistent="false" audited="false" trackChanges="false" usage="view" >
         	<displayName>Interactions</displayName>
-        </markup>
-        
+        </markup>        
     </attributes>
 </document>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="edit" title="Account Dashboard" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
-    <form responsiveWidth="12" percentageWidth="60" border="true">
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="edit" title="{bizKey}" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+    <form responsiveWidth="10" percentageWidth="60" border="false" >
         <column percentageWidth="30" responsiveWidth="4"/>
         <column/>
         <row>
@@ -14,6 +14,12 @@
         </row>
     </form>
     <component name="_flowbar" />
+    <hbox visible="accountSelected">
+    	<vbox responsiveWidth="6" percentageWidth="50" borderTitle="Recent Account Activity" border="true">
+<!--     		<component name="_recentActivity" /> -->
+			<chart type="line" modelName="RecentActivityModel" />
+    	</vbox>
+    </hbox>
     <hbox visible="accountSelected">
     	<vbox>
     		<component name="_interactions" />		
