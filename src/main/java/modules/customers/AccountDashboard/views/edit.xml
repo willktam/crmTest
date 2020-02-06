@@ -16,7 +16,6 @@
     <component name="_flowbar" />
     <hbox visible="accountSelected">
     	<vbox responsiveWidth="6" percentageWidth="50" borderTitle="Recent Account Activity" border="true">
-<!--     		<component name="_recentActivity" /> -->
 			<chart type="line" modelName="RecentActivityModel" />
     	</vbox>
     </hbox>

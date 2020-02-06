@@ -1,9 +1,10 @@
 package modules.customers.AccountDashboard;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
 import org.skyve.CORE;
 import org.skyve.domain.Bean;
+import org.skyve.domain.types.DateTime;
 import org.skyve.metadata.SortDirection;
 import org.skyve.persistence.DocumentQuery;
 import org.skyve.persistence.Persistence;
@@ -26,11 +27,50 @@ import modules.sales.domain.Lead;
 import modules.sales.domain.Opportunity;
 import modules.sales.domain.Order;
 import modules.sales.domain.Quote;
-import net.bytebuddy.asm.Advice.This;
 
 public class AccountDashboardExtension extends AccountDashboard {
 
 	private static final long serialVersionUID = 2026179169670513211L;
+	
+	
+	public Interaction lastUpdated() {
+		Persistence persistence = CORE.getPersistence();
+		DocumentQuery query = persistence.newDocumentQuery(Interaction.MODULE_NAME, Interaction.DOCUMENT_NAME);
+		query.getFilter().addIn(Interaction.DOCUMENT_ID, getAccount().getInteractions().stream()
+				.map(i -> i.getBizId())
+				.collect(Collectors.toList()));
+		
+		query.getFilter().addNotEquals(Interaction.typePropertyName, "Other");
+		query.addBoundOrdering(Interaction.interactionTimePropertyName, SortDirection.descending);
+		
+		return query.beanResult();
+	}
+	
+	public boolean hasRecentInteraction() {
+		Interaction interaction = lastUpdated();
+
+		DateTime latest = interaction.getInteractionTime(); 
+		
+//		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd/MM/yy");
+//		String testDate = "5:00 25/02/2020";
+//		Date d1 = null;
+//		try {
+//			d1 = sdf.parse(testDate);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+		DateTime current = new DateTime();
+
+		long diff = (current.getTime()-latest.getTime())/(24 * 60 * 60 * 1000);
+		if (diff < 14) {
+			return true;				
+		}
+		else {
+			return false;
+		}
+	}
 	
 	public LeadExtension getRecentLead() {
 		Persistence persistence = CORE.getPersistence();
@@ -70,7 +110,6 @@ public class AccountDashboardExtension extends AccountDashboard {
 		DocumentQuery query = persistence.newDocumentQuery(Order.MODULE_NAME, Order.DOCUMENT_NAME);
 		query.getFilter().addEquals(Binder.createCompoundBinding(Order.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
 		query.addBoundOrdering(Order.LOCK_NAME, SortDirection.descending);
-		
 		return query.beanResult();	
 	}
 	
@@ -80,7 +119,6 @@ public class AccountDashboardExtension extends AccountDashboard {
 		DocumentQuery query = persistence.newDocumentQuery(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);
 		query.getFilter().addEquals(Binder.createCompoundBinding(Invoice.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
 		query.addBoundOrdering(Invoice.LOCK_NAME, SortDirection.descending);
-		
 		return query.beanResult();
 	}
 	
@@ -110,7 +148,6 @@ public class AccountDashboardExtension extends AccountDashboard {
 		String quoteUrl = Util.getDocumentUrl(Quote.MODULE_NAME, Quote.DOCUMENT_NAME);
 		String orderUrl = Util.getDocumentUrl(Order.MODULE_NAME, Order.DOCUMENT_NAME);
 		String invoiceUrl = Util.getDocumentUrl(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);
-		
 		
 		
 		if (getAccount().getPrimaryContact() != null) {
@@ -143,8 +180,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 			}
 		}
 
-		
-		
+			
 		StringBuilder markup = new StringBuilder();
 		markup.append("<div class=\"flowbar-wrapper\">");
 		markup.append("<ul class=\"flowbar\">");

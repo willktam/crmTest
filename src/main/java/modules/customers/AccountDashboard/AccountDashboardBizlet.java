@@ -12,7 +12,9 @@ public class AccountDashboardBizlet extends Bizlet<AccountDashboardExtension> {
 	@Override
 	public AccountDashboardExtension preExecute(ImplicitActionName actionName, AccountDashboardExtension bean,
 			Bean parentBean, WebContext webContext) throws Exception {
-	
+		if ((ImplicitActionName.Edit.equals(actionName)) || (ImplicitActionName.New.equals(actionName)) ) {
+			System.out.println("recently interacted: " + bean.hasRecentInteraction());
+		}
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	
@@ -24,7 +26,6 @@ public class AccountDashboardBizlet extends Bizlet<AccountDashboardExtension> {
 		 // add 5 interactions to the view
 		 bean.getInteractions().addAll(bean.getAccount().getInteractions().subList(0, 5));
 		
-		 
 		 return super.newInstance(bean);
 	}
 	
