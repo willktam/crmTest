@@ -13,12 +13,24 @@
             </item>
         </row>
     </form>
+    
     <component name="_flowbar" />
+    
     <hbox visible="accountSelected">
     	<vbox responsiveWidth="6" percentageWidth="50" borderTitle="Recent Account Activity" border="true">
 			<chart type="line" modelName="RecentActivityModel" />
     	</vbox>
+    	<vbox responsiveWidth="6" percentageWidth="50">
+    		<component name="_suggestedActions" />
+    	</vbox>
     </hbox>
+    
+    <hbox visible="accountSelected">
+    	<vbox responsiveWidth="6" percentageWidth="50">
+    		<chart type="bar" modelName="SalesHistoryModel" />
+    	</vbox>
+    </hbox>
+    
     <hbox visible="accountSelected">
     	<vbox>
     		<component name="_interactions" />		

@@ -1,10 +1,5 @@
 @charset "ISO-8859-1";
 
-.pill {
-	color: red;
-	font-size:120%;
-}
-
 .container {
 	overflow: hidden;
 	border-left: 4px solid #007ad9;	
@@ -128,4 +123,37 @@
 
 .flowbar li:hover{
 	color: red;
+}
+
+
+/* Suggested Actions css */
+
+.updateContainer {
+	overflow: hidden;
+	border-left: 4px solid #007ad9;	
+}
+
+.updateIcon {
+ 	float: left;
+  	margin-top: 20px;
+  	text-align: center;
+  	width: 10%;
+  	font-size: 25px;
+}
+
+.updateInfo {
+  	float: left;
+  	text-align: left;
+  	width: 70%;
+  	margin-left: 10px;
+  	line-height: 30px;
+}
+
+.updateTitle {
+  	font-weight: bold;
+}
+
+.updateDescription {
+  	font-style: italic;
+  	color: grey;
 }

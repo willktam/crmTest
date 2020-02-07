@@ -13,7 +13,7 @@ public class AccountDashboardBizlet extends Bizlet<AccountDashboardExtension> {
 	public AccountDashboardExtension preExecute(ImplicitActionName actionName, AccountDashboardExtension bean,
 			Bean parentBean, WebContext webContext) throws Exception {
 		if ((ImplicitActionName.Edit.equals(actionName)) || (ImplicitActionName.New.equals(actionName)) ) {
-			System.out.println("recently interacted: " + bean.hasRecentInteraction());
+			
 		}
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}

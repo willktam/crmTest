@@ -31,7 +31,7 @@
 	        </row>
 	        <row>
 	        	<item>
-	        		 <textField binding="opportunity.total" visible="opportunitySelected" editable="false" />	
+	        		 <textField binding="opportunity.total" visible="opportunitySelected" editable="true" />	
 	        	</item>
 	        </row>
     </form>

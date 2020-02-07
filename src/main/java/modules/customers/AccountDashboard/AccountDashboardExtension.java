@@ -31,7 +31,18 @@ import modules.sales.domain.Quote;
 public class AccountDashboardExtension extends AccountDashboard {
 
 	private static final long serialVersionUID = 2026179169670513211L;
-	
+
+	public Interaction lastCreated(String documentName) {
+		Persistence persistence = CORE.getPersistence();
+		DocumentQuery query = persistence.newDocumentQuery(Interaction.MODULE_NAME, Interaction.DOCUMENT_NAME);
+		query.getFilter().addIn(Interaction.DOCUMENT_ID, getAccount().getInteractions().stream()
+				.map(i -> i.getBizId())
+				.collect(Collectors.toList()));
+		query.getFilter().addEquals(Interaction.typePropertyName, "Other");
+		query.getFilter().addEquals(Interaction.titlePropertyName, "Created New " + documentName);
+		query.addBoundOrdering(Interaction.interactionTimePropertyName, SortDirection.descending);
+		return query.beanResult();
+	}
 	
 	public Interaction lastUpdated() {
 		Persistence persistence = CORE.getPersistence();
@@ -46,30 +57,10 @@ public class AccountDashboardExtension extends AccountDashboard {
 		return query.beanResult();
 	}
 	
-	public boolean hasRecentInteraction() {
-		Interaction interaction = lastUpdated();
-
-		DateTime latest = interaction.getInteractionTime(); 
-		
-//		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd/MM/yy");
-//		String testDate = "5:00 25/02/2020";
-//		Date d1 = null;
-//		try {
-//			d1 = sdf.parse(testDate);
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
+	public long daysSinceInteraction(Interaction interaction) {
+		DateTime latest = interaction.getInteractionTime();
 		DateTime current = new DateTime();
-
-		long diff = (current.getTime()-latest.getTime())/(24 * 60 * 60 * 1000);
-		if (diff < 14) {
-			return true;				
-		}
-		else {
-			return false;
-		}
+		return (current.getTime() - latest.getTime())/(24 * 60 * 60 * 1000);
 	}
 	
 	public LeadExtension getRecentLead() {
@@ -133,13 +124,8 @@ public class AccountDashboardExtension extends AccountDashboard {
 	
 	@Override
 	public String getFlowbar() {
-		String contactClass = "notCurrent";
-		String leadClass = "notCurrent";
-		String accountClass = "notCurrent";
-		String opportunityClass = "notCurrent";
-		String quoteClass = "notCurrent";
-		String orderClass = "notCurrent";
-		String invoiceClass = "notCurrent";
+		String contactClass, leadClass, accountClass, opportunityClass, quoteClass, orderClass, invoiceClass;
+		contactClass = leadClass = accountClass = opportunityClass = quoteClass = orderClass = invoiceClass = "notCurrent";
 		
 		String contactUrl = Util.getDocumentUrl(ContactDetail.MODULE_NAME, ContactDetail.DOCUMENT_NAME);
 		String leadUrl = Util.getDocumentUrl(Lead.MODULE_NAME, Lead.DOCUMENT_NAME);
@@ -179,8 +165,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 				invoiceClass = "current";
 			}
 		}
-
-			
+		
 		StringBuilder markup = new StringBuilder();
 		markup.append("<div class=\"flowbar-wrapper\">");
 		markup.append("<ul class=\"flowbar\">");
@@ -193,6 +178,100 @@ public class AccountDashboardExtension extends AccountDashboard {
 		markup.append("<li class=" + invoiceClass + " onclick=\"location.href='"+ invoiceUrl + "';\"> Invoice </li>");
 		markup.append("</ul></div>");
 		
+		return markup.toString();
+	}
+	
+	@Override
+	public String getActionTemplate() {
+		
+		StringBuilder markup = new StringBuilder();
+		if (daysSinceInteraction(lastUpdated()) > 14 ) {
+			markup.append(makeCommunicationTemplate(getAccount().getAccountName()));
+		}
+		if (getRecentOpportunity() == null) {
+			markup.append(makeNewTemplate(Opportunity.DOCUMENT_NAME));
+		}
+		if (getRecentQuote() == null) {
+			markup.append(makeNewTemplate(Quote.DOCUMENT_NAME));
+		}
+		if (getRecentOrder() == null) {
+			markup.append(makeNewTemplate(Order.DOCUMENT_NAME));
+		}
+		if (getRecentInvoice() == null) {
+			markup.append(makeNewTemplate(Invoice.DOCUMENT_NAME));
+		}
+		
+		if (getRecentOpportunity() != null) {
+			if (daysSinceInteraction(lastCreated(Opportunity.DOCUMENT_NAME)) > 30) {
+				markup.append(makeReuseTemplate(Opportunity.DOCUMENT_NAME));
+			}
+			if (getRecentQuote() != null) {
+				if (daysSinceInteraction(lastCreated(Quote.DOCUMENT_NAME)) > 30) {
+					markup.append(makeReuseTemplate(Quote.DOCUMENT_NAME));
+				}
+				if (getRecentOrder() != null) {
+					if (daysSinceInteraction(lastCreated(Order.DOCUMENT_NAME)) > 30) {
+						markup.append(makeReuseTemplate(Order.DOCUMENT_NAME));
+					}
+					if (getRecentInvoice() != null) {
+						if (daysSinceInteraction(lastCreated(Invoice.DOCUMENT_NAME)) > 30) {
+							markup.append(makeReuseTemplate(Invoice.DOCUMENT_NAME));
+						}
+					}
+				}
+			}
+		}
+		return markup.toString();
+	}
+	
+	// helper method to return the communication action markup for an account name
+	public String makeCommunicationTemplate(String accountName) {
+		StringBuilder markup = new StringBuilder();
+		markup.append("<div class='updateContainer'>");
+		markup.append("<div class='updateIcon'>");
+		markup.append("<span class='fa fa-info-circle'></span></div>");
+		markup.append("<div class='updateInfo'>");    
+		markup.append("<span class='updateTitle'>Make New Communication</span>");
+		markup.append("<span></br><p class='updateDescription'> You haven't recorded "
+				+ "an interaction with " + accountName + " for over two weeks, make a new communication "
+				+ "and record it as an interaction. </p>");    
+		markup.append("</div></div>");
+		return markup.toString();
+	}
+	
+	// helper method to return the new action markup for a document name
+	public String makeNewTemplate(String documentName) {
+		String vowels = "aeiou";
+		StringBuilder markup = new StringBuilder();
+		markup.append("<div class='updateContainer'>");
+		markup.append("<div class='updateIcon'>");
+		markup.append("<span class='fa fa-info-circle'></span></div>");
+		markup.append("<div class='updateInfo'>");    
+		markup.append("<span class='updateTitle'>Make New "+ documentName +"</span>");
+		if (vowels.indexOf(Character.toLowerCase(documentName.charAt(0))) != -1 ) {
+			markup.append("<span></br><p class='updateDescription'> This account does not yet have an "+ documentName +", "
+					+ "click in the flow bar to make a new " + documentName + ".</p>");  
+		}
+		else {
+			markup.append("<span></br><p class='updateDescription'> This account does not yet have a "+ documentName +", "
+					+ "click in the flow bar to make a new " + documentName + ".</p>");  
+		}
+		markup.append("</div></div>");
+		return markup.toString();
+	}
+	
+	// helper method to return the reuse action markup for a document name
+	public String makeReuseTemplate(String documentName) {
+		StringBuilder markup = new StringBuilder();
+		markup.append("<div class='updateContainer'>");
+		markup.append("<div class='updateIcon'>");
+		markup.append("<span class='fa fa-info-circle'></span></div>");
+		markup.append("<div class='updateInfo'>");    
+		markup.append("<span class='updateTitle'>Create A New "+ documentName +"</span>");
+		markup.append("<span></br><p class='updateDescription'>You have not created a new "+ documentName +""
+							+ " for "+ getAccount().getAccountName() +" for over a month, create a new "+ documentName +""
+							+ "and save it to this account.</p>");  
+		markup.append("</div></div>");
 		return markup.toString();
 	}
 	

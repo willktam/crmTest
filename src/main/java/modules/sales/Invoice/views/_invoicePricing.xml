@@ -30,8 +30,8 @@
 	            </item>
 	        </row>
 	        <row>
-	        	<item>
-	        		 <textField binding="order.opportunity.total" visible="orderSelected" editable="false" />	
+	        	<item label="Total">
+	        		 <textField binding="order.opportunity.total" visible="orderSelected" editable="true" />	
 	        	</item>
 	        </row>
     </form>

@@ -41,7 +41,7 @@ public class AccountDashboard extends AbstractTransientBean {
 	/** @hidden */
 	public static final String flowbarPropertyName = "flowbar";
 	/** @hidden */
-	public static final String actionsTemplatePropertyName = "actionsTemplate";
+	public static final String actionTemplatePropertyName = "actionTemplate";
 
 	/**
 	 * Account
@@ -58,7 +58,7 @@ public class AccountDashboard extends AbstractTransientBean {
 	/**
 	 * Suggested Actions
 	 **/
-	private String actionsTemplate;
+	private String actionTemplate;
 
 	@Override
 	@XmlTransient
@@ -166,20 +166,20 @@ public class AccountDashboard extends AbstractTransientBean {
 	}
 
 	/**
-	 * {@link #actionsTemplate} accessor.
+	 * {@link #actionTemplate} accessor.
 	 * @return	The value.
 	 **/
-	public String getActionsTemplate() {
-		return actionsTemplate;
+	public String getActionTemplate() {
+		return actionTemplate;
 	}
 
 	/**
-	 * {@link #actionsTemplate} mutator.
-	 * @param actionsTemplate	The new value.
+	 * {@link #actionTemplate} mutator.
+	 * @param actionTemplate	The new value.
 	 **/
 	@XmlElement
-	public void setActionsTemplate(String actionsTemplate) {
-		this.actionsTemplate = actionsTemplate;
+	public void setActionTemplate(String actionTemplate) {
+		this.actionTemplate = actionTemplate;
 	}
 
 	/**

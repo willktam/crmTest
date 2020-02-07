@@ -26,8 +26,8 @@
 		<markup name="flowbar" persistent="false" usage="view" trackChanges="false" audited="false">
 			<displayName>Flowbar</displayName>
 		</markup>
-		
-		<markup name="actionsTemplate" persistent="false" audited="false" trackChanges="false" usage="view" >
+        
+        <markup name="actionTemplate" persistent="false" audited="false" trackChanges="false" usage="view" >
         	<displayName>Suggested Actions</displayName>
         </markup>
 		
