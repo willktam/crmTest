@@ -3,15 +3,19 @@ package modules.customers.domain;
 import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import modules.customers.Account.AccountExtension;
 import modules.customers.AccountDashboard.AccountDashboardExtension;
 import modules.customers.Interaction.InteractionExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
+import org.skyve.domain.types.DateTime;
 import org.skyve.impl.domain.AbstractTransientBean;
 import org.skyve.impl.domain.ChangeTrackingArrayList;
+import org.skyve.impl.domain.types.jaxb.DateTimeMapper;
 
 /**
  * Account Dashboard
@@ -39,6 +43,22 @@ public class AccountDashboard extends AbstractTransientBean {
 	/** @hidden */
 	public static final String interactionsPropertyName = "interactions";
 	/** @hidden */
+	public static final String noOpportunityPropertyName = "noOpportunity";
+	/** @hidden */
+	public static final String noQuotePropertyName = "noQuote";
+	/** @hidden */
+	public static final String noOrderPropertyName = "noOrder";
+	/** @hidden */
+	public static final String noInvoicePropertyName = "noInvoice";
+	/** @hidden */
+	public static final String dateOpportunityPropertyName = "dateOpportunity";
+	/** @hidden */
+	public static final String dateQuotePropertyName = "dateQuote";
+	/** @hidden */
+	public static final String dateOrderPropertyName = "dateOrder";
+	/** @hidden */
+	public static final String dateInvoicePropertyName = "dateInvoice";
+	/** @hidden */
 	public static final String flowbarPropertyName = "flowbar";
 	/** @hidden */
 	public static final String actionTemplatePropertyName = "actionTemplate";
@@ -51,6 +71,38 @@ public class AccountDashboard extends AbstractTransientBean {
 	 * Interactions
 	 **/
 	private List<InteractionExtension> interactions = new ChangeTrackingArrayList<>("interactions", this);
+	/**
+	 * Number of Opportunities
+	 **/
+	private transient Integer noOpportunity = new Integer(0);
+	/**
+	 * Number of Quotes
+	 **/
+	private transient Integer noQuote = new Integer(0);
+	/**
+	 * Number of Orders
+	 **/
+	private transient Integer noOrder = new Integer(0);
+	/**
+	 * Number of Invoices
+	 **/
+	private transient Integer noInvoice = new Integer(0);
+	/**
+	 * Date Opportunity Updated
+	 **/
+	private transient DateTime dateOpportunity;
+	/**
+	 * Date Quote Updated
+	 **/
+	private transient DateTime dateQuote;
+	/**
+	 * Date Order Updated
+	 **/
+	private transient DateTime dateOrder;
+	/**
+	 * Date Invoice Updated
+	 **/
+	private transient DateTime dateInvoice;
 	/**
 	 * Flowbar
 	 **/
@@ -146,6 +198,158 @@ public class AccountDashboard extends AbstractTransientBean {
 	 **/
 	public void setInteractionsElementById(String bizId, InteractionExtension element) {
 		 setElementById(interactions, element);
+	}
+
+	/**
+	 * {@link #noOpportunity} accessor.
+	 * @return	The value.
+	 **/
+	public Integer getNoOpportunity() {
+		return noOpportunity;
+	}
+
+	/**
+	 * {@link #noOpportunity} mutator.
+	 * @param noOpportunity	The new value.
+	 **/
+	@XmlElement
+	public void setNoOpportunity(Integer noOpportunity) {
+		preset(noOpportunityPropertyName, noOpportunity);
+		this.noOpportunity = noOpportunity;
+	}
+
+	/**
+	 * {@link #noQuote} accessor.
+	 * @return	The value.
+	 **/
+	public Integer getNoQuote() {
+		return noQuote;
+	}
+
+	/**
+	 * {@link #noQuote} mutator.
+	 * @param noQuote	The new value.
+	 **/
+	@XmlElement
+	public void setNoQuote(Integer noQuote) {
+		preset(noQuotePropertyName, noQuote);
+		this.noQuote = noQuote;
+	}
+
+	/**
+	 * {@link #noOrder} accessor.
+	 * @return	The value.
+	 **/
+	public Integer getNoOrder() {
+		return noOrder;
+	}
+
+	/**
+	 * {@link #noOrder} mutator.
+	 * @param noOrder	The new value.
+	 **/
+	@XmlElement
+	public void setNoOrder(Integer noOrder) {
+		preset(noOrderPropertyName, noOrder);
+		this.noOrder = noOrder;
+	}
+
+	/**
+	 * {@link #noInvoice} accessor.
+	 * @return	The value.
+	 **/
+	public Integer getNoInvoice() {
+		return noInvoice;
+	}
+
+	/**
+	 * {@link #noInvoice} mutator.
+	 * @param noInvoice	The new value.
+	 **/
+	@XmlElement
+	public void setNoInvoice(Integer noInvoice) {
+		preset(noInvoicePropertyName, noInvoice);
+		this.noInvoice = noInvoice;
+	}
+
+	/**
+	 * {@link #dateOpportunity} accessor.
+	 * @return	The value.
+	 **/
+	public DateTime getDateOpportunity() {
+		return dateOpportunity;
+	}
+
+	/**
+	 * {@link #dateOpportunity} mutator.
+	 * @param dateOpportunity	The new value.
+	 **/
+	@XmlSchemaType(name = "dateTime")
+	@XmlJavaTypeAdapter(DateTimeMapper.class)
+	@XmlElement
+	public void setDateOpportunity(DateTime dateOpportunity) {
+		preset(dateOpportunityPropertyName, dateOpportunity);
+		this.dateOpportunity = dateOpportunity;
+	}
+
+	/**
+	 * {@link #dateQuote} accessor.
+	 * @return	The value.
+	 **/
+	public DateTime getDateQuote() {
+		return dateQuote;
+	}
+
+	/**
+	 * {@link #dateQuote} mutator.
+	 * @param dateQuote	The new value.
+	 **/
+	@XmlSchemaType(name = "dateTime")
+	@XmlJavaTypeAdapter(DateTimeMapper.class)
+	@XmlElement
+	public void setDateQuote(DateTime dateQuote) {
+		preset(dateQuotePropertyName, dateQuote);
+		this.dateQuote = dateQuote;
+	}
+
+	/**
+	 * {@link #dateOrder} accessor.
+	 * @return	The value.
+	 **/
+	public DateTime getDateOrder() {
+		return dateOrder;
+	}
+
+	/**
+	 * {@link #dateOrder} mutator.
+	 * @param dateOrder	The new value.
+	 **/
+	@XmlSchemaType(name = "dateTime")
+	@XmlJavaTypeAdapter(DateTimeMapper.class)
+	@XmlElement
+	public void setDateOrder(DateTime dateOrder) {
+		preset(dateOrderPropertyName, dateOrder);
+		this.dateOrder = dateOrder;
+	}
+
+	/**
+	 * {@link #dateInvoice} accessor.
+	 * @return	The value.
+	 **/
+	public DateTime getDateInvoice() {
+		return dateInvoice;
+	}
+
+	/**
+	 * {@link #dateInvoice} mutator.
+	 * @param dateInvoice	The new value.
+	 **/
+	@XmlSchemaType(name = "dateTime")
+	@XmlJavaTypeAdapter(DateTimeMapper.class)
+	@XmlElement
+	public void setDateInvoice(DateTime dateInvoice) {
+		preset(dateInvoicePropertyName, dateInvoice);
+		this.dateInvoice = dateInvoice;
 	}
 
 	/**

@@ -2,11 +2,9 @@ package modules.customers.AccountDashboard.models;
 
 import org.skyve.CORE;
 import org.skyve.domain.Bean;
-import org.skyve.metadata.SortDirection;
 import org.skyve.metadata.view.model.chart.ChartBuilder;
 import org.skyve.metadata.view.model.chart.ChartData;
 import org.skyve.metadata.view.model.chart.ChartModel;
-import org.skyve.metadata.view.model.chart.OrderBy;
 import org.skyve.persistence.DocumentQuery;
 import org.skyve.persistence.Persistence;
 import org.skyve.persistence.DocumentQuery.AggregateFunction;
@@ -30,8 +28,6 @@ public class SalesHistoryModel extends ChartModel<AccountDashboardExtension> {
 		cb.with(query);
 		cb.category(Opportunity.topicPropertyName);
 		cb.value(Opportunity.totalPropertyName, AggregateFunction.Sum);
-//		cb.top(14, OrderBy.category, SortDirection.descending, false);
-		cb.orderBy(OrderBy.category, SortDirection.ascending);
 		
 		ChartData chartData = cb.build("Sales History","Total");
 		return chartData;

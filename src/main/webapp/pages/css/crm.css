@@ -128,12 +128,13 @@
 
 /* Suggested Actions css */
 
-.updateContainer {
+.actionContainer {
 	overflow: hidden;
 	border-left: 4px solid #007ad9;	
+	outline: 4px solid white;
 }
 
-.updateIcon {
+.actionIcon {
  	float: left;
   	margin-top: 20px;
   	text-align: center;
@@ -141,7 +142,7 @@
   	font-size: 25px;
 }
 
-.updateInfo {
+.actionInfo {
   	float: left;
   	text-align: left;
   	width: 70%;
@@ -149,11 +150,11 @@
   	line-height: 30px;
 }
 
-.updateTitle {
+.actionTitle {
   	font-weight: bold;
 }
 
-.updateDescription {
+.actionDescription {
   	font-style: italic;
   	color: grey;
 }

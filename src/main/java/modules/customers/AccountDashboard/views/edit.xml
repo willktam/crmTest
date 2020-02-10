@@ -17,22 +17,28 @@
     <component name="_flowbar" />
     
     <hbox visible="accountSelected">
-    	<vbox responsiveWidth="6" percentageWidth="50" borderTitle="Recent Account Activity" border="true">
+    	<vbox responsiveWidth="6" percentageWidth="50" borderTitle="Recent Activity" border="true">
 			<chart type="line" modelName="RecentActivityModel" />
     	</vbox>
-    	<vbox responsiveWidth="6" percentageWidth="50">
-    		<component name="_suggestedActions" />
+    	<vbox responsiveWidth="6" percentageWidth="50" border="true" borderTitle="Status">
+    		<component name="_status" />
     	</vbox>
     </hbox>
     
     <hbox visible="accountSelected">
     	<vbox responsiveWidth="6" percentageWidth="50">
+    		<component name="_suggestedActions" />
+    	</vbox>
+    	<vbox responsiveWidth="6" percentageWidth="50" border="true" borderTitle="Sales History">
     		<chart type="bar" modelName="SalesHistoryModel" />
     	</vbox>
     </hbox>
     
     <hbox visible="accountSelected">
-    	<vbox>
+    	<vbox responsiveWidth="6" percentageWidth="50">
+<!--     		<component module="customers" document="Account" name="_generalDetails" /> -->
+    	</vbox>
+    	<vbox responsiveWidth="6" percentageWidth="50">
     		<component name="_interactions" />		
     	</vbox>
     	

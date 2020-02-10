@@ -32,6 +32,54 @@ public class AccountDashboardExtension extends AccountDashboard {
 
 	private static final long serialVersionUID = 2026179169670513211L;
 
+	public void setDates() {
+		if (getRecentOpportunity() != null) {
+			setDateOpportunity(lastCreated(Opportunity.DOCUMENT_NAME).getInteractionTime());
+		}
+		if (getRecentQuote() != null) {
+			setDateQuote(lastCreated(Quote.DOCUMENT_NAME).getInteractionTime());
+		}
+		if (getRecentOrder() != null) {
+			setDateOrder(lastCreated(Order.DOCUMENT_NAME).getInteractionTime());
+		}
+		if (getRecentInvoice() != null) {
+			setDateInvoice(lastCreated(Invoice.DOCUMENT_NAME).getInteractionTime());
+		}
+		
+		
+	}
+	
+	public void setNumbers() {
+		setNoOpportunity(numberDocuments(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME));
+		setNoQuote(numberDocuments(Quote.MODULE_NAME, Quote.DOCUMENT_NAME));
+		setNoOrder(numberDocuments(Order.MODULE_NAME, Order.DOCUMENT_NAME));
+		setNoInvoice(numberDocuments(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME));
+	}
+	
+	// returns number of documents for this account
+	public int numberDocuments(String moduleName, String documentName) {
+		Persistence persistence = CORE.getPersistence();
+		DocumentQuery query = persistence.newDocumentQuery(moduleName, documentName);
+		switch (documentName) {
+		case "Opportunity":
+			query.getFilter().addEquals(Binder.createCompoundBinding(Opportunity.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
+			break;
+		case "Quote":
+			query.getFilter().addEquals(Binder.createCompoundBinding(Quote.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
+			break;
+		case "Order":
+			query.getFilter().addEquals(Binder.createCompoundBinding(Order.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
+			break;
+		case "Invoice":
+			query.getFilter().addEquals(Binder.createCompoundBinding(Invoice.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
+			break;
+		default:
+			break;
+		}
+		return query.beanResults().size();
+	}
+
+	// returns the last interaction made for a document for this account
 	public Interaction lastCreated(String documentName) {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Interaction.MODULE_NAME, Interaction.DOCUMENT_NAME);
@@ -44,6 +92,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 		return query.beanResult();
 	}
 	
+	// returns the last auto update interaction
 	public Interaction lastUpdated() {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Interaction.MODULE_NAME, Interaction.DOCUMENT_NAME);
@@ -57,12 +106,14 @@ public class AccountDashboardExtension extends AccountDashboard {
 		return query.beanResult();
 	}
 	
+	// returns the days since an interaction was made
 	public long daysSinceInteraction(Interaction interaction) {
 		DateTime latest = interaction.getInteractionTime();
 		DateTime current = new DateTime();
 		return (current.getTime() - latest.getTime())/(24 * 60 * 60 * 1000);
 	}
 	
+	// returns the most recently edited lead
 	public LeadExtension getRecentLead() {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Lead.MODULE_NAME, Lead.DOCUMENT_NAME);
@@ -71,6 +122,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 		return query.beanResult();
 	}
 
+	// returns the most recently edited account
 	public AccountExtension getRecentAccount() {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Account.MODULE_NAME, Account.DOCUMENT_NAME);
@@ -78,6 +130,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 		return query.beanResult();
 	}
 	
+	// returns the most recently edited opportunity
 	public OpportunityExtension getRecentOpportunity() {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME);
@@ -86,7 +139,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 		return query.beanResult();
 	}
 	
-	
+	// returns the most recently edited quote
 	public QuoteExtension getRecentQuote() {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Quote.MODULE_NAME, Quote.DOCUMENT_NAME);
@@ -95,7 +148,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 		return query.beanResult();		
 	}
 	
-	
+	// returns the most recently edited order
 	public OrderExtension getRecentOrder() {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Order.MODULE_NAME, Order.DOCUMENT_NAME);
@@ -104,7 +157,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 		return query.beanResult();	
 	}
 	
-	
+	// returns the most recently edited invoice
 	public Invoice getRecentInvoice() {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);
@@ -243,17 +296,17 @@ public class AccountDashboardExtension extends AccountDashboard {
 	public String makeNewTemplate(String documentName) {
 		String vowels = "aeiou";
 		StringBuilder markup = new StringBuilder();
-		markup.append("<div class='updateContainer'>");
-		markup.append("<div class='updateIcon'>");
+		markup.append("<div class='actionContainer'>");
+		markup.append("<div class='actionIcon'>");
 		markup.append("<span class='fa fa-info-circle'></span></div>");
-		markup.append("<div class='updateInfo'>");    
-		markup.append("<span class='updateTitle'>Make New "+ documentName +"</span>");
+		markup.append("<div class='actionInfo'>");    
+		markup.append("<span class='actionTitle'>Make New "+ documentName +"</span>");
 		if (vowels.indexOf(Character.toLowerCase(documentName.charAt(0))) != -1 ) {
-			markup.append("<span></br><p class='updateDescription'> This account does not yet have an "+ documentName +", "
+			markup.append("<span></br><p class='actionDescription'> This account does not yet have an "+ documentName +", "
 					+ "click in the flow bar to make a new " + documentName + ".</p>");  
 		}
 		else {
-			markup.append("<span></br><p class='updateDescription'> This account does not yet have a "+ documentName +", "
+			markup.append("<span></br><p class='actionDescription'> This account does not yet have a "+ documentName +", "
 					+ "click in the flow bar to make a new " + documentName + ".</p>");  
 		}
 		markup.append("</div></div>");
@@ -263,12 +316,12 @@ public class AccountDashboardExtension extends AccountDashboard {
 	// helper method to return the reuse action markup for a document name
 	public String makeReuseTemplate(String documentName) {
 		StringBuilder markup = new StringBuilder();
-		markup.append("<div class='updateContainer'>");
-		markup.append("<div class='updateIcon'>");
+		markup.append("<div class='actionContainer'>");
+		markup.append("<div class='actionIcon'>");
 		markup.append("<span class='fa fa-info-circle'></span></div>");
-		markup.append("<div class='updateInfo'>");    
-		markup.append("<span class='updateTitle'>Create A New "+ documentName +"</span>");
-		markup.append("<span></br><p class='updateDescription'>You have not created a new "+ documentName +""
+		markup.append("<div class='actionInfo'>");    
+		markup.append("<span class='actionTitle'>Create A New "+ documentName +"</span>");
+		markup.append("<span></br><p class='actionDescription'>You have not created a new "+ documentName +""
 							+ " for "+ getAccount().getAccountName() +" for over a month, create a new "+ documentName +""
 							+ "and save it to this account.</p>");  
 		markup.append("</div></div>");

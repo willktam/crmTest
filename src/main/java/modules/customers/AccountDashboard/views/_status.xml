@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_status" title="Status" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<form>
+		<column />
+		<column />
+		<row>
+			<item label="Number of Opportunities" showLabel="true">
+				<blurb><![CDATA[{noOpportunity},]]></blurb>		
+			</item>
+			<item label="Last Updated" showLabel="true">
+				<blurb><![CDATA[{dateOpportunity}]]></blurb>
+			</item>
+		</row>
+		<row>
+			<item label="Number of Quotes" showLabel="true">
+				<blurb><![CDATA[{noQuote},]]></blurb>			
+			</item>
+			<item label="Last Updated" showLabel="true">
+				<blurb><![CDATA[{dateQuote}]]></blurb>
+			</item>
+		</row>
+		<row>
+			<item label="Number of Orders" showLabel="true">
+				<blurb><![CDATA[{noOrder},]]></blurb>			
+			</item>
+			<item label="Last Updated" showLabel="true">
+				<blurb><![CDATA[{dateOrder}]]></blurb>
+			</item>
+		</row>
+		<row>
+			<item label="Number of Invoices" showLabel="true">
+				<blurb><![CDATA[{noInvoice},]]></blurb>			
+			</item>
+			<item label="Last Updated" showLabel="true">
+				<blurb><![CDATA[{dateInvoice}]]></blurb>
+			</item>
+		</row>
+	</form>
+</view>

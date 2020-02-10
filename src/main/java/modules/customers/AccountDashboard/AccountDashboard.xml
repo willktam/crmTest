@@ -23,6 +23,44 @@
         	</ordering>
 		</collection>
 		
+		<integer name="noOpportunity">
+			<displayName>Number of Opportunities</displayName>
+			<transient>true</transient>
+			<defaultValue>0</defaultValue>
+		</integer>
+		<integer name="noQuote">
+			<displayName>Number of Quotes</displayName>
+			<transient>true</transient>
+			<defaultValue>0</defaultValue>
+		</integer>
+		<integer name="noOrder">
+			<displayName>Number of Orders</displayName>
+			<transient>true</transient>
+			<defaultValue>0</defaultValue>
+		</integer>
+		<integer name="noInvoice">
+			<displayName>Number of Invoices</displayName>
+			<transient>true</transient>
+			<defaultValue>0</defaultValue>
+		</integer>
+		
+		<dateTime name="dateOpportunity">
+			<displayName>Date Opportunity Updated</displayName>
+			<transient>true</transient>
+		</dateTime>
+		<dateTime name="dateQuote">
+			<displayName>Date Quote Updated</displayName>
+			<transient>true</transient>
+		</dateTime>
+		<dateTime name="dateOrder">
+			<displayName>Date Order Updated</displayName>
+			<transient>true</transient>
+		</dateTime>
+		<dateTime name="dateInvoice">
+			<displayName>Date Invoice Updated</displayName>
+			<transient>true</transient>
+		</dateTime>
+		
 		<markup name="flowbar" persistent="false" usage="view" trackChanges="false" audited="false">
 			<displayName>Flowbar</displayName>
 		</markup>

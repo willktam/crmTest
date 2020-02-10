@@ -29,7 +29,6 @@ public class ProcessLifeCycleExtension extends ProcessLifeCycle {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME);
 		query.getFilter().addEquals(Binder.createCompoundBinding(Opportunity.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
-		
 		query.addBoundOrdering(Opportunity.LOCK_NAME, SortDirection.descending);
 
 		return query.beanResult();
@@ -39,10 +38,9 @@ public class ProcessLifeCycleExtension extends ProcessLifeCycle {
 	public QuoteExtension getQuote() {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Quote.MODULE_NAME, Quote.DOCUMENT_NAME);
-		query.getFilter().addEquals(Binder.createCompoundBinding(Quote.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
-				
+		query.getFilter().addEquals(Binder.createCompoundBinding(Quote.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());				
 		query.addBoundOrdering(Quote.LOCK_NAME, SortDirection.descending);
-		
+
 		return query.beanResult();		
 	}
 	
@@ -51,7 +49,6 @@ public class ProcessLifeCycleExtension extends ProcessLifeCycle {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Order.MODULE_NAME, Order.DOCUMENT_NAME);
 		query.getFilter().addEquals(Binder.createCompoundBinding(Order.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
-				
 		query.addBoundOrdering(Order.LOCK_NAME, SortDirection.descending);
 		
 		return query.beanResult();	
@@ -62,7 +59,6 @@ public class ProcessLifeCycleExtension extends ProcessLifeCycle {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);
 		query.getFilter().addEquals(Binder.createCompoundBinding(Invoice.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
-				
 		query.addBoundOrdering(Invoice.LOCK_NAME, SortDirection.descending);
 		
 		return query.beanResult();
@@ -117,8 +113,6 @@ public class ProcessLifeCycleExtension extends ProcessLifeCycle {
 				invoiceClass = "current";
 			}
 		}
-
-		
 		
 		StringBuilder markup = new StringBuilder();
 		markup.append("<div class=\"flowbar-wrapper\">");

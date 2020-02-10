@@ -5,6 +5,9 @@ import org.skyve.metadata.controller.ImplicitActionName;
 import org.skyve.metadata.model.document.Bizlet;
 import org.skyve.web.WebContext;
 
+import modules.sales.domain.Opportunity;
+import modules.sales.domain.Quote;
+
 public class AccountDashboardBizlet extends Bizlet<AccountDashboardExtension> {
 
 	private static final long serialVersionUID = 4393377812970761283L;
@@ -13,7 +16,8 @@ public class AccountDashboardBizlet extends Bizlet<AccountDashboardExtension> {
 	public AccountDashboardExtension preExecute(ImplicitActionName actionName, AccountDashboardExtension bean,
 			Bean parentBean, WebContext webContext) throws Exception {
 		if ((ImplicitActionName.Edit.equals(actionName)) || (ImplicitActionName.New.equals(actionName)) ) {
-			
+			bean.setNumbers();
+			bean.setDates();
 		}
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
