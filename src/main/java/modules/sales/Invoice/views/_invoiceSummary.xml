@@ -47,12 +47,20 @@
 		        
 		        <row>
 		            <item>
-	                	<default binding="account" />
+	                	<lookupDescription binding="account" descriptionBinding="bizKey">
+	                		<onPickedHandlers>
+	                			<rerender clientValidation="false "/>
+	                		</onPickedHandlers>
+	                	</lookupDescription>
 	            	</item>
 		        </row>
 		        <row>
 		            <item>
-	                	 <default binding="order.opportunity" />
+	                	 <lookupDescription binding="order.opportunity" descriptionBinding="bizKey">
+	                	 	<onPickedHandlers>
+	                	 		<rerender clientValidation="false"/>
+	                	 	</onPickedHandlers>
+	                	 </lookupDescription>
 	            	</item>
 		        </row>
 		        

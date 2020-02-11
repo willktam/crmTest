@@ -10,7 +10,11 @@
         </row>
         <row>
         	<item>
-        		<default binding="status" />
+        		<lookupDescription descriptionBinding="field" binding="status" >
+        			<onPickedHandlers>
+        				<rerender clientValidation="false" />
+        			</onPickedHandlers>
+        		</lookupDescription>
         	</item>
         </row>
         <row>

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="edit" title="{bizKey}" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+    <inject>
+		<script>
+			<![CDATA[SKYVE.Util.loadCSS('pages/css/crm.css?v=' + SKYVE.Util.v);]]>
+		</script>
+	</inject>
     <form responsiveWidth="10" percentageWidth="60" border="false" >
         <column percentageWidth="30" responsiveWidth="4"/>
         <column/>
@@ -35,13 +40,17 @@
     </hbox>
     
     <hbox visible="accountSelected">
-    	<vbox responsiveWidth="6" percentageWidth="50">
-<!--     		<component module="customers" document="Account" name="_generalDetails" /> -->
+    	
+    	<vbox responsiveWidth="6" percentageWidth="50" >
+    		<component name="_accountDetails" />
+    		<vbox border="true" borderTitle="Location">
+    			<component name="_accountLocation" />
+    		</vbox>
     	</vbox>
     	<vbox responsiveWidth="6" percentageWidth="50">
     		<component name="_interactions" />		
     	</vbox>
-    	
+	
     </hbox>
     
     <actions>

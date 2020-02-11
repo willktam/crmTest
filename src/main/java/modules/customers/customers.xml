@@ -32,6 +32,7 @@
             <privileges>
                 <document name="Account" permission="CRUDC">
                 	<action name="AddInteraction"/>
+                	<action name="Geocode"/>
                 </document>
                 <document name="Interaction" permission="CRUDC"/>
                 <document permission="CRUDC" name="AccountDashboard" >
@@ -44,6 +45,7 @@
             <privileges>
                 <document name="Account" permission="CRUDU">
                 	<action name="AddInteraction"/>
+                	<action name="Geocode"/>
                 </document>
                 <document name="Interaction" permission="CRUDU"/>
                 <document permission="CRUDU" name="AccountDashboard" >

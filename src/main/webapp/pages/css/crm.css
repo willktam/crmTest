@@ -1,5 +1,7 @@
 @charset "ISO-8859-1";
 
+/* Interactions */
+
 .container {
 	overflow: hidden;
 	border-left: 4px solid #007ad9;	
@@ -13,7 +15,7 @@
 .infoTemp {
   	float: left;
   	text-align: left;
-  	width: 70%;
+  	width: 60%;
   	margin-left: 10px;
   	line-height: 30px;
 }
@@ -49,7 +51,7 @@
 }
 
 
-/* Flowbar css */
+/* Flow bar  */
 
 .flowbar-wrapper {
   	width: 100%;
@@ -126,7 +128,7 @@
 }
 
 
-/* Suggested Actions css */
+/* Suggested Actions */
 
 .actionContainer {
 	overflow: hidden;
@@ -136,7 +138,7 @@
 
 .actionIcon {
  	float: left;
-  	margin-top: 20px;
+  	margin-top: 27px;
   	text-align: center;
   	width: 10%;
   	font-size: 25px;
@@ -147,7 +149,8 @@
   	text-align: left;
   	width: 70%;
   	margin-left: 10px;
-  	line-height: 30px;
+  	margin-top: 10px;
+  	line-height: 23px;
 }
 
 .actionTitle {

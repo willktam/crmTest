@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_accountDetails" title="Account Details" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<form border="true" borderTitle="Account Details">
+		<column />
+		<column />
+		<row>
+			<item label="Account Manager" showLabel="true">
+				<blurb><![CDATA[{account.accountManager}]]></blurb>		
+			</item>
+		</row>
+		<row>
+			<item label="Account Name" showLabel="true">
+				<blurb><![CDATA[{account.accountName}]]></blurb>		
+			</item>
+		</row>
+		<row>
+			<item label="Email" showLabel="true">
+				<blurb><![CDATA[{account.email}]]></blurb>		
+			</item>
+		</row>
+		<row>
+			<item label="Website" showLabel="true">
+				<blurb><![CDATA[{account.accountName}]]></blurb>		
+			</item>
+		</row>
+		<row>
+			<item label="Phone" showLabel="true">
+				<blurb><![CDATA[{account.phone}]]></blurb>		
+			</item>
+		</row>
+		<row>
+			<item label="Fax" showLabel="true">
+				<blurb><![CDATA[{account.fax}]]></blurb>		
+			</item>
+		</row>
+		<row>
+			<item label="Relationship Type" showLabel="true">
+				<blurb><![CDATA[{account.relationshipType}]]></blurb>		
+			</item>
+		</row>
+		<row>
+			<item label="Start Date" showLabel="true">
+				<blurb><![CDATA[{account.startDate}]]></blurb>		
+			</item>
+		</row>
+		<row>
+			<item label="Primary Contact" showLabel="true">
+				<blurb><![CDATA[{account.primaryContact}]]></blurb>		
+			</item>
+		</row>
+	</form>
+</view>

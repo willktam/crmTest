@@ -40,4 +40,10 @@ public class QuoteBizlet extends Bizlet<QuoteExtension> {
 		bean.deletedInteraction();
 		super.preDelete(bean);
 	}
+	
+	@Override
+	public void preRerender(String source, QuoteExtension bean, WebContext webContext) throws Exception {
+		bean.setTotal(bean.getOpportunity().getTotal());
+		super.preRerender(source, bean, webContext);
+	}
 }

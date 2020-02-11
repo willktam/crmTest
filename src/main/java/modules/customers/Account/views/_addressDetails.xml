@@ -4,16 +4,16 @@
         <column percentageWidth="30" responsiveWidth="4"/>
         <column/>
 
-        <row>
-            <item>
-                <default binding="street"/>
-            </item>
-        </row>
-        <row>
-            <item>
-                <default binding="city"/>
-            </item>
-        </row>
+<!--         <row> -->
+<!--             <item> -->
+<!--                 <default binding="street"/> -->
+<!--             </item> -->
+<!--         </row> -->
+<!--         <row> -->
+<!--             <item> -->
+<!--                 <default binding="city"/> -->
+<!--             </item> -->
+<!--         </row> -->
         <row>
             <item>
                 <default binding="state"/>
@@ -24,11 +24,30 @@
                 <default binding="postCode"/>
             </item>
         </row>
-        <row>
-            <item>
-                <default binding="country"/>
-            </item>
-        </row>
-
+<!--         <row> -->
+<!--             <item> -->
+<!--                 <default binding="country"/> -->
+<!--             </item> -->
+<!--         </row> -->
+		<row>
+			<item>
+				<default binding="line1" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="line2" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="suburb" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<button actionName="Geocode"></button>
+			</item>
+		</row>
     </form>
 </view>

@@ -27,7 +27,7 @@ public class ProcessLifeCycleBizlet extends Bizlet<ProcessLifeCycleExtension> {
 	public ProcessLifeCycleExtension preExecute(ImplicitActionName actionName, ProcessLifeCycleExtension bean,
 			Bean parentBean, WebContext webContext) throws Exception {
 		// reset associations on page edit
-		if (ImplicitActionName.Edit.equals(actionName)) {
+		if (ImplicitActionName.Edit.equals(actionName) || ImplicitActionName.OK.equals(actionName)) {
 			setAssociations(bean);
 		}
 		return super.preExecute(actionName, bean, parentBean, webContext);

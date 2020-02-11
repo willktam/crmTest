@@ -12,7 +12,7 @@
         	<description><![CDATA[The ID for this invoice]]></description>
         	<length>8</length>
         </text> 
-        <text name="name">
+        <text name="name" required="true">
         	<displayName>Invoice Name</displayName>
         	<description><![CDATA[The name of the invoice]]></description>
         	<length>200</length>
@@ -48,7 +48,14 @@
         	<displayName>Account</displayName>
         	<description><![CDATA[The account for the invoice]]></description>
         	<documentName>Account</documentName>
-        </association>                 
+        </association>
+        
+		<!-- Product Details -->
+		<longInteger name="total" required="true">
+        	<displayName>Total</displayName>
+        	<description><![CDATA[The total for this invoice]]></description>
+        </longInteger>    	
+                         
     </attributes>
     
     <conditions>

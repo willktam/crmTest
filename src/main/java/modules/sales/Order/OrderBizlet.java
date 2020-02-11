@@ -40,4 +40,12 @@ public class OrderBizlet extends Bizlet<OrderExtension> {
 		bean.deletedInteraction();
 		super.preDelete(bean);
 	}
+	
+	@Override
+	public void preRerender(String source, OrderExtension bean, WebContext webContext) throws Exception {
+		if (bean.getQuote() != null) {
+			bean.setTotal(bean.getQuote().getTotal());
+		}	
+		super.preRerender(source, bean, webContext);
+	}
 }

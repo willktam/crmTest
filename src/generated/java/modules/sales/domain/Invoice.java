@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import modules.customers.Account.AccountExtension;
+import modules.sales.Invoice.InvoiceExtension;
 import modules.sales.Order.OrderExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
@@ -52,6 +53,8 @@ public class Invoice extends AbstractPersistentBean {
 	public static final String dueDatePropertyName = "dueDate";
 	/** @hidden */
 	public static final String accountPropertyName = "account";
+	/** @hidden */
+	public static final String totalPropertyName = "total";
 
 	/**
 	 * Invoice ID
@@ -101,6 +104,12 @@ public class Invoice extends AbstractPersistentBean {
 	 * The account for the invoice
 	 **/
 	private AccountExtension account = null;
+	/**
+	 * Total
+	 * <br/>
+	 * The total for this invoice
+	 **/
+	private Long total;
 
 	@Override
 	@XmlTransient
@@ -114,7 +123,7 @@ public class Invoice extends AbstractPersistentBean {
 		return Invoice.DOCUMENT_NAME;
 	}
 
-	public static Invoice newInstance() {
+	public static InvoiceExtension newInstance() {
 		try {
 			return CORE.getUser().getCustomer().getModule(MODULE_NAME).getDocument(CORE.getUser().getCustomer(), DOCUMENT_NAME).newInstance(CORE.getUser());
 		}
@@ -291,6 +300,24 @@ public class Invoice extends AbstractPersistentBean {
 	public void setAccount(AccountExtension account) {
 		preset(accountPropertyName, account);
 		this.account = account;
+	}
+
+	/**
+	 * {@link #total} accessor.
+	 * @return	The value.
+	 **/
+	public Long getTotal() {
+		return total;
+	}
+
+	/**
+	 * {@link #total} mutator.
+	 * @param total	The new value.
+	 **/
+	@XmlElement
+	public void setTotal(Long total) {
+		preset(totalPropertyName, total);
+		this.total = total;
 	}
 
 	/**

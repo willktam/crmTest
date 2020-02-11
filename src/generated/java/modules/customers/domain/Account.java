@@ -14,6 +14,7 @@ import modules.customers.Account.AccountExtension;
 import modules.customers.ContactDetail.ContactDetailExtension;
 import modules.customers.Interaction.InteractionExtension;
 import modules.customers.domain.Interaction.Type;
+import org.locationtech.jts.geom.Geometry;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateOnly;
@@ -21,6 +22,7 @@ import org.skyve.domain.types.Enumeration;
 import org.skyve.impl.domain.AbstractPersistentBean;
 import org.skyve.impl.domain.ChangeTrackingArrayList;
 import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
+import org.skyve.impl.domain.types.jaxb.GeometryMapper;
 import org.skyve.metadata.model.document.Bizlet.DomainValue;
 
 /**
@@ -76,6 +78,8 @@ public class Account extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String countryPropertyName = "country";
 	/** @hidden */
+	public static final String locationPropertyName = "location";
+	/** @hidden */
 	public static final String primaryContactPropertyName = "primaryContact";
 	/** @hidden */
 	public static final String interactionsPropertyName = "interactions";
@@ -83,6 +87,12 @@ public class Account extends AbstractPersistentBean {
 	public static final String interactionDescriptionPropertyName = "interactionDescription";
 	/** @hidden */
 	public static final String interactionTypePropertyName = "interactionType";
+	/** @hidden */
+	public static final String line1PropertyName = "line1";
+	/** @hidden */
+	public static final String line2PropertyName = "line2";
+	/** @hidden */
+	public static final String suburbPropertyName = "suburb";
 
 	/**
 	 * Relationship Type
@@ -247,6 +257,10 @@ public class Account extends AbstractPersistentBean {
 	 **/
 	private String country;
 	/**
+	 * Location
+	 **/
+	private Geometry location;
+	/**
 	 * Primary Contact
 	 * <br/>
 	 * The account's primary contact
@@ -264,6 +278,24 @@ public class Account extends AbstractPersistentBean {
 	 * Type
 	 **/
 	private Type interactionType;
+	/**
+	 * Line 1
+	 * <br/>
+	 * The account's street
+	 **/
+	private String line1;
+	/**
+	 * Line 2
+	 * <br/>
+	 * The account's street
+	 **/
+	private String line2;
+	/**
+	 * Suburb
+	 * <br/>
+	 * The account's suburb
+	 **/
+	private String suburb;
 
 	@Override
 	@XmlTransient
@@ -563,6 +595,25 @@ public class Account extends AbstractPersistentBean {
 	}
 
 	/**
+	 * {@link #location} accessor.
+	 * @return	The value.
+	 **/
+	public Geometry getLocation() {
+		return location;
+	}
+
+	/**
+	 * {@link #location} mutator.
+	 * @param location	The new value.
+	 **/
+	@XmlJavaTypeAdapter(GeometryMapper.class)
+	@XmlElement
+	public void setLocation(Geometry location) {
+		preset(locationPropertyName, location);
+		this.location = location;
+	}
+
+	/**
 	 * {@link #primaryContact} accessor.
 	 * @return	The value.
 	 **/
@@ -641,6 +692,60 @@ public class Account extends AbstractPersistentBean {
 	public void setInteractionType(Type interactionType) {
 		preset(interactionTypePropertyName, interactionType);
 		this.interactionType = interactionType;
+	}
+
+	/**
+	 * {@link #line1} accessor.
+	 * @return	The value.
+	 **/
+	public String getLine1() {
+		return line1;
+	}
+
+	/**
+	 * {@link #line1} mutator.
+	 * @param line1	The new value.
+	 **/
+	@XmlElement
+	public void setLine1(String line1) {
+		preset(line1PropertyName, line1);
+		this.line1 = line1;
+	}
+
+	/**
+	 * {@link #line2} accessor.
+	 * @return	The value.
+	 **/
+	public String getLine2() {
+		return line2;
+	}
+
+	/**
+	 * {@link #line2} mutator.
+	 * @param line2	The new value.
+	 **/
+	@XmlElement
+	public void setLine2(String line2) {
+		preset(line2PropertyName, line2);
+		this.line2 = line2;
+	}
+
+	/**
+	 * {@link #suburb} accessor.
+	 * @return	The value.
+	 **/
+	public String getSuburb() {
+		return suburb;
+	}
+
+	/**
+	 * {@link #suburb} mutator.
+	 * @param suburb	The new value.
+	 **/
+	@XmlElement
+	public void setSuburb(String suburb) {
+		preset(suburbPropertyName, suburb);
+		this.suburb = suburb;
 	}
 
 	/**

@@ -17,10 +17,14 @@
     			</vbox>
     		</hbox>
     	</tab>
+    	<tab title="Interactions">
+    		<component name="_interactions" />
+    	</tab>
     </tabPane>
     
     <actions>
         <defaults/>
+        <action className="AddInteraction" displayName="Add" inActionPanel="false" iconStyleClass="fa fa-plus" ></action>
     </actions>
     <newParameters/>
 </view>

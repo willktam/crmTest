@@ -50,7 +50,10 @@
 
         
         <!-- Product Pricing -->
-        <!-- Defined in opportunity/quote -->
+        <longInteger name="total" required="true">
+        	<displayName>Provisional Total</displayName>
+        	<description><![CDATA[The provisional total for this order]]></description>
+        </longInteger>
         
 
         <!-- Sales Details -->

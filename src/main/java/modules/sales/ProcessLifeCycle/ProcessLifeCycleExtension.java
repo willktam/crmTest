@@ -10,6 +10,7 @@ import org.skyve.util.Util;
 
 import modules.customers.domain.Account;
 import modules.customers.domain.ContactDetail;
+import modules.sales.Invoice.InvoiceExtension;
 import modules.sales.Opportunity.OpportunityExtension;
 import modules.sales.Order.OrderExtension;
 import modules.sales.Quote.QuoteExtension;
@@ -55,7 +56,7 @@ public class ProcessLifeCycleExtension extends ProcessLifeCycle {
 	}
 	
 	@Override
-	public Invoice getInvoice() {
+	public InvoiceExtension getInvoice() {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);
 		query.getFilter().addEquals(Binder.createCompoundBinding(Invoice.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());

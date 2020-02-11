@@ -56,6 +56,8 @@ public class Order extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String productPropertyName = "product";
 	/** @hidden */
+	public static final String totalPropertyName = "total";
+	/** @hidden */
 	public static final String accountPropertyName = "account";
 	/** @hidden */
 	public static final String opportunityPropertyName = "opportunity";
@@ -104,6 +106,12 @@ public class Order extends AbstractPersistentBean {
 	 * The product of the order
 	 **/
 	private ProductInfo product = null;
+	/**
+	 * Provisional Total
+	 * <br/>
+	 * The provisional total for this order
+	 **/
+	private Long total;
 	/**
 	 * Account
 	 * <br/>
@@ -294,6 +302,24 @@ public class Order extends AbstractPersistentBean {
 	public void setProduct(ProductInfo product) {
 		preset(productPropertyName, product);
 		this.product = product;
+	}
+
+	/**
+	 * {@link #total} accessor.
+	 * @return	The value.
+	 **/
+	public Long getTotal() {
+		return total;
+	}
+
+	/**
+	 * {@link #total} mutator.
+	 * @param total	The new value.
+	 **/
+	@XmlElement
+	public void setTotal(Long total) {
+		preset(totalPropertyName, total);
+		this.total = total;
 	}
 
 	/**

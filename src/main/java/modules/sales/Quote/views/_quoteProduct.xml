@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="_quoteProduct" title="Quote Product" xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+			<form border="true" borderTitle="Product Details">
+				<column percentageWidth="30" responsiveWidth="4"/>
+			    <column/>	
+			        <row>
+			        	<item>
+			        		<textField binding="opportunity.product.name" visible="opportunitySelected" editable="false" />
+			        	</item>
+			        </row>
+			        <row>
+			        	<item>
+			        		<textField binding="opportunity.product.productUnitGroup.name" visible="opportunitySelected" editable="false" />
+			        	</item>
+			        </row>
+			        <row>
+			        	<item>
+			        		<textField binding="opportunity.product.productUnitGroup.primaryUnit" visible="opportunitySelected" editable="false" />
+			        	</item>
+			        </row>
+			</form>
+</view>

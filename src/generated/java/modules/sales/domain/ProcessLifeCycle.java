@@ -1,9 +1,6 @@
 package modules.sales.domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
@@ -11,6 +8,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import modules.customers.Account.AccountExtension;
 import modules.customers.ContactDetail.ContactDetailExtension;
+import modules.sales.Invoice.InvoiceExtension;
 import modules.sales.Lead.LeadExtension;
 import modules.sales.Opportunity.OpportunityExtension;
 import modules.sales.Order.OrderExtension;
@@ -19,21 +17,19 @@ import modules.sales.Quote.QuoteExtension;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateOnly;
-import org.skyve.domain.types.Enumeration;
 import org.skyve.impl.domain.AbstractPersistentBean;
 import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
-import org.skyve.metadata.model.document.Bizlet.DomainValue;
 
 /**
  * Process Life Cycle
  * 
- * @depend - - - Status
  * @navhas n quote 0..1 Quote
  * @navhas n contact 0..1 ContactDetail
  * @navhas n opportunity 0..1 Opportunity
  * @navhas n invoice 0..1 Invoice
  * @navhas n lead 0..1 Lead
  * @navhas n account 0..1 Account
+ * @navhas n status 1 Configuration
  * @navhas n order 0..1 Order
  * @stereotype "persistent"
  */
@@ -77,85 +73,6 @@ public class ProcessLifeCycle extends AbstractPersistentBean {
 	public static final String flowbarPropertyName = "flowbar";
 
 	/**
-	 * Process Status
-	 * <br/>
-	 * The current status of the process life cycle
-	 **/
-	@XmlEnum
-	public static enum Status implements Enumeration {
-		ongoing("Ongoing", "Ongoing"),
-		completed("Completed", "Completed");
-
-		private String code;
-		private String description;
-
-		/** @hidden */
-		private DomainValue domainValue;
-
-		/** @hidden */
-		private static List<DomainValue> domainValues;
-
-		private Status(String code, String description) {
-			this.code = code;
-			this.description = description;
-			this.domainValue = new DomainValue(code, description);
-		}
-
-		@Override
-		public String toCode() {
-			return code;
-		}
-
-		@Override
-		public String toDescription() {
-			return description;
-		}
-
-		@Override
-		public DomainValue toDomainValue() {
-			return domainValue;
-		}
-
-		public static Status fromCode(String code) {
-			Status result = null;
-
-			for (Status value : values()) {
-				if (value.code.equals(code)) {
-					result = value;
-					break;
-				}
-			}
-
-			return result;
-		}
-
-		public static Status fromDescription(String description) {
-			Status result = null;
-
-			for (Status value : values()) {
-				if (value.description.equals(description)) {
-					result = value;
-					break;
-				}
-			}
-
-			return result;
-		}
-
-		public static List<DomainValue> toDomainValues() {
-			if (domainValues == null) {
-				Status[] values = values();
-				domainValues = new ArrayList<>(values.length);
-				for (Status value : values) {
-					domainValues.add(value.domainValue);
-				}
-			}
-
-			return domainValues;
-		}
-	}
-
-	/**
 	 * Process Life Cycle ID
 	 * <br/>
 	 * The ID for this process life cycle
@@ -166,7 +83,7 @@ public class ProcessLifeCycle extends AbstractPersistentBean {
 	 * <br/>
 	 * The current status of the process life cycle
 	 **/
-	private Status status;
+	private Configuration status = null;
 	/**
 	 * Start Date
 	 * <br/>
@@ -206,7 +123,7 @@ public class ProcessLifeCycle extends AbstractPersistentBean {
 	/**
 	 * Invoice
 	 **/
-	private Invoice invoice = null;
+	private InvoiceExtension invoice = null;
 	/**
 	 * Flowbar
 	 **/
@@ -277,7 +194,7 @@ public class ProcessLifeCycle extends AbstractPersistentBean {
 	 * {@link #status} accessor.
 	 * @return	The value.
 	 **/
-	public Status getStatus() {
+	public Configuration getStatus() {
 		return status;
 	}
 
@@ -286,7 +203,7 @@ public class ProcessLifeCycle extends AbstractPersistentBean {
 	 * @param status	The new value.
 	 **/
 	@XmlElement
-	public void setStatus(Status status) {
+	public void setStatus(Configuration status) {
 		preset(statusPropertyName, status);
 		this.status = status;
 	}
@@ -443,7 +360,7 @@ public class ProcessLifeCycle extends AbstractPersistentBean {
 	 * {@link #invoice} accessor.
 	 * @return	The value.
 	 **/
-	public Invoice getInvoice() {
+	public InvoiceExtension getInvoice() {
 		return invoice;
 	}
 
@@ -452,7 +369,7 @@ public class ProcessLifeCycle extends AbstractPersistentBean {
 	 * @param invoice	The new value.
 	 **/
 	@XmlElement
-	public void setInvoice(Invoice invoice) {
+	public void setInvoice(InvoiceExtension invoice) {
 		preset(invoicePropertyName, invoice);
 		this.invoice = invoice;
 	}

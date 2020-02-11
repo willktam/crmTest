@@ -45,6 +45,7 @@ public class Configuration extends AbstractPersistentBean {
 	 **/
 	@XmlEnum
 	public static enum StatusOption implements Enumeration {
+		processStatus("Process Status", "Process Status"),
 		leadType("Lead Type", "Lead Type"),
 		quoteStatus("Quote Status", "Quote Status"),
 		orderStatus("Order Status", "Order Status"),

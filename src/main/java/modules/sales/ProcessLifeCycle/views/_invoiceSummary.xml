@@ -24,7 +24,7 @@
         	</item>
         </row>
         <row>
-	        <item showLabel="true" label="Provisional Total">
+	        <item showLabel="true" label="Total">
         		<blurb visible="invoiceSelected">{invoice.order.opportunity.total}</blurb>
         	</item>
         </row>

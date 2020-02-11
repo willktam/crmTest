@@ -54,6 +54,8 @@ public class Quote extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String descriptionPropertyName = "description";
 	/** @hidden */
+	public static final String totalPropertyName = "total";
+	/** @hidden */
 	public static final String paymentTermsPropertyName = "paymentTerms";
 	/** @hidden */
 	public static final String freightTermsPropertyName = "freightTerms";
@@ -128,6 +130,12 @@ public class Quote extends AbstractPersistentBean {
 	 * A description of the quote
 	 **/
 	private String description;
+	/**
+	 * Provisional Total
+	 * <br/>
+	 * The provisional total for this opportunity
+	 **/
+	private Long total;
 	/**
 	 * Payment Terms
 	 * <br/>
@@ -394,6 +402,24 @@ public class Quote extends AbstractPersistentBean {
 	public void setDescription(String description) {
 		preset(descriptionPropertyName, description);
 		this.description = description;
+	}
+
+	/**
+	 * {@link #total} accessor.
+	 * @return	The value.
+	 **/
+	public Long getTotal() {
+		return total;
+	}
+
+	/**
+	 * {@link #total} mutator.
+	 * @param total	The new value.
+	 **/
+	@XmlElement
+	public void setTotal(Long total) {
+		preset(totalPropertyName, total);
+		this.total = total;
 	}
 
 	/**

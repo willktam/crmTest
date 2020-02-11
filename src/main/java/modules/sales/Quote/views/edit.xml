@@ -7,6 +7,15 @@
     	<tab title="Shipping Details">
     		<component name="_quoteShippingDetails" />
     	</tab>
+    	<tab title="Product and Pricing Details">
+    		<vbox responsiveWidth="6" percentageWidth="50">
+    			<component name="_quoteProduct" />
+    		</vbox>
+    		<vbox responsiveWidth="6" percentageWidth="50">
+    			<component name="_quotePricing" />
+    		</vbox>
+    		
+    	</tab>
     	<tab title="Interactions">
     		<component name="_interactions" />
     	</tab>

@@ -72,7 +72,9 @@
         <role name="InvoiceManager">
         	<description><![CDATA[Invoice Manager - Who can manage all invoices]]></description>
         	<privileges>
-        		<document permission="CRUDC" name="Invoice" />
+        		<document permission="CRUDC" name="Invoice" >
+        			<action name="AddInteraction"/>
+        		</document>
         		<document permission="CRUDC" name="Configuration" />
         	</privileges>
         </role>
@@ -221,6 +223,16 @@
     			<column binding="statusOption" displayName="Invoice Status" >
     				<filterOperator>equal</filterOperator>
     				<filterExpression>Invoice Status</filterExpression>
+    			</column>
+    			<column binding="field" />
+    		</columns>
+    	</query>
+    	<query documentName="Configuration" name="qProcessStatus">
+    		<description><![CDATA[All Process Statuses]]></description>
+    		<columns>
+    			<column binding="statusOption" displayName="Process Status" >
+    				<filterOperator>equal</filterOperator>
+    				<filterExpression>Process Status</filterExpression>
     			</column>
     			<column binding="field" />
     		</columns>

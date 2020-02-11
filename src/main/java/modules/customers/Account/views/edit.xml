@@ -12,6 +12,7 @@
 				<!-- Right Side -->
 				<vbox responsiveWidth="4" percentageWidth="40">
 					<component name="_accountContacts" />
+					<component name="_accountLocation" />
 				</vbox>
 			</hbox>
     	</tab>
@@ -23,6 +24,7 @@
     <actions>
         <defaults/>
         <action className="AddInteraction" displayName="Add" inActionPanel="false" iconStyleClass="fa fa-plus" />
+    	<action className="Geocode" displayName="Geocode" inActionPanel="false" ></action>
     </actions>
     <newParameters/>
 </view>

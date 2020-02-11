@@ -45,8 +45,6 @@ public class AccountDashboardExtension extends AccountDashboard {
 		if (getRecentInvoice() != null) {
 			setDateInvoice(lastCreated(Invoice.DOCUMENT_NAME).getInteractionTime());
 		}
-		
-		
 	}
 	
 	public void setNumbers() {
@@ -274,6 +272,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 				}
 			}
 		}
+		
 		return markup.toString();
 	}
 	
@@ -326,6 +325,5 @@ public class AccountDashboardExtension extends AccountDashboard {
 							+ "and save it to this account.</p>");  
 		markup.append("</div></div>");
 		return markup.toString();
-	}
-	
+	}	
 }

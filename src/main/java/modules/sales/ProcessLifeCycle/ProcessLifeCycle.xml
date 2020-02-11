@@ -11,14 +11,13 @@
         	<description><![CDATA[The ID for this process life cycle]]></description>
         	<length>8</length>
         </text>
-        <enum required="true" name="status">
+      
+        <association type="aggregation" name="status" required="true">
         	<displayName>Process Status</displayName>
         	<description><![CDATA[The current status of the process life cycle]]></description>
-        	<values>
-        		<value code="Ongoing"/>
-        		<value code="Completed"/>
-        	</values>
-        </enum>
+        	<documentName>Configuration</documentName>
+        	<queryName>qProcessStatus</queryName>
+        </association>
         <date name="startDate">
         	<displayName>Start Date</displayName>
         	<description><![CDATA[The date this life cycle began]]></description>

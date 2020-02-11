@@ -11,7 +11,7 @@ import org.skyve.persistence.DocumentQuery.AggregateFunction;
 import org.skyve.util.Binder;
 
 import modules.customers.AccountDashboard.AccountDashboardExtension;
-import modules.sales.domain.Opportunity;
+import modules.sales.domain.Invoice;
 
 public class SalesHistoryModel extends ChartModel<AccountDashboardExtension> {
 
@@ -20,14 +20,14 @@ public class SalesHistoryModel extends ChartModel<AccountDashboardExtension> {
 	@Override
 	public ChartData getChartData() {
 		Persistence persistence = CORE.getPersistence();
-		DocumentQuery query = persistence.newDocumentQuery(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME);
-		query.getFilter().addEquals(Binder.createCompoundBinding(Opportunity.accountPropertyName, Bean.DOCUMENT_ID), getBean().getAccount().getBizId());
+		DocumentQuery query = persistence.newDocumentQuery(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);
+		query.getFilter().addEquals(Binder.createCompoundBinding(Invoice.accountPropertyName, Bean.DOCUMENT_ID), getBean().getAccount().getBizId());
 
 		
 		ChartBuilder cb = new ChartBuilder();
 		cb.with(query);
-		cb.category(Opportunity.topicPropertyName);
-		cb.value(Opportunity.totalPropertyName, AggregateFunction.Sum);
+		cb.category(Invoice.namePropertyName);
+		cb.value(Invoice.totalPropertyName, AggregateFunction.Sum);
 		
 		ChartData chartData = cb.build("Sales History","Total");
 		return chartData;

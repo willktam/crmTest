@@ -10,10 +10,11 @@
         	<displayName>Choose Status</displayName>
         	<description><![CDATA[The status to add a new field for]]></description>
         	<values>
+        		<value code="Process Status"/>
         		<value code="Lead Type" />
         		<value code="Quote Status" />
         		<value code="Order Status"/>
-        		<value code="Invoice Status"/>
+        		<value code="Invoice Status"/>       		
         	</values>
         </enum>
     	<memo required="true" name="field" >
