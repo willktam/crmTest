@@ -33,20 +33,17 @@
 			</type>
 		</property>
 		<property name="startDate" type="DateOnly" />
-		<property name="street" length="200" />
-		<property name="city" length="100" />
+		<property name="line1" length="100" />
+		<property name="line2" length="100" />
+		<property name="suburb" length="100" />
 		<property name="state" length="100" />
 		<property name="postCode" length="10" />
-		<property name="country" length="100" />
 		<property name="location" />
 		<many-to-one name="primaryContact" entity-name="customersContactDetail" column="primaryContact_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_CUS_Account_primaryContact" />
 		<bag name="interactions" table="CUS_Account_interactions" cascade="all-delete-orphan">
 			<key column="owner_id" foreign-key="FK_CUS_Account_interactions_owner_id" />
 			<many-to-many entity-name="customersInteraction" order-by="interactionTime desc" foreign-key="FK_CUS_Account_interactions_element_id" column="element_id" />
 		</bag>
-		<property name="line1" length="100" />
-		<property name="line2" length="100" />
-		<property name="suburb" length="100" />
 		<filter name="customersAccountNoneFilter" condition="1=0"/>
 		<filter name="customersAccountCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="customersAccountDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>

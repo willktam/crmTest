@@ -54,19 +54,24 @@
             <displayName>Start Date</displayName>
             <description><![CDATA[The date the account began]]></description>
         </date>
-        <text name="street">
-            <displayName>Street</displayName>
-            <description><![CDATA[The account's street and number]]></description>
-            <length>200</length>
+      	<text name="line1">
+            <displayName>Line 1</displayName>
+            <description><![CDATA[The account's street]]></description>
+            <length>100</length>
         </text>
-        <text name="city">
-            <displayName>City</displayName>
-            <description><![CDATA[The account's city]]></description>
+        <text name="line2">
+            <displayName>Line 2</displayName>
+            <description><![CDATA[The account's street]]></description>
+            <length>100</length>
+        </text>
+        <text name="suburb">
+            <displayName>Suburb</displayName>
+            <description><![CDATA[The account's suburb]]></description>
             <length>100</length>
         </text>
         <text name="state">
-            <displayName>State or Province</displayName>
-            <description><![CDATA[The account's state or province]]></description>
+            <displayName>State</displayName>
+            <description><![CDATA[The account's state]]></description>
             <length>100</length>
         </text>
         <text name="postCode">
@@ -74,11 +79,7 @@
             <description><![CDATA[The account's ZIP or postal code]]></description>
             <length>10</length>
         </text>
-        <text name="country">
-            <displayName>Country/Region</displayName>
-            <description><![CDATA[The account's country or region]]></description>
-            <length>100</length>
-        </text>
+ 
         <geometry name="location">
         	<displayName>Location</displayName>
         </geometry>
@@ -105,21 +106,7 @@
 			<displayName>Type</displayName>
 		</enum>
 		
-		<text name="line1">
-            <displayName>Line 1</displayName>
-            <description><![CDATA[The account's street]]></description>
-            <length>100</length>
-        </text>
-        <text name="line2">
-            <displayName>Line 2</displayName>
-            <description><![CDATA[The account's street]]></description>
-            <length>100</length>
-        </text>
-        <text name="suburb">
-            <displayName>Suburb</displayName>
-            <description><![CDATA[The account's suburb]]></description>
-            <length>100</length>
-        </text>
+		
               
     </attributes>
     <conditions>

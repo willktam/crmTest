@@ -135,7 +135,11 @@
 	border-left: 4px solid #007ad9;	
 	outline: 4px solid white;
 }
-
+.actionContainer:hover {
+	border-left: 4px solid #007ad9;
+	background-color: rgba(0, 122, 217, 0.2);
+	cursor: pointer;
+}
 .actionIcon {
  	float: left;
   	margin-top: 27px;

@@ -218,13 +218,17 @@ public class AccountDashboardExtension extends AccountDashboard {
 		StringBuilder markup = new StringBuilder();
 		markup.append("<div class=\"flowbar-wrapper\">");
 		markup.append("<ul class=\"flowbar\">");
-		markup.append("<li class=" + contactClass + " onclick=\"location.href='"+ contactUrl + "';\"> Contact Details </li>");
+		markup.append("<li class=" + contactClass + " onclick=\"location.href='"+ contactUrl + "';\"> "
+				+ "Contact Details </li>");
 		markup.append("<li class=" + leadClass + " onclick=\"location.href='"+ leadUrl + "';\"> Lead </li>");
-		markup.append("<li class=" + accountClass + " onclick=\"location.href='"+ accountUrl + "';\"> Account </li>");
-		markup.append("<li class=" + opportunityClass + " onclick=\"location.href='"+ opportunityUrl + "';\"> Opportunity </li>");
+		markup.append("<li class=" + accountClass + " onclick=\"location.href='"+ accountUrl + "';\"> "
+				+ "Account </li>");
+		markup.append("<li class=" + opportunityClass + " onclick=\"location.href='"+ opportunityUrl + "';\">"
+				+ " Opportunity </li>");
 		markup.append("<li class=" + quoteClass + " onclick=\"location.href='"+ quoteUrl + "';\"> Quote </li>");
 		markup.append("<li class=" + orderClass + " onclick=\"location.href='"+ orderUrl + "';\"> Order </li>");
-		markup.append("<li class=" + invoiceClass + " onclick=\"location.href='"+ invoiceUrl + "';\"> Invoice </li>");
+		markup.append("<li class=" + invoiceClass + " onclick=\"location.href='"+ invoiceUrl + "';\"> "
+				+ "Invoice </li>");
 		markup.append("</ul></div>");
 		
 		return markup.toString();
@@ -281,7 +285,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 		StringBuilder markup = new StringBuilder();
 		markup.append("<div class='actionContainer'>");
 		markup.append("<div class='actionIcon'>");
-		markup.append("<span class='fa fa-info-circle'></span></div>");
+		markup.append("<span class='fa fa-plus'></span></div>");
 		markup.append("<div class='actionInfo'>");    
 		markup.append("<span class='actionTitle'>Make New Communication</span>");
 		markup.append("<span></br><p class='updateDescription'> You haven't recorded "
@@ -295,18 +299,18 @@ public class AccountDashboardExtension extends AccountDashboard {
 	public String makeNewTemplate(String documentName) {
 		String vowels = "aeiou";
 		StringBuilder markup = new StringBuilder();
-		markup.append("<div class='actionContainer'>");
+		markup.append("<div class='actionContainer' onclick=\"location.href='"+ makeActionLink(documentName) + "';\">");
 		markup.append("<div class='actionIcon'>");
-		markup.append("<span class='fa fa-info-circle'></span></div>");
+		markup.append("<span class='" + makeIcon(documentName) + "'></span></div>");
 		markup.append("<div class='actionInfo'>");    
 		markup.append("<span class='actionTitle'>Make New "+ documentName +"</span>");
 		if (vowels.indexOf(Character.toLowerCase(documentName.charAt(0))) != -1 ) {
-			markup.append("<span></br><p class='actionDescription'> This account does not yet have an "+ documentName +", "
-					+ "click in the flow bar to make a new " + documentName + ".</p>");  
+			markup.append("<span></br><p class='actionDescription'> This account does not yet have an "+ 
+						documentName +", click here to make a new " + documentName + ".</p>");  
 		}
 		else {
-			markup.append("<span></br><p class='actionDescription'> This account does not yet have a "+ documentName +", "
-					+ "click in the flow bar to make a new " + documentName + ".</p>");  
+			markup.append("<span></br><p class='actionDescription'> This account does not yet have a "+
+						documentName +", click here to make a new " + documentName + ".</p>");  
 		}
 		markup.append("</div></div>");
 		return markup.toString();
@@ -317,7 +321,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 		StringBuilder markup = new StringBuilder();
 		markup.append("<div class='actionContainer'>");
 		markup.append("<div class='actionIcon'>");
-		markup.append("<span class='fa fa-info-circle'></span></div>");
+		markup.append("<span class='" + makeIcon(documentName) + "'></span></div>");
 		markup.append("<div class='actionInfo'>");    
 		markup.append("<span class='actionTitle'>Create A New "+ documentName +"</span>");
 		markup.append("<span></br><p class='actionDescription'>You have not created a new "+ documentName +""
@@ -339,5 +343,67 @@ public class AccountDashboardExtension extends AccountDashboard {
 							getAccount().getAccountName() + " at this time.</p>");  
 		markup.append("</div></div>");
 		return markup.toString();
+	}
+	
+	// helper method to return an icon for a document
+	public String makeIcon(String documentName) {
+		String icon = "fa fa-info-circle";
+		switch (documentName) {
+		case "ContactDetail":
+			icon = "fa fa-users";
+			break;
+		case "Lead":
+			icon = "fa fa-phone-square";
+			break;
+		case "Account":
+			icon = "fa fa-book";
+			break;
+		case "Opportunity":
+			icon = "fa fa-fax";
+			break;
+		case "Quote":
+			icon = "fa fa-files-o";
+			break;
+		case "Order":
+			icon = "fa fa-file-text";
+			break;
+		case "Invoice":
+			icon = "fa fa-envelope";
+			break;
+		default:
+			break;
+		}
+		return icon;
+	}
+	
+	// helper function to return action link
+	public String makeActionLink(String documentName) {
+		String link = "";
+		switch (documentName) {
+		case "ContactDetail":
+			link = Util.getDocumentUrl(ContactDetail.MODULE_NAME, ContactDetail.DOCUMENT_NAME);
+			break;
+		case "Lead": 
+			link = Util.getDocumentUrl(Lead.MODULE_NAME, Lead.DOCUMENT_NAME);
+			break;
+		case "Account":
+			link = Util.getDocumentUrl(Account.MODULE_NAME, Account.DOCUMENT_NAME);
+			break;
+		case "Opportunity":
+			link = Util.getDocumentUrl(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME);
+			break;
+		case "Quote":
+			link = Util.getDocumentUrl(Quote.MODULE_NAME, Quote.DOCUMENT_NAME);
+			break;
+		case "Order":
+			link = Util.getDocumentUrl(Order.MODULE_NAME, Order.DOCUMENT_NAME);
+			break;
+		case "Invoice":
+			link = Util.getDocumentUrl(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);
+			break;
+		default:
+			break;
+		}
+		return link;
 	}
 }
