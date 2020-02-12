@@ -71,11 +71,11 @@
 				<param name="enumClass">modules.customers.domain.ContactDetail$Method</param>
 			</type>
 		</property>
-		<property name="street" length="200" />
-		<property name="city" length="100" />
+		<property name="line1" length="100" />
+		<property name="line2" length="100" />
+		<property name="suburb" length="100" />
 		<property name="state" length="100" />
 		<property name="postCode" length="10" />
-		<property name="country" length="100" />
 		<bag name="interactions" table="CUS_ContactDetail_interactions" cascade="all-delete-orphan">
 			<key column="owner_id" foreign-key="FK_CUS_ContactDetail_interactions_owner_id" />
 			<many-to-many entity-name="customersInteraction" order-by="interactionTime desc" foreign-key="FK_CUS_ContactDetail_interactions_element_id" column="element_id" />

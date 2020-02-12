@@ -75,8 +75,8 @@
             <length>100</length>
         </text>
         <text name="postCode">
-            <displayName>ZIP or Postal Code</displayName>
-            <description><![CDATA[The account's ZIP or postal code]]></description>
+            <displayName>Postal Code</displayName>
+            <description><![CDATA[The account's postal code]]></description>
             <length>10</length>
         </text>
  

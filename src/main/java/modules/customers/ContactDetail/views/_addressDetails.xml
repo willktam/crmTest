@@ -5,17 +5,17 @@
         
 		<row>
             <item>
-                <default binding="street"/>
+                <default binding="line1"/>
             </item>
         </row>
         <row>
             <item>
-                <default binding="city"/>
+                <default binding="line2"/>
             </item>
         </row>
         <row>
             <item>
-                <default binding="state"/>
+                <default binding="suburb"/>
             </item>
         </row>
         <row>
@@ -25,7 +25,7 @@
         </row>
         <row>
             <item>
-                <default binding="country"/>
+                <default binding="state"/>
             </item>
         </row>
 	</form>

@@ -245,9 +245,9 @@ public class Account extends AbstractPersistentBean {
 	 **/
 	private String state;
 	/**
-	 * ZIP or Postal Code
+	 * Postal Code
 	 * <br/>
-	 * The account's ZIP or postal code
+	 * The account's postal code
 	 **/
 	private String postCode;
 	/**

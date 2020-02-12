@@ -56,15 +56,15 @@ public class ContactDetail extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String methodPropertyName = "method";
 	/** @hidden */
-	public static final String streetPropertyName = "street";
+	public static final String line1PropertyName = "line1";
 	/** @hidden */
-	public static final String cityPropertyName = "city";
+	public static final String line2PropertyName = "line2";
+	/** @hidden */
+	public static final String suburbPropertyName = "suburb";
 	/** @hidden */
 	public static final String statePropertyName = "state";
 	/** @hidden */
 	public static final String postCodePropertyName = "postCode";
-	/** @hidden */
-	public static final String countryPropertyName = "country";
 	/** @hidden */
 	public static final String interactionsPropertyName = "interactions";
 	/** @hidden */
@@ -207,35 +207,35 @@ public class ContactDetail extends AbstractPersistentBean {
 	 **/
 	private Method method;
 	/**
-	 * Street
+	 * Line 1
 	 * <br/>
-	 * The customers street and number
+	 * The contact's street
 	 **/
-	private String street;
+	private String line1;
 	/**
-	 * City
+	 * Line 2
 	 * <br/>
-	 * The customers city
+	 * The contact's street
 	 **/
-	private String city;
+	private String line2;
 	/**
-	 * State or Province
+	 * Suburb
 	 * <br/>
-	 * The customers state or province
+	 * The contact's suburb
+	 **/
+	private String suburb;
+	/**
+	 * State
+	 * <br/>
+	 * The contact's state
 	 **/
 	private String state;
 	/**
-	 * ZIP or Postal Code
+	 * Postal Code
 	 * <br/>
-	 * The customers ZIP or postal code
+	 * The account's postal code
 	 **/
 	private String postCode;
-	/**
-	 * Country/Region
-	 * <br/>
-	 * The customers country or region
-	 **/
-	private String country;
 	/**
 	 * Interactions
 	 **/
@@ -445,39 +445,57 @@ public class ContactDetail extends AbstractPersistentBean {
 	}
 
 	/**
-	 * {@link #street} accessor.
+	 * {@link #line1} accessor.
 	 * @return	The value.
 	 **/
-	public String getStreet() {
-		return street;
+	public String getLine1() {
+		return line1;
 	}
 
 	/**
-	 * {@link #street} mutator.
-	 * @param street	The new value.
+	 * {@link #line1} mutator.
+	 * @param line1	The new value.
 	 **/
 	@XmlElement
-	public void setStreet(String street) {
-		preset(streetPropertyName, street);
-		this.street = street;
+	public void setLine1(String line1) {
+		preset(line1PropertyName, line1);
+		this.line1 = line1;
 	}
 
 	/**
-	 * {@link #city} accessor.
+	 * {@link #line2} accessor.
 	 * @return	The value.
 	 **/
-	public String getCity() {
-		return city;
+	public String getLine2() {
+		return line2;
 	}
 
 	/**
-	 * {@link #city} mutator.
-	 * @param city	The new value.
+	 * {@link #line2} mutator.
+	 * @param line2	The new value.
 	 **/
 	@XmlElement
-	public void setCity(String city) {
-		preset(cityPropertyName, city);
-		this.city = city;
+	public void setLine2(String line2) {
+		preset(line2PropertyName, line2);
+		this.line2 = line2;
+	}
+
+	/**
+	 * {@link #suburb} accessor.
+	 * @return	The value.
+	 **/
+	public String getSuburb() {
+		return suburb;
+	}
+
+	/**
+	 * {@link #suburb} mutator.
+	 * @param suburb	The new value.
+	 **/
+	@XmlElement
+	public void setSuburb(String suburb) {
+		preset(suburbPropertyName, suburb);
+		this.suburb = suburb;
 	}
 
 	/**
@@ -514,24 +532,6 @@ public class ContactDetail extends AbstractPersistentBean {
 	public void setPostCode(String postCode) {
 		preset(postCodePropertyName, postCode);
 		this.postCode = postCode;
-	}
-
-	/**
-	 * {@link #country} accessor.
-	 * @return	The value.
-	 **/
-	public String getCountry() {
-		return country;
-	}
-
-	/**
-	 * {@link #country} mutator.
-	 * @param country	The new value.
-	 **/
-	@XmlElement
-	public void setCountry(String country) {
-		preset(countryPropertyName, country);
-		this.country = country;
 	}
 
 	/**

@@ -68,11 +68,11 @@
 		<many-to-one name="contactDetails" entity-name="customersContactDetail" column="contactDetails_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Lead_contactDetails" />
 		<property name="name" length="100" />
 		<property name="website" length="300" />
-		<property name="street" length="200" />
-		<property name="city" length="100" />
+		<property name="line1" length="100" />
+		<property name="line2" length="100" />
+		<property name="suburb" length="100" />
 		<property name="state" length="100" />
 		<property name="postCode" length="10" />
-		<property name="country" length="100" />
 		<many-to-one name="leadType" entity-name="salesConfiguration" column="leadType_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_SAL_Lead_leadType" />
 		<property name="companyLocation" />
 		<property name="selectedTab" />
