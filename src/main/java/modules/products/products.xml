@@ -26,7 +26,7 @@
         </role>
     </roles>
     <menu>
-        <list document="ProductInfo" name="Product Info">
+   		<list document="ProductPriceList" name="Product Price Lists">
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>
@@ -34,7 +34,7 @@
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>
-        <list document="ProductPriceList" name="Product Price Lists">
+        <list document="ProductInfo" name="Product Info">
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>

@@ -10,12 +10,14 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import modules.customers.Account.AccountExtension;
 import modules.customers.AccountDashboard.AccountDashboardExtension;
 import modules.customers.Interaction.InteractionExtension;
+import org.locationtech.jts.geom.Geometry;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateTime;
 import org.skyve.impl.domain.AbstractTransientBean;
 import org.skyve.impl.domain.ChangeTrackingArrayList;
 import org.skyve.impl.domain.types.jaxb.DateTimeMapper;
+import org.skyve.impl.domain.types.jaxb.GeometryMapper;
 
 /**
  * Account Dashboard
@@ -62,6 +64,8 @@ public class AccountDashboard extends AbstractTransientBean {
 	public static final String flowbarPropertyName = "flowbar";
 	/** @hidden */
 	public static final String actionTemplatePropertyName = "actionTemplate";
+	/** @hidden */
+	public static final String accountLocationPropertyName = "accountLocation";
 
 	/**
 	 * Account
@@ -111,6 +115,10 @@ public class AccountDashboard extends AbstractTransientBean {
 	 * Suggested Actions
 	 **/
 	private String actionTemplate;
+	/**
+	 * Account Location
+	 **/
+	private Geometry accountLocation;
 
 	@Override
 	@XmlTransient
@@ -384,6 +392,24 @@ public class AccountDashboard extends AbstractTransientBean {
 	@XmlElement
 	public void setActionTemplate(String actionTemplate) {
 		this.actionTemplate = actionTemplate;
+	}
+
+	/**
+	 * {@link #accountLocation} accessor.
+	 * @return	The value.
+	 **/
+	public Geometry getAccountLocation() {
+		return accountLocation;
+	}
+
+	/**
+	 * {@link #accountLocation} mutator.
+	 * @param accountLocation	The new value.
+	 **/
+	@XmlJavaTypeAdapter(GeometryMapper.class)
+	@XmlElement
+	public void setAccountLocation(Geometry accountLocation) {
+		this.accountLocation = accountLocation;
 	}
 
 	/**

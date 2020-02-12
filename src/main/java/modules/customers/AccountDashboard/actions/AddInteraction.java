@@ -52,7 +52,14 @@ public class AddInteraction implements ServerSideAction<AccountDashboardExtensio
 		
 		// clear current shown interactions then add resorted list
 		bean.getInteractions().clear();
-		bean.getInteractions().addAll(bean.getAccount().getInteractions().subList(0, 5));
+		
+		if (bean.getAccount().getInteractions().size() < 4) {
+			bean.getInteractions().addAll(bean.getAccount().getInteractions());
+		}
+		else {
+			bean.getInteractions().addAll(bean.getAccount().getInteractions().subList(0, 4)); 
+		}
+		
 		
 
 		return new ServerSideActionResult<>(bean);

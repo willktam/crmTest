@@ -27,42 +27,62 @@ public class ProcessLifeCycleExtension extends ProcessLifeCycle {
 	
 	@Override
 	public OpportunityExtension getOpportunity() {
-		Persistence persistence = CORE.getPersistence();
-		DocumentQuery query = persistence.newDocumentQuery(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME);
-		query.getFilter().addEquals(Binder.createCompoundBinding(Opportunity.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
-		query.addBoundOrdering(Opportunity.LOCK_NAME, SortDirection.descending);
+		if (getAccount() != null) {
+			Persistence persistence = CORE.getPersistence();
+			DocumentQuery query = persistence.newDocumentQuery(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME);
+			query.getFilter().addEquals(Binder.createCompoundBinding(Opportunity.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
+			query.addBoundOrdering(Opportunity.LOCK_NAME, SortDirection.descending);
 
-		return query.beanResult();
+			return query.beanResult();
+		}
+		else {
+			return null;
+		}
 	}
 	
 	@Override
 	public QuoteExtension getQuote() {
-		Persistence persistence = CORE.getPersistence();
-		DocumentQuery query = persistence.newDocumentQuery(Quote.MODULE_NAME, Quote.DOCUMENT_NAME);
-		query.getFilter().addEquals(Binder.createCompoundBinding(Quote.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());				
-		query.addBoundOrdering(Quote.LOCK_NAME, SortDirection.descending);
-
-		return query.beanResult();		
+		if (getAccount() != null) {
+			Persistence persistence = CORE.getPersistence();
+			DocumentQuery query = persistence.newDocumentQuery(Quote.MODULE_NAME, Quote.DOCUMENT_NAME);
+			query.getFilter().addEquals(Binder.createCompoundBinding(Quote.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());				
+			query.addBoundOrdering(Quote.LOCK_NAME, SortDirection.descending);
+	
+			return query.beanResult();
+		}
+		else {
+			return null;
+		}
 	}
 	
 	@Override
 	public OrderExtension getOrder() {
-		Persistence persistence = CORE.getPersistence();
-		DocumentQuery query = persistence.newDocumentQuery(Order.MODULE_NAME, Order.DOCUMENT_NAME);
-		query.getFilter().addEquals(Binder.createCompoundBinding(Order.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
-		query.addBoundOrdering(Order.LOCK_NAME, SortDirection.descending);
-		
-		return query.beanResult();	
+		if (getAccount() != null) {
+			Persistence persistence = CORE.getPersistence();
+			DocumentQuery query = persistence.newDocumentQuery(Order.MODULE_NAME, Order.DOCUMENT_NAME);
+			query.getFilter().addEquals(Binder.createCompoundBinding(Order.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
+			query.addBoundOrdering(Order.LOCK_NAME, SortDirection.descending);
+			
+			return query.beanResult();
+		}
+		else {
+			return null;
+		}
 	}
 	
 	@Override
 	public InvoiceExtension getInvoice() {
-		Persistence persistence = CORE.getPersistence();
-		DocumentQuery query = persistence.newDocumentQuery(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);
-		query.getFilter().addEquals(Binder.createCompoundBinding(Invoice.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
-		query.addBoundOrdering(Invoice.LOCK_NAME, SortDirection.descending);
-		
-		return query.beanResult();
+		if (getAccount() != null) {
+			Persistence persistence = CORE.getPersistence();
+			DocumentQuery query = persistence.newDocumentQuery(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);
+			query.getFilter().addEquals(Binder.createCompoundBinding(Invoice.accountPropertyName, Bean.DOCUMENT_ID), this.getAccount().getBizId());
+			query.addBoundOrdering(Invoice.LOCK_NAME, SortDirection.descending);
+			
+			return query.beanResult();
+		}
+		else {
+			return null;
+		}
 	}
 	
 	

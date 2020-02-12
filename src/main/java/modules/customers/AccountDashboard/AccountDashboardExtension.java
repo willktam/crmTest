@@ -100,7 +100,6 @@ public class AccountDashboardExtension extends AccountDashboard {
 		
 		query.getFilter().addNotEquals(Interaction.typePropertyName, "Other");
 		query.addBoundOrdering(Interaction.interactionTimePropertyName, SortDirection.descending);
-		
 		return query.beanResult();
 	}
 	
@@ -184,8 +183,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 		String opportunityUrl = Util.getDocumentUrl(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME);
 		String quoteUrl = Util.getDocumentUrl(Quote.MODULE_NAME, Quote.DOCUMENT_NAME);
 		String orderUrl = Util.getDocumentUrl(Order.MODULE_NAME, Order.DOCUMENT_NAME);
-		String invoiceUrl = Util.getDocumentUrl(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);
-		
+		String invoiceUrl = Util.getDocumentUrl(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);		
 		
 		if (getAccount().getPrimaryContact() != null) {
 			contactUrl = Util.getDocumentUrl(ContactDetail.MODULE_NAME, ContactDetail.DOCUMENT_NAME, getAccount().getPrimaryContact().getBizId());
@@ -234,9 +232,9 @@ public class AccountDashboardExtension extends AccountDashboard {
 	
 	@Override
 	public String getActionTemplate() {
-		
 		StringBuilder markup = new StringBuilder();
-		if (daysSinceInteraction(lastUpdated()) > 14 ) {
+		
+		if (lastUpdated() != null && daysSinceInteraction(lastUpdated()) > 14 ) {
 			markup.append(makeCommunicationTemplate(getAccount().getAccountName()));
 		}
 		if (getRecentOpportunity() == null) {
@@ -268,22 +266,24 @@ public class AccountDashboardExtension extends AccountDashboard {
 						if (daysSinceInteraction(lastCreated(Invoice.DOCUMENT_NAME)) > 30) {
 							markup.append(makeReuseTemplate(Invoice.DOCUMENT_NAME));
 						}
+						else {
+							markup.append(makeNoTemplate());
+						}
 					}
 				}
 			}
-		}
-		
+		}		
 		return markup.toString();
 	}
 	
 	// helper method to return the communication action markup for an account name
 	public String makeCommunicationTemplate(String accountName) {
 		StringBuilder markup = new StringBuilder();
-		markup.append("<div class='updateContainer'>");
-		markup.append("<div class='updateIcon'>");
+		markup.append("<div class='actionContainer'>");
+		markup.append("<div class='actionIcon'>");
 		markup.append("<span class='fa fa-info-circle'></span></div>");
-		markup.append("<div class='updateInfo'>");    
-		markup.append("<span class='updateTitle'>Make New Communication</span>");
+		markup.append("<div class='actionInfo'>");    
+		markup.append("<span class='actionTitle'>Make New Communication</span>");
 		markup.append("<span></br><p class='updateDescription'> You haven't recorded "
 				+ "an interaction with " + accountName + " for over two weeks, make a new communication "
 				+ "and record it as an interaction. </p>");    
@@ -326,4 +326,18 @@ public class AccountDashboardExtension extends AccountDashboard {
 		markup.append("</div></div>");
 		return markup.toString();
 	}	
+	
+	//helper method to return no action markup
+	public String makeNoTemplate() {
+		StringBuilder markup = new StringBuilder();
+		markup.append("<div class='actionContainer'>");
+		markup.append("<div class='actionIcon'>");
+		markup.append("<span class='fa fa-info-circle'></span></div>");
+		markup.append("<div class='actionInfo'>");    
+		markup.append("<span class='actionTitle'>No Suggested Actions</span>");
+		markup.append("<span></br><p class='actionDescription'>There are no suggested actions for " + 
+							getAccount().getAccountName() + " at this time.</p>");  
+		markup.append("</div></div>");
+		return markup.toString();
+	}
 }

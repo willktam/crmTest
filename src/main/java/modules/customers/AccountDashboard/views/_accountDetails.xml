@@ -20,7 +20,7 @@
 		</row>
 		<row>
 			<item label="Website" showLabel="true">
-				<blurb><![CDATA[{account.accountName}]]></blurb>		
+				<blurb><![CDATA[{account.website}]]></blurb>		
 			</item>
 		</row>
 		<row>

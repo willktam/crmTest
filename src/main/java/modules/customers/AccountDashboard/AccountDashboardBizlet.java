@@ -15,6 +15,7 @@ public class AccountDashboardBizlet extends Bizlet<AccountDashboardExtension> {
 		if ((ImplicitActionName.Edit.equals(actionName)) || (ImplicitActionName.New.equals(actionName)) ) {
 			bean.setNumbers();
 			bean.setDates();
+			bean.setAccountLocation(bean.getAccount().getLocation());
 		}
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
@@ -23,18 +24,24 @@ public class AccountDashboardBizlet extends Bizlet<AccountDashboardExtension> {
 	public void preRerender(String source, AccountDashboardExtension bean, WebContext webContext) throws Exception {
 		bean.setNumbers();
 		bean.setDates();
+		bean.setAccountLocation(bean.getAccount().getLocation());
+	
 		super.preRerender(source, bean, webContext);
 	}
 	
 	 @Override
 	public AccountDashboardExtension newInstance(AccountDashboardExtension bean) throws Exception {
-		 // set the account to the most recently edited
-		 bean.setAccount(bean.getRecentAccount());
+		// set the account to the most recently edited
+		bean.setAccount(bean.getRecentAccount());
 
-		 // add 5 interactions to the view
-		 bean.getInteractions().addAll(bean.getAccount().getInteractions().subList(0, 4));
-	
-		 return super.newInstance(bean);
+		// add up to 4 interactions to the view
+		if (bean.getAccount().getInteractions().size() < 4) {
+			bean.getInteractions().addAll(bean.getAccount().getInteractions());
+		}
+		else {
+			bean.getInteractions().addAll(bean.getAccount().getInteractions().subList(0, 4)); 
+		}
+		
+		return super.newInstance(bean);
 	}
-	
 }

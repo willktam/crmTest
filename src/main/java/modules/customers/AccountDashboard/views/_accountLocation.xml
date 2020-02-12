@@ -4,7 +4,7 @@
 		<column />
 		<row>
 			<item showLabel="false">
-				<geometryMap binding="account.location" />
+				<geometryMap binding="accountLocation" />
 			</item>
 		</row>
 	</form>

@@ -12,14 +12,14 @@
             <item>
                 <lookupDescription descriptionBinding="accountName" binding="account" >
                 	<onPickedHandlers>
-                		<rerender />
+                		<rerender clientValidation="false"/>
                 	</onPickedHandlers>
                 </lookupDescription>
             </item>
         </row>
     </form>
     
-    <component name="_flowbar" />
+    <component name="_flowbar" visible="accountSelected"/>
     
     <hbox visible="accountSelected">
     	<vbox responsiveWidth="6" percentageWidth="50" borderTitle="Recent Activity" border="true">

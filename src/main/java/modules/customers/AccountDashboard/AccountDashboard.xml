@@ -68,6 +68,10 @@
         <markup name="actionTemplate" persistent="false" audited="false" trackChanges="false" usage="view" >
         	<displayName>Suggested Actions</displayName>
         </markup>
+        
+        <geometry name="accountLocation" persistent="false" audited="false" trackChanges="false" usage="view">
+        	<displayName>Account Location</displayName>
+        </geometry>
 		
 	</attributes>
 	<conditions>
