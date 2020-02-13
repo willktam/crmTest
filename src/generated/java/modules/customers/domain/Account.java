@@ -87,6 +87,8 @@ public class Account extends AbstractPersistentBean {
 	public static final String interactionDescriptionPropertyName = "interactionDescription";
 	/** @hidden */
 	public static final String interactionTypePropertyName = "interactionType";
+	/** @hidden */
+	public static final String documentPropertyName = "document";
 
 	/**
 	 * Relationship Type
@@ -272,6 +274,10 @@ public class Account extends AbstractPersistentBean {
 	 * Type
 	 **/
 	private Type interactionType;
+	/**
+	 * Document
+	 **/
+	private String document;
 
 	@Override
 	@XmlTransient
@@ -668,6 +674,24 @@ public class Account extends AbstractPersistentBean {
 	public void setInteractionType(Type interactionType) {
 		preset(interactionTypePropertyName, interactionType);
 		this.interactionType = interactionType;
+	}
+
+	/**
+	 * {@link #document} accessor.
+	 * @return	The value.
+	 **/
+	public String getDocument() {
+		return document;
+	}
+
+	/**
+	 * {@link #document} mutator.
+	 * @param document	The new value.
+	 **/
+	@XmlElement
+	public void setDocument(String document) {
+		preset(documentPropertyName, document);
+		this.document = document;
 	}
 
 	/**

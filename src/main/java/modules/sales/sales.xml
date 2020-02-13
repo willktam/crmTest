@@ -235,5 +235,14 @@
     			<column binding="field" />
     		</columns>
     	</query>
+    	<query documentName="Account" name="qAccount">
+    		<description><![CDATA[All managed accounts]]></description>
+    		<columns>
+    			<column binding="accountManager">
+    				<filterOperator>equal</filterOperator>
+    				<filterExpression>{USERNAME}</filterExpression>
+    			</column>
+    		</columns>
+    	</query>
     </queries>
 </module>

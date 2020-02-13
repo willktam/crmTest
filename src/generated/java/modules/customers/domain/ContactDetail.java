@@ -654,4 +654,23 @@ public class ContactDetail extends AbstractPersistentBean {
 	public void setFlowbar(String flowbar) {
 		this.flowbar = flowbar;
 	}
+
+	/**
+	 * uploadSelected
+	 *
+	 * @return The condition
+	 */
+	@XmlTransient
+	public boolean isUploadSelected() {
+		return (getInteractionType() == Other);
+	}
+
+	/**
+	 * {@link #isUploadSelected} negation.
+	 *
+	 * @return The negated condition
+	 */
+	public boolean isNotUploadSelected() {
+		return (! isUploadSelected());
+	}
 }

@@ -30,11 +30,12 @@ public class AddInteraction implements ServerSideAction<AccountExtension> {
 			throw new ValidationException(new Message(AccountExtension.interactionDescriptionPropertyName, "Description is required"));
 		}
 		
-		bean.createInteraction(bean.getInteractionType(), bean.getInteractionDescription());
+		bean.createInteraction(bean.getInteractionType(), bean.getInteractionDescription(), bean.getDocument());
 				
 		// clear the quick add form
 		bean.setInteractionDescription(null);
 		bean.setInteractionType(null);
+		bean.setDocument(null);
 				
 		bean = CORE.getPersistence().save(bean);
 		
@@ -43,17 +44,12 @@ public class AddInteraction implements ServerSideAction<AccountExtension> {
 		Module module = customer.getModule(AccountExtension.MODULE_NAME);
 		Document document = module.getDocument(customer, AccountExtension.DOCUMENT_NAME);
 		String collectionBinding = AccountExtension.interactionsPropertyName;
+		Binder.sortCollectionByMetaData(bean, customer, module, document, collectionBinding);
 		
-		int size = bean.getInteractions().size();
-		if (size < 50) {
-			Binder.sortCollectionByMetaData(bean, customer, module, document, collectionBinding);
+		if (bean.getInteractions().size() > 30) {
+			bean.getInteractions().retainAll(bean.getInteractions().subList(0, 30));
 		}
-		else {
-			for (int i = 0; i < size-50; i++) {
-				bean.getInteractions().remove(i);
-			}
-			Binder.sortCollectionByMetaData(bean, customer, module, document, collectionBinding);
-		}
+		
 		return new ServerSideActionResult<>(bean);
 	}
 }

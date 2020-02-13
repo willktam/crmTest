@@ -54,5 +54,4 @@ public class AddInteraction implements ServerSideAction<ContactDetailExtension> 
 
 		return new ServerSideActionResult<>(bean);
 	}
-
 }

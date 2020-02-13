@@ -16,7 +16,8 @@
 				<textArea binding="interactionDescription" />
 			</item>
 			<item>
-				<default binding="document" />
+				
+				<contentLink binding="document" visible="uploadSelected"/>
 			</item>
 			<item>
 				<button actionName="AddInteraction" />

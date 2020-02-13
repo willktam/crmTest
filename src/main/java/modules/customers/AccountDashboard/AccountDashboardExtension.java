@@ -11,6 +11,7 @@ import org.skyve.persistence.Persistence;
 import org.skyve.util.Binder;
 import org.skyve.util.Util;
 
+import modules.admin.ModulesUtil;
 import modules.customers.Account.AccountExtension;
 import modules.customers.Interaction.InteractionExtension;
 import modules.customers.domain.Account;
@@ -123,6 +124,7 @@ public class AccountDashboardExtension extends AccountDashboard {
 	public AccountExtension getRecentAccount() {
 		Persistence persistence = CORE.getPersistence();
 		DocumentQuery query = persistence.newDocumentQuery(Account.MODULE_NAME, Account.DOCUMENT_NAME);
+		query.getFilter().addEquals(Account.accountManagerPropertyName, ModulesUtil.currentAdminUser().getContact().getName());
 		query.addBoundOrdering(Account.LOCK_NAME, SortDirection.descending);
 		return query.beanResult();
 	}
@@ -174,6 +176,9 @@ public class AccountDashboardExtension extends AccountDashboard {
 	
 	@Override
 	public String getFlowbar() {
+		if (getAccount() == null) {
+			return null;
+		}
 		String contactClass, leadClass, accountClass, opportunityClass, quoteClass, orderClass, invoiceClass;
 		contactClass = leadClass = accountClass = opportunityClass = quoteClass = orderClass = invoiceClass = "notCurrent";
 		

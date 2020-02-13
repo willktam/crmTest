@@ -29,11 +29,12 @@ public class AccountExtension extends Account {
 		getInteractions().add(interaction);
 	}
 	
-	public void createInteraction(final Type type, final String description) {
+	public void createInteraction(final Type type, final String description, final String document) {
 		InteractionExtension interaction = Interaction.newInstance();
 		interaction.setTitle(String.format("New %s", type.toDescription()));
 		interaction.setType(type);
 		interaction.setDescription(description);
+		interaction.setDocument(document);
 		getInteractions().add(interaction);
 	}
 

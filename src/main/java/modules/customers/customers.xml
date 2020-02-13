@@ -72,7 +72,10 @@
         <query documentName="Account" name="qAccounts">
             <description><![CDATA[All Accounts]]></description>
             <columns>
-            	<column binding="accountManager" />
+            	<column binding="accountManager" >
+            		<filterOperator>equal</filterOperator>
+       				<filterExpression>{USERNAME}</filterExpression>
+       			</column>
                 <column binding="accountName"/>
                 <column binding="email"/>
                 <column binding="website"/>

@@ -38,6 +38,7 @@
 		<association type="aggregation" name="account">
 			<displayName>Account</displayName>
 			<documentName>Account</documentName>
+			<queryName>qAccount</queryName>
 		</association>
 		<association type="aggregation" name="opportunity">
 			<displayName>Opportunity</displayName>

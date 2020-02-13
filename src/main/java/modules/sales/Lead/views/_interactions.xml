@@ -3,8 +3,10 @@
 	<form border="true" borderTitle="Add Interaction">
 		<column responsiveWidth="1" />
 		<column responsiveWidth="2" />
+		<column responsiveWidth="1" />
+		<column responsiveWidth="3"/>
+		<column responsiveWidth="1" />
 		<column responsiveWidth="2" />
-		<column />
 		<column responsiveWidth="2" />
 		<row>
 			<item>
@@ -12,6 +14,9 @@
 			</item>
 			<item>
 				<textArea binding="contactDetails.interactionDescription" />
+			</item>
+			<item>
+				<default binding="contactDetails.document"></default>
 			</item>
 			<item>
 				<button actionName="AddInteraction" />

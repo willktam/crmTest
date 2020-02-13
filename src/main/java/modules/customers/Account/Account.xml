@@ -105,7 +105,9 @@
 		<enum name="interactionType" documentRef="Interaction" attributeRef="type" persistent="false">
 			<displayName>Type</displayName>
 		</enum>
-		
+		<content name="document">
+			<displayName>Document</displayName>
+		</content>
 		
               
     </attributes>

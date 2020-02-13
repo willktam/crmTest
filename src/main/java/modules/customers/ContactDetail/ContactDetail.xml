@@ -109,4 +109,9 @@
 		</markup>
 		
     </attributes>
+    <conditions>
+    	<condition name="uploadSelected">
+    		<expression><![CDATA[getInteractionType() == "Other"]]></expression>
+    	</condition>
+    </conditions>
 </document>

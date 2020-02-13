@@ -24,6 +24,17 @@ public class LeadExtension extends Lead {
 		getContactDetails().getInteractions().add(interaction);
 	}
 	
+	public void createInteraction(final Type type, final String description, final String document) {
+		InteractionExtension interaction = Interaction.newInstance();
+		interaction.setTitle(String.format("New %s", type.toDescription()));
+		interaction.setType(type);
+		interaction.setDescription(description);
+		if (document != null) {
+			interaction.setDocument(document);
+		}
+		getContactDetails().getInteractions().add(interaction);
+	}
+	
 	public void updateInteraction() {
 		InteractionExtension interaction = Interaction.newInstance();
 		interaction.setTitle("Updated Lead");
