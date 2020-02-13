@@ -36,6 +36,10 @@
         	<description><![CDATA[The time the interaction took place]]></description>
         </dateTime>
         
+        <content name="document">
+        	<displayName>Document</displayName>
+        </content>
+        
         <markup name="interactionTemplate" persistent="false" audited="false" trackChanges="false" usage="view" >
         	<displayName>Interactions</displayName>
         </markup>        

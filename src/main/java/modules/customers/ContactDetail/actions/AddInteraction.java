@@ -31,11 +31,12 @@ public class AddInteraction implements ServerSideAction<ContactDetailExtension> 
 			throw new ValidationException(new Message(ContactDetail.interactionDescriptionPropertyName, "Description is required"));
 		}
 		
-		bean.createInteraction(bean.getInteractionType(), bean.getInteractionDescription());
+		bean.createInteraction(bean.getInteractionType(), bean.getInteractionDescription(), bean.getDocument());
 		
 		// clear the quick add form
 		bean.setInteractionDescription(null);
 		bean.setInteractionType(null);
+		bean.setDocument(null);
 		
 		bean = CORE.getPersistence().save(bean);
 		

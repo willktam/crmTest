@@ -72,6 +72,8 @@ public class ContactDetail extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String interactionTypePropertyName = "interactionType";
 	/** @hidden */
+	public static final String documentPropertyName = "document";
+	/** @hidden */
 	public static final String selectedTabPropertyName = "selectedTab";
 	/** @hidden */
 	public static final String flowbarPropertyName = "flowbar";
@@ -248,6 +250,10 @@ public class ContactDetail extends AbstractPersistentBean {
 	 * Type
 	 **/
 	private Type interactionType;
+	/**
+	 * Document
+	 **/
+	private String document;
 	/**
 	 * Selected Tab
 	 **/
@@ -595,6 +601,24 @@ public class ContactDetail extends AbstractPersistentBean {
 	public void setInteractionType(Type interactionType) {
 		preset(interactionTypePropertyName, interactionType);
 		this.interactionType = interactionType;
+	}
+
+	/**
+	 * {@link #document} accessor.
+	 * @return	The value.
+	 **/
+	public String getDocument() {
+		return document;
+	}
+
+	/**
+	 * {@link #document} mutator.
+	 * @param document	The new value.
+	 **/
+	@XmlElement
+	public void setDocument(String document) {
+		preset(documentPropertyName, document);
+		this.document = document;
 	}
 
 	/**

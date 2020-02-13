@@ -104,6 +104,7 @@
 			</type>
 		</property>
 		<property name="interactionTime" type="DateTime" />
+		<property name="document" length="36" />
 		<filter name="customersInteractionNoneFilter" condition="1=0"/>
 		<filter name="customersInteractionCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="customersInteractionDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>

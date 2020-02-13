@@ -51,6 +51,8 @@ public class Interaction extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String interactionTimePropertyName = "interactionTime";
 	/** @hidden */
+	public static final String documentPropertyName = "document";
+	/** @hidden */
 	public static final String interactionTemplatePropertyName = "interactionTemplate";
 
 	/**
@@ -166,6 +168,10 @@ public class Interaction extends AbstractPersistentBean {
 	 * The time the interaction took place
 	 **/
 	private DateTime interactionTime;
+	/**
+	 * Document
+	 **/
+	private String document;
 	/**
 	 * Interactions
 	 **/
@@ -304,6 +310,24 @@ public class Interaction extends AbstractPersistentBean {
 	public void setInteractionTime(DateTime interactionTime) {
 		preset(interactionTimePropertyName, interactionTime);
 		this.interactionTime = interactionTime;
+	}
+
+	/**
+	 * {@link #document} accessor.
+	 * @return	The value.
+	 **/
+	public String getDocument() {
+		return document;
+	}
+
+	/**
+	 * {@link #document} mutator.
+	 * @param document	The new value.
+	 **/
+	@XmlElement
+	public void setDocument(String document) {
+		preset(documentPropertyName, document);
+		this.document = document;
 	}
 
 	/**
