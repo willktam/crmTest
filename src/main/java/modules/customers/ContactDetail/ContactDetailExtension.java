@@ -1,5 +1,12 @@
 package modules.customers.ContactDetail;
 
+import org.skyve.CORE;
+import org.skyve.metadata.customer.Customer;
+import org.skyve.metadata.model.document.Document;
+import org.skyve.metadata.module.Module;
+import org.skyve.metadata.user.User;
+import org.skyve.util.Binder;
+
 import modules.customers.Interaction.InteractionExtension;
 import modules.customers.domain.ContactDetail;
 import modules.customers.domain.Interaction;
@@ -31,6 +38,19 @@ public class ContactDetailExtension extends ContactDetail {
 		interaction.setType(type);
 		interaction.setDescription(description);
 		getInteractions().add(interaction);
+	}
+
+	public void getNewInteractions() {
+		User user = CORE.getUser();
+		Customer customer = user.getCustomer();
+		Module module = customer.getModule(ContactDetail.MODULE_NAME);
+		Document document = module.getDocument(customer, ContactDetail.DOCUMENT_NAME);
+		String collectionBinding = ContactDetail.interactionsPropertyName;
+		Binder.sortCollectionByMetaData(this, customer, module, document, collectionBinding);
+		
+		if (getInteractions().size() > 30) {
+			getInteractions().retainAll(getInteractions().subList(0, 30));
+		}		
 	}
 	
 }

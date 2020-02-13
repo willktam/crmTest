@@ -40,20 +40,15 @@ public class AddInteraction implements ServerSideAction<InvoiceExtension> {
 						
 		User user = CORE.getUser();
 		Customer customer = user.getCustomer();
-		Module module = customer.getModule(InvoiceExtension.MODULE_NAME);
-		Document document = module.getDocument(customer, InvoiceExtension.DOCUMENT_NAME);
+		Module module = customer.getModule(Account.MODULE_NAME);
+		Document document = module.getDocument(customer, Account.DOCUMENT_NAME);
 		String collectionBinding = Account.interactionsPropertyName;
-						
-		int size = bean.getAccount().getInteractions().size();
-		if (size < 50) {
-			Binder.sortCollectionByMetaData(bean.getAccount(), customer, module, document, collectionBinding);
+		Binder.sortCollectionByMetaData(bean.getAccount(), customer, module, document, collectionBinding);
+
+		if (bean.getAccount().getInteractions().size() > 30) {
+			bean.getAccount().getInteractions().retainAll(bean.getAccount().getInteractions().subList(0, 30));
 		}
-		else {
-			for (int i = 0; i < size-50; i++) {
-				bean.getAccount().getInteractions().remove(i);
-			}
-			Binder.sortCollectionByMetaData(bean.getAccount(), customer, module, document, collectionBinding);
-		}
+		
 		return new ServerSideActionResult<>(bean);
 	}
 }

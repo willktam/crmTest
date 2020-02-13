@@ -23,37 +23,32 @@ public class AddInteraction implements ServerSideAction<QuoteExtension> {
 	public ServerSideActionResult<QuoteExtension> execute(QuoteExtension bean, WebContext webContext) 
 			throws Exception {
 		// check for required fields
-		if (bean.getOpportunity().getAccount().getInteractionType() == null) {
+		if (bean.getAccount().getInteractionType() == null) {
 			throw new ValidationException(new Message(Account.interactionTypePropertyName, "Type is required"));
 		}
-		if (bean.getOpportunity().getAccount().getInteractionDescription() == null) {
+		if (bean.getAccount().getInteractionDescription() == null) {
 			throw new ValidationException(new Message(Account.interactionDescriptionPropertyName, "Description is required"));
 		}
 						
-		bean.createInteraction(bean.getOpportunity().getAccount().getInteractionType(), bean.getOpportunity().getAccount().getInteractionDescription());
+		bean.createInteraction(bean.getAccount().getInteractionType(), bean.getAccount().getInteractionDescription());
 						
 		// clear the quick add form
-		bean.getOpportunity().getAccount().setInteractionDescription(null);
-		bean.getOpportunity().getAccount().setInteractionType(null);
+		bean.getAccount().setInteractionDescription(null);
+		bean.getAccount().setInteractionType(null);
 				
 		bean = CORE.getPersistence().save(bean);
 			
 		User user = CORE.getUser();
 		Customer customer = user.getCustomer();
-		Module module = customer.getModule(QuoteExtension.MODULE_NAME);
-		Document document = module.getDocument(customer, QuoteExtension.DOCUMENT_NAME);
+		Module module = customer.getModule(Account.MODULE_NAME);
+		Document document = module.getDocument(customer, Account.DOCUMENT_NAME);
 		String collectionBinding = Account.interactionsPropertyName;
-						
-		int size = bean.getOpportunity().getAccount().getInteractions().size();
-		if (size < 50) {
-			Binder.sortCollectionByMetaData(bean.getAccount(), customer, module, document, collectionBinding);
+		Binder.sortCollectionByMetaData(bean.getAccount(), customer, module, document, collectionBinding);
+		
+		if (bean.getAccount().getInteractions().size() > 30) {
+			bean.getAccount().getInteractions().retainAll(bean.getAccount().getInteractions().subList(0, 30));
 		}
-		else {
-			for (int i = 0; i < size-50; i++) {
-				bean.getOpportunity().getAccount().getInteractions().remove(i);
-			}
-			Binder.sortCollectionByMetaData(bean.getAccount(), customer, module, document, collectionBinding);
-		}
+		
 		return new ServerSideActionResult<>(bean);
 	}
 }

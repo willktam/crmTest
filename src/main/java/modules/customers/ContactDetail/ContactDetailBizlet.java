@@ -14,6 +14,9 @@ public class ContactDetailBizlet extends Bizlet<ContactDetailExtension> {
 	@Override
 	public ContactDetailExtension preExecute(ImplicitActionName actionName, ContactDetailExtension bean, Bean parentBean,
 			WebContext webContext) throws Exception {
+		if (ImplicitActionName.Edit.equals(actionName)) {
+			bean.getNewInteractions();
+		}
 		if (ImplicitActionName.Save.equals(actionName) || ImplicitActionName.OK.equals(actionName)) {
 			if (bean.isChanged()) {
 				bean.updateInteraction();

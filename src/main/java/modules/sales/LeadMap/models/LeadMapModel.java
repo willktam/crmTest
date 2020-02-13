@@ -41,13 +41,15 @@ public class LeadMapModel extends MapModel<LeadMap> {
 
 			StringBuilder markup = new StringBuilder();
 			markup.append("<div><h2>").append(lead.getName()).append("</h2>");
-			markup.append("<span>Website: <i><a href=//").append(lead.getWebsite()).append(">").append(lead.getWebsite()).append("</a></i>");
-			markup.append("</br></span><span>Contact: ").append(contact.getFirstName()).append(" ")
+			if (lead.getWebsite() != null) {
+				markup.append("<span>Website: <i><a href=//").append(lead.getWebsite()).append(">").append(lead.getWebsite()).append("</a></i></br></span>");
+			}			
+			markup.append("<span><b>Contact: </b>").append(contact.getFirstName()).append(" ")
 					.append(contact.getLastName());
-			markup.append("</br></span><span>Email: ").append(contact.getEmail());
-			markup.append("</br></span><span>Mobile: ").append(contact.getMobileNumber());
-			markup.append("</br></span><span>Business: ").append(contact.getBusinessNumber());
-			markup.append("</br></span><span>Preferred Method of Contact: ").append(contact.getMethod());
+			markup.append("</br></span><span><b>Email: </b>").append(contact.getEmail());
+			markup.append("</br></span><span><b>Mobile: </b>").append(contact.getMobileNumber());
+			markup.append("</br></span><span><b>Business: </b>").append(contact.getBusinessNumber());
+			markup.append("</br></span><span><b>Preferred Method of Contact: </b>").append(contact.getMethod());
 			markup.append("</span></div>");
 			item.setInfoMarkup(markup.toString());
 			item.getFeatures().add(myLocation);

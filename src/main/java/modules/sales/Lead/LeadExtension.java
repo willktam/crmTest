@@ -41,15 +41,5 @@ public class LeadExtension extends Lead {
 		interaction.setDescription(interaction.getUser().getContact().getName() + " deleted the lead for " + getName());
 		getContactDetails().getInteractions().add(interaction);
 	}
-	
-	@Override
-	public String getProgress() {
-		if (getContactDetails() != null && getContactDetails().getFirstName() != null) {
-			String template = String.format("<span class='pill'>%s</span>", getContactDetails().getFirstName());
-			return template;
-		}
-		return null;
-	}
 
-	
 }

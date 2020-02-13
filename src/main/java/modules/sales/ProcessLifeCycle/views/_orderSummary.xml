@@ -13,6 +13,11 @@
         		<blurb visible="orderSelected">{order.name}</blurb>
         	</item>
        	</row>
+       	<row>
+       		<item showLabel="true" label="Order Status">
+       			<blurb visible="orderSelected">{order.status.field}</blurb>
+       		</item>
+       	</row>
         <row>
         	<item showLabel="true" label="Requested Delivery Date">
         		<blurb visible="orderSelected">{order.requested}</blurb>

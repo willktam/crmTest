@@ -34,7 +34,7 @@
          </row>
          <row>
          	<item showLabel="true" label="Lead Type">
-         		<blurb visible="leadSelected">{leadSelected}</blurb>
+         		<blurb visible="leadSelected">{lead.leadType.field}</blurb>
          	</item>
          </row>
     </form>

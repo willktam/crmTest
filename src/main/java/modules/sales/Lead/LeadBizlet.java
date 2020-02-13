@@ -1,7 +1,6 @@
 package modules.sales.Lead;
 
 import org.skyve.domain.Bean;
-import org.skyve.domain.messages.ValidationException;
 import org.skyve.metadata.controller.ImplicitActionName;
 import org.skyve.metadata.model.document.Bizlet;
 import org.skyve.web.WebContext;
@@ -31,11 +30,5 @@ public class LeadBizlet extends Bizlet<LeadExtension> {
 		bean.deletedInteraction();
 		super.preDelete(bean);
 	}
-	
-//	@Override
-//	public void validate(LeadExtension bean, ValidationException e) throws Exception {
-//		// TODO Auto-generated method stub
-//		super.validate(bean, e);
-//	}
 	
 }

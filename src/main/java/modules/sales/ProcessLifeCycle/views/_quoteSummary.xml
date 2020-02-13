@@ -20,7 +20,7 @@
          </row>
          <row>
          	<item showLabel="true" label="Quote Status">
-         		<blurb visible="quoteSelected">{quote.status}</blurb>
+         		<blurb visible="quoteSelected">{quote.status.field}</blurb>
          	</item>
          </row>
          <row>

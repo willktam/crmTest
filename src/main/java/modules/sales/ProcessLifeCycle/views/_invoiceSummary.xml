@@ -20,7 +20,7 @@
         </row>
         <row>
         	<item showLabel="true" label="Invoice Status">
-        		<blurb visible="invoiceSelected">{invoice.invoiceStatus}</blurb>
+        		<blurb visible="invoiceSelected">{invoice.invoiceStatus.field}</blurb>
         	</item>
         </row>
         <row>
