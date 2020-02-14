@@ -25,6 +25,11 @@
         </row>
         <row>
         	<item>
+        		<default binding="suburb" />
+       		</item>
+        </row>
+        <row>
+        	<item>
         		<default binding="state" />
         	</item>
         </row>
@@ -37,6 +42,11 @@
         	<item>
         		<spacer />
         	</item>
+        	<item>
+        		<button actionName="Geocode"/>
+        	</item>
+        </row>
+        <row>
         	<item showLabel="false" colspan="2">
         		<geometryMap binding="companyLocation" pixelHeight="300" pixelWidth="300"/>
         	</item>

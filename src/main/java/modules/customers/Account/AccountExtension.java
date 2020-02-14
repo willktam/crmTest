@@ -54,8 +54,5 @@ public class AccountExtension extends Account {
 		if(point != null) {
 			setLocation(point);
 		}
-		
-	}
-	
-	
+	}	
 }

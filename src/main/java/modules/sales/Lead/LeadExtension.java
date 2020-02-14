@@ -1,5 +1,9 @@
 package modules.sales.Lead;
 
+import org.locationtech.jts.geom.Point;
+import org.skyve.bus.map.impl.PhotonGeocodeServiceImpl;
+
+import modules.admin.ModulesUtil;
 import modules.customers.Interaction.InteractionExtension;
 import modules.customers.domain.Interaction;
 import modules.customers.domain.Interaction.Type;
@@ -52,5 +56,18 @@ public class LeadExtension extends Lead {
 		interaction.setDescription(interaction.getUser().getContact().getName() + " deleted the lead for " + getName());
 		getContactDetails().getInteractions().add(interaction);
 	}
-
+	
+	public void geocode() throws Exception {
+		PhotonGeocodeServiceImpl service = new PhotonGeocodeServiceImpl();
+		// generate a string for the address
+		String address = ModulesUtil.concatWithDelim(" ", getLine1(), getLine2(),
+				getSuburb(), getState(), getPostCode(), "Australia");		
+		
+		// attempt to geocode the address
+		Point point = service.geocode(address);		
+		
+		if(point != null) {
+			setCompanyLocation(point);
+		}
+	}
 }

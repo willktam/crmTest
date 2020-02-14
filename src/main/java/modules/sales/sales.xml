@@ -25,6 +25,7 @@
             <privileges>
                 <document name="Lead" permission="CRUDU">
                 	<action name="AddInteraction"/>
+                	<action name="Geocode"/>
                 </document>
                 <document permission="CRUDU" name="Opportunity" />
                 <document permission="CRUDU" name="Quote" />
@@ -38,6 +39,7 @@
             <privileges>
                 <document name="Lead" permission="CRUDC">
                 	<action name="AddInteraction"/>
+                	<action name="Geocode"/>
                 </document>
                 <document permission="CRUDC" name="Configuration" />
             </privileges>

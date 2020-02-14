@@ -88,6 +88,5 @@
         <condition name="uploadSelected">
         	<expression><![CDATA[getContactDetails().getInteractionType() != null && getContactDetails().getInteractionType().name() == "upload"]]></expression>
         </condition>
-        
     </conditions>
 </document>

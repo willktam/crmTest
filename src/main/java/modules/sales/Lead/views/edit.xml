@@ -21,7 +21,8 @@
 
     <actions>
         <defaults/>
-        <action className="AddInteraction" displayName="Add" inActionPanel="false" iconStyleClass="fa fa-plus" ></action>
+        <action className="AddInteraction" displayName="Add" inActionPanel="false" iconStyleClass="fa fa-plus" />
+        <action className="Geocode" displayName="Geocode" inActionPanel="false" />
     </actions>
     <newParameters/>
 </view>
