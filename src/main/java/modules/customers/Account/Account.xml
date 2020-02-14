@@ -41,7 +41,7 @@
             <description><![CDATA[The account fax number]]></description>
             <length>20</length>
         </text>
-        <enum required="true" name="relationshipType">
+        <enum name="relationshipType">
             <displayName>Relationship Type</displayName>
             <description><![CDATA[The type of relationship for the account]]></description>
             <values>

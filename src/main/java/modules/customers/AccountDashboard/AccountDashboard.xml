@@ -6,7 +6,7 @@
 	<singularAlias>Account Dashboard</singularAlias>
 	<pluralAlias>Account Dashboards</pluralAlias>
 	<iconStyleClass>fa fa-area-chart</iconStyleClass>
-	<bizKey expression="Account Dashboard - {account}"/>
+	<bizKey expression="{account.accountName}"/>
 	<attributes>
 		<association type="aggregation" name="account" >
 			<displayName>Account</displayName>

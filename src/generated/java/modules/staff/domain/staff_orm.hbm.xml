@@ -11,22 +11,6 @@
 	<typedef name="TimeOnly" class="org.skyve.impl.domain.types.TimeOnlyUserType" />
 	<typedef name="Timestamp" class="org.skyve.impl.domain.types.TimestampUserType" />
 	<typedef name="Enum" class="org.skyve.impl.domain.types.EnumUserType" />
-	<class name="modules.staff.domain.Job" table="STA_Job" entity-name="staffJob">
-		<id name="bizId" length="36" />
-		<version name="bizVersion" unsaved-value="null" />
-		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
-		<property name="bizKey" length="1024" not-null="true" />
-		<property name="bizCustomer" length="50" not-null="true" />
-		<property name="bizFlagComment" length="1024" />
-		<property name="bizDataGroupId" length="36" />
-		<property name="bizUserId" length="36" not-null="true" />
-		<property name="name" length="100" />
-		<filter name="staffJobNoneFilter" condition="1=0"/>
-		<filter name="staffJobCustomerFilter" condition="bizCustomer=:customerParam"/>
-		<filter name="staffJobDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
-		<filter name="staffJobUserIdFilter" condition="bizUserId=:userIdParam"/>
-	</class>
-
 	<class name="modules.staff.domain.StaffList" table="STA_StaffList" entity-name="staffStaffList">
 		<id name="bizId" length="36" />
 		<version name="bizVersion" unsaved-value="null" />
@@ -58,16 +42,6 @@
 		<filter name="staffStaffListUserIdFilter" condition="bizUserId=:userIdParam"/>
 	</class>
 
-	<filter-def name="staffJobNoneFilter" />
-	<filter-def name="staffJobCustomerFilter">
-		<filter-param name="customerParam" type="string"/>
-	</filter-def>
-	<filter-def name="staffJobDataGroupIdFilter">
-		<filter-param name="dataGroupIdParam" type="string"/>
-	</filter-def>
-	<filter-def name="staffJobUserIdFilter">
-		<filter-param name="userIdParam" type="string"/>
-	</filter-def>
 	<filter-def name="staffStaffListNoneFilter" />
 	<filter-def name="staffStaffListCustomerFilter">
 		<filter-param name="customerParam" type="string"/>

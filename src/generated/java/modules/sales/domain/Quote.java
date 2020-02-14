@@ -682,7 +682,7 @@ public class Quote extends AbstractPersistentBean {
 	 */
 	@XmlTransient
 	public boolean isUploadSelected() {
-		return (getAccount().getInteractionType() != null && getAccount().getInteractionType().name() == "upload");
+		return (getAccount() != null && getAccount().getInteractionType() != null && getAccount().getInteractionType().name() == "upload");
 	}
 
 	/**

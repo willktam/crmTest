@@ -4,7 +4,6 @@
     <homeDocument>StaffList</homeDocument>
     <documents>
         <document ref="StaffList" defaultQueryName="qStaff"/>
-        <document ref="Job"/>
         <document ref="Contact" moduleRef="admin"/>
         <document ref="User" moduleRef="admin"/>
     </documents>
@@ -13,21 +12,18 @@
             <description><![CDATA[Staff Member - A staff member who can work on jobs]]></description>
             <privileges>
                 <document name="StaffList" permission="CRU_C"/>
-                <document name="Job" permission="_RU_C"/>
             </privileges>
         </role>
         <role name="StaffManager">
             <description><![CDATA[Staff Manager - Create and manage staff]]></description>
             <privileges>
                 <document name="StaffList" permission="CRUDC"/>
-                <document name="Job" permission="_RU_C"/>
             </privileges>
         </role>
         <role name="ProjectManager">
             <description><![CDATA[Project Manager - Create and manage jobs]]></description>
             <privileges>
                 <document name="StaffList" permission="_RU_C"/>
-                <document name="Job" permission="CRUDC"/>
             </privileges>
         </role>
     </roles>
@@ -37,10 +33,6 @@
             <role name="StaffManager"/>
         </edit>
         <list document="StaffList" name="Staff List">
-            <role name="StaffManager"/>
-        </list>
-        <list document="Job" name="Jobs">
-            <role name="Staff"/>
             <role name="StaffManager"/>
         </list>
     </menu>

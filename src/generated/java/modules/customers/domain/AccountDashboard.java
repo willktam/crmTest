@@ -149,7 +149,7 @@ public class AccountDashboard extends AbstractTransientBean {
 	public String getBizKey() {
 		try {
 			return org.skyve.util.Binder.formatMessage(org.skyve.CORE.getUser().getCustomer(),
-														"Account Dashboard - {account}",
+														"{account.accountName}",
 														this);
 		}
 		catch (Exception e) {

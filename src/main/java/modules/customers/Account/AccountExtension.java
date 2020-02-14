@@ -40,8 +40,6 @@ public class AccountExtension extends Account {
 		getInteractions().add(interaction);
 	}
 
-	
-
 	public void geocode() throws Exception{
 		PhotonGeocodeServiceImpl service = new PhotonGeocodeServiceImpl();
 		// generate a string for the address

@@ -449,7 +449,7 @@ public class Lead extends AbstractPersistentBean {
 	 */
 	@XmlTransient
 	public boolean isUploadSelected() {
-		return (getContactDetails().getInteractionType() != null && getContactDetails().getInteractionType().name() == "upload");
+		return (getContactDetails() != null && getContactDetails().getInteractionType() != null && getContactDetails().getInteractionType().name() == "upload");
 	}
 
 	/**

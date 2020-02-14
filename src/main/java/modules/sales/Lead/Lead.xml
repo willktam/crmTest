@@ -48,9 +48,7 @@
             <displayName>Postal Code</displayName>
             <description><![CDATA[The company's postal code]]></description>
             <length>10</length>
-        </text>
-       
-        
+        </text>     
         <association type="aggregation" name="leadType" required="true" >
         	<displayName>Lead Type</displayName>
         	<description><![CDATA[The type of this lead]]></description>
@@ -86,7 +84,7 @@
             <expression><![CDATA[isUserInRole("sales","Staff")]]></expression>
         </condition>
         <condition name="uploadSelected">
-        	<expression><![CDATA[getContactDetails().getInteractionType() != null && getContactDetails().getInteractionType().name() == "upload"]]></expression>
+        	<expression><![CDATA[getContactDetails() != null && getContactDetails().getInteractionType() != null && getContactDetails().getInteractionType().name() == "upload"]]></expression>
         </condition>
     </conditions>
 </document>

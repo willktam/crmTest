@@ -133,7 +133,7 @@
     		<expression><![CDATA[opportunity != null]]></expression>
     	</condition>
     	<condition name="uploadSelected">
-    		<expression><![CDATA[getAccount().getInteractionType() != null && getAccount().getInteractionType().name() == "upload"]]></expression>
+    		<expression><![CDATA[getAccount() != null && getAccount().getInteractionType() != null && getAccount().getInteractionType().name() == "upload"]]></expression>
     	</condition>
     </conditions>
     

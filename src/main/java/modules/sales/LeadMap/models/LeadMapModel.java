@@ -62,7 +62,6 @@ public class LeadMapModel extends MapModel<LeadMap> {
 			items.add(item);
 
 		}
-		
 		return new MapResult(items, null);
 	}
 }

@@ -42,7 +42,7 @@
             <description><![CDATA[The customer's fax number]]></description>
             <length>20</length>
         </text>
-        <enum required="true" name="method">
+        <enum name="method">
             <displayName>Preferred Method of Contact</displayName>
             <description><![CDATA[The customer's preferred method of contact]]></description>
             <values>
