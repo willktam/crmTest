@@ -7,16 +7,20 @@
 		<column responsiveWidth="3"/>
 		<column responsiveWidth="1" />
 		<column responsiveWidth="2" />
-		<column responsiveWidth="2" />
+		<column responsiveWidth="1" />
 		<row>
 			<item>
-				<default binding="contactDetails.interactionType" />
+				<combo binding="contactDetails.interactionType">
+					<onChangedHandlers>
+						<rerender clientValidation="false"/>
+					</onChangedHandlers>
+				</combo>
 			</item>
 			<item>
 				<textArea binding="contactDetails.interactionDescription" />
 			</item>
 			<item>
-				<default binding="contactDetails.document"></default>
+				<contentLink binding="contactDetails.document" visible="uploadSelected" />
 			</item>
 			<item>
 				<button actionName="AddInteraction" />

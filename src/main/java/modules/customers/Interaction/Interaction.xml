@@ -28,6 +28,7 @@
     			<value code="Meeting"/>
     			<value code="Social Media"/>
     			<value code="Comment"/>
+    			<value code="Upload"/>
     			<value code="Other"/>
     		</values>
     	</enum>

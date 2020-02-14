@@ -441,4 +441,23 @@ public class Lead extends AbstractPersistentBean {
 	public boolean isNotHasProgress() {
 		return (! isHasProgress());
 	}
+
+	/**
+	 * uploadSelected
+	 *
+	 * @return The condition
+	 */
+	@XmlTransient
+	public boolean isUploadSelected() {
+		return (getContactDetails().getInteractionType() != null && getContactDetails().getInteractionType().name() == "upload");
+	}
+
+	/**
+	 * {@link #isUploadSelected} negation.
+	 *
+	 * @return The negated condition
+	 */
+	public boolean isNotUploadSelected() {
+		return (! isUploadSelected());
+	}
 }

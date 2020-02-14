@@ -712,4 +712,23 @@ public class Account extends AbstractPersistentBean {
 	public boolean isNotHasCurrent() {
 		return (! isHasCurrent());
 	}
+
+	/**
+	 * uploadSelected
+	 *
+	 * @return The condition
+	 */
+	@XmlTransient
+	public boolean isUploadSelected() {
+		return (getInteractionType() != null && getInteractionType().name() == "upload");
+	}
+
+	/**
+	 * {@link #isUploadSelected} negation.
+	 *
+	 * @return The negated condition
+	 */
+	public boolean isNotUploadSelected() {
+		return (! isUploadSelected());
+	}
 }

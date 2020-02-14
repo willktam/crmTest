@@ -30,6 +30,9 @@ public class InteractionExtension extends Interaction {
 		case "comment":
 			type = "fa fa-comment";
 			break;
+		case "upload":
+			type = "fa fa-file";
+			break;
 		case "other":
 			type = "fa fa-info-circle";
 			break;

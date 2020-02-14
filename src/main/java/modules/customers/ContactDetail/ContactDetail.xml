@@ -111,7 +111,7 @@
     </attributes>
     <conditions>
     	<condition name="uploadSelected">
-    		<expression><![CDATA[getInteractionType() == "Other"]]></expression>
+    		<expression><![CDATA[getInteractionType() != null && getInteractionType().name() == "upload"]]></expression>
     	</condition>
     </conditions>
 </document>

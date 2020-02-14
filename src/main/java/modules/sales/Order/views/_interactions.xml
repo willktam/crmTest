@@ -3,15 +3,24 @@
 	<form border="true" borderTitle="Add Interaction">
 		<column responsiveWidth="1" />
 		<column responsiveWidth="2" />
+		<column responsiveWidth="1" />
+		<column responsiveWidth="3"/>
+		<column responsiveWidth="1" />
 		<column responsiveWidth="2" />
-		<column />
-		<column responsiveWidth="2" />
+		<column responsiveWidth="1" />
 		<row>
 			<item>
-				<default binding="account.interactionType" />
+				<combo binding="account.interactionType" >
+					<onChangedHandlers>
+						<rerender clientValidation="false" />
+					</onChangedHandlers>
+				</combo>
 			</item>
 			<item>
 				<textArea binding="account.interactionDescription" />
+			</item>
+			<item>
+				<contentLink binding="account.document" visible="uploadSelected"/>
 			</item>
 			<item>
 				<button actionName="AddInteraction" />

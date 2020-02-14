@@ -662,7 +662,7 @@ public class ContactDetail extends AbstractPersistentBean {
 	 */
 	@XmlTransient
 	public boolean isUploadSelected() {
-		return (getInteractionType() == Other);
+		return (getInteractionType() != null && getInteractionType().name() == "upload");
 	}
 
 	/**

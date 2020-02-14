@@ -85,6 +85,9 @@
         <condition name="Staff">
             <expression><![CDATA[isUserInRole("sales","Staff")]]></expression>
         </condition>
+        <condition name="uploadSelected">
+        	<expression><![CDATA[getContactDetails().getInteractionType() != null && getContactDetails().getInteractionType().name() == "upload"]]></expression>
+        </condition>
         
     </conditions>
 </document>

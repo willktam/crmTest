@@ -674,4 +674,23 @@ public class Quote extends AbstractPersistentBean {
 	public boolean isNotOpportunitySelected() {
 		return (! isOpportunitySelected());
 	}
+
+	/**
+	 * uploadSelected
+	 *
+	 * @return The condition
+	 */
+	@XmlTransient
+	public boolean isUploadSelected() {
+		return (getAccount().getInteractionType() != null && getAccount().getInteractionType().name() == "upload");
+	}
+
+	/**
+	 * {@link #isUploadSelected} negation.
+	 *
+	 * @return The negated condition
+	 */
+	public boolean isNotUploadSelected() {
+		return (! isUploadSelected());
+	}
 }

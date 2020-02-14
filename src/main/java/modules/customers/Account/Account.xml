@@ -115,5 +115,8 @@
         <condition name="hasCurrent">
             <expression><![CDATA[primaryContact != null]]></expression>
         </condition>
+        <condition name="uploadSelected">
+        	<expression><![CDATA[getInteractionType() != null && getInteractionType().name() == "upload"]]></expression>
+        </condition>
     </conditions>
 </document>

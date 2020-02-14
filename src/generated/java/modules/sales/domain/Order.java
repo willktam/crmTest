@@ -413,4 +413,23 @@ public class Order extends AbstractPersistentBean {
 	public boolean isNotQuoteSelected() {
 		return (! isQuoteSelected());
 	}
+
+	/**
+	 * uploadSelected
+	 *
+	 * @return The condition
+	 */
+	@XmlTransient
+	public boolean isUploadSelected() {
+		return (getAccount().getInteractionType() != null && getAccount().getInteractionType().name() == "upload");
+	}
+
+	/**
+	 * {@link #isUploadSelected} negation.
+	 *
+	 * @return The negated condition
+	 */
+	public boolean isNotUploadSelected() {
+		return (! isUploadSelected());
+	}
 }

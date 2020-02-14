@@ -34,7 +34,9 @@ public class AccountExtension extends Account {
 		interaction.setTitle(String.format("New %s", type.toDescription()));
 		interaction.setType(type);
 		interaction.setDescription(description);
-		interaction.setDocument(document);
+		if (document != null) {
+			interaction.setDocument(document);
+		}
 		getInteractions().add(interaction);
 	}
 

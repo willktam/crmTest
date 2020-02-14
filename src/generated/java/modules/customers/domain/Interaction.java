@@ -67,6 +67,7 @@ public class Interaction extends AbstractPersistentBean {
 		meeting("Meeting", "Meeting"),
 		socialMedia("Social Media", "Social Media"),
 		comment("Comment", "Comment"),
+		upload("Upload", "Upload"),
 		other("Other", "Other");
 
 		private String code;

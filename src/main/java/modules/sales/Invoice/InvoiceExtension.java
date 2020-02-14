@@ -9,11 +9,14 @@ public class InvoiceExtension extends Invoice {
 
 	private static final long serialVersionUID = -305976237242042189L;
 
-	public void createInteraction(final Type interactionType, String interactionDescription) {
+	public void createInteraction(final Type interactionType, final String interactionDescription, final String document) {
 		InteractionExtension interaction = Interaction.newInstance();
 		interaction.setTitle(String.format("New %s", interactionType.toDescription()));
 		interaction.setType(interactionType);
 		interaction.setDescription(interactionDescription);
+		if (document != null) {
+			interaction.setDocument(document);
+		}
 		getAccount().getInteractions().add(interaction);
 	}
 
