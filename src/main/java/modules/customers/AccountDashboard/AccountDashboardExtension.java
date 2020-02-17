@@ -165,11 +165,14 @@ public class AccountDashboardExtension extends AccountDashboard {
 		return query.beanResult();
 	}
 	
-	public void createInteraction(final Type type, final String description) {
+	public void createInteraction(final Type type, final String description, final String document) {
 		InteractionExtension interaction = Interaction.newInstance();
 		interaction.setTitle(String.format("New %s", type.toDescription()));
 		interaction.setType(type);
 		interaction.setDescription(description);
+		if (document != null) {
+			interaction.setDocument(document);
+		}
 		getAccount().getInteractions().add(interaction);
 	}
 	
@@ -179,11 +182,11 @@ public class AccountDashboardExtension extends AccountDashboard {
 		if (getAccount() == null) {
 			return null;
 		}
-		String contactClass, leadClass, accountClass, opportunityClass, quoteClass, orderClass, invoiceClass;
-		contactClass = leadClass = accountClass = opportunityClass = quoteClass = orderClass = invoiceClass = "notCurrent";
+		String contactClass, accountClass, opportunityClass, quoteClass, orderClass, invoiceClass;
+		contactClass = accountClass = opportunityClass = quoteClass = orderClass = invoiceClass = "notCurrent";
 		
 		String contactUrl = Util.getDocumentUrl(ContactDetail.MODULE_NAME, ContactDetail.DOCUMENT_NAME);
-		String leadUrl = Util.getDocumentUrl(Lead.MODULE_NAME, Lead.DOCUMENT_NAME);
+//		String leadUrl = Util.getDocumentUrl(Lead.MODULE_NAME, Lead.DOCUMENT_NAME);
 		String accountUrl = Util.getDocumentUrl(Account.MODULE_NAME, Account.DOCUMENT_NAME);
 		String opportunityUrl = Util.getDocumentUrl(Opportunity.MODULE_NAME, Opportunity.DOCUMENT_NAME);
 		String quoteUrl = Util.getDocumentUrl(Quote.MODULE_NAME, Quote.DOCUMENT_NAME);
@@ -194,10 +197,10 @@ public class AccountDashboardExtension extends AccountDashboard {
 			contactUrl = Util.getDocumentUrl(ContactDetail.MODULE_NAME, ContactDetail.DOCUMENT_NAME, getAccount().getPrimaryContact().getBizId());
 			contactClass = "current";
 		}
-		if (getRecentLead() != null) {
-			leadUrl = Util.getDocumentUrl(Lead.MODULE_NAME, Lead.DOCUMENT_NAME, getRecentLead().getBizId());
-			leadClass = "current";
-		}
+//		if (getRecentLead() != null) {
+//			leadUrl = Util.getDocumentUrl(Lead.MODULE_NAME, Lead.DOCUMENT_NAME, getRecentLead().getBizId());
+//			leadClass = "current";
+//		}
 		if (getRecentAccount() != null) {
 			accountUrl = Util.getDocumentUrl(Account.MODULE_NAME, Account.DOCUMENT_NAME, getAccount().getBizId());
 			accountClass = "current";
@@ -222,10 +225,10 @@ public class AccountDashboardExtension extends AccountDashboard {
 		
 		StringBuilder markup = new StringBuilder();
 		markup.append("<div class=\"flowbar-wrapper\">");
-		markup.append("<ul class=\"flowbar\">");
+		markup.append("<ul class=\"flowbar\" style=\"width: 116%;\">");
 		markup.append("<li class=" + contactClass + " onclick=\"location.href='"+ contactUrl + "';\"> "
 				+ "Contact Details </li>");
-		markup.append("<li class=" + leadClass + " onclick=\"location.href='"+ leadUrl + "';\"> Lead </li>");
+//		markup.append("<li class=" + leadClass + " onclick=\"location.href='"+ leadUrl + "';\"> Lead </li>");
 		markup.append("<li class=" + accountClass + " onclick=\"location.href='"+ accountUrl + "';\"> "
 				+ "Account </li>");
 		markup.append("<li class=" + opportunityClass + " onclick=\"location.href='"+ opportunityUrl + "';\">"

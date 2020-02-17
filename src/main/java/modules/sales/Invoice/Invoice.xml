@@ -56,6 +56,9 @@
         	<description><![CDATA[The total for this invoice]]></description>
         </longInteger>    	
                          
+        <integer name="selectedTab" persistent="true" usage="view" trackChanges="false">
+			<displayName>Selected Tab</displayName>
+		</integer>
     </attributes>
     
     <conditions>

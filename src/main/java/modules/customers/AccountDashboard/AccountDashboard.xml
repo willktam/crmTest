@@ -78,5 +78,8 @@
 		<condition name="accountSelected">
             <expression><![CDATA[account != null]]></expression>
         </condition>
+        <condition name="uploadSelected">
+    		<expression><![CDATA[getAccount() != null && getAccount().getInteractionType() != null && getAccount().getInteractionType().name() == "upload"]]></expression>
+    	</condition>
 	</conditions>
 </document>

@@ -81,6 +81,8 @@ public class Quote extends AbstractPersistentBean {
 	public static final String postCodeShipPropertyName = "postCodeShip";
 	/** @hidden */
 	public static final String countryShipPropertyName = "countryShip";
+	/** @hidden */
+	public static final String selectedTabPropertyName = "selectedTab";
 
 	/**
 	 * Quote Name
@@ -214,6 +216,10 @@ public class Quote extends AbstractPersistentBean {
 	 * The quote's shipping country or region
 	 **/
 	private String countryShip;
+	/**
+	 * Selected Tab
+	 **/
+	private Integer selectedTab;
 
 	@Override
 	@XmlTransient
@@ -654,6 +660,23 @@ public class Quote extends AbstractPersistentBean {
 	public void setCountryShip(String countryShip) {
 		preset(countryShipPropertyName, countryShip);
 		this.countryShip = countryShip;
+	}
+
+	/**
+	 * {@link #selectedTab} accessor.
+	 * @return	The value.
+	 **/
+	public Integer getSelectedTab() {
+		return selectedTab;
+	}
+
+	/**
+	 * {@link #selectedTab} mutator.
+	 * @param selectedTab	The new value.
+	 **/
+	@XmlElement
+	public void setSelectedTab(Integer selectedTab) {
+		this.selectedTab = selectedTab;
 	}
 
 	/**

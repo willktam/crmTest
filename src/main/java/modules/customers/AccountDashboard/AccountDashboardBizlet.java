@@ -28,6 +28,14 @@ public class AccountDashboardBizlet extends Bizlet<AccountDashboardExtension> {
 			bean.setNumbers();
 			bean.setDates();
 			bean.setAccountLocation(bean.getAccount().getLocation());	
+			bean.getInteractions().clear();
+			// add up to 4 interactions to the view
+			if (bean.getAccount().getInteractions().size() < 4) {
+				bean.getInteractions().addAll(bean.getAccount().getInteractions());
+			}
+			else {
+				bean.getInteractions().addAll(bean.getAccount().getInteractions().subList(0, 4)); 
+			}
 		}	
 		super.preRerender(source, bean, webContext);
 	}

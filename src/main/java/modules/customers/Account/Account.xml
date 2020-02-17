@@ -83,7 +83,7 @@
         <geometry name="location">
         	<displayName>Location</displayName>
         </geometry>
-        <association type="aggregation" name="primaryContact">
+        <association required="true" type="aggregation" name="primaryContact">
             <displayName>Primary Contact</displayName>
             <description><![CDATA[The account's primary contact]]></description>
             <documentName>ContactDetail</documentName>
@@ -97,6 +97,10 @@
         		<order sort="descending" by="interactionTime"/>
         	</ordering>
         </collection>
+        
+        <integer name="selectedTab" persistent="true" usage="view" trackChanges="false">
+			<displayName>Selected Tab</displayName>
+		</integer>
         
         <!-- quick add interaction attributes -->
 		<memo name="interactionDescription" persistent="false">

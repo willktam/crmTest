@@ -1,7 +1,13 @@
 package modules.customers.Account;
 
 import org.locationtech.jts.geom.Point;
+import org.skyve.CORE;
 import org.skyve.bus.map.impl.PhotonGeocodeServiceImpl;
+import org.skyve.metadata.customer.Customer;
+import org.skyve.metadata.model.document.Document;
+import org.skyve.metadata.module.Module;
+import org.skyve.metadata.user.User;
+import org.skyve.util.Binder;
 
 import modules.admin.ModulesUtil;
 import modules.customers.Interaction.InteractionExtension;
@@ -38,6 +44,19 @@ public class AccountExtension extends Account {
 			interaction.setDocument(document);
 		}
 		getInteractions().add(interaction);
+	}
+	
+	public void sortInteractions() {
+		User user = CORE.getUser();
+		Customer customer = user.getCustomer();
+		Module module = customer.getModule(AccountExtension.MODULE_NAME);
+		Document document = module.getDocument(customer, AccountExtension.DOCUMENT_NAME);
+		String collectionBinding = AccountExtension.interactionsPropertyName;
+		Binder.sortCollectionByMetaData(this, customer, module, document, collectionBinding);
+		
+		if (getInteractions().size() > 30) {
+			getInteractions().retainAll(getInteractions().subList(0, 30));
+		}
 	}
 
 	public void geocode() throws Exception{

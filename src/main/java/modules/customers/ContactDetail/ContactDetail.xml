@@ -99,9 +99,8 @@
 			<displayName>Document</displayName>
 		</content>
 		
-		<integer name="selectedTab" persistent="false" usage="view" trackChanges="false">
+		<integer name="selectedTab" persistent="true" usage="view" trackChanges="false">
 			<displayName>Selected Tab</displayName>
-			<transient>true</transient>
 		</integer>
 		
 		<markup name="flowbar" persistent="false" usage="view" trackChanges="false" audited="false">

@@ -14,6 +14,7 @@ public class QuoteBizlet extends Bizlet<QuoteExtension> {
 	
 	@Override
 	public QuoteExtension newInstance(QuoteExtension bean) throws Exception {
+		bean.setSelectedTab(0);
 		// set a new quote id when a new one is created
 		bean.setQuoteId(ModulesUtil.getNextDocumentNumber("QUO", Quote.MODULE_NAME, Quote.DOCUMENT_NAME, Quote.quoteIdPropertyName, 8));
 		return super.newInstance(bean);
@@ -32,6 +33,7 @@ public class QuoteBizlet extends Bizlet<QuoteExtension> {
 				bean.createInteraction();
 			}
 		}
+		bean.sortInteractions();
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	

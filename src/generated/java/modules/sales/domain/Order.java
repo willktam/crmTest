@@ -63,6 +63,8 @@ public class Order extends AbstractPersistentBean {
 	public static final String opportunityPropertyName = "opportunity";
 	/** @hidden */
 	public static final String quotePropertyName = "quote";
+	/** @hidden */
+	public static final String selectedTabPropertyName = "selectedTab";
 
 	/**
 	 * Order ID
@@ -130,6 +132,10 @@ public class Order extends AbstractPersistentBean {
 	 * The quote for the order
 	 **/
 	private QuoteExtension quote = null;
+	/**
+	 * Selected Tab
+	 **/
+	private Integer selectedTab;
 
 	@Override
 	@XmlTransient
@@ -374,6 +380,23 @@ public class Order extends AbstractPersistentBean {
 	public void setQuote(QuoteExtension quote) {
 		preset(quotePropertyName, quote);
 		this.quote = quote;
+	}
+
+	/**
+	 * {@link #selectedTab} accessor.
+	 * @return	The value.
+	 **/
+	public Integer getSelectedTab() {
+		return selectedTab;
+	}
+
+	/**
+	 * {@link #selectedTab} mutator.
+	 * @param selectedTab	The new value.
+	 **/
+	@XmlElement
+	public void setSelectedTab(Integer selectedTab) {
+		this.selectedTab = selectedTab;
 	}
 
 	/**

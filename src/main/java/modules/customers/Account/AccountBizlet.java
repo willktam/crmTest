@@ -19,11 +19,15 @@ public class AccountBizlet extends Bizlet<AccountExtension> {
 				bean.updateInteraction();
 			}	
 		}
+		bean.sortInteractions();
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	
 	@Override
 	public AccountExtension newInstance(AccountExtension bean) throws Exception {
+		if (bean.isNotPersisted()) {
+			bean.setSelectedTab(0);
+		}
 		bean.createInteraction();
 		bean.setCurrentUser(ModulesUtil.currentAdminUser());
 		bean.setAccountManager(bean.getCurrentUser().getContact().getName());

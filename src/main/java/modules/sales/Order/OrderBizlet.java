@@ -14,6 +14,7 @@ public class OrderBizlet extends Bizlet<OrderExtension> {
 	
 	@Override
 	public OrderExtension newInstance(OrderExtension bean) throws Exception {
+		bean.setSelectedTab(0);
 		// set a new order id on new instance
 		bean.setOrderId(ModulesUtil.getNextDocumentNumber("ORD", Order.MODULE_NAME, Order.DOCUMENT_NAME, Order.orderIdPropertyName, 8));
 		return super.newInstance(bean);
@@ -23,15 +24,14 @@ public class OrderBizlet extends Bizlet<OrderExtension> {
 	public OrderExtension preExecute(ImplicitActionName actionName, OrderExtension bean, Bean parentBean,
 			WebContext webContext) throws Exception {
 		if (ImplicitActionName.Save.equals(actionName) || ImplicitActionName.OK.equals(actionName)) {
-			//
 			if (bean.isChanged()) {
 				bean.updateInteraction();
 			}
-			//
 			if (bean.isNotPersisted()) {
 				bean.createInteraction();
 			}
 		}
+		bean.sortInteractions();
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	

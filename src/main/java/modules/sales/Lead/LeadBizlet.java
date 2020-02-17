@@ -10,6 +10,14 @@ public class LeadBizlet extends Bizlet<LeadExtension> {
 	private static final long serialVersionUID = 3811137001565191612L;
 	
 	@Override
+	public LeadExtension newInstance(LeadExtension bean) throws Exception {
+		if (bean.isNotPersisted()) {
+			bean.setSelectedTab(0);
+		}
+		return super.newInstance(bean);
+	}
+	
+	@Override
 	public LeadExtension preExecute(ImplicitActionName actionName, LeadExtension bean, Bean parentBean,
 			WebContext webContext) throws Exception {
 		if (ImplicitActionName.Save.equals(actionName) || ImplicitActionName.OK.equals(actionName)) {
@@ -22,6 +30,7 @@ public class LeadBizlet extends Bizlet<LeadExtension> {
 				bean.createInteraction();
 			}	
 		}
+		bean.sortInteractions();
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	

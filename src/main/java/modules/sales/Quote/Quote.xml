@@ -126,6 +126,10 @@
             <length>100</length>
         </text>
         
+        <integer name="selectedTab" persistent="true" usage="view" trackChanges="false">
+			<displayName>Selected Tab</displayName>
+		</integer>
+        
     </attributes>
     
     <conditions>

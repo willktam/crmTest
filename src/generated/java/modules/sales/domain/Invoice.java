@@ -55,6 +55,8 @@ public class Invoice extends AbstractPersistentBean {
 	public static final String accountPropertyName = "account";
 	/** @hidden */
 	public static final String totalPropertyName = "total";
+	/** @hidden */
+	public static final String selectedTabPropertyName = "selectedTab";
 
 	/**
 	 * Invoice ID
@@ -110,6 +112,10 @@ public class Invoice extends AbstractPersistentBean {
 	 * The total for this invoice
 	 **/
 	private Long total;
+	/**
+	 * Selected Tab
+	 **/
+	private Integer selectedTab;
 
 	@Override
 	@XmlTransient
@@ -318,6 +324,23 @@ public class Invoice extends AbstractPersistentBean {
 	public void setTotal(Long total) {
 		preset(totalPropertyName, total);
 		this.total = total;
+	}
+
+	/**
+	 * {@link #selectedTab} accessor.
+	 * @return	The value.
+	 **/
+	public Integer getSelectedTab() {
+		return selectedTab;
+	}
+
+	/**
+	 * {@link #selectedTab} mutator.
+	 * @param selectedTab	The new value.
+	 **/
+	@XmlElement
+	public void setSelectedTab(Integer selectedTab) {
+		this.selectedTab = selectedTab;
 	}
 
 	/**

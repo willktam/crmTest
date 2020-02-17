@@ -14,20 +14,20 @@ public class ContactDetailBizlet extends Bizlet<ContactDetailExtension> {
 	@Override
 	public ContactDetailExtension preExecute(ImplicitActionName actionName, ContactDetailExtension bean, Bean parentBean,
 			WebContext webContext) throws Exception {
-		if (ImplicitActionName.Edit.equals(actionName)) {
-			bean.getNewInteractions();
-		}
 		if (ImplicitActionName.Save.equals(actionName) || ImplicitActionName.OK.equals(actionName)) {
 			if (bean.isChanged()) {
 				bean.updateInteraction();
 			}
 		}
+		bean.getNewInteractions();
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	
 	@Override
 	public ContactDetailExtension newInstance(ContactDetailExtension bean) throws Exception {
-		bean.setSelectedTab(0);
+		if (bean.isNotPersisted()) {
+			bean.setSelectedTab(0);
+		}
 		bean.createInteraction();
 		return super.newInstance(bean);
 	}

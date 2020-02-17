@@ -66,6 +66,8 @@ public class Opportunity extends AbstractPersistentBean {
 	public static final String taxPropertyName = "tax";
 	/** @hidden */
 	public static final String totalPropertyName = "total";
+	/** @hidden */
+	public static final String selectedTabPropertyName = "selectedTab";
 
 	/**
 	 * Pricing Type
@@ -216,6 +218,10 @@ public class Opportunity extends AbstractPersistentBean {
 	 * The provisional total for this opportunity
 	 **/
 	private Long total;
+	/**
+	 * Selected Tab
+	 **/
+	private Integer selectedTab;
 
 	@Override
 	@XmlTransient
@@ -474,6 +480,23 @@ public class Opportunity extends AbstractPersistentBean {
 	public void setTotal(Long total) {
 		preset(totalPropertyName, total);
 		this.total = total;
+	}
+
+	/**
+	 * {@link #selectedTab} accessor.
+	 * @return	The value.
+	 **/
+	public Integer getSelectedTab() {
+		return selectedTab;
+	}
+
+	/**
+	 * {@link #selectedTab} mutator.
+	 * @param selectedTab	The new value.
+	 **/
+	@XmlElement
+	public void setSelectedTab(Integer selectedTab) {
+		this.selectedTab = selectedTab;
 	}
 
 	/**

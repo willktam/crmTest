@@ -14,7 +14,7 @@
 				</vbox>
 			</hbox>
     	</tab>
-    	<tab title="Interactions">
+    	<tab title="Interactions" visible="persisted">
 			<component name="_interactions" />
     	</tab>
     </tabPane>

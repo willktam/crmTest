@@ -44,6 +44,7 @@
 			<key column="owner_id" foreign-key="FK_CUS_Account_interactions_owner_id" />
 			<many-to-many entity-name="customersInteraction" order-by="interactionTime desc" foreign-key="FK_CUS_Account_interactions_element_id" column="element_id" />
 		</bag>
+		<property name="selectedTab" />
 		<property name="document" length="36" />
 		<filter name="customersAccountNoneFilter" condition="1=0"/>
 		<filter name="customersAccountCustomerFilter" condition="bizCustomer=:customerParam"/>
@@ -81,6 +82,7 @@
 			<key column="owner_id" foreign-key="FK_CUS_ContactDetail_interactions_owner_id" />
 			<many-to-many entity-name="customersInteraction" order-by="interactionTime desc" foreign-key="FK_CUS_ContactDetail_interactions_element_id" column="element_id" />
 		</bag>
+		<property name="selectedTab" />
 		<filter name="customersContactDetailNoneFilter" condition="1=0"/>
 		<filter name="customersContactDetailCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="customersContactDetailDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>

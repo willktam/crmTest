@@ -8,6 +8,14 @@ import org.skyve.web.WebContext;
 public class OpportunityBizlet extends Bizlet<OpportunityExtension> {
 
 	private static final long serialVersionUID = -1901236116078837869L;
+	
+	@Override
+	public OpportunityExtension newInstance(OpportunityExtension bean) throws Exception {
+		if (bean.isNotPersisted()) {
+			bean.setSelectedTab(0);
+		}
+		return super.newInstance(bean);
+	}
 
 	@Override
 	public OpportunityExtension preExecute(ImplicitActionName actionName, OpportunityExtension bean, Bean parentBean,
@@ -22,6 +30,7 @@ public class OpportunityBizlet extends Bizlet<OpportunityExtension> {
 				bean.createInteraction();
 			}	
 		}
+		bean.sortInteractions();
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	

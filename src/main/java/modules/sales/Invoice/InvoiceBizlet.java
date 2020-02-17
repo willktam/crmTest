@@ -13,6 +13,7 @@ public class InvoiceBizlet extends Bizlet<InvoiceExtension> {
 	
 	@Override
 	public InvoiceExtension newInstance(InvoiceExtension bean) throws Exception {
+		bean.setSelectedTab(0);
 		// Create a new id on new instance
 		bean.setInvoiceId(ModulesUtil.getNextDocumentNumber("INV", InvoiceExtension.MODULE_NAME, InvoiceExtension.DOCUMENT_NAME, InvoiceExtension.invoiceIdPropertyName, 8));
 		return super.newInstance(bean);
@@ -22,15 +23,14 @@ public class InvoiceBizlet extends Bizlet<InvoiceExtension> {
 	public InvoiceExtension preExecute(ImplicitActionName actionName, InvoiceExtension bean, Bean parentBean,
 			WebContext webContext) throws Exception {
 		if (ImplicitActionName.Save.equals(actionName) || ImplicitActionName.OK.equals(actionName)) {
-			//
 			if (bean.isChanged()) {
 				bean.updateInteraction();
 			}
-			//
 			if (bean.isNotPersisted()) {
 				bean.createInteraction();
 			}
 		}
+		bean.sortInteractions();
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	

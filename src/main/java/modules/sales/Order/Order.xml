@@ -71,8 +71,11 @@
         	<displayName>Quote</displayName>
         	<description><![CDATA[The quote for the order]]></description>
             <documentName>Quote</documentName>
-        </association>       
+        </association>     
         
+       	<integer name="selectedTab" persistent="true" usage="view" trackChanges="false">
+			<displayName>Selected Tab</displayName>
+		</integer>
             
     </attributes>
     

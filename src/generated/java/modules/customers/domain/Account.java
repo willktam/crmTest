@@ -31,7 +31,7 @@ import org.skyve.metadata.model.document.Bizlet.DomainValue;
  * @depend - - - RelationshipType
  * @depend - - - Type
  * @navhas n currentUser 0..1 User
- * @navhas n primaryContact 0..1 ContactDetail
+ * @navhas n primaryContact 1 ContactDetail
  * @navcomposed n interactions 0..n Interaction
  * @stereotype "persistent"
  */
@@ -83,6 +83,8 @@ public class Account extends AbstractPersistentBean {
 	public static final String primaryContactPropertyName = "primaryContact";
 	/** @hidden */
 	public static final String interactionsPropertyName = "interactions";
+	/** @hidden */
+	public static final String selectedTabPropertyName = "selectedTab";
 	/** @hidden */
 	public static final String interactionDescriptionPropertyName = "interactionDescription";
 	/** @hidden */
@@ -266,6 +268,10 @@ public class Account extends AbstractPersistentBean {
 	 * Interactions
 	 **/
 	private List<InteractionExtension> interactions = new ChangeTrackingArrayList<>("interactions", this);
+	/**
+	 * Selected Tab
+	 **/
+	private Integer selectedTab;
 	/**
 	 * Description
 	 **/
@@ -638,6 +644,23 @@ public class Account extends AbstractPersistentBean {
 	 **/
 	public void setInteractionsElementById(String bizId, InteractionExtension element) {
 		 setElementById(interactions, element);
+	}
+
+	/**
+	 * {@link #selectedTab} accessor.
+	 * @return	The value.
+	 **/
+	public Integer getSelectedTab() {
+		return selectedTab;
+	}
+
+	/**
+	 * {@link #selectedTab} mutator.
+	 * @param selectedTab	The new value.
+	 **/
+	@XmlElement
+	public void setSelectedTab(Integer selectedTab) {
+		this.selectedTab = selectedTab;
 	}
 
 	/**

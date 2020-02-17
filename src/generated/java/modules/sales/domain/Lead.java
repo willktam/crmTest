@@ -122,9 +122,9 @@ public class Lead extends AbstractPersistentBean {
 	 **/
 	private String progress;
 	/**
-	 * selectedTab
+	 * Selected Tab
 	 **/
-	private transient Integer selectedTab = new Integer(0);
+	private Integer selectedTab;
 
 	@Override
 	@XmlTransient
@@ -381,7 +381,6 @@ public class Lead extends AbstractPersistentBean {
 	 **/
 	@XmlElement
 	public void setSelectedTab(Integer selectedTab) {
-		preset(selectedTabPropertyName, selectedTab);
 		this.selectedTab = selectedTab;
 	}
 

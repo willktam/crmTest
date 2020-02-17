@@ -68,6 +68,10 @@
         	<displayName>Provisional Total</displayName>
         	<description><![CDATA[The provisional total for this opportunity]]></description>
         </longInteger>        
+        
+        <integer name="selectedTab" persistent="true" usage="view" trackChanges="false">
+			<displayName>Selected Tab</displayName>
+		</integer>
     </attributes>
     
     <conditions>

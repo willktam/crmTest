@@ -3,10 +3,13 @@
 	<form border="true" borderTitle="Add Interaction">
 		<column responsiveWidth="2" />
 		<column responsiveWidth="8" />
-
 		<row>
 			<item>
-				<default binding="account.interactionType" />
+				<combo binding="account.interactionType">
+					<onChangedHandlers>
+						<rerender clientValidation="false" />
+					</onChangedHandlers>
+				</combo>
 			</item>
 		</row>
 		<row>
@@ -15,6 +18,11 @@
 			</item>
 			<item>
 				<button actionName="AddInteraction" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<contentLink binding="account.document" visible="uploadSelected" />
 			</item>
 		</row>
 	</form>

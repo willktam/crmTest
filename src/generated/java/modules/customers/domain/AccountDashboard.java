@@ -430,4 +430,23 @@ public class AccountDashboard extends AbstractTransientBean {
 	public boolean isNotAccountSelected() {
 		return (! isAccountSelected());
 	}
+
+	/**
+	 * uploadSelected
+	 *
+	 * @return The condition
+	 */
+	@XmlTransient
+	public boolean isUploadSelected() {
+		return (getAccount() != null && getAccount().getInteractionType() != null && getAccount().getInteractionType().name() == "upload");
+	}
+
+	/**
+	 * {@link #isUploadSelected} negation.
+	 *
+	 * @return The negated condition
+	 */
+	public boolean isNotUploadSelected() {
+		return (! isUploadSelected());
+	}
 }

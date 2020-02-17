@@ -257,7 +257,7 @@ public class ContactDetail extends AbstractPersistentBean {
 	/**
 	 * Selected Tab
 	 **/
-	private transient Integer selectedTab;
+	private Integer selectedTab;
 	/**
 	 * Flowbar
 	 **/
