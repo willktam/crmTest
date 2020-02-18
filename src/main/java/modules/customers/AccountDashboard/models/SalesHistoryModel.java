@@ -23,7 +23,6 @@ public class SalesHistoryModel extends ChartModel<AccountDashboardExtension> {
 		DocumentQuery query = persistence.newDocumentQuery(Invoice.MODULE_NAME, Invoice.DOCUMENT_NAME);
 		query.getFilter().addEquals(Binder.createCompoundBinding(Invoice.accountPropertyName, Bean.DOCUMENT_ID), getBean().getAccount().getBizId());
 
-		
 		ChartBuilder cb = new ChartBuilder();
 		cb.with(query);
 		cb.category(Invoice.namePropertyName);
@@ -32,5 +31,4 @@ public class SalesHistoryModel extends ChartModel<AccountDashboardExtension> {
 		ChartData chartData = cb.build("Sales History","Total");
 		return chartData;
 	}
-
 }

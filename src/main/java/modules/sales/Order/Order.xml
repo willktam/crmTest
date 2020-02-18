@@ -13,7 +13,7 @@
         	<description><![CDATA[The ID for this order]]></description>
         	<length>8</length>
         </text> 
-        <text name="name">
+        <text required="true" name="name">
         	<displayName>Order Name</displayName>
         	<description><![CDATA[The name of the order]]></description>
         	<length>200</length>
