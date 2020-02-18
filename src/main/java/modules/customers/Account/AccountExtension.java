@@ -54,8 +54,8 @@ public class AccountExtension extends Account {
 		String collectionBinding = AccountExtension.interactionsPropertyName;
 		Binder.sortCollectionByMetaData(this, customer, module, document, collectionBinding);
 		
-		if (getInteractions().size() > 30) {
-			getInteractions().retainAll(getInteractions().subList(0, 30));
+		if (getInteractions().size() > 50) {
+			getInteractions().retainAll(getInteractions().subList(0, 50));
 		}
 	}
 

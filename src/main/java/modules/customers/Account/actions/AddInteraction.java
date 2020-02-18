@@ -46,8 +46,8 @@ public class AddInteraction implements ServerSideAction<AccountExtension> {
 		String collectionBinding = AccountExtension.interactionsPropertyName;
 		Binder.sortCollectionByMetaData(bean, customer, module, document, collectionBinding);
 		
-		if (bean.getInteractions().size() > 30) {
-			bean.getInteractions().retainAll(bean.getInteractions().subList(0, 30));
+		if (bean.getInteractions().size() > 50) {
+			bean.getInteractions().retainAll(bean.getInteractions().subList(0, 50));
 		}
 		
 		return new ServerSideActionResult<>(bean);

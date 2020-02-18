@@ -30,7 +30,10 @@ public class OpportunityBizlet extends Bizlet<OpportunityExtension> {
 				bean.createInteraction();
 			}	
 		}
-		bean.sortInteractions();
+		if (bean.isPersisted()) {
+			bean.sortInteractions();
+		}
+		
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	

@@ -32,19 +32,40 @@ import modules.sales.domain.Quote;
 public class AccountDashboardExtension extends AccountDashboard {
 
 	private static final long serialVersionUID = 2026179169670513211L;
+	
+	private static String formatBooleanHTML(final boolean value) {
+		final String template = "<i style='color: %1$s;' class='fa %2$s'></i>";
+
+		if (value == true) {
+			return String.format(template, "#4bc0c0", "fa-check");
+		}
+		return String.format(template, "#ff6385", "fa-times");
+	}
 
 	public void setDates() {
-		if (getRecentOpportunity() != null) {
-			setDateOpportunity(lastCreated(Opportunity.DOCUMENT_NAME).getInteractionTime());
+		if (getRecentOpportunity() != null && lastCreated(Opportunity.DOCUMENT_NAME) != null) {
+			setDateOpportunity(formatBooleanHTML(true));
 		}
-		if (getRecentQuote() != null) {
-			setDateQuote(lastCreated(Quote.DOCUMENT_NAME).getInteractionTime());
+		else {
+			setDateOpportunity(formatBooleanHTML(false));
 		}
-		if (getRecentOrder() != null) {
-			setDateOrder(lastCreated(Order.DOCUMENT_NAME).getInteractionTime());
+		if (getRecentQuote() != null && lastCreated(Quote.DOCUMENT_NAME) != null) {
+			setDateQuote(formatBooleanHTML(true));
 		}
-		if (getRecentInvoice() != null) {
-			setDateInvoice(lastCreated(Invoice.DOCUMENT_NAME).getInteractionTime());
+		else {
+			setDateQuote(formatBooleanHTML(false));
+		}
+		if (getRecentOrder() != null && lastCreated(Order.DOCUMENT_NAME) != null) {
+			setDateOrder(formatBooleanHTML(true));
+		}
+		else {
+			setDateOrder(formatBooleanHTML(false));
+		}
+		if (getRecentInvoice() != null && lastCreated(Invoice.DOCUMENT_NAME) != null) {
+			setDateInvoice(formatBooleanHTML(true));
+		}
+		else {
+			setDateInvoice(formatBooleanHTML(false));
 		}
 	}
 	
@@ -263,19 +284,19 @@ public class AccountDashboardExtension extends AccountDashboard {
 		}
 		
 		if (getRecentOpportunity() != null) {
-			if (daysSinceInteraction(lastCreated(Opportunity.DOCUMENT_NAME)) > 30) {
+			if (lastCreated(Opportunity.DOCUMENT_NAME) == null || daysSinceInteraction(lastCreated(Opportunity.DOCUMENT_NAME)) > 30) {
 				markup.append(makeReuseTemplate(Opportunity.DOCUMENT_NAME));
 			}
 			if (getRecentQuote() != null) {
-				if (daysSinceInteraction(lastCreated(Quote.DOCUMENT_NAME)) > 30) {
+				if (lastCreated(Quote.DOCUMENT_NAME) == null || daysSinceInteraction(lastCreated(Quote.DOCUMENT_NAME)) > 30) {
 					markup.append(makeReuseTemplate(Quote.DOCUMENT_NAME));
 				}
 				if (getRecentOrder() != null) {
-					if (daysSinceInteraction(lastCreated(Order.DOCUMENT_NAME)) > 30) {
+					if (lastCreated(Order.DOCUMENT_NAME) == null || daysSinceInteraction(lastCreated(Order.DOCUMENT_NAME)) > 30) {
 						markup.append(makeReuseTemplate(Order.DOCUMENT_NAME));
 					}
 					if (getRecentInvoice() != null) {
-						if (daysSinceInteraction(lastCreated(Invoice.DOCUMENT_NAME)) > 30) {
+						if (lastCreated(Invoice.DOCUMENT_NAME) == null || daysSinceInteraction(lastCreated(Invoice.DOCUMENT_NAME)) > 30) {
 							markup.append(makeReuseTemplate(Invoice.DOCUMENT_NAME));
 						}
 						else {
@@ -327,14 +348,14 @@ public class AccountDashboardExtension extends AccountDashboard {
 	// helper method to return the reuse action markup for a document name
 	public String makeReuseTemplate(String documentName) {
 		StringBuilder markup = new StringBuilder();
-		markup.append("<div class='actionContainer'>");
+		markup.append("<div class='actionContainer' onclick=\"location.href='"+ makeActionLink(documentName) + "';\">");
 		markup.append("<div class='actionIcon'>");
 		markup.append("<span class='" + makeIcon(documentName) + "'></span></div>");
 		markup.append("<div class='actionInfo'>");    
 		markup.append("<span class='actionTitle'>Create A New "+ documentName +"</span>");
 		markup.append("<span></br><p class='actionDescription'>You have not created a new "+ documentName +""
-							+ " for "+ getAccount().getAccountName() +" for over a month, create a new "+ documentName +""
-							+ "and save it to this account.</p>");  
+							+ " for "+ getAccount().getAccountName() +" recently, click here to create a new "+ documentName +""
+							+ " and save it to this account.</p>");  
 		markup.append("</div></div>");
 		return markup.toString();
 	}	

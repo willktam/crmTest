@@ -64,8 +64,8 @@ public class QuoteExtension extends Quote {
 		String collectionBinding = Account.interactionsPropertyName;
 		Binder.sortCollectionByMetaData(getAccount(), customer, module, document, collectionBinding);
 		
-		if (getAccount().getInteractions().size() > 30) {
-			getAccount().getInteractions().retainAll(getAccount().getInteractions().subList(0, 30));
+		if (getAccount().getInteractions().size() > 50) {
+			getAccount().getInteractions().retainAll(getAccount().getInteractions().subList(0, 50));
 		}
 	}
 }

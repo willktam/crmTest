@@ -73,8 +73,8 @@ public class LeadExtension extends Lead {
 		Binder.sortCollectionByMetaData(getContactDetails(), customer, module, document, collectionBinding);
 			
 		// keep only the newest interactions
-		if (getContactDetails().getInteractions().size() > 30) {
-			getContactDetails().getInteractions().retainAll(getContactDetails().getInteractions().subList(0, 30));
+		if (getContactDetails().getInteractions().size() > 50) {
+			getContactDetails().getInteractions().retainAll(getContactDetails().getInteractions().subList(0, 50));
 		}
 	}
 	

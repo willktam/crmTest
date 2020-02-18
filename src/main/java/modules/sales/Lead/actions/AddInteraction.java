@@ -48,8 +48,8 @@ public class AddInteraction implements ServerSideAction<LeadExtension> {
 		Binder.sortCollectionByMetaData(bean.getContactDetails(), customer, module, document, collectionBinding);
 			
 		// keep only the newest interactions
-		if (bean.getContactDetails().getInteractions().size() > 30) {
-			bean.getContactDetails().getInteractions().retainAll(bean.getContactDetails().getInteractions().subList(0, 30));
+		if (bean.getContactDetails().getInteractions().size() > 50) {
+			bean.getContactDetails().getInteractions().retainAll(bean.getContactDetails().getInteractions().subList(0, 50));
 		}
 		
 

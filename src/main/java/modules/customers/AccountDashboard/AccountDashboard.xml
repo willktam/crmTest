@@ -44,22 +44,22 @@
 			<defaultValue>0</defaultValue>
 		</integer>
 		
-		<dateTime name="dateOpportunity">
+		<text name="dateOpportunity">
 			<displayName>Date Opportunity Updated</displayName>
-			<transient>true</transient>
-		</dateTime>
-		<dateTime name="dateQuote">
+			<length>100</length>
+		</text>
+		<text name="dateQuote">
 			<displayName>Date Quote Updated</displayName>
-			<transient>true</transient>
-		</dateTime>
-		<dateTime name="dateOrder">
+			<length>100</length>
+		</text>
+		<text name="dateOrder">
 			<displayName>Date Order Updated</displayName>
-			<transient>true</transient>
-		</dateTime>
-		<dateTime name="dateInvoice">
+			<length>100</length>
+		</text>
+		<text name="dateInvoice">
 			<displayName>Date Invoice Updated</displayName>
-			<transient>true</transient>
-		</dateTime>
+			<length>100</length>
+		</text>
 		
 		<markup name="flowbar" persistent="false" usage="view" trackChanges="false" audited="false">
 			<displayName>Flowbar</displayName>

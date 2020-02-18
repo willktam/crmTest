@@ -33,7 +33,9 @@ public class QuoteBizlet extends Bizlet<QuoteExtension> {
 				bean.createInteraction();
 			}
 		}
-		bean.sortInteractions();
+		if (bean.isPersisted()) {
+			bean.sortInteractions();
+		}
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	

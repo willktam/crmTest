@@ -51,8 +51,8 @@ public class ContactDetailExtension extends ContactDetail {
 		String collectionBinding = ContactDetail.interactionsPropertyName;
 		Binder.sortCollectionByMetaData(this, customer, module, document, collectionBinding);
 		
-		if (getInteractions().size() > 30) {
-			getInteractions().retainAll(getInteractions().subList(0, 30));
+		if (getInteractions().size() > 50) {
+			getInteractions().retainAll(getInteractions().subList(0, 50));
 		}		
 	}
 }

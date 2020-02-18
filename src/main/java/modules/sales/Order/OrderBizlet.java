@@ -31,7 +31,9 @@ public class OrderBizlet extends Bizlet<OrderExtension> {
 				bean.createInteraction();
 			}
 		}
-		bean.sortInteractions();
+		if (bean.isPersisted()) {
+			bean.sortInteractions();
+		}
 		return super.preExecute(actionName, bean, parentBean, webContext);
 	}
 	

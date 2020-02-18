@@ -3,7 +3,6 @@ package modules.customers.domain;
 import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -13,10 +12,8 @@ import modules.customers.Interaction.InteractionExtension;
 import org.locationtech.jts.geom.Geometry;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
-import org.skyve.domain.types.DateTime;
 import org.skyve.impl.domain.AbstractTransientBean;
 import org.skyve.impl.domain.ChangeTrackingArrayList;
-import org.skyve.impl.domain.types.jaxb.DateTimeMapper;
 import org.skyve.impl.domain.types.jaxb.GeometryMapper;
 
 /**
@@ -94,19 +91,19 @@ public class AccountDashboard extends AbstractTransientBean {
 	/**
 	 * Date Opportunity Updated
 	 **/
-	private transient DateTime dateOpportunity;
+	private String dateOpportunity;
 	/**
 	 * Date Quote Updated
 	 **/
-	private transient DateTime dateQuote;
+	private String dateQuote;
 	/**
 	 * Date Order Updated
 	 **/
-	private transient DateTime dateOrder;
+	private String dateOrder;
 	/**
 	 * Date Invoice Updated
 	 **/
-	private transient DateTime dateInvoice;
+	private String dateInvoice;
 	/**
 	 * Flowbar
 	 **/
@@ -284,7 +281,7 @@ public class AccountDashboard extends AbstractTransientBean {
 	 * {@link #dateOpportunity} accessor.
 	 * @return	The value.
 	 **/
-	public DateTime getDateOpportunity() {
+	public String getDateOpportunity() {
 		return dateOpportunity;
 	}
 
@@ -292,10 +289,8 @@ public class AccountDashboard extends AbstractTransientBean {
 	 * {@link #dateOpportunity} mutator.
 	 * @param dateOpportunity	The new value.
 	 **/
-	@XmlSchemaType(name = "dateTime")
-	@XmlJavaTypeAdapter(DateTimeMapper.class)
 	@XmlElement
-	public void setDateOpportunity(DateTime dateOpportunity) {
+	public void setDateOpportunity(String dateOpportunity) {
 		preset(dateOpportunityPropertyName, dateOpportunity);
 		this.dateOpportunity = dateOpportunity;
 	}
@@ -304,7 +299,7 @@ public class AccountDashboard extends AbstractTransientBean {
 	 * {@link #dateQuote} accessor.
 	 * @return	The value.
 	 **/
-	public DateTime getDateQuote() {
+	public String getDateQuote() {
 		return dateQuote;
 	}
 
@@ -312,10 +307,8 @@ public class AccountDashboard extends AbstractTransientBean {
 	 * {@link #dateQuote} mutator.
 	 * @param dateQuote	The new value.
 	 **/
-	@XmlSchemaType(name = "dateTime")
-	@XmlJavaTypeAdapter(DateTimeMapper.class)
 	@XmlElement
-	public void setDateQuote(DateTime dateQuote) {
+	public void setDateQuote(String dateQuote) {
 		preset(dateQuotePropertyName, dateQuote);
 		this.dateQuote = dateQuote;
 	}
@@ -324,7 +317,7 @@ public class AccountDashboard extends AbstractTransientBean {
 	 * {@link #dateOrder} accessor.
 	 * @return	The value.
 	 **/
-	public DateTime getDateOrder() {
+	public String getDateOrder() {
 		return dateOrder;
 	}
 
@@ -332,10 +325,8 @@ public class AccountDashboard extends AbstractTransientBean {
 	 * {@link #dateOrder} mutator.
 	 * @param dateOrder	The new value.
 	 **/
-	@XmlSchemaType(name = "dateTime")
-	@XmlJavaTypeAdapter(DateTimeMapper.class)
 	@XmlElement
-	public void setDateOrder(DateTime dateOrder) {
+	public void setDateOrder(String dateOrder) {
 		preset(dateOrderPropertyName, dateOrder);
 		this.dateOrder = dateOrder;
 	}
@@ -344,7 +335,7 @@ public class AccountDashboard extends AbstractTransientBean {
 	 * {@link #dateInvoice} accessor.
 	 * @return	The value.
 	 **/
-	public DateTime getDateInvoice() {
+	public String getDateInvoice() {
 		return dateInvoice;
 	}
 
@@ -352,10 +343,8 @@ public class AccountDashboard extends AbstractTransientBean {
 	 * {@link #dateInvoice} mutator.
 	 * @param dateInvoice	The new value.
 	 **/
-	@XmlSchemaType(name = "dateTime")
-	@XmlJavaTypeAdapter(DateTimeMapper.class)
 	@XmlElement
-	public void setDateInvoice(DateTime dateInvoice) {
+	public void setDateInvoice(String dateInvoice) {
 		preset(dateInvoicePropertyName, dateInvoice);
 		this.dateInvoice = dateInvoice;
 	}
